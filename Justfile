@@ -28,8 +28,8 @@ update-revealjs:
 
 # Build application
 build:
-    rm -rf dist
+    rm -rf docs
     cd public/reveal.js-master/ && npx gulp plugins
     yarn build
-    find dist/reveal.js-master/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
-    cp SLIDES.md dist/
+    find docs/reveal.js-master/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
+    cp SLIDES.md docs/
