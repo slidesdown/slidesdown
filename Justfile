@@ -33,3 +33,5 @@ build:
     yarn build
     find docs/reveal.js-master/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
     cp SLIDES.md docs/
+    cp _CNAME docs/CNAME
+    cp __config.yml docs/_config.yml
