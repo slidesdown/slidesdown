@@ -1,5 +1,5 @@
 ---
-title: mdslides
+title: slidesdown
 date: 2023-01-20
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
 favicon: favicon.svg
@@ -8,13 +8,13 @@ highlight-theme: ./reveal.js-master/plugin/highlight/monokai.css
 author: Jan Christoph Ebersbach
 ---
 
-# mdslides
+# slidesdown
 
 <h2>Slideshows as fast as you can type Markdown.</h2>
 
 ## Agenda
 
-1. Intro mdslides
+1. Intro slidesdown
 2. Basics
 3. Incremental Display
 4. Backgrounds
@@ -22,7 +22,7 @@ author: Jan Christoph Ebersbach
 6. Advanced Formatting
 7. Charts
 
-## Intro mdslides
+## Intro slidesdown
 
 henl
 
@@ -30,7 +30,7 @@ henl
 
 ### Markdown
 
-`mdslides` is built to quickly turn ideas into beautiful presentations. The
+`slidesdown` is built to quickly turn ideas into beautiful presentations. The
 text-based [markdown format](https://daringfireball.net/projects/markdown/) is
 the tool of choice to do just that!
 
@@ -55,10 +55,10 @@ the tool of choice to do just that!
 
 ### Examples
 
-- [Introduction video to mdslides](https://youtu.be/ZNXvQGsk_wA)
-- [Example HTML presentation](https://mdslides.e-jc.de/)
+- [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA)
+- [Example HTML presentation](https://slidesdown.41ppl.com/)
 - [Example PDF](./examples/slides.pdf)
-- [Example Markdown](https://raw.githubusercontent.com/jceb/mdslides/master/examples/slides.md)
+- [Example Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
 
 ---
 
@@ -97,7 +97,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 ### Links
 
-- [Text link](https://github.com/jceb/mdslides)
+- [Text link](https://github.com/jceb/slidesdown)
 - Image link:
   [![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
 
@@ -453,4 +453,4 @@ var myRadarChart = new Chart(ctx, {
 
 ## Thank you
 
-<h3>for using [mdslides](https://github.com/jceb/mdslides)</h3>
+<h3>for using [slidesdown](https://github.com/jceb/slidesdown)</h3>
