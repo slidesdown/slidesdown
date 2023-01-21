@@ -1,15 +1,15 @@
 # slidesdown
 
 Slideshows as fast as you can type Markdown.
-[slidesdown](https://slidesdown.41ppl.com/loader.html) is powered by the
+[slidesdown](https://slidesdown.e-jc.de/loader.html) is powered by the
 incredible [reveal.js presentation framework](https://revealjs.com/).
 
 ## Usage
 
 ### Online Viewer
 
-Visit [slidesdown.41ppl.com](https://slidesdown.41ppl.com/loader.html) and enter
-the URL to your markdown presentation in the loader form, e.g.
+Visit [slidesdown.e-jc.de](https://slidesdown.e-jc.de/loader.html) and enter the
+URL to your markdown presentation in the loader form, e.g.
 `github.com/jceb/slidesdown/SLIDES.md`.
 
 ### Create Slideshow (simple)
