@@ -2,9 +2,9 @@
 title: slidesdown
 date: 2023-01-20
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
-favicon: favicon.svg
-theme: ./reveal.js-master/dist/theme/white.css
-highlight-theme: ./reveal.js-master/plugin/highlight/monokai.css
+favicon: /favicon.svg
+theme: /reveal.js-master/dist/theme/white.css
+highlight-theme: /reveal.js-master/plugin/highlight/monokai.css
 author: Jan Christoph Ebersbach
 ---
 
