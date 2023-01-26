@@ -2,16 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="application/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="application/svg+xml" href="/favicon.svg" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+    <link rel="canonical" href="https://slidesdown.e-jc.de/loader.html" />
+    <!-- <link -->
+    <!--   rel="stylesheet" -->
+    <!--   href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" -->
+    <!-- /> -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
     />
+    <!-- TODO: replace search icon  -->
+    <!-- <link rel="stylesheet" href="/custom.css" /> -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -19,70 +26,78 @@
     <title>slidesdown Loader</title>
   </head>
   <body>
-    <div class="container">
-      <section class="hero">
-        <div class="hero-body">
-          <h1 class="title">slidesdown Loader</h1>
-          <p class="subtitle">
-            Slideshows as fast as you can type
-            <a href="https://www.markdownguide.org/">Markdown</a>.
-          </p>
-        </div>
-      </section>
-      <section class="section">
-        <div class="tabs is-medium">
-          <ul>
-            <li class="is-active"><a>Open</a></li>
-            <li><a href="/learn.html">Learn</a></li>
-          </ul>
-        </div>
-        <form action="/" method="get" target="_blank">
-          <label class="label" for="slides">Slideshow URL</label>
-          <div class="field has-addons">
-            <div class="control has-icons-left">
-              <input
-                id="slides"
-                class="input"
-                type="text"
-                name="slides"
-                placeholder="github.com/jceb/slidesdown"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-sparkles"></i>
-              </span>
-              <p class="help">
-                URL to your markdown slides, e.g.
-                <a href="/?slides=github.com/jceb/slidesdown"
-                  >github.com/jceb/slidesdown</a
-                >
-                or
-                <a href="/?slides=github.com/jceb/slidesdown/README.md"
-                  >github.com/jceb/slidesdown/README.md</a
-                >
-              </p>
-            </div>
-            <div class="control">
-              <button class="button is-info" type="submit">Open</button>
-            </div>
+    <header class="container">
+      <hgroup>
+        <h1 class="title">slidesdown Loader</h1>
+        <p class="subtitle">
+          Slideshows as fast as you can type
+          <a href="https://www.markdownguide.org/">Markdown</a>.
+        </p>
+      </hgroup>
+      <nav style="align-items: center">
+        <ul>
+          <li><u>Open</u></li>
+          <li><a href="/learn.html">Learn</a></li>
+        </ul>
+        <div
+          data-theme-switcher
+          href="#"
+          style="
+            height: 1.5rem;
+            width: 1.5rem;
+            background-image: var(--icon-theme);
+          "
+        ></div>
+      </nav>
+      <section>
+        <form action="/" method="get">
+          <label class="label" for="slides"
+            >Slideshow URL
+            <input
+              id="slides"
+              type="search"
+              class="input"
+              type="text"
+              name="slides"
+              placeholder="github.com/jceb/slidesdown"
+            />
+            <!-- <span class="icon is-small is-left"> -->
+            <!--   <i class="fas fa-sparkles"></i> -->
+            <!-- </span> -->
+            <p class="help">
+              URL to your markdown slides, e.g.
+              <a href="/?slides=github.com/jceb/slidesdown"
+                >github.com/jceb/slidesdown</a
+              >
+              or
+              <a href="/?slides=github.com/jceb/slidesdown/README.md"
+                >github.com/jceb/slidesdown/README.md</a
+              >
+            </p>
+          </label>
+
+          <div class="control">
+            <button class="button is-info" type="submit">Open</button>
           </div>
         </form>
       </section>
-    </div>
-    <script
-      src="https://kit.fontawesome.com/fec85b2437.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag("js", new Date())
-      gtag("config", "G-5277P6Q3RP")
-    </script>
+    </header>
+    <!-- <s  lript -->
+    <!--   src="https://kit.fontawesome.com/fec85b2437.js" -->
+    <!--   crossorigin="anonymous" -->
+    <!-- ></script> -->
+    <script src="/minimal-theme-switcher.js"></script>
+    <!-- <script -->
+    <!--   async -->
+    <!--   src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP" -->
+    <!-- ></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || [] -->
+    <!--   function gtag() { -->
+    <!--     dataLayer.push(arguments) -->
+    <!--   } -->
+    <!--   gtag("js", new Date()) -->
+    <!--   gtag("config", "G-5277P6Q3RP") -->
+    <!-- </script> -->
   </body>
 </html>

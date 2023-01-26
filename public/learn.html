@@ -2,16 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="application/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="application/svg+xml" href="/favicon.svg" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+    <link rel="canonical" href="https://slidesdown.e-jc.de/learn.html" />
+    <!-- <link -->
+    <!--   rel="stylesheet" -->
+    <!--   href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" -->
+    <!-- /> -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
     />
+    <!-- TODO: replace search icon  -->
+    <!-- <link rel="stylesheet" href="/custom.css" /> -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -19,27 +26,32 @@
     <title>slidesdown Loader</title>
   </head>
   <body>
-    <div class="container">
-      <section class="hero">
-        <div class="hero-body">
-          <h1 class="title">slidesdown Loader</h1>
-          <p class="subtitle">
-            Slideshows as fast as you can type
-            <a href="https://www.markdownguide.org/">Markdown</a>.
-          </p>
-        </div>
-      </section>
-      <section class="section">
-        <div class="tabs is-medium">
-          <ul>
+    <header class="container">
+      <hgroup>
+        <h1 class="title">slidesdown Loader</h1>
+        <p class="subtitle">
+          Slideshows as fast as you can type
+          <a href="https://www.markdownguide.org/">Markdown</a>.
+        </p>
+      </hgroup>
+<nav style="align-items: center">
+        <ul>
             <li><a href="/loader.html">Open</a></li>
-            <li class="is-active"><a>Learn</a></li>
-          </ul>
-        </div>
-        <h1 class="title">Make your first Slideshow</h1>
-        <h2 class="subtitle">
-          Get your first slideshow up and running in less than 5 minutes.
-        </h2>
+          <li><u>Learn</u></li>
+        </ul>
+        <div
+          data-theme-switcher
+          href="#"
+          style="
+            height: 1.5rem;
+            width: 1.5rem;
+            background-image: var(--icon-theme);
+          "
+        ></div>
+      </nav>
+      <section>
+        <h1>Make your first Slideshow</h1>
+        <h2>Get your first slideshow up and running in less than 5 minutes.</h2>
 
         <p>
         <ol>
@@ -59,8 +71,7 @@ Author: Your Name
 
 ## The End
 
-Thank you for your time.
-              </pre>
+Thank you for your time.</pre>
           </li>
           <li>Go to <a href="/loader.html">slidesdown</a> and enter the URL to your repository, e.g. <code>github.com/jceb/slidesdown</code></li>
           <li>Copy the link to your presentation and share it with friends</li>
@@ -68,21 +79,22 @@ Thank you for your time.
         </p>
       </section>
     </div>
-    <script
-      src="https://kit.fontawesome.com/fec85b2437.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag("js", new Date())
-      gtag("config", "G-5277P6Q3RP")
-    </script>
+    <!-- <script -->
+    <!--   src="https://kit.fontawesome.com/fec85b2437.js" -->
+    <!--   crossorigin="anonymous" -->
+    <!-- ></script> -->
+    <script src="/minimal-theme-switcher.js"></script>
+    <!-- <script -->
+    <!--   async -->
+    <!--   src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP" -->
+    <!-- ></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || [] -->
+    <!--   function gtag() { -->
+    <!--     dataLayer.push(arguments) -->
+    <!--   } -->
+    <!--   gtag("js", new Date()) -->
+    <!--   gtag("config", "G-5277P6Q3RP") -->
+    <!-- </script> -->
   </body>
 </html>
