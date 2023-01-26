@@ -28,31 +28,53 @@
   <body>
     <header class="container">
       <hgroup>
-        <h1 class="title">slidesdown Loader</h1>
-        <p class="subtitle">
+        <h1>slidesdown Loader</h1>
+        <h2>
           Slideshows as fast as you can type
           <a href="https://www.markdownguide.org/">Markdown</a>.
-        </p>
+        </h2>
       </hgroup>
-      <nav style="align-items: center">
+      <nav class="container" style="align-items: center">
         <ul>
             <li><a href="/loader.html">Open</a></li>
           <li><u>Learn</u></li>
         </ul>
-        <div
-          data-theme-switcher
-          href="#"
-          style="
-            height: 1.5rem;
-            width: 1.5rem;
-            background-color: var(--color);
-            mask-image: var(--icon-theme);
-          "
-        ></div>
+        <ul>
+          <li>
+            <a
+              data-theme-switcher
+              class="contrast"
+              href="#"
+              title="Switch Theme"
+              style="
+                height: 1.5rem;
+                width: 1.5rem;
+                margin-right: 0.5rem;
+                background-color: var(--color);
+                mask-image: var(--icon-theme);
+              "
+            ></a>
+          </li>
+          <li>
+            <a
+              title="GitHub"
+              class="contrast"
+              href="https://github.com/jceb/slidesdown"
+              style="
+                height: 1.5rem;
+                width: 1.5rem;
+                background-color: var(--color);
+                mask-image: url('/github.svg');
+              "
+            ></a>
+          </li>
+        </ul>
       </nav>
-      <main>
-        <h1>Make your first Slideshow</h1>
-        <p style="position: relative; top: -2.5rem;">Get your first slideshow up and running in less than 5 minutes.</p>
+      <main class="container">
+        <hgroup>
+          <h1>Make your first Slideshow</h1>
+          <h2>Get your first slideshow up and running in less than 5 minutes.</h2>
+        </hgroup>
         <section>
           <ol>
             <li>Create an empty repository at <a href="https://github.com">GitHub</a></li>

@@ -28,29 +28,49 @@
   <body>
     <header class="container">
       <hgroup>
-        <h1 class="title">slidesdown Loader</h1>
-        <p class="subtitle">
+        <h1>slidesdown Loader</h1>
+        <h2>
           Slideshows as fast as you can type
           <a href="https://www.markdownguide.org/">Markdown</a>.
-        </p>
+        </h2>
       </hgroup>
-      <nav style="align-items: center">
+      <nav class="container" style="align-items: center">
         <ul>
           <li><u>Open</u></li>
           <li><a href="/learn.html">Learn</a></li>
         </ul>
-        <div
-          data-theme-switcher
-          href="#"
-          style="
-            height: 1.5rem;
-            width: 1.5rem;
-            background-color: var(--color);
-            mask-image: var(--icon-theme);
-          "
-        ></div>
+        <ul>
+          <li>
+            <a
+              data-theme-switcher
+              class="contrast"
+              href="#"
+              title="Switch Theme"
+              style="
+                height: 1.5rem;
+                width: 1.5rem;
+                margin-right: 0.5rem;
+                background-color: var(--color);
+                mask-image: var(--icon-theme);
+              "
+            ></a>
+          </li>
+          <li>
+            <a
+              title="GitHub"
+              class="contrast"
+              href="https://github.com/jceb/slidesdown"
+              style="
+                height: 1.5rem;
+                width: 1.5rem;
+                background-color: var(--color);
+                mask-image: url('/github.svg');
+              "
+            ></a>
+          </li>
+        </ul>
       </nav>
-      <main>
+      <main class="container">
         <h1>Open your Slideshow</h1>
         <form action="/" method="get">
           <label class="label" for="slides"
