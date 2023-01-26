@@ -14,9 +14,13 @@ format:
 dev:
     yarn dev
 
+# Update pico
+update-pico:
+    curl -Lfo public/css/pico.min.css https://unpkg.com/@picocss/pico@v1.5.6/css/pico.min.css
+
 # Update revealjs
 update-revealjs:
-    curl -Lo public/master.zip https://github.com/hakimel/reveal.js/archive/master.zip
+    curl -Lfo public/master.zip https://github.com/hakimel/reveal.js/archive/master.zip
     if [ -e public/reveal.js-master.bak ]; then \
     rm -rf public/reveal.js-master.bak; \
     fi
