@@ -45,11 +45,13 @@
           style="
             height: 1.5rem;
             width: 1.5rem;
-            background-image: var(--icon-theme);
+            background-color: var(--color);
+            mask-image: var(--icon-theme);
           "
         ></div>
       </nav>
-      <section>
+      <main>
+        <h1>Open your Slideshow</h1>
         <form action="/" method="get">
           <label class="label" for="slides"
             >Slideshow URL
@@ -65,7 +67,7 @@
             <!--   <i class="fas fa-sparkles"></i> -->
             <!-- </span> -->
             <p class="help">
-              URL to your markdown slides, e.g.
+              URL of your markdown slides, e.g.
               <a href="/?slides=github.com/jceb/slidesdown"
                 >github.com/jceb/slidesdown</a
               >
@@ -75,12 +77,9 @@
               >
             </p>
           </label>
-
-          <div class="control">
-            <button class="button is-info" type="submit">Open</button>
-          </div>
+          <button type="submit">Open</button>
         </form>
-      </section>
+      </main>
     </header>
     <!-- <s  lript -->
     <!--   src="https://kit.fontawesome.com/fec85b2437.js" -->
