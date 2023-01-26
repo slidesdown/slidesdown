@@ -74,7 +74,10 @@
         <h1>Open your Slideshow</h1>
         <form action="/" method="get">
           <label class="label" for="slides"
-            >Slideshow URL
+            >Slideshow URL, e.g.
+            <a href="/?slides=github.com/jceb/slidesdown"
+              >github.com/jceb/slidesdown</a
+            >
             <input
               id="slides"
               type="search"
@@ -83,19 +86,6 @@
               name="slides"
               placeholder="github.com/jceb/slidesdown"
             />
-            <!-- <span class="icon is-small is-left"> -->
-            <!--   <i class="fas fa-sparkles"></i> -->
-            <!-- </span> -->
-            <p class="help">
-              URL of your markdown slides, e.g.
-              <a href="/?slides=github.com/jceb/slidesdown"
-                >github.com/jceb/slidesdown</a
-              >
-              or
-              <a href="/?slides=github.com/jceb/slidesdown/README.md"
-                >github.com/jceb/slidesdown/README.md</a
-              >
-            </p>
           </label>
           <button type="submit">Open</button>
         </form>
