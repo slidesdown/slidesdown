@@ -14,6 +14,11 @@ format:
 dev:
     yarn dev
 
+# Watch plugins and rebuild them
+dev-watch:
+    pwd
+    cargo-watch -s "npx gulp plugins" -w "${PWD}/public/reveal.js-master/plugin/markdown/plugin.js" -C "${PWD}/public/reveal.js-master"
+
 # Update pico
 update-pico:
     curl -Lfo public/css/pico.min.css https://unpkg.com/@picocss/pico@v1.5.6/css/pico.min.css
