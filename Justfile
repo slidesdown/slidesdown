@@ -36,10 +36,10 @@ update-revealjs:
     cd public/reveal.js-master && npm install
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js-master/plugin/highlight && \
-        curl -L "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
+        curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
         tar xvz "highlight.js-${VERSION}/src/styles" && \
         mv "highlight.js-${VERSION}/src/styles/"* . && \
-        rm -vrf "${VERSION}.tar.gz" "highlight.js-${VERSION}"
+        rm -vrf "highlight.js-${VERSION}"
 
 # Build application
 build:

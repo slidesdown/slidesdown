@@ -4,7 +4,7 @@ date: 2023-01-20
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
 favicon: /favicon.svg
 theme: /reveal.js-master/dist/theme/white.css
-highlight-theme: /reveal.js-master/plugin/highlight/idea.css
+highlight-theme: /reveal.js-master/plugin/highlight/tokyo-night-dark.css
 author: Jan Christoph Ebersbach
 ---
 
@@ -124,7 +124,7 @@ hello("world!");
 
 ### Code Highlighting with Line Numbers
 
-```javascript [1|3]
+```javascript []
 function hello(msg) {
   alert(`Hello ${msg}`);
 }
@@ -132,16 +132,15 @@ function hello(msg) {
 hello("world!");
 ```
 
-<!-- .element: data-line-numbers -->
-
 ### Code Highlighting with highlighted Line
 
-<pre>
-<code class="javascript" data-line-numbers=2>function hello(msg) {
-  alert(`Hello ${msg}`)
+```javascript [2]
+function hello(msg) {
+  alert(`Hello ${msg}`);
 }
 
-hello('world!');</code></pre>
+hello("world!");
+```
 
 ### Math formulas
 
