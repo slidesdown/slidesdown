@@ -397,7 +397,7 @@ const Plugin = () => {
       '([^"= ]+?)="([^"]+?)"|(data-[^"= ]+?)(?=[" ])',
       "mg",
     );
-    const nodeValue = node.nodeValue;
+    let nodeValue = node.nodeValue;
     let matches,
       matchesClass;
     if ((matches = mardownClassesInElementsRegex.exec(nodeValue)) !== null) {
