@@ -16,7 +16,6 @@ dev:
 
 # Watch plugins and rebuild them
 dev-watch:
-    pwd
     cargo-watch -s "npx gulp plugins" -w "${PWD}/public/reveal.js-master/plugin/markdown/plugin.js" -C "${PWD}/public/reveal.js-master"
 
 # Update pico
