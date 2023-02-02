@@ -228,13 +228,13 @@ const Plugin = () => {
    */
   function applyMetadata(metadata) {
     const defaultMetadata = {
-      "theme": "/reveal.js-master/dist/theme/white.css",
-      "highlight-theme": "/reveal.js-master/plugin/highlight/monokai.css",
+      "theme": "white",
+      "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
       "title": "slidesdown",
     };
     // todo: sanitize data
-    const loadStyleshet = (cssReference) => {
+    const loadStylesheet = (cssReference) => {
       const stylesheet = document.createElement("link");
       stylesheet.rel = "stylesheet";
       stylesheet.href = cssReference;
@@ -246,6 +246,14 @@ const Plugin = () => {
       meta.content = content;
       document.head.appendChild(meta);
     };
+    const defaultURLToStylesheet = (defaultURL) => (word) => {
+      if (/^[\w0-9_-]+$/.exec(word)) {
+        return loadStylesheet(`${defaultURL}/${word}.css`);
+      } else {
+        return loadStylesheet(word);
+      }
+    };
+
     const applyFunctions = {
       "title": (title) => {
         document.title = title;
@@ -257,9 +265,11 @@ const Plugin = () => {
         favicon.href = faviconReference;
         document.head.appendChild(favicon);
       },
-      "theme": loadStyleshet,
-      "highlight-theme": loadStyleshet,
-      "addiontional-stylesheet": loadStyleshet,
+      "theme": defaultURLToStylesheet("/reveal.js-master/dist/theme/"),
+      "highlight-theme": defaultURLToStylesheet(
+        "/reveal.js-master/plugin/highlight/",
+      ),
+      "addiontional-stylesheet": loadStylesheet,
       "author": addMeta("author"),
       "date": addMeta("dcterms.date"),
       "keywords": addMeta("keywords"),
@@ -591,9 +601,11 @@ const Plugin = () => {
       }
 
       return processSlides(deck.getRevealElement()).then((slides) => {
+        // Marked options: https://marked.js.org/using_advanced#options
         if (!markedOptions.baseUrl) {
           markedOptions.baseUrl = BASE_URL;
         }
+        // TODO: add html sanatizer, see https://marked.js.org/using_advanced#options
         marked.setOptions({
           renderer,
           ...markedOptions,
