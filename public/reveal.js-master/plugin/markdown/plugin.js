@@ -23,6 +23,8 @@ const HTML_ESCAPE_MAP = {
   "'": "&#39;",
 };
 
+let BASE_URL = "";
+
 const Plugin = () => {
   // The reveal.js instance this plugin is attached to
   let deck;
@@ -294,6 +296,16 @@ const Plugin = () => {
             loadExternalMarkdown(section).then(
               // Finished loading external file
               function (xhr, _url) {
+                if (!BASE_URL) {
+                  // TODO: add support for multiple markdown elements
+                  const base_url = new URL(xhr.responseURL);
+                  const base_path = base_url.pathname.split(/\//);
+                  base_url.pathname = base_path.splice(0, base_path.length - 1)
+                    .join(
+                      "/",
+                    );
+                  BASE_URL = base_url.toString();
+                }
                 let markdown = xhr.responseText;
                 let metadata = {};
                 if (section.getAttribute("data-load-metadata") !== null) {
@@ -577,12 +589,16 @@ const Plugin = () => {
         renderer.listitem = (text) => `<li class="fragment">${text}</li>`;
       }
 
-      marked.setOptions({
-        renderer,
-        ...markedOptions,
+      return processSlides(deck.getRevealElement()).then((slides) => {
+        if (!markedOptions.baseUrl) {
+          markedOptions.baseUrl = BASE_URL;
+        }
+        marked.setOptions({
+          renderer,
+          ...markedOptions,
+        });
+        return convertSlides(slides);
       });
-
-      return processSlides(deck.getRevealElement()).then(convertSlides);
     },
 
     // TODO: Do these belong in the API?
