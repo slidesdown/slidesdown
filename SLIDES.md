@@ -10,7 +10,7 @@ author: Jan Christoph Ebersbach
 
 # slidesdown
 
-<h2>Slideshows as fast as you can type Markdown.</h2>
+> Slideshows as fast as you can type Markdown.
 
 <!-- generated with
 !deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.0.9/remark-format.js --maxdepth 2 %
@@ -18,7 +18,7 @@ author: Jan Christoph Ebersbach
 
 ## Agenda
 
-1. [Intro slidesdown](#intro-slidesdown)
+1. [Introduction](#introduction)
 2. [Basics](#basics)
 3. [Layouts](#layouts)
 4. [Animations](#animations)
@@ -27,9 +27,7 @@ author: Jan Christoph Ebersbach
 7. [Advanced Formatting](#advanced-formatting)
 8. [Charts](#charts)
 
-## Intro slidesdown
-
-> Slideshows as fast as you can type Markdown.
+## Introduction
 
 ### Markdown
 
