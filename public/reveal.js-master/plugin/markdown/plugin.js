@@ -215,6 +215,7 @@ const Plugin = () => {
   function parseMetadata(metadataString) {
     return metadataString.split(/\r?\n/)
       .map((line) => line.split(/^([^:]+?):/).map((res) => res.trim()))
+      .filter((entry) => !entry[1].startsWith("#")) // remove comments
       .filter((entry) => entry.length > 2)
       .map((entry) => ({ [entry[1]]: entry[2] }))
       .reduce(
@@ -231,7 +232,8 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
-      "title": "slidesdown",
+      // revealjs defaults
+      "hash": true,
     };
     // todo: sanitize data
     const loadStylesheet = (cssReference) => {
@@ -274,18 +276,40 @@ const Plugin = () => {
       "date": addMeta("dcterms.date"),
       "keywords": addMeta("keywords"),
     };
+    const parseType = (value) => {
+      if (value === "true") {
+        return true;
+      } else if (value === "false") {
+        return false;
+      } else if (value === "null") {
+        return null;
+      } else if (/^-?[0-9]+$/.exec(value)) {
+        return Number.parseInt(value);
+      } else if (/^\[(?:(, )?(?<quote>['"])[a-z-]\k<quote>)*\]$/.exec(value)) {
+        // parse list of strings as this is the other format support by revealjs
+        return JSON.parse(value);
+      } else {
+        return value;
+      }
+    };
 
     const mergedMetadata = [defaultMetadata, metadata].reduce(
       (acc, v) => Object.assign(acc, v),
       {},
     );
+    const revealjsOptions = {};
     Object.keys(mergedMetadata)
       .map((k) => {
         const fn = applyFunctions[k];
         if (fn) {
           fn(mergedMetadata[k]);
+        } else {
+          revealjsOptions[k] = parseType(mergedMetadata[k]);
         }
       });
+    if (Object.keys(revealjsOptions).length > 0) {
+      Reveal.configure(revealjsOptions);
+    }
   }
 
   /**
