@@ -11,7 +11,7 @@ progress: true
 controls: true
 ---
 
-# <img src="./public/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
+# <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
 
 > Slideshows as fast as you can type Markdown.
 
