@@ -28,12 +28,18 @@ update-revealjs:
         rm -rf public/reveal.js.bak; \
     fi
     mv public/reveal.js public/reveal.js.bak
+    # Source: https://github.com/hakimel/reveal.js
     VERSION="4.4.0"; cd public && \
         curl -Lf "https://github.com/hakimel/reveal.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
         tar xvz && \
         mv "reveal.js-${VERSION}" reveal.js
     cp -r public/reveal.js.bak/plugin/markdown/plugin.js public/reveal.js/plugin/markdown/plugin.js
     cd public/reveal.js && npm install
+    # Source: https://github.com/McShelby/reveal-pdfexport
+    VERSION="2.0.1"; cd public/reveal.js/plugin && \
+        curl -Lf "https://github.com/McShelby/reveal-pdfexport/archive/refs/tags/${VERSION}.tar.gz" -o - | \
+        tar xvz && \
+        mv "reveal-pdfexport-${VERSION}" pdfexport
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \

@@ -49,10 +49,11 @@ the tool of choice to do just that!
 ### Keybindings
 
 - `<Space>` advance to next slide
-- `<Shift-Space>` advance to previous slide
+- `<Shift-Space>` go to previous slide
 - `<f>` enter full-screen mode
 - `<s>` show speaker notes
-- `<Esc>` enter slide overview and `<Esc>` to show selected slide
+- `<p>` switch between print view and presentation
+- `<Esc>` open slides overview, press `<Esc>` to show selected slide
 - `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zoom into slide
 
 ### Examples

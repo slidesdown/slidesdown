@@ -79,7 +79,9 @@ const main = (defaults) => {
       RevealNotes,
       RevealSearch,
       RevealZoom,
+      PdfExport,
     ],
+    pdfExportShortcut: "p",
   });
 };
 
