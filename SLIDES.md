@@ -79,11 +79,11 @@ you need!
 
 ### Draw on Slides
 
-![draw](./figures/draw.png)
+![draw](./docs/figures/draw.png)
 
 ### Open Blackboard
 
-![blackboard](./figures/blackboard.png)
+![blackboard](./docs/figures/blackboard.png)
 
 ## See for yourself..
 
