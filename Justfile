@@ -40,6 +40,12 @@ update-revealjs:
         curl -Lf "https://github.com/McShelby/reveal-pdfexport/archive/refs/tags/${VERSION}.tar.gz" -o - | \
         tar xvz && \
         mv "reveal-pdfexport-${VERSION}" pdfexport
+    # Source: https://github.com/rajgoel/reveal.js-plugins
+    VERSION="4.1.5"; cd public/reveal.js/plugin && \
+        curl -Lf "https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/${VERSION}.tar.gz" -o - | \
+        tar xvz && \
+        find "reveal.js-plugins-${VERSION}" -mindepth 1 -maxdepth 1 -type d -exec mv -t . {} + && \
+        rm -rf "reveal.js-plugins-${VERSION}"
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
