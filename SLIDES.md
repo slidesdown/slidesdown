@@ -2,7 +2,7 @@
 # Metadata
 author: Jan Christoph Ebersbach
 date: 2023-01-20
-title: slidesdown
+title: Slidesdown
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 favicon: /favicon.svg
 theme: white
@@ -17,7 +17,7 @@ center: true
 # Full list of supported settings: https://revealjs.com/config/
 ---
 
-# <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
+# <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
 > Slideshows as fast as you can type Markdown.
 
@@ -794,6 +794,6 @@ gitGraph
 
 ---
 
-<h2>Thank you</h2>
+<h1>Thank you</h1>
 
-<h3>for using <a href="https://github.com/jceb/slidesdown">slidesdown</a></h3>
+<h2>for using <a href="https://github.com/jceb/slidesdown">Slidesdown</a></h2>
