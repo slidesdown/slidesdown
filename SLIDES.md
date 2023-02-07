@@ -107,26 +107,17 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 2. Item 2
 3. Item 3
 
-### Images
-
-![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
-
-### Framed Images
-
-![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
-
-<!-- .element: class="r-frame" -->
-
 ### Links
 
 <column-2>
 
-[A Text link](https://github.com/jceb/slidesdown)
+[Text link](https://github.com/jceb/slidesdown)
 
 <v-box>
 
-An Image link
-[![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
+Picture link
+
+[![a fish](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
 
 </v-box>
 
@@ -178,8 +169,8 @@ hello("world!");
 
 | Tables        |      Are      |  Cool |
 | ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
+| column 3 is   | right-aligned | $1600 |
+| column 2 is   |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 
 ## Layouts
@@ -187,29 +178,29 @@ hello("world!");
 ### 1 Column
 
 <v-box>
-Column 1
+Shopping List
 
-- Item 1
-- Item 2
-- Item 3
-
-</v-box>
-
-<v-box>
-Column 2
-
-- Item 1
-- Item 2
-- Item 3
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
 <v-box>
-Column 3
+Task List
 
-- Item 1
-- Item 2
-- Item 3
+- Sleep
+- Eat
+- Work
+
+</v-box>
+
+<v-box>
+Bucket List
+
+- NYC
+- Tokyo
+- Singapore
 
 </v-box>
 
@@ -217,29 +208,29 @@ Column 3
 
 <column-2>
 <v-box>
-Column 1
+Shopping List
 
-- Item 1
-- Item 2
-- Item 3
-
-</v-box>
-
-<v-box>
-Column 2
-
-- Item 1
-- Item 2
-- Item 3
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
 <v-box>
-Column 3
+Task List
 
-- Item 1
-- Item 2
-- Item 3
+- Sleep
+- Eat
+- Work
+
+</v-box>
+
+<v-box>
+Bucket List
+
+- NYC
+- Tokyo
+- Singapore
 
 </v-box>
 </column-2>
@@ -248,29 +239,29 @@ Column 3
 
 <column-3>
 <v-box>
-Column 1
+Shopping List
 
-- Item 1
-- Item 2
-- Item 3
-
-</v-box>
-
-<v-box>
-Column 2
-
-- Item 1
-- Item 2
-- Item 3
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
 <v-box>
-Column 3
+Task List
 
-- Item 1
-- Item 2
-- Item 3
+- Sleep
+- Eat
+- Work
+
+</v-box>
+
+<v-box>
+Bucket List
+
+- NYC
+- Tokyo
+- Singapore
 
 </v-box>
 </column-3>
@@ -280,32 +271,31 @@ Column 3
 <grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
 
 <v-box style="grid-area: header; background-color: green">
-Column 1
+Shopping List
 
-- Item 1
-- Item 2
-- Item 3
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
 <v-box style="grid-area:sidebar; background-color: blue">
-Column 2
+Task List
 
-- Item 1
-- Item 2
-- Item 3
+- Sleep
+- Eat
+- Work
 
 </v-box>
 
 <v-box style="grid-area: main; background-color: red">
-Column 3
+Bucket List
 
-- Item 1
-- Item 2
-- Item 3
+- NYC
+- Tokyo
+- Singapore
 
 </v-box>
-
 </grid-box>
 
 ### Complex Sidebar Right
@@ -313,29 +303,29 @@ Column 3
 <grid-box styles="grid-template: 'header header header' 'main main sidebar' / 1fr 1fr 300px">
 
 <v-box style="grid-area: header; background-color: green">
-Column 1
+Shopping List
 
-- Item 1
-- Item 2
-- Item 3
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
 <v-box style="grid-area:sidebar; background-color: blue">
-Column 2
+Task List
 
-- Item 1
-- Item 2
-- Item 3
+- Sleep
+- Eat
+- Work
 
 </v-box>
 
 <v-box style="grid-area: main; background-color: red">
-Column 3
+Bucket List
 
-- Item 1
-- Item 2
-- Item 3
+- NYC
+- Tokyo
+- Singapore
 
 </v-box>
 
@@ -421,15 +411,17 @@ Column 3
 
 ### Picture
 
-![](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
+### Framed Picture
+
+![fish](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
+<!-- .element: class="r-frame" -->
 
 ### Font Awesome Icon
 
 <i class="fa-solid fa-face-smile"></i>
-
-## Advanced Formatting
-
-### Colored <span style="color: #78a5e9">text</span>
 
 ### Font Awesome Icon with Color
 
@@ -464,6 +456,10 @@ Column 3
     </span>
     </span> Stacked bullet icon</li>
 </ul>
+
+## Advanced Formatting
+
+### Colored <span style="color: #78a5e9">text</span>
 
 ### Box Shadow
 
