@@ -15,7 +15,7 @@ progress: true
 > Slideshows as fast as you can type Markdown.
 
 <!-- generated with
-!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.0.9/remark-format.js --maxdepth 2 %
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
@@ -63,9 +63,7 @@ the tool of choice to do just that!
 - [Presentation](https://slidesdown.e-jc.de/)
 - [Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
 
----
-
-See for yourself.
+## See for yourself..
 
 ## Basics
 
@@ -132,7 +130,7 @@ An Image link
 
 ### Quotes
 
-> Famous Quote by Someone
+> A famous quote
 
 ### Code Highlighting
 
@@ -182,9 +180,7 @@ hello("world!");
 
 ### 1 Column
 
-<!-- .slide: data-auto-animate="1" -->
-
-<v-box  data-id="1">
+<v-box>
 Column 1
 
 - Item 1
@@ -193,7 +189,7 @@ Column 1
 
 </v-box>
 
-<v-box data-id="2">
+<v-box>
 Column 2
 
 - Item 1
@@ -202,7 +198,7 @@ Column 2
 
 </v-box>
 
-<v-box data-id="3">
+<v-box>
 Column 3
 
 - Item 1
@@ -213,10 +209,8 @@ Column 3
 
 ### 2 Columns
 
-<!-- .slide: data-auto-animate="1" -->
-
 <column-2>
-<v-box  data-id="1">
+<v-box>
 Column 1
 
 - Item 1
@@ -225,7 +219,7 @@ Column 1
 
 </v-box>
 
-<v-box data-id="2">
+<v-box>
 Column 2
 
 - Item 1
@@ -234,7 +228,7 @@ Column 2
 
 </v-box>
 
-<v-box data-id="3">
+<v-box>
 Column 3
 
 - Item 1
@@ -246,10 +240,8 @@ Column 3
 
 ### 3 Columns
 
-<!-- .slide: data-auto-animate="1" -->
-
 <column-3>
-<v-box  data-id="1">
+<v-box>
 Column 1
 
 - Item 1
@@ -258,7 +250,7 @@ Column 1
 
 </v-box>
 
-<v-box data-id="2">
+<v-box>
 Column 2
 
 - Item 1
@@ -267,7 +259,7 @@ Column 2
 
 </v-box>
 
-<v-box data-id="3">
+<v-box>
 Column 3
 
 - Item 1
@@ -279,11 +271,9 @@ Column 3
 
 ### Complex
 
-<!-- .slide: data-auto-animate="1" -->
-
 <grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
 
-<v-box style="grid-area: header; background-color: green" data-id="1">
+<v-box style="grid-area: header; background-color: green">
 Column 1
 
 - Item 1
@@ -292,7 +282,7 @@ Column 1
 
 </v-box>
 
-<v-box style="grid-area:sidebar; background-color: blue" data-id="2">
+<v-box style="grid-area:sidebar; background-color: blue">
 Column 2
 
 - Item 1
@@ -301,7 +291,7 @@ Column 2
 
 </v-box>
 
-<v-box style="grid-area: main; background-color: red" data-id="3">
+<v-box style="grid-area: main; background-color: red">
 Column 3
 
 - Item 1
@@ -314,11 +304,9 @@ Column 3
 
 ### Complex Sidebar Right
 
-<!-- .slide: data-auto-animate="1" -->
-
 <grid-box styles="grid-template: 'header header header' 'main main sidebar' / 1fr 1fr 300px">
 
-<v-box style="grid-area: header; background-color: green" data-id="1">
+<v-box style="grid-area: header; background-color: green">
 Column 1
 
 - Item 1
@@ -327,7 +315,7 @@ Column 1
 
 </v-box>
 
-<v-box style="grid-area:sidebar; background-color: blue" data-id="2">
+<v-box style="grid-area:sidebar; background-color: blue">
 Column 2
 
 - Item 1
@@ -336,7 +324,7 @@ Column 2
 
 </v-box>
 
-<v-box style="grid-area: main; background-color: red" data-id="3">
+<v-box style="grid-area: main; background-color: red">
 Column 3
 
 - Item 1
@@ -464,7 +452,7 @@ Column 3
   <li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> Regular bullet icon</li>
   <li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> Regular bullet icon</li>
   <li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
-    <span class="fa-stack c-primary" >
+    <span class="fa-stack c-primary">
     <i class="fad fa-digging fa-stack-1x"></i>
     <i class="fas fa-ban fa-stack-2x" style="color: Tomato; opacity: 0.8;"></i>
     </span>
