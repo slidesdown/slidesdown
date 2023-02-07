@@ -24,13 +24,15 @@ center: true
 ## Agenda
 
 1. [Introduction](#introduction)
-2. [Basics](#basics)
-3. [Layouts](#layouts)
-4. [Animations](#animations)
-5. [Backgrounds](#backgrounds)
-6. [Pictures and Icons](#pictures-and-icons)
-7. [Advanced Formatting](#advanced-formatting)
-8. [Charts](#charts)
+2. [See for yourself..](#see-for-yourself)
+3. [Basics](#basics)
+4. [Layouts](#layouts)
+5. [Animations](#animations)
+6. [Backgrounds](#backgrounds)
+7. [Pictures and Icons](#pictures-and-icons)
+8. [Advanced Formatting](#advanced-formatting)
+9. [Charts](#charts)
+10. [Diagrams](#diagrams)
 
 ## Introduction
 
@@ -517,6 +519,7 @@ via [chart.js](https://www.chartjs.org/)
 ### Polar Area Chart
 
 <!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+
 <div>
 <canvas data-chart="polarArea">
 <!--
@@ -557,6 +560,7 @@ via [chart.js](https://www.chartjs.org/)
 ### Line Chart
 
 <!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+
 <div>
 <canvas data-chart="line">
 <!--
@@ -582,6 +586,7 @@ via [chart.js](https://www.chartjs.org/)
 ### Bar Chart
 
 <!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+
 <div>
 <canvas data-chart="bar">
 <!--
@@ -620,6 +625,7 @@ via [chart.js](https://www.chartjs.org/)
 ### Radar chart
 
 <!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+
 <div>
 <canvas data-chart="radar" style="height: 90%; width: 90%;">
 <!--
