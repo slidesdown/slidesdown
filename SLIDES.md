@@ -19,7 +19,7 @@ center: true
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type Markdown.
+> Slideshows as fast as you can type.
 
 <!-- generated with
 !deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
