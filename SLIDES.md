@@ -2,15 +2,16 @@
 author: Jan Christoph Ebersbach
 date: 2023-01-20
 title: slidesdown
-keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
+keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 favicon: /favicon.svg
 theme: white
 highlight-theme: tokyo-night-dark
 # revealjs settings, see list of supported settings: https://revealjs.com/config/
 progress: true
+controls: true
 ---
 
-# slidesdown
+# <img src="./public/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
 
 > Slideshows as fast as you can type Markdown.
 
@@ -505,6 +506,31 @@ Shadow right, bottom.
 <div class="box-12rem radius-30p overflow-hidden background-cover box-shadow-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 </column-4>
+
+## Diagramgs
+
+TODO
+
+via [mermaid.js](https://mermaid.js.org/)
+
+### Flowchart
+
+```mermaid
+---
+title: Node
+---
+flowchart LR
+    id
+```
+
+### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+    Alice-)John: See you later!
+```
 
 ## Charts
 
