@@ -82,6 +82,7 @@ const main = (defaults) => {
       PdfExport,
       RevealChalkboard,
       RevealCustomControls,
+      RevealChart,
     ],
     pdfExportShortcut: "p",
     // FIXME: hide controls in print view: https://github.com/rajgoel/reveal.js-plugins/issues/159

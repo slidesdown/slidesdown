@@ -508,6 +508,176 @@ Shadow right, bottom.
 <div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 </column-4>
 
+## Charts
+
+via [chart.js](https://www.chartjs.org/)
+
+### Polar Area Chart
+
+<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+<div>
+<canvas data-chart="polarArea">
+<!--
+{
+  "data": {
+    "labels": [
+      "Red",
+      "Green",
+      "Yellow",
+      "Grey",
+      "Blue"
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          11,
+          16,
+          7,
+          3,
+          14
+        ],
+        "backgroundColor": [
+          "rgb(255, 99, 132)",
+          "rgb(75, 192, 192)",
+          "rgb(255, 205, 86)",
+          "rgb(201, 203, 207)",
+          "rgb(54, 162, 235)"
+        ]
+      }
+    ]
+  }
+}
+-->
+</canvas>
+</div>
+
+### Line Chart
+
+<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+<div>
+<canvas data-chart="line">
+<!--
+{
+ "data": {
+  "labels": ["January","February","March","April","May","June","July"],
+  "datasets":[
+   {
+    "data":[65,59,80,81,56,55,40],
+    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[28,48,40,19,86,27,90],
+    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ }
+}
+-->
+</canvas>
+</div>
+
+### Bar Chart
+
+<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+<div>
+<canvas data-chart="bar">
+<!--
+{
+  "data": {
+    "labels": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July"
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          65,
+          59,
+          80,
+          81,
+          56,
+          55,
+          40
+        ],
+        "borderWidth": 1
+      }
+    ]
+  }
+}
+-->
+</canvas>
+</div>
+
+### Radar chart
+
+<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
+<div>
+<canvas data-chart="radar" style="height: 90%; width: 90%;">
+<!--
+{
+  "data": {
+    "labels": [
+      "Eating",
+      "Drinking",
+      "Sleeping",
+      "Designing",
+      "Coding",
+      "Cycling",
+      "Running"
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          65,
+          59,
+          90,
+          81,
+          56,
+          55,
+          40
+        ],
+        "fill": true,
+        "backgroundColor": "rgba(255, 99, 132, 0.2)",
+        "borderColor": "rgb(255, 99, 132)",
+        "pointBackgroundColor": "rgb(255, 99, 132)",
+        "pointBorderColor": "#fff",
+        "pointHoverBackgroundColor": "#fff",
+        "pointHoverBorderColor": "rgb(255, 99, 132)"
+      },
+      {
+        "label": "My Second Dataset",
+        "data": [
+          28,
+          48,
+          40,
+          19,
+          96,
+          27,
+          100
+        ],
+        "fill": true,
+        "backgroundColor": "rgba(54, 162, 235, 0.2)",
+        "borderColor": "rgb(54, 162, 235)",
+        "pointBackgroundColor": "rgb(54, 162, 235)",
+        "pointBorderColor": "#fff",
+        "pointHoverBackgroundColor": "#fff",
+        "pointHoverBorderColor": "rgb(54, 162, 235)"
+      }
+    ]
+  }
+}
+-->
+</canvas>
+</div>
+
 ## Diagramgs
 
 TODO
@@ -517,9 +687,9 @@ via [mermaid.js](https://mermaid.js.org/)
 ### Flowchart
 
 ```mermaid
----
+x---
 title: Node
----
+x---
 flowchart LR
     id
 ```
@@ -532,132 +702,6 @@ sequenceDiagram
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
-
-## Charts
-
-TODO
-
-via [chart.js](https://www.chartjs.org/)
-
-### Area Chart
-
-<canvas id="vxKmkEqKlZJ5MK1P0Wdk"></canvas>
-
-<script>
-var ctx = document.getElementById('vxKmkEqKlZJ5MK1P0Wdk').getContext('2d');
-const data = [
-  { year: 2010, count: 10 },
-  { year: 2011, count: 20 },
-  { year: 2012, count: 15 },
-  { year: 2013, count: 25 },
-  { year: 2014, count: 22 },
-  { year: 2015, count: 30 },
-  { year: 2016, count: 28 },
-];
-new Chart(
-  ctx,
-  {
-    type: 'bar',
-    data: {
-      labels: data.map(row => row.year),
-      datasets: [
-        {
-          label: 'Acquisitions by year',
-          data: data.map(row => row.count)
-        }
-      ]
-    }
-  }
-);
-console.log("go chart")
-</script>
-
-### Bar Chart
-
-<canvas id="9d3663d5deb049029436214b48685aab"></canvas>
-
-<script>
-var ctx = document.getElementById('9d3663d5deb049029436214b48685aab').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-        {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }
-        ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-
-### Radar chart
-
-<canvas id="ec647c7adf104ff0a6c0ce7ca78a5665"></canvas>
-
-<script>
-// Die Daten richtig einzubauen ist nicht so einfach, da eine
-// Transformationsfunktion gebraucht wird, um die Label zu extrahieren und
-// dann auch die Daten zu extrahieren .. das ist nicht so einfach zu erreichen.
-var ctx = document.getElementById('ec647c7adf104ff0a6c0ce7ca78a5665').getContext('2d');
-var myRadarChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
-      datasets: [
-      {
-        label: 'First',
-        data: [20, 10, 4, 2],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      },
-      {
-        label: 'Second',
-        data: [12, 12, 12, 3],
-        backgroundColor: 'rgba(75, 192, 192, 1)',
-      },
-      ]
-    },
-    options: {
-      scale: {
-          angleLines: {
-              display: false
-          },
-          ticks: {
-              suggestedMin: 0,
-              suggestedMax: 20
-          }
-      }
-    },
-});
-
-</script>
 
 ---
 
