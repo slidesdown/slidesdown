@@ -54,6 +54,11 @@ update-revealjs:
         tar xvz package/LICENSE.md package/dist && \
         mv -t . package/LICENSE.md package/dist && \
         rmdir package
+    # Source: https://github.com/mermaid-js/mermaid
+    rm -rvf public/mermaid
+    mkdir -p public/mermaid
+    VERSION="9.3.0"; cd public/mermaid && \
+        curl -Lf "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs" -o mermaid.js
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \

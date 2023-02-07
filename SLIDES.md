@@ -6,9 +6,11 @@ keywords: slides slideshow slidesdown presentation presentations markup markdown
 favicon: /favicon.svg
 theme: white
 highlight-theme: tokyo-night-dark
+
 # revealjs settings, see list of supported settings: https://revealjs.com/config/
 progress: true
 controls: true
+center: true
 ---
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
@@ -678,21 +680,33 @@ via [chart.js](https://www.chartjs.org/)
 </canvas>
 </div>
 
-## Diagramgs
-
-TODO
+## Diagrams
 
 via [mermaid.js](https://mermaid.js.org/)
 
 ### Flowchart
 
+<column-2>
+
 ```mermaid
-x---
-title: Node
-x---
-flowchart LR
-    id
+graph LR
+  A --- B
+  B-->C
+  B-->D;
 ```
+
+```mermaid
+graph TD
+    A[Enter Chart Definition] --> B(Preview)
+    B --> C{decide}
+    C --> D[Keep]
+    C --> E[Edit Definition]
+    E --> B
+    D --> F[Save Image and Code]
+    F --> B
+```
+
+</column-2>
 
 ### Sequence Diagram
 
@@ -701,6 +715,71 @@ sequenceDiagram
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
     Alice-)John: See you later!
+```
+
+### State Diagram
+
+```mermaid
+stateDiagram-v2
+  [*] --> Still
+  Still --> [*]
+  Still --> Moving
+  Moving --> Still
+  Moving --> Crash
+  Crash --> [*]
+```
+
+### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+### User Journey Diagram
+
+```mermaid
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
+```
+
+### Gantt Chart
+
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+```
+
+### Git Graph
+
+```mermaid
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
 ```
 
 ---
