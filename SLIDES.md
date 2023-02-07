@@ -1,4 +1,5 @@
 ---
+# Metadata
 author: Jan Christoph Ebersbach
 date: 2023-01-20
 title: slidesdown
@@ -7,10 +8,13 @@ favicon: /favicon.svg
 theme: white
 highlight-theme: tokyo-night-dark
 
-# revealjs settings, see list of supported settings: https://revealjs.com/config/
+# show presentation progress bar
 progress: true
+# show controls
 controls: true
+# center presentation
 center: true
+# Full list of supported settings: https://revealjs.com/config/
 ---
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> slidesdown
@@ -36,21 +40,26 @@ center: true
 
 ## Introduction
 
-### Markdown
+### Slidesdown
 
-`slidesdown` is built to quickly turn ideas into beautiful presentations. The
-text-based [markdown format](https://daringfireball.net/projects/markdown/) is
-the tool of choice to do just that!
+Slidesdown makes it simple to quickly turning an idea into a beautiful
+presentation. A [Markdown file](https://slidesdown.e-jc.de/learn.html) is all
+you need!
 
 ### Features
 
-- Built with [reveal.js](https://revealjs.com/)
-- Focus: Stays out of your way
-- Professional: Theming and PDF conversion
 - Setup: No installation
-- Styling: Looks great and offers the power of the browser at your fingertips
+- Focus: Just write Markdown
+- Sharable: [Create links](https://slidesdown.e-jc.de/loader.html) to your
+  presentations
+- Professional: PDF export and Custom Themes
+- Styling: Looks great out of the box
+- Versioning: Store all files in `git`
+- Charts and Diagrams: via [chart.js](https://www.chartjs.org/) and
+  [mermaid.js](https://mermaid.js.org/)
+- Reliable: Built with [reveal.js](https://revealjs.com/)
 
-### Keybindings
+### Keyboard Shortcuts
 
 - `<Space>` advance to next slide
 - `<Shift-Space>` go to previous slide
@@ -60,14 +69,13 @@ the tool of choice to do just that!
 - `<Esc>` open slides overview, press `<Esc>` to show selected slide
 - `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zoom into slide
 
-### Examples
+### Learn how it works
 
 <!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
 
-<!-- - [Example PDF](./examples/slides.pdf) -->
-
-- [Presentation](https://slidesdown.e-jc.de/)
-- [Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
+- [Guide to Slidesdown](https://slidesdown.e-jc.de/learn.html)
+- Learn by example from this presentation's
+  [Markdown file](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
 
 ## See for yourself..
 
