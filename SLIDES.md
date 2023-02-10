@@ -1,19 +1,27 @@
 ---
-# Metadata
+# Metadata useful for SEO
 author: Jan Christoph Ebersbach
 date: 2023-01-20
 title: Slidesdown
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
-favicon: /favicon.svg
-theme: white
-highlight-theme: tokyo-night-dark
 
-# show presentation progress bar
+# Presentation theme, list of supported themes: https://slidesdown.e-jc.de/reveal.js/dist/theme/
+theme: white
+# Code highlighting theme, , list of supported themes: https://slidesdown.e-jc.de/reveal.js/plugin/highlight/
+highlight-theme: tokyo-night-dark
+# Load font awesome pro icons (only works on domain slidesdown.e-jc.de)
+fontawesomePro: true
+# URL to favicon
+favicon: /favicon.svg
+
+# Show progress bar
 progress: true
-# show controls
+# Show controls
 controls: true
-# center presentation
+# Center presentation
 center: true
+# Create separate pages for fragments
+pdfSeparateFragments: false
 # Full list of supported settings: https://revealjs.com/config/
 ---
 
