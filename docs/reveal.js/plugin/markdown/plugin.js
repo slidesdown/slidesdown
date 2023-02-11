@@ -252,7 +252,7 @@ const Plugin = () => {
         return load;
       }
       const script = document.createElement("script");
-      script.href = scriptReference;
+      script.src = scriptReference;
       if (crossorirgin) {
         script.crossorirgin = crossorirgin;
       }
