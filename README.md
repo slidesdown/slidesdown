@@ -75,7 +75,10 @@ slidesdown -d
 # 4. Export slides as PDF
 slidesdown -e
 
-# 5. Explore more options
+# 5. Get the latest version of the script
+slidesdown -u
+
+# 6. Explore more options
 slidesdown -h
 ```
 
