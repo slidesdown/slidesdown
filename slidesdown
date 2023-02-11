@@ -98,7 +98,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'hednup:i:r:' --long 'help,export,docker,no-open,update,port:,image:,resolution:' -- "$@")
+	TEMP=$(getopt -o 'hednup:i:r:' --long 'help,export,docker,no-open,update,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
