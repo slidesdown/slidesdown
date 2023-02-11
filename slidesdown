@@ -97,7 +97,7 @@ open_url() {
 		COMMAND=open
 	else
 		echo "ERROR: no command found to open URLs with. Supported: xdg-open, open-cli, open" 1>&2
-		exit 1
+		return 1
 	fi
 	"${COMMAND}" "${URL}"
 }
@@ -215,11 +215,11 @@ main() {
 			echo "Waiting for container to start.."
 			sleep 2
 			echo "Slideshow URL: ${URL}"
-			open_url "${NO_OPEN}" "${URL}"
+			open_url "${NO_OPEN}" "${URL}" || true
 			docker attach --sig-proxy=false "${CONTAINER_ID}"
 		else
 			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
-			echo "Slideshow URL: ${URL}"
+			echo "Slideshow URL: ${URL}" || true
 			open_url "${NO_OPEN}" "${URL}"
 			wait %1
 		fi
