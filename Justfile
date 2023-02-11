@@ -49,7 +49,7 @@ update-revealjs:
     # Source: https://github.com/chartjs/Chart.js
     rm -rvf public/chart.js
     mkdir -p public/chart.js
-    VERSION="4.2.0"; cd public/chart.js && \
+    VERSION="4.2.1"; cd public/chart.js && \
         curl -Lf "https://github.com/chartjs/Chart.js/releases/download/v${VERSION}/chart.js-${VERSION}.tgz" -o - | \
         tar xvz package/LICENSE.md package/dist && \
         mv -t . package/LICENSE.md package/dist && \

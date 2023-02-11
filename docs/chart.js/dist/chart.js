@@ -1,5 +1,5 @@
 /*!
- * Chart.js v4.2.0
+ * Chart.js v4.2.1
  * https://www.chartjs.org
  * (c) 2023 Chart.js Contributors
  * Released under the MIT License
@@ -3595,6 +3595,7 @@ function determineMaxTicks(scale) {
 
 const reverseAlign = (align)=>align === 'left' ? 'right' : align === 'right' ? 'left' : align;
 const offsetFromEdge = (scale, edge, offset)=>edge === 'top' || edge === 'left' ? scale[edge] + offset : scale[edge] - offset;
+const getTicksLimit = (ticksLength, maxTicksLimit)=>Math.min(maxTicksLimit || ticksLength, ticksLength);
  function sample(arr, numItems) {
     const result = [];
     const increment = arr.length / numItems;
@@ -3989,7 +3990,7 @@ class Scale extends Element {
     calculateLabelRotation() {
         const options = this.options;
         const tickOpts = options.ticks;
-        const numTicks = this.ticks.length;
+        const numTicks = getTicksLimit(this.ticks.length, options.ticks.maxTicksLimit);
         const minRotation = tickOpts.minRotation || 0;
         const maxRotation = tickOpts.maxRotation;
         let labelRotation = minRotation;
@@ -4147,18 +4148,19 @@ class Scale extends Element {
             if (sampleSize < ticks.length) {
                 ticks = sample(ticks, sampleSize);
             }
-            this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length);
+            this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length, this.options.ticks.maxTicksLimit);
         }
         return labelSizes;
     }
- _computeLabelSizes(ticks, length) {
+ _computeLabelSizes(ticks, length, maxTicksLimit) {
         const { ctx , _longestTextCache: caches  } = this;
         const widths = [];
         const heights = [];
+        const increment = Math.floor(length / getTicksLimit(length, maxTicksLimit));
         let widestLabelSize = 0;
         let highestLabelSize = 0;
         let i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel;
-        for(i = 0; i < length; ++i){
+        for(i = 0; i < length; i += increment){
             label = ticks[i].label;
             tickFont = this._resolveTickFontOptions(i);
             ctx.font = fontString = tickFont.string;
@@ -5464,7 +5466,7 @@ function needContext(proxy, names) {
     return false;
 }
 
-var version = "4.2.0";
+var version = "4.2.1";
 
 const KNOWN_POSITIONS = [
     'top',
@@ -6628,8 +6630,7 @@ class ArcElement extends Element {
             'startAngle',
             'endAngle',
             'innerRadius',
-            'outerRadius',
-            'circumference'
+            'outerRadius'
         ], useFinalPosition);
         const { offset , spacing  } = this.options;
         const halfAngle = (startAngle + endAngle) / 2;
@@ -7403,6 +7404,9 @@ function cleanDecimatedDataset(dataset) {
         delete dataset._decimated;
         delete dataset._data;
         Object.defineProperty(dataset, 'data', {
+            configurable: true,
+            enumerable: true,
+            writable: true,
             value: data
         });
     }
