@@ -69,11 +69,15 @@ run_docker() {
 }
 
 export_pdf() {
-	local URL="$1"
-	local RESOLUTION="$2"
-	local FILE="$3"
-	# decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
-	docker run --rm -t -v "${PWD}:/slides" "astefanutti/decktape" "${URL}" -s "${RESOLUTION}" "${FILE}"
+	local DOCKER="$1"
+	local URL="$2"
+	local RESOLUTION="$3"
+	local FILE="$4"
+	if [[ -z "${DOCKER}" ]]; then
+		decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
+	else
+		docker run --rm -t -v "${PWD}:/slides" "astefanutti/decktape" "${URL}" -s "${RESOLUTION}" "${FILE}"
+	fi
 }
 
 open_url() {
@@ -220,7 +224,7 @@ main() {
 			wait %1
 		fi
 	else
-		export_pdf "${URL}" "${RESOLUTION}" "${SLIDES%%.*}.pdf"
+		export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${SLIDES%%.*}.pdf"
 	fi
 }
 
