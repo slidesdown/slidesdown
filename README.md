@@ -96,6 +96,51 @@ slidesdown -u
 slidesdown -h
 ```
 
+## Development
+
+### Required Tools
+
+- [`just`](https://just.systems/) task runner
+- [`node`](https://nodejs.org/) >=14
+- [`curl`](https://curl.se/)
+- [`cargo-watch`](https://github.com/watchexec/cargo-watch) file watcher
+
+### Folder Structure and Important Files
+
+- [`docs/`](./docs) build target folder served at
+  [https://slidesdown.e-jc.de](https://slidesdown.e-jc.de) and used in the
+  docker image
+- [`examples/`](./examples) contains example presentations
+- [`index.html`](./index.html) is the presentation template that gets loaded
+- [`Justfile`](./Justfile) tasks collection, run `just` to get the list of tasks
+- [`public/`](./public) contains external dependencies (not part of git) and
+  - [`public/loader.html`](./public/loader.html) presentation loader served at
+    [https://slidesdown.e-jc.de/loader.html](https://slidesdown.e-jc.de/loader.html)
+  - [`public/learn.html`](./public/learn.html) tutorial served at
+    [https://slidesdown.e-jc.de/learn.html](https://slidesdown.e-jc.de/learn.html)
+  - [`public/reveal.js/plugin/markdown/plugin.js`](./public/reveal.js/plugin/markdown/plugin.js)
+    Markdown converter plugin - this is the core of this project
+- [`slidesdown`](./slidesdown) CLI
+- [`src/`](./src) contains various scripts for docker and the HTML page
+
+### Setup
+
+- Run `yarn` to install all JavaScript depedencies
+
+### Modify Source Code
+
+- Run `just update-revealjs` to (re)download external dependencies to the
+  `public/` folder
+- Run `just dev` to start the `vite` development server
+- Run `just dev-watch` to recompile reveal.js plugins, specifically the markdown
+  plugin when it gets modified
+
+### Build
+
+- Run `just build` to recreate the `docs/` folder
+- Run `just build-docker` to build a new docker image
+- Run `just push-docker` to push the image to the registry
+
 ## References
 
 - [mdshow](https://github.com/jceb/mdshow) is an older attempt of mine to create
