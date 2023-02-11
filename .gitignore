@@ -1,4 +1,4 @@
-/node_modules/**
+/node_modules
 /public/chart.js/
 /public/mermaid/
 /public/reveal.js.bak
@@ -9,3 +9,4 @@
 !/public/reveal.js/plugin/markdown
 /public/reveal.js/plugin/markdown/*
 !/public/reveal.js/plugin/markdown/plugin.js
+*.pdf

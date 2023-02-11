@@ -1,0 +1,8 @@
+/*
+!/docs
+!/src
+/src/*
+!/src/entrypoint.sh
+!/vite.config.js
+!/package.json
+!/yarn.lock
