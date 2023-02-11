@@ -247,7 +247,10 @@ const Plugin = () => {
       document.head.appendChild(stylesheet);
     };
     const loadStylesheet = loadLink("stylesheet");
-    const loadScript = (scriptReference, crossorirgin) => {
+    const loadScript = (scriptReference, crossorirgin) => (load) => {
+      if (!load) {
+        return load;
+      }
       const script = document.createElement("script");
       script.href = scriptReference;
       if (crossorirgin) {
