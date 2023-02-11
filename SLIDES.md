@@ -5,9 +5,9 @@ date: 2023-01-20
 title: Slidesdown
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 
-# Presentation theme, list of supported themes: https://slidesdown.e-jc.de/reveal.js/dist/theme/
+# Presentation theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
-# Code highlighting theme, , list of supported themes: https://slidesdown.e-jc.de/reveal.js/plugin/highlight/
+# Code highlighting theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
 # Load font awesome pro icons (only works on domain slidesdown.e-jc.de)
 fontawesomePro: true
