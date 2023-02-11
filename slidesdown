@@ -130,6 +130,8 @@ main() {
 			echo "FILENAME: default SLIDES.md"
 			echo
 			echo "Attention: only the docker service provides hot-reloading when changes are made to the slideshow!"
+			echo
+			echo "Website: https://github.com/jceb/slidesdown"
 			exit
 			;;
 		'-d' | '--docker')
