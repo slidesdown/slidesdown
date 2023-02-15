@@ -235,6 +235,7 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
+      "controls": true,
       "fontawesomePro": true,
       "fontawesomeFree": false,
       // revealjs defaults
@@ -323,6 +324,20 @@ const Plugin = () => {
       });
     if (mergedMetadata?.fontawesomePro) {
       mergedMetadata.fontawesomeFree = false;
+    }
+    if (
+      mergedMetadata?._customcontrols ||
+      (mergedMetadata?._customcontrols !== false && mergedMetadata?.controls)
+    ) {
+      document.documentElement.style.setProperty(
+        "--display-customcontrols",
+        "block",
+      );
+    } else {
+      document.documentElement.style.setProperty(
+        "--display-customcontrols",
+        "none",
+      );
     }
     const revealjsOptions = {};
     Object.keys(mergedMetadata)
