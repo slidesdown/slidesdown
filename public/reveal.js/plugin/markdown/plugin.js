@@ -312,10 +312,18 @@ const Plugin = () => {
       }
     };
 
-    const mergedMetadata = [defaultMetadata, metadata].reduce(
+    const _mergedMetadata = [defaultMetadata, metadata].reduce(
       (acc, v) => Object.assign(acc, v),
       {},
     );
+    const mergedMetadata = {};
+    Object.keys(_mergedMetadata)
+      .map((k) => {
+        mergedMetadata[k] = parseType(_mergedMetadata[k]);
+      });
+    if (mergedMetadata?.fontawesomePro) {
+      mergedMetadata.fontawesomeFree = false;
+    }
     const revealjsOptions = {};
     Object.keys(mergedMetadata)
       .map((k) => {
@@ -323,7 +331,7 @@ const Plugin = () => {
         if (fn) {
           fn(mergedMetadata[k]);
         } else {
-          revealjsOptions[k] = parseType(mergedMetadata[k]);
+          revealjsOptions[k] = mergedMetadata[k];
         }
       });
     if (Object.keys(revealjsOptions).length > 0) {
