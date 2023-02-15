@@ -2,24 +2,32 @@
 set -euo pipefail
 # set -x
 
-compute_slides_parameter() {
-	local SERVER="$1"
-	local PORT="$2"
-	local SLIDES="$3"
-	echo "${SERVER}%3A${PORT}/${SLIDES}"
+urlencode() {
+	# Source: https://gist.github.com/cdown/1163649
+	local LC_ALL=C # support unicode = loop bytes, not characters
+	local LC_COLLATE=C
+	local l=${#1}
+	for ((i = 0; i < l; i++)); do
+		local c=${1:i:1}
+		case "$c" in
+		[a-zA-Z0-9.~_-]) printf '%s' "$c" ;;
+		' ') printf + ;;
+		*) printf '%%%.2X' "'$c" ;;
+		esac
+	done
 }
 
 compute_url() {
 	local SERVICE="$1"
 	local SLIDES="$2"
-	echo "${SERVICE}/?slides=${SLIDES}"
+	echo "${SERVICE}/?slides=$(urlencode "${SLIDES}")"
 }
 
 run_webserver() {
 	local PORT="$1"
 	local ROOT_DIRECTORY="$2"
 	local SLIDES="$3"
-	local SERVER
+	local SERVER_CMD
 
 	SERVER_CMD="$(mktemp --tmpdir slidedown_http_server_XXXX.py)"
 	trap "rm -f '${SERVER_CMD}'" 1 2 3 15
@@ -208,7 +216,7 @@ main() {
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 	else
-		URL="$(compute_url "${SERVICE}" "$(compute_slides_parameter "http%3A//localhost" "${PORT}" "${SLIDES}")")"
+		URL="$(compute_url "${SERVICE}" "http://localhost:${PORT}/slides/${SLIDES}")"
 	fi
 	if [[ -z "${EXPORT}" ]]; then
 		if [[ -n "${DOCKER}" ]]; then
