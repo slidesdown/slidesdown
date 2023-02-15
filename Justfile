@@ -30,8 +30,9 @@ update-mermaid:
     # Source: https://github.com/mermaid-js/mermaid
     rm -rvf public/mermaid
     mkdir -p public/mermaid
-    VERSION="9.4.0"; cd public/mermaid && \
-        curl -Lf "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.min.js" -o mermaid.js
+    VERSION="9.3.0"; cd public/mermaid && \
+        curl -Lf "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs" -o mermaid.js
+    # curl -Lf "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.min.js" -o mermaid.js
 
 # Update chartjs
 update-chartjs:
