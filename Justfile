@@ -102,8 +102,8 @@ prepare: tag changelog
 # Create a new release
 release:
     TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
-        git cliff --strip --current | \
-        gh release create "${TAG}"
+        git cliff --strip all --current | \
+        gh release create -F - "${TAG}"
 
 # Build docker images
 build-docker:
