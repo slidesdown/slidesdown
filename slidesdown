@@ -219,7 +219,7 @@ main() {
 	local URL
 	if [[ -n "${UPDATE}" ]]; then
 		echo "Updating ${SCRIPT_NAME}"
-		SCRIPT_TEMP="$(mktemp --tmpdir "${SCRIPT_NAME}_XXXX")"
+		SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
 		trap "rm -f '${SCRIPT_TEMP}'" 0 1 2 3 15
 		curl -sfLo "${SCRIPT_TEMP}" "https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
 		trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'" 0
