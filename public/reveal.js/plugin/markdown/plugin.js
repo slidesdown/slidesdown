@@ -227,20 +227,18 @@ const Plugin = () => {
   }
 
   /**
-   * a)pply Metadta to presentation.
+   * apply Metadta to presentation.
    */
   function applyMetadata(metadata) {
     const defaultMetadata = {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
-      "controls": true,
       "fontawesomePro": true,
       "fontawesomeFree": false,
-      // revealjs defaults
+      // changed revealjs defaults
       "hash": true,
     };
-    // todo: sanitize data
     const loadLink = (relation) => (reference) => {
       const stylesheet = document.createElement("link");
       stylesheet.rel = relation;
@@ -272,7 +270,6 @@ const Plugin = () => {
         return loadStylesheet(word);
       }
     };
-
     const applyFunctions = {
       "title": (title) => {
         document.title = title;
@@ -294,6 +291,9 @@ const Plugin = () => {
         "https://kit.fontawesome.com/ce15cd202d.js",
         "anonymous",
       ),
+      "_customcontrols": () => {
+        // ignore the _customcontrols visibility setting
+      },
     };
     const parseType = (value) => {
       if (value === "true") {
@@ -321,7 +321,7 @@ const Plugin = () => {
       .map((k) => {
         mergedMetadata[k] = parseType(_mergedMetadata[k]);
       });
-    if (mergedMetadata?.fontawesomePro) {
+    if (mergedMetadata.fontawesomePro) {
       mergedMetadata.fontawesomeFree = false;
     }
     if (
@@ -338,18 +338,23 @@ const Plugin = () => {
         "none",
       );
     }
-    const revealjsOptions = {};
+    const revealjsConfig = deck.getConfig();
+    const revealjsNewConfig = {};
     Object.keys(mergedMetadata)
       .map((k) => {
         const fn = applyFunctions[k];
         if (fn) {
           fn(mergedMetadata[k]);
         } else {
-          revealjsOptions[k] = mergedMetadata[k];
+          if (k in revealjsConfig) {
+            revealjsNewConfig[k] = mergedMetadata[k];
+          } else {
+            console.error(`Ignoring unknown option: ${k}`);
+          }
         }
       });
-    if (Object.keys(revealjsOptions).length > 0) {
-      Reveal.configure(revealjsOptions);
+    if (Object.keys(revealjsNewConfig).length > 0) {
+      Reveal.configure(revealjsNewConfig);
     }
   }
 
