@@ -1,4 +1,4 @@
-# <img src="./public/favicon.svg" alt="logo" style="height: 0.8em; margin: 0" /> slidesdown
+# <img src="./public/favicon.svg" alt="logo" style="height: 0.8em; margin: 0" /> Slidesdown
 
 Slideshows as fast as you can type.
 
@@ -100,10 +100,12 @@ slidesdown -h
 
 ### Required Tools
 
+- [`cargo-watch`](https://github.com/watchexec/cargo-watch) file watcher
+- [`curl`](https://curl.se/)
+- [`gh`](https://github.com/cli/cli) GitHub CLI for creating releases
+- [`git-cliff`](https://github.com/orhun/git-cliff) changelog generator
 - [`just`](https://just.systems/) task runner
 - [`node`](https://nodejs.org/) >=14
-- [`curl`](https://curl.se/)
-- [`cargo-watch`](https://github.com/watchexec/cargo-watch) file watcher
 
 ### Folder Structure and Important Files
 
