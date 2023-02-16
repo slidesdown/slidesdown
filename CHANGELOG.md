@@ -2,17 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.3.4] - 2023-02-16
+
+### Bug Fixes
+
+- Include release notes in release
+
+## [0.3.3] - 2023-02-16
 
 ### Features
 
 - Add update-pico as dependency to target update-all
 - Add tag target to update script tag
+- Add changelog generation and release mechanism
 
 ### Miscellaneous Tasks
 
 - Add switch to print version information
 - Add flake configuration
+- Ignore TODO.md
 
 ## [0.3.2] - 2023-02-15
 
