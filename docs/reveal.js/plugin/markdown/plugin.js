@@ -388,7 +388,7 @@ const Plugin = () => {
                 let metadata = {};
                 if (section.getAttribute("data-load-metadata") !== null) {
                   const metadataRegExp =
-                    /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/gm;
+                    /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/g;
                   const metadataMatch = metadataRegExp.exec(markdown);
                   if (metadataMatch) {
                     // TODO: a context element would be helpful to be able to
