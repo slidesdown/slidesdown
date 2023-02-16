@@ -735,7 +735,7 @@ const Plugin = () => {
             ].indexOf(language) >= 0
           ) {
             // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
-            return `<div><canvas data-chart="${language}" style="height: 90%; width: 90%;">
+            return `<div><canvas data-chart="${language}">
               <!--
               ${code}
               --></canvas></div>`;

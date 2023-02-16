@@ -18,6 +18,11 @@
   }
 }
 
+/* Workaround to improve sharpness of charts: https://github.com/chartjs/Chart.js/issues/2814 */
+canvas {
+  box-sizing: initial !important;
+}
+
 /*  box  * {{{1
 *********/
 
