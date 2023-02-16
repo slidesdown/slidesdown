@@ -70,17 +70,6 @@ END
 	python3 "${SERVER_CMD}" "localhost" "${PORT}"
 }
 
-run_docker() {
-	local PORT="$1"
-	local IMAGE="$2"
-	local ROOT_DIRECTORY="$3"
-	local SLIDES="$4"
-	local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
-	local CONTAINER_SLIDES_PORT="8080"
-
-	docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}"
-}
-
 export_pdf() {
 	local DOCKER="$1"
 	local URL="$2"
@@ -89,7 +78,7 @@ export_pdf() {
 	if [[ -z "${DOCKER}" ]]; then
 		decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
 	else
-		docker run --rm -t -v "${PWD}:/slides" "astefanutti/decktape" "${URL}" -s "${RESOLUTION}" "${FILE}"
+		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape" "${URL}" -s "${RESOLUTION}" "${FILE}"
 	fi
 }
 
@@ -233,7 +222,9 @@ main() {
 	fi
 	if [[ -z "${EXPORT}" ]]; then
 		if [[ -n "${DOCKER}" ]]; then
-			CONTAINER_ID="$(run_docker "${PORT}" "${IMAGE}" "${ROOT_DIRECTORY}" "${SLIDES}")"
+			local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
+			local CONTAINER_SLIDES_PORT="8080"
+			local CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2
