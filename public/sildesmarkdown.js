@@ -5,6 +5,7 @@
  */
 
 import { marked } from "marked";
+import { mermaid } from "mermaid";
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
@@ -111,7 +112,7 @@ const Plugin = () => {
 
     if (notesMatch.length === 2) {
       content = notesMatch[0] + '<aside class="notes">' +
-        marked(notesMatch[1].trim()) + "</aside>";
+        marked.parse(notesMatch[1].trim()) + "</aside>";
     }
 
     // prevent script end tags in the content from interfering
@@ -641,7 +642,7 @@ const Plugin = () => {
       const notes = section.querySelector("aside.notes");
       const markdown = getMarkdownFromSlide(section);
 
-      section.innerHTML = marked(markdown);
+      section.innerHTML = marked.parse(markdown);
       const firstChild = section.firstElementChild;
       if (firstChild && firstChild.id !== "") {
         section.id = firstChild.id;

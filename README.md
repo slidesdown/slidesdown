@@ -120,8 +120,8 @@ slidesdown -h
     [https://slidesdown.e-jc.de/loader.html](https://slidesdown.e-jc.de/loader.html)
   - [`public/learn.html`](./public/learn.html) tutorial served at
     [https://slidesdown.e-jc.de/learn.html](https://slidesdown.e-jc.de/learn.html)
-  - [`public/reveal.js/plugin/markdown/plugin.js`](./public/reveal.js/plugin/markdown/plugin.js)
-    Markdown converter plugin - this is the core of this project
+  - [`public/slidesmarkdown.js`](./public/slidesmarkdown.js) Markdown converter
+    plugin - this is the core of this project
 - [`slidesdown`](./slidesdown) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
   - [`src/custom-elements.js`](./src/custom-elements.js) contains the custom
@@ -136,9 +136,8 @@ slidesdown -h
 
 - Run `just update-revealjs` to (re)download external dependencies to the
   `public/` folder
-- Run `just dev` to start the `vite` development server
-- Run `just dev-watch` to recompile reveal.js plugins, specifically the markdown
-  plugin when it gets modified
+- Run `just dev` to start the `vite` development server plugin when it gets
+  modified
 
 ### Build
 

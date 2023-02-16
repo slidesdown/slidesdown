@@ -29,11 +29,19 @@
         ></section>
       </div>
     </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "chart": "/chart.js/dist/chart.umd.js",
+          "mermaid": "/mermaid/loader.js",
+          "marked": "/marked/loader.js",
+          "slidesmarkdown": "/sildesmarkdown.js"
+        }
+      }
+    </script>
     <script src="/chart.js/dist/chart.umd.js"></script>
-    <script src="/mermaid/loader.js" type="module"></script>
     <script src="/reveal.js/dist/reveal.js"></script>
     <script src="/reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="/reveal.js/plugin/markdown/markdown.js"></script>
     <script src="/reveal.js/plugin/math/math.js"></script>
     <script src="/reveal.js/plugin/notes/notes.js"></script>
     <script src="/reveal.js/plugin/search/search.js"></script>
@@ -43,7 +51,7 @@
     <script src="/reveal.js/plugin/customcontrols/plugin.js"></script>
     <script src="/reveal.js/plugin/chart/plugin.js"></script>
     <script type="module" src="src/custom-elements.js"></script>
-    <script type="module" src="src/init.js"></script>
+    <script type="module" src="/init.js"></script>
     <!-- DOCKER_LOADER_LINE -->
     <!-- <script -->
     <!--   async -->
