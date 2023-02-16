@@ -18,12 +18,13 @@ dev:
 dev-watch:
     cargo-watch -s "npx gulp plugins" -w "${PWD}/public/reveal.js/plugin/markdown/plugin.js" -C "${PWD}/public/reveal.js"
 
+# Update all dependencies
+update-all: update-revealjs update-mermaid update-chartjs update-pico
+
 # Update pico
 update-pico:
-    curl -Lfo public/css/pico.min.css https://unpkg.com/@picocss/pico@v1.5.6/css/pico.min.css
-
-# Update all dependencies
-update-all: update-revealjs update-mermaid update-chartjs
+    VERSION="1.5.6"; \
+       curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@v${VERSION}/css/pico.min.css"
 
 # Update mermaid
 update-mermaid:
