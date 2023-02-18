@@ -4,7 +4,7 @@ date: 2023-01-20
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
 favicon: /favicon.svg
 theme: /reveal.js-master/dist/theme/white.css
-highlight-theme: /reveal.js-master/plugin/highlight/monokai.css
+highlight-theme: /reveal.js-master/plugin/highlight/idea.css
 author: Jan Christoph Ebersbach
 ---
 
@@ -12,19 +12,22 @@ author: Jan Christoph Ebersbach
 
 <h2>Slideshows as fast as you can type Markdown.</h2>
 
+<!-- generated with
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.0.9/remark-format.js --maxdepth 2 %
+-->
+
 ## Agenda
 
-1. Intro slidesdown
-2. Basics
-3. Incremental Display
-4. Backgrounds
-5. Pictures and Icons
-6. Advanced Formatting
-7. Charts
+1. [Intro slidesdown](#intro-slidesdown)
+2. [Basics](#basics)
+3. [Animation](#animation)
+4. [Backgrounds](#backgrounds)
+5. [Pictures and Icons](#pictures-and-icons)
+6. [Advanced Formatting](#advanced-formatting)
+7. [Charts](#charts)
+8. [Thank you](#thank-you)
 
 ## Intro slidesdown
-
-henl
 
 > Turn markdown files into beautiful presentations quickly.
 
@@ -36,13 +39,11 @@ the tool of choice to do just that!
 
 ### Features
 
-- Built with [reveal.js 4.0](https://revealjs.com/) and
-  [pandoc 2.9](https://pandoc.org/)
-- Focus: stays out of the way
-- Enterprise: theming and PDF conversion
-- Setup: super fast
-- Presentation: looks great and offers the power of the browser at your
-  fingertips
+- Built with [reveal.js](https://revealjs.com/)
+- Focus: Stays out of your way
+- Professional: Theming and PDF conversion
+- Setup: No installation
+- Styling: Looks great and offers the power of the browser at your fingertips
 
 ### Keybindings
 
@@ -55,10 +56,11 @@ the tool of choice to do just that!
 
 ### Examples
 
-- [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA)
-- [Example HTML presentation](https://slidesdown.e-jc.de/)
-- [Example PDF](./examples/slides.pdf)
-- [Example Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
+<!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
+<!-- - [Example PDF](./examples/slides.pdf) -->
+
+- [Presentation](https://slidesdown.e-jc.de/)
+- [Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
 
 ---
 
@@ -70,14 +72,19 @@ See for yourself.
 
 <h1>h1</h1>
 <h2>h2</h2>
+<h3>h3</h3>
 
-#### h3
-
----
++++
 
 No heading.
 
-### Hidden slide{data-visibility="hidden"}
+### Next comes a hidden slide
+
+Can you see it?
+
+### Hidden slide
+
+<!-- .slide: data-visibility="hidden" -->
 
 ### Text formatting
 
@@ -99,7 +106,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 - [Text link](https://github.com/jceb/slidesdown)
 - Image link:
-  [![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
+  [![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
 
 ### Quotes
 
@@ -117,12 +124,15 @@ hello("world!");
 
 ### Code Highlighting with Line Numbers
 
-<pre>
-<code class="javascript" data-line-numbers>function hello(msg) {
-  alert(`Hello ${msg}`)
+```javascript [1|3]
+function hello(msg) {
+  alert(`Hello ${msg}`);
 }
 
-hello('world!');</code></pre>
+hello("world!");
+```
+
+<!-- .element: data-line-numbers -->
 
 ### Code Highlighting with highlighted Line
 
@@ -149,73 +159,77 @@ hello('world!');</code></pre>
 
 ### Columns
 
-:::::: {.flex .align-center .justify-around}
-
-::: Col1
+<div style="display: flex; align-items: center; justify-content: space-around;">
+<div style="display: flex; flex-direction: column;">
+Col1
 
 - Column 1
 - Column 1
 - Column 1
 
-:::
+</div>
 
-::: Col2
+<div style="display: flex; flex-direction: column;">
+Col2
 
 - Column 2
 - Column 2
 - Column 2
 
-:::
+</div>
 
-::: Col3
+<div style="display: flex; flex-direction: column;">
+Col3
 
 - Column 3
 - Column 3
 - Column 3
 
-:::
-
-::::::
+</div>
+</div>
 
 ## Animation
 
 ### Incremental Lists
 
-::: incremental
-
-- Item 1
-- Item 2
-- Item 3
-
-:::
+- Item 1 <!-- .element: class="fragment" -->
+- Item 2 <!-- .element: class="fragment" -->
+- Item 3 <!-- .element: class="fragment" -->
 
 ### Fragments
 
-:::::: {.flex .align-center}
-![](https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640){width=50%}
+<div style="display: flex; align-items: center; justify-content: space-around;">
 
-::: fragment
-![](https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640){width=50%}
-:::
+<img style="width: 30%" src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
 
-::::::
+<img style="width: 30%" src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
+
+<!-- .element: class="fragment" -->
+
+<div>
 
 ### Breaks
 
 - Item 1
 
-. . .
+<div class="fragment">
 
 - Item 2
 - Item 3
 
-### Animated List{data-auto-animate=1}
+<div>
+
+### Animated List
+
+<!-- .slide: data-auto-animate="1" -->
 
 - Item 1
 - Item 3
 - Item 4
 
-### Animated List{data-auto-animate=1}
+### Animated List
+
+<!-- .slide: data-auto-animate="1" -->
 
 - Item 1
 - Item 2
@@ -224,37 +238,47 @@ hello('world!');</code></pre>
 
 ### Animated Colored Boxes
 
-### Animated Colored Boxes{data-auto-animate=1}
+<!-- .slide: data-auto-animate="1" -->
 
-:::::: {.flex .align-center .justify-around}
+TODO
+
+<div class="display: flex; align-items: center; justify-content: space-around;"
 
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 
-::::::
+</div>
 
-### Animated Colored Boxes{data-auto-animate=1}
+### Animated Colored Boxes
 
-:::::: {.flex .align-center .justify-around}
+<!-- .slide: data-auto-animate="1" -->
+
+TODO
+
+<div class="display: flex; align-items: center; justify-content: space-around;"
 
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 
-::::::
+</div>
 
 ## Backgrounds
 
-### Slide with background image{data-background-image="https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640"}
+### Slide with background image
 
-### Slide with colored background{data-background-color="#78a5e9"}
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" -->
+
+### Slide with colored background
+
+<!-- .slide: data-background-color="#78a5e9" -->
 
 ## Pictures and Icons
 
 ### Picture
 
-![](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640){width=50%}
+![](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
 
 ### Font Awesome Icon
 
@@ -272,35 +296,24 @@ hello('world!');</code></pre>
 
 ### Font Awesome Stacked Icons
 
-::: {.flex .justify-around .align-center}
+<div class="display: flex; align-items: center; justify-content: space-around;"
 <span class="fa-stack fa-2x">
-<i class="fas fa-square fa-stack-2x"></i>
-<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-</span>
-<span class="fa-stack fa-2x">
-<i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-flag fa-stack-1x fa-inverse"></i>
-</span>
-<span class="fa-stack fa-2x">
-<i class="fas fa-square-full fa-stack-2x"></i>
-<i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
-</span>
-<span class="fa-stack fa-4x">
-<i class="fas fa-square fa-stack-2x"></i>
-<i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
-</span>
-<span class="fa-stack fa-2x">
-<i class="fas fa-camera fa-stack-1x"></i>
-<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
-</span>
-
-:::
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i> </span>
+<span class="fa-stack fa-2x"> <i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-flag fa-stack-1x fa-inverse"></i> </span>
+<span class="fa-stack fa-2x"> <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-terminal fa-stack-1x fa-inverse"></i> </span>
+<span class="fa-stack fa-4x"> <i class="fas fa-square fa-stack-2x"></i>
+<i class="fas fa-terminal fa-stack-1x fa-inverse"></i> </span>
+<span class="fa-stack fa-2x"> <i class="fas fa-camera fa-stack-1x"></i>
+<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i> </span>
+</div>
 
 ### FontAwesome Bullet Icons
 
 <ul class="fa-ul" style="list-style-type: none;">
-  <li><span class="fa-li c-primary">![](fad fa-badge-check)</span> Regular bullet icon</li>
-  <li><span class="fa-li c-primary">![](fad fa-recycle)</span> Regular bullet icon</li>
+  <li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> Regular bullet icon</li>
+  <li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> Regular bullet icon</li>
   <li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
     <span class="fa-stack c-primary" >
     <i class="fad fa-digging fa-stack-1x"></i>
@@ -310,6 +323,8 @@ hello('world!');</code></pre>
 </ul>
 
 ### Box Shadow
+
+TODO
 
 ::: {.box-shadow-trbl}
 
@@ -337,35 +352,73 @@ Shadow bottom, left.
 
 ### Colored Boxes
 
-:::::: {.flex .align-center .justify-around}
+TODO
 
+<div class="display: flex; align-items: center; justify-content: space-around;"
 <div class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-::::::
+</div>
 
 ### Font Awesome Buttons
 
-:::::: {.flex .align-center .justify-around .margin-tb-5rem}
+TODO
 
-<div class="flex align-center justify-around box-8rem radius-10p box-shadow-trbl" style=" background-color: lightblue; color: yellow">![](fas fa-thumbs-up)</div>
-<div class="fs-4 flex align-center justify-around box-10rem radius-20p box-shadow-rbl" style=" background-color: pink; color: darkred;">![](fas fa-thumbtack)</div>
-<div class="fs-7 flex align-center justify-around box-12rem radius-50p box-shadow-rb" style=" background-color: lightgreen; color: darkgreen;">![](fas fa-headphones)</div>
-::::::
+<div class="display: flex; align-items: center; justify-content: space-around;"
+<div class="flex align-center justify-around box-8rem radius-10p box-shadow-trbl" style=" background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
+<div class="fs-4 flex align-center justify-around box-10rem radius-20p box-shadow-rbl" style=" background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
+<div class="fs-7 flex align-center justify-around box-12rem radius-50p box-shadow-rb" style=" background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
+</div>
 
 ### Picture Buttons
 
-:::::: {.flex .align-center .justify-around .margin-tb-6rem}
+TODO
 
+<div class="display: flex; align-items: center; justify-content: space-around;"
 <div class="box-8rem radius-10p overflow-hidden background-cover box-shadow-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-10rem radius-20p overflow-hidden background-cover box-shadow-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-12rem radius-30p overflow-hidden background-cover box-shadow-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-::::::
+</div>
 
 ## Charts
 
+TODO
+
 via [chart.js](https://www.chartjs.org/)
+
+### Area Chart
+
+<canvas id="vxKmkEqKlZJ5MK1P0Wdk"></canvas>
+
+<script>
+var ctx = document.getElementById('vxKmkEqKlZJ5MK1P0Wdk').getContext('2d');
+const data = [
+  { year: 2010, count: 10 },
+  { year: 2011, count: 20 },
+  { year: 2012, count: 15 },
+  { year: 2013, count: 25 },
+  { year: 2014, count: 22 },
+  { year: 2015, count: 30 },
+  { year: 2016, count: 28 },
+];
+new Chart(
+  ctx,
+  {
+    type: 'bar',
+    data: {
+      labels: data.map(row => row.year),
+      datasets: [
+        {
+          label: 'Acquisitions by year',
+          data: data.map(row => row.count)
+        }
+      ]
+    }
+  }
+);
+console.log("go chart")
+</script>
 
 ### Bar Chart
 
@@ -418,6 +471,9 @@ var myChart = new Chart(ctx, {
 <canvas id="ec647c7adf104ff0a6c0ce7ca78a5665"></canvas>
 
 <script>
+// Die Daten richtig einzubauen ist nicht so einfach, da eine
+// Transformationsfunktion gebraucht wird, um die Label zu extrahieren und
+// dann auch die Daten zu extrahieren .. das ist nicht so einfach zu erreichen.
 var ctx = document.getElementById('ec647c7adf104ff0a6c0ce7ca78a5665').getContext('2d');
 var myRadarChart = new Chart(ctx, {
     type: 'radar',
@@ -453,4 +509,4 @@ var myRadarChart = new Chart(ctx, {
 
 ## Thank you
 
-<h3>for using [slidesdown](https://github.com/jceb/slidesdown)</h3>
+<h3>for using <a href="https://github.com/jceb/slidesdown">slidesdown</a></h3>
