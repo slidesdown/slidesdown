@@ -3,8 +3,8 @@ title: slidesdown
 date: 2023-01-20
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
 favicon: /favicon.svg
-theme: /reveal.js-master/dist/theme/white.css
-highlight-theme: /reveal.js-master/plugin/highlight/tokyo-night-dark.css
+theme: white
+highlight-theme: tokyo-night-dark
 author: Jan Christoph Ebersbach
 ---
 
@@ -25,7 +25,6 @@ author: Jan Christoph Ebersbach
 5. [Pictures and Icons](#pictures-and-icons)
 6. [Advanced Formatting](#advanced-formatting)
 7. [Charts](#charts)
-8. [Thank you](#thank-you)
 
 ## Intro slidesdown
 
@@ -57,6 +56,7 @@ the tool of choice to do just that!
 ### Examples
 
 <!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
+
 <!-- - [Example PDF](./examples/slides.pdf) -->
 
 - [Presentation](https://slidesdown.e-jc.de/)
@@ -505,6 +505,8 @@ var myRadarChart = new Chart(ctx, {
 
 </script>
 
-## Thank you
+---
+
+<h2>Thank you</h2>
 
 <h3>for using <a href="https://github.com/jceb/slidesdown">slidesdown</a></h3>
