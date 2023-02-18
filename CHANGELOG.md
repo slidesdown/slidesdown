@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.2] - 2023-02-18
+
+### Bug Fixes
+
+- Correct image name
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.5.1] - 2023-02-18
 
 ### Bug Fixes
