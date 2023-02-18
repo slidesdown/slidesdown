@@ -73,8 +73,8 @@ const main = (defaults) => {
   Reveal.initialize({
     hash: true,
     plugins: [
-      RevealHighlight,
       RevealMarkdown,
+      RevealHighlight,
       RevealMath,
       RevealNotes,
       RevealSearch,
