@@ -97,7 +97,7 @@ changelog:
 post-release: tag changelog
 
 # Create a new release
-release: build-docker push-docker
+release: build build-docker push-docker
     TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
         git cliff --strip all --current | \
         gh release create -F - "${TAG}"

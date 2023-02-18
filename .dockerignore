@@ -6,6 +6,7 @@
 .git
 /*
 !/published
+/published/.git
 !/src
 /src/*
 !/src/entrypoint.sh
