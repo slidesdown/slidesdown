@@ -107,7 +107,7 @@ release: build-docker push-docker
 
 # Build docker images
 build-docker:
-    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" .
+    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
 
 # Push docker images
 push-docker:

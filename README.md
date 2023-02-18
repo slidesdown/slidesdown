@@ -142,7 +142,16 @@ slidesdown -h
 
 - Run `just build` to recreate the `docs/` folder
 - Run `just build-docker` to build a new docker image
-- Run `just push-docker` to push the image to the registry
+
+### Release
+
+- Commit all changes
+- Create a new tag: `git tag -s vX.Y.Z`
+- Push tag and changes: `git push --tags`
+- Run `just release` create a new GitHub release, update
+  [`CHANGELOG.md`](./CHANGELOG.md), and update tag in
+  [`slidesdown`](./slidesdown) script
+- Push post release changes: `git push`
 
 ## References
 
