@@ -1,5 +1,11 @@
+*.pdf
+/.direnv/
+/TODO.md
+.dockerignore
+.gitignore
+.git
 /*
-!/docs
+!/published
 !/src
 /src/*
 !/src/entrypoint.sh

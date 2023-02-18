@@ -1,9 +1,9 @@
-/node_modules
-/public/chart.js/
-/public/mermaid/mermaid.js
-/public/reveal.js/
-/public/marked/marked.js
 *.pdf
 /.direnv/
 /TODO.md
+/node_modules
+/public/chart.js/
+/public/marked/marked.js
+/public/mermaid/mermaid.js
+/public/reveal.js/
 /published/
