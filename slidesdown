@@ -2,6 +2,8 @@
 set -euo pipefail
 # set -x
 
+VERSION="0.3.2"
+
 urlencode() {
 	# Source: https://gist.github.com/cdown/1163649
 	local LC_ALL=C # support unicode = loop bytes, not characters
@@ -201,7 +203,7 @@ main() {
 	local UPDATE="${UPDATE:-}"
 	local NO_OPEN="${NO_OPEN:-}"
 	local PORT="${PORT:-3000}"
-	local IMAGE="${IMAGE:-jceb/slidesdown:latest}"
+	local IMAGE="${IMAGE:-jceb/slidesdown:${VERSION}}"
 	local SERVICE="${SERVICE:-https://slidesdown.e-jc.de}"
 	local RESOLUTION="${RESOLUTION:-2560x1440}"
 
