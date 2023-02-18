@@ -231,6 +231,7 @@ const Plugin = () => {
       "theme": "/reveal.js-master/dist/theme/white.css",
       "highlight-theme": "/reveal.js-master/plugin/highlight/monokai.css",
       "favicon": "/favicon.svg",
+      "title": "slidesdown",
     };
     // todo: sanitize data
     const loadStyleshet = (cssReference) => {
