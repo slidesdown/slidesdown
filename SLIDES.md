@@ -120,7 +120,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <v-box>
 
-An Image link:
+An Image link
 [![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
 
 </v-box>
@@ -181,29 +181,29 @@ hello("world!");
 
 <grid-3>
 <v-box>
-Col1
+Column 1
 
-- Column 1
-- Column 1
-- Column 1
-
-</v-box>
-
-<v-box>
-Col2
-
-- Column 2
-- Column 2
-- Column 2
+- Item 1
+- Item 2
+- Item 3
 
 </v-box>
 
 <v-box>
-Col3
+Column 2
 
-- Column 3
-- Column 3
-- Column 3
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box>
+Column 3
+
+- Item 1
+- Item 2
+- Item 3
 
 </v-box>
 </grid-3>
