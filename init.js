@@ -80,8 +80,36 @@ const main = (defaults) => {
       RevealSearch,
       RevealZoom,
       PdfExport,
+      RevealChalkboard,
+      RevealCustomControls,
     ],
     pdfExportShortcut: "p",
+    // FIXME: hide controls in print view: https://github.com/rajgoel/reveal.js-plugins/issues/159
+    customcontrols: {
+      controls: [
+        {
+          id: "toggle-overview",
+          title: "Toggle overview (O)",
+          icon: '<i class="fa-light fa-th"></i>',
+          action: "Reveal.toggleOverview();",
+        },
+        {
+          icon: '<i class="fa-light fa-pen-square"></i>',
+          title: "Toggle chalkboard (B)",
+          action: "RevealChalkboard.toggleChalkboard();",
+        },
+        {
+          icon: '<i class="fa-light fa-pen"></i>',
+          title: "Toggle notes canvas (C)",
+          action: "RevealChalkboard.toggleNotesCanvas();",
+        },
+        {
+          icon: '<i class="fa-light fa-print"></i>',
+          title: "Toggle print view (P)",
+          action: "PdfExport.togglePdfExport();",
+        },
+      ],
+    },
   });
 };
 
