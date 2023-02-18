@@ -235,6 +235,7 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
+      "fontawesomePro": true,
       // revealjs defaults
       "hash": true,
     };
@@ -244,6 +245,14 @@ const Plugin = () => {
       stylesheet.rel = "stylesheet";
       stylesheet.href = cssReference;
       document.head.appendChild(stylesheet);
+    };
+    const loadScript = (scriptReference, crossorirgin) => {
+      const script = document.createElement("script");
+      script.href = scriptReference;
+      if (crossorirgin) {
+        script.crossorirgin = crossorirgin;
+      }
+      document.body.appendChild(script);
     };
     const addMeta = (name) => (content) => {
       const meta = document.createElement("meta");
@@ -278,6 +287,10 @@ const Plugin = () => {
       "author": addMeta("author"),
       "date": addMeta("dcterms.date"),
       "keywords": addMeta("keywords"),
+      "fontawesomePro": loadScript(
+        "https://kit.fontawesome.com/fec85b2437.js",
+        "anonymous",
+      ),
     };
     const parseType = (value) => {
       if (value === "true") {
