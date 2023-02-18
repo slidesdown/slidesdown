@@ -133,8 +133,8 @@ slidesdown -h
 
 ### Modify Source Code
 
-- Run `just update-revealjs` to (re)download external dependencies to the
-  `public/` folder
+- Run `just update-all` to (re)download external dependencies to the `public/`
+  folder
 - Run `just dev` to start the `vite` development server plugin when it gets
   modified
 
