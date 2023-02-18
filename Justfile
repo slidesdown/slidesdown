@@ -107,9 +107,9 @@ release: build build-docker push-docker
 
 # Build docker images
 build-docker:
-    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
+    docker build -t ghcr.io/slidesdown/slidesdown:latest -t "ghcr.io/slidesdown/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
 
 # Push docker images
 push-docker:
-    docker push jceb/slidesdown:latest
-    docker push "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')"
+    docker push ghcr.io/slidesdown/slidesdown:latest
+    docker push "ghcr.io/slidesdown/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')"
