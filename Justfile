@@ -79,7 +79,8 @@ update-revealjs:
 
 # Update version tag in script
 tag:
-    sed -i -e "s/^VERSION=.*/VERSION='$(git describe --tags --abbrev=0 | sed -e 's/^v//')'/" slidesdown
+    TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" && \
+      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown
 
 # Build application
 build:
@@ -91,9 +92,22 @@ build:
     cp .CNAME docs/CNAME
     cp SLIDES.md examples/SLIDES_full.md
 
+# Update changelog
+changelog:
+    git cliff > CHANGELOG.md
+
+# Prepare release
+prepare: tag changelog
+
+# Create a new release
+release:
+    TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
+        git cliff --strip --current | \
+        gh release create "${TAG}"
+
 # Build docker images
 build-docker:
-    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
+    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" .
 
 # Push docker images
 push-docker:
