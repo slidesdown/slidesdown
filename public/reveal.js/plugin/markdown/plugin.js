@@ -5,6 +5,7 @@
  */
 
 import { marked } from "marked";
+import mermaid from "../../../mermaid/mermaid.js";
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
@@ -24,6 +25,8 @@ const HTML_ESCAPE_MAP = {
 };
 
 let BASE_URL = "";
+
+let DIAGRAM_COUNTER = 0;
 
 const Plugin = () => {
   // The reveal.js instance this plugin is attached to
@@ -214,9 +217,9 @@ const Plugin = () => {
    */
   function parseMetadata(metadataString) {
     return metadataString.split(/\r?\n/)
-      .map((line) => line.split(/^([^:]+?):/).map((res) => res.trim()))
-      .filter((entry) => !entry[1].startsWith("#")) // remove comments
+      .map((line) => line.split(/^([^:]+?):\s/).map((res) => res.trim()))
       .filter((entry) => entry.length > 2)
+      .filter((entry) => !entry[1].startsWith("#")) // remove comments
       .map((entry) => ({ [entry[1]]: entry[2] }))
       .reduce(
         (acc, current) => Object.assign(acc, current),
@@ -344,15 +347,15 @@ const Plugin = () => {
                 let markdown = xhr.responseText;
                 let metadata = {};
                 if (section.getAttribute("data-load-metadata") !== null) {
-                  const metadataRegExp = new RegExp(
-                    "^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:.*|\r?\n)*?)\r?\n---\r?\n",
-                    "mg",
-                  );
+                  const metadataRegExp =
+                    /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/gm;
                   const metadataMatch = metadataRegExp.exec(markdown);
                   if (metadataMatch) {
                     // TODO: a context element would be helpful to be able to
                     // properly set the metadata
-                    metadata = parseMetadata(metadataMatch.groups.metadata);
+                    if (metadataMatch.groups.metadata) {
+                      metadata = parseMetadata(metadataMatch.groups.metadata);
+                    }
                     markdown = markdown.substring(metadataRegExp.lastIndex);
                   }
                 }
@@ -597,7 +600,7 @@ const Plugin = () => {
       if (!renderer) {
         renderer = new marked.Renderer();
 
-        renderer.code = (code, language) => {
+        const defaultCode = (code, language) => {
           // Off by default
           let lineNumbers = "";
 
@@ -617,6 +620,18 @@ const Plugin = () => {
           code = escapeForHTML(code);
 
           return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
+        };
+        renderer.code = function (code, language) {
+          if (language === "mermaid") {
+            // return `<pre class="mermaid">\n${code}\n</pre>`;
+            DIAGRAM_COUNTER += 1;
+            return mermaid.mermaidAPI.render(
+              `mermaid${DIAGRAM_COUNTER}`,
+              code,
+            );
+          } else {
+            return defaultCode(code, language);
+          }
         };
       }
 

@@ -1,3 +1,4 @@
+// Documentation: https://lit.dev/docs/components/styles/#dynamic-classes-and-styles
 import { css, html, LitElement } from "lit";
 
 export class FontAwesomeIcon extends LitElement {

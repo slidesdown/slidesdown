@@ -79,14 +79,20 @@ const main = (defaults) => {
       RevealNotes,
       RevealSearch,
       RevealZoom,
+      // Source: https://github.com/McShelby/reveal-pdfexport
       PdfExport,
+      // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard
       RevealChalkboard,
+      // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/customcontrols
       RevealCustomControls,
+      // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/chart
       RevealChart,
+      // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
+      // RevealAnything,
     ],
     pdfExportShortcut: "p",
-    // FIXME: hide controls in print view: https://github.com/rajgoel/reveal.js-plugins/issues/159
     customcontrols: {
+      // FIXME: hide controls in print view: https://github.com/rajgoel/reveal.js-plugins/issues/159
       controls: [
         {
           id: "toggle-overview",
@@ -111,6 +117,38 @@ const main = (defaults) => {
         },
       ],
     },
+    // anything: [
+    //   {
+    //     className: "mermaidx",
+    //     defaults: { diagramCounter: 0 },
+    //     initialize: (function (container, options) {
+    //       const graphDefinition = container.textContent;
+    //       console.log(
+    //         options.diagramCounter,
+    //         graphDefinition,
+    //         container.innerHTML,
+    //         container.textContent,
+    //       );
+    //       options.diagramCounter += 1;
+    //       if (!graphDefinition) {
+    //         return;
+    //       }
+    //       const res = mermaid.mermaidAPI.render(
+    //         `mermaid${options.diagramCounter}`,
+    //         graphDefinition,
+    //       );
+    //       // replacing outerHTML doesn't work for some unknown reason
+    //       // container.outerHTML = res;
+    //       const el = document.createElement("div");
+    //       el.innerHTML = res;
+    //       container.parentNode.append(el, container);
+    //       // removing the container element also doesn't work, so make it empty
+    //       // container.remove();
+    //       container.innerHTML = "";
+    //       return el;
+    //     }),
+    //   },
+    // ],
   });
 };
 
