@@ -73,37 +73,46 @@ export class GridBox extends LitElement {
 }
 customElements.define("grid-box", GridBox);
 
-export class Column2 extends LitElement {
-  render() {
-    return html`<grid-box styles="grid-template-columns: repeat(2, 1fr)"><slot></slot></grid-box>`;
+export class Columns extends LitElement {
+  static properties = {
+    styles: "",
+  };
+  constructor() {
+    super();
   }
 }
-customElements.define("column-2", Column2);
 
-export class Column3 extends LitElement {
+export class Columns2 extends Columns {
   render() {
-    return html`<grid-box styles="grid-template-columns: repeat(3, 1fr)"><slot></slot></grid-box>`;
+    return html`<grid-box styles="grid-template-columns: repeat(2, 1fr); ${this.styles}"><slot></slot></grid-box>`;
   }
 }
-customElements.define("column-3", Column3);
+customElements.define("columns-2", Columns2);
 
-export class Column4 extends LitElement {
+export class Columns3 extends Columns {
   render() {
-    return html`<grid-box styles="grid-template-columns: repeat(4, 1fr)"><slot></slot></grid-box>`;
+    return html`<grid-box styles="grid-template-columns: repeat(3, 1fr); ${this.styles}"><slot></slot></grid-box>`;
   }
 }
-customElements.define("column-4", Column4);
+customElements.define("columns-3", Columns3);
 
-export class Column5 extends LitElement {
+export class Columns4 extends Columns {
   render() {
-    return html`<grid-box styles="grid-template-columns: repeat(5, 1fr)"><slot></slot></grid-box>`;
+    return html`<grid-box styles="grid-template-columns: repeat(4, 1fr); ${this.styles}"><slot></slot></grid-box>`;
   }
 }
-customElements.define("column-5", Column5);
+customElements.define("columns-4", Columns4);
 
-export class Column6 extends LitElement {
+export class Columns5 extends Columns {
   render() {
-    return html`<grid-box styles="grid-template-columns: repeat(6, 1fr)"><slot></slot></grid-box>`;
+    return html`<grid-box styles="grid-template-columns: repeat(5, 1fr); ${this.styles}"><slot></slot></grid-box>`;
   }
 }
-customElements.define("column-6", Column6);
+customElements.define("columns-5", Columns5);
+
+export class Columns6 extends Columns {
+  render() {
+    return html`<grid-box styles="grid-template-columns: repeat(6, 1fr); ${this.styles}"><slot></slot></grid-box>`;
+  }
+}
+customElements.define("columns-6", Columns6);
