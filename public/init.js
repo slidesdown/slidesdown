@@ -1,3 +1,5 @@
+import SlidesMarkdown from "slidesmarkdown";
+
 // computeURL builds a URL to a raw markdown file from a short human-typable
 // string, e.g. it turn github.com/jceb/slidesdown into
 // https://raw.githubusercontent.com/jceb/slidesdown/main/SLIDES.md
@@ -75,7 +77,7 @@ const main = (defaults) => {
   Reveal.initialize({
     hash: true,
     plugins: [
-      RevealMarkdown,
+      SlidesMarkdown,
       RevealHighlight,
       RevealMath,
       RevealNotes,
