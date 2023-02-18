@@ -10,3 +10,4 @@
 /public/reveal.js/plugin/markdown/*
 !/public/reveal.js/plugin/markdown/plugin.js
 *.pdf
+/.direnv/
