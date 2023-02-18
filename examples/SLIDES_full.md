@@ -541,11 +541,7 @@ via [chart.js](https://www.chartjs.org/)
 
 ### Polar Area Chart
 
-<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
-
-<div>
-<canvas data-chart="polarArea">
-<!--
+```polarArea
 {
   "data": {
     "labels": [
@@ -576,17 +572,11 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
--->
-</canvas>
-</div>
+```
 
 ### Line Chart
 
-<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
-
-<div>
-<canvas data-chart="line">
-<!--
+```line
 {
  "data": {
   "labels": ["January","February","March","April","May","June","July"],
@@ -602,17 +592,11 @@ via [chart.js](https://www.chartjs.org/)
   ]
  }
 }
--->
-</canvas>
-</div>
+```
 
 ### Bar Chart
 
-<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
-
-<div>
-<canvas data-chart="bar">
-<!--
+```bar
 {
   "data": {
     "labels": [
@@ -641,17 +625,11 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
--->
-</canvas>
-</div>
+```
 
 ### Radar chart
 
-<!-- INFO: please mind adding the surrounding div. If not present this bug is triggered: https://github.com/chartjs/Chart.js/issues/5805 -->
-
-<div>
-<canvas data-chart="radar" style="height: 90%; width: 90%;">
-<!--
+```radar
 {
   "data": {
     "labels": [
@@ -705,9 +683,7 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
--->
-</canvas>
-</div>
+```
 
 ## Diagrams
 

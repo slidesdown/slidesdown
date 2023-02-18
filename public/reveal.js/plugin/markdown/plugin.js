@@ -655,6 +655,23 @@ const Plugin = () => {
               `mermaid${DIAGRAM_COUNTER}`,
               code,
             );
+          } else if (
+            [
+              "bar",
+              "line",
+              "bubble",
+              "doughnut",
+              "pie",
+              "polarArea",
+              "radar",
+              "scatter",
+            ].indexOf(language) >= 0
+          ) {
+            // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
+            return `<div><canvas data-chart="${language}" style="height: 90%; width: 90%;">
+              <!--
+              ${code}
+              --></canvas></div>`;
           } else {
             return defaultCode(code, language);
           }
