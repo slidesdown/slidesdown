@@ -29,6 +29,14 @@ pdfSeparateFragments: false
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
 > Slideshows as fast as you can type.
+> <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a>
+> and powered by <a href="https://revealjs.com/">reveal.js</a></small>
+
+## Hi!
+
+Slidesdown makes it simple to quickly turning an idea into a beautiful
+presentation. A [Markdown file](https://slidesdown.e-jc.de/learn.html) is all
+you need!
 
 <!-- generated with
 !deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
@@ -49,26 +57,19 @@ pdfSeparateFragments: false
 
 ## Introduction
 
-### Slidesdown
-
-Slidesdown makes it simple to quickly turning an idea into a beautiful
-presentation. A [Markdown file](https://slidesdown.e-jc.de/learn.html) is all
-you need!
-
 ### Features
 
 - Setup: No installation
 - Focus: Just write Markdown
 - Sharable: [Create links](https://slidesdown.e-jc.de/loader.html) to your
-  presentations
-- Offline Usage:
+  slides
+- Offline First:
   [CLI avaiable](https://github.com/jceb/slidesdown/blob/main/README.md) for
   offline presentations
 - Professional: PDF export and Custom Themes
-- Versioning: Store all files in `git`
+- Versionable: Store all files in `git`
 - Charts and Diagrams: via [chart.js](https://www.chartjs.org/) and
   [mermaid.js](https://mermaid.js.org/)
-- Reliable: Built with [reveal.js](https://revealjs.com/)
 
 ### Learn how it works
 
@@ -80,13 +81,14 @@ you need!
 
 ### Keyboard Shortcuts
 
-- `<Space>` advance to next slide
-- `<Shift-Space>` go to previous slide
-- `<f>` enter full-screen mode
-- `<s>` show speaker notes
-- `<p>` switch between print view and presentation
-- `<Esc>` open slides overview, press `<Esc>` to show selected slide
-- `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zoom into slide
+- `<Space>` advances to next slide
+- `<Shift-Space>` goes to previous slide
+- `<f>` enters full-screen mode
+- `<s>` shows speaker notes
+- `<.>` pauses slideshow
+- `<e>` toggles print view
+- `<Esc>` toggles slide overview
+- `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zooms into slide
 
 ### Draw on Slides
 
@@ -102,17 +104,57 @@ you need!
 
 ### Headings
 
-<h1>h1</h1>
-<h2>h2</h2>
-<h3>h3</h3>
+<columns-2>
+
+<div>
+  <h1>h1</h1>
+  <h2>h2</h2>
+  <h3>h3</h3>
+</div>
+
+```markdown
+ # h1
+
+ ## h2
+
+ ### h3
+```
+
+</columns-2>
 
 |||
 
-No heading.
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
+Slide without heading.
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+ <!-- Horizontal slide -->
+ ---
+ content
+
+ <!-- Vertical slide -->
+ |||
+ content
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Next comes a hidden slide
 
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
 Can you see it?
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+ ### Hidden slide
+
+<!-- .slide: data-visibility="hidden" -->
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Hidden slide
 
@@ -120,43 +162,93 @@ Can you see it?
 
 ### Text formatting
 
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
 Regluar, _italic_, **bold**, and <u>underlined</u>.
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+Regluar, _italic_, **bold**, and <u>underlined</u>.
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Unordered List
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 - Item 1
 - Item 2
 - Item 3
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+- Item 1
+- Item 2
+- Item 3
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Ordered List
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 1. Item 1
 2. Item 2
 3. Item 3
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+1. Item 1
+2. Item 2
+3. Item 3
+```
+<!-- .element: style="grid-area: code;" -->
 
 ### Links
 
-<columns-2>
+<grid-box styles="grid-template: 'left right' 'code code' / 1fr 1fr">
 
 [Text link](https://github.com/jceb/slidesdown)
+<!-- .element: style="grid-area: left;" -->
 
-<v-box>
+<v-box  style="grid-area: right;">
+<figure>
+
+[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
+<figcaption>Picture link</figcaption>
+</figure>
+</v-box>
+
+```markdown
+[Text link](https://github.com/jceb/slidesdown)
 
 Picture link
 
-[![a fish](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
+[![A picture](https://...)](https://...)
+```
+<!-- .element: style="grid-area: code;" -->
 
-</v-box>
-
-<!-- .element: class="50p" -->
-
-</columns-2>
+</grid-box>
 
 ### Quotes
 
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
 > A famous quote
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+> A famous quote
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Code Highlighting
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 ```javascript
 function hello(msg) {
@@ -165,34 +257,72 @@ function hello(msg) {
 
 hello("world!");
 ```
+<!-- .element: style="grid-area: left;" -->
 
-### Code Highlighting with Line Numbers
+```markdown
+ ` ``javascript
+ function hello(msg) {
+   alert(`Hello ${msg}`);
+ }
 
-```javascript []
-function hello(msg) {
-  alert(`Hello ${msg}`);
-}
-
-hello("world!");
+ hello("world!");
+ ` ``
 ```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Code Highlighting with highlighted Line
 
-```javascript [2]
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
+```javascript[2]
 function hello(msg) {
   alert(`Hello ${msg}`);
 }
 
 hello("world!");
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+ ` ``javascript[2]
+ function hello(msg) {
+   alert(`Hello ${msg}`);
+ }
+
+ hello("world!");
+ ` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Math formulas
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
+<article>
 
 `$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
 
 `$$ e^{\pi i}=-1 $$`
+</article>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+`$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
+
+`$$ e^{\pi i}=-1 $$`
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
+
 
 ### Table
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 | Tables        |      Are      |  Cool |
 | ------------- | :-----------: | ----: |
@@ -200,10 +330,26 @@ hello("world!");
 | column 2 is   |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| column 3 is   | right-aligned | $1600 |
+| column 2 is   |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
+
 ## Layouts
 
 ### 1 Column
 
+<grid-box styles="grid-template: 'left code' / 2fr 3fr">
+
+<article>
 <v-box>
 Shopping List
 
@@ -225,14 +371,48 @@ Task List
 <v-box>
 Bucket List
 
-- NYC
-- Tokyo
-- Singapore
+- ...
+
+</v-box>
+</article>
+
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<v-box>
+Shopping List
+
+- Bread
+- Milk
+- Butter
 
 </v-box>
 
+<v-box>
+Task List
+
+- Sleep
+- Eat
+- Work
+
+</v-box>
+
+<v-box>
+Bucket List
+
+- ...
+
+</v-box>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
+
 ### 2 Columns
 
+<grid-box styles="grid-template: 'left code' / 3fr 2fr">
+
+<article>
 <columns-2>
 <v-box>
 Shopping List
@@ -255,14 +435,48 @@ Task List
 <v-box>
 Bucket List
 
-- NYC
-- Tokyo
-- Singapore
+- ...
 
 </v-box>
 </columns-2>
+</article>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<columns-2>
+<v-box>
+Shopping List
+
+- Bread
+- Milk
+- Butter
+
+</v-box>
+
+<v-box>
+Task List
+
+- Sleep
+- Eat
+- Work
+
+</v-box>
+
+<v-box>
+Bucket List
+
+- ...
+
+</v-box>
+</columns-2>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### 3 Columns
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 <columns-3>
 <v-box>
@@ -292,9 +506,18 @@ Bucket List
 
 </v-box>
 </columns-3>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<columns-3>
+...
+</columns-3>
+```
+<!-- .element: style="grid-area: code;" -->
 
 ### Complex
 
+<grid-box styles="grid-template: 'left code' / 50% 50%">
 <grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
 
 <v-box style="grid-area: header; background-color: green">
@@ -324,10 +547,10 @@ Bucket List
 
 </v-box>
 </grid-box>
+<!-- .element: style="grid-area: left;" -->
 
-### Complex Sidebar Right
-
-<grid-box styles="grid-template: 'header header header' 'main main sidebar' / 1fr 1fr 300px">
+```markdown
+<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
 
 <v-box style="grid-area: header; background-color: green">
 Shopping List
@@ -355,39 +578,53 @@ Bucket List
 - Singapore
 
 </v-box>
-
+</grid-box>
+```
+<!-- .element: style="grid-area: code;" -->
 </grid-box>
 
 ## Animations
 
 ### Incremental Lists
 
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
 - Item 1 <!-- .element: class="fragment" -->
 - Item 2 <!-- .element: class="fragment" -->
 - Item 3 <!-- .element: class="fragment" -->
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+- Item 1 <!-- .element: class="fragment" -->
+- Item 2 <!-- .element: class="fragment" -->
+- Item 3 <!-- .element: class="fragment" -->
+```
+</grid-box>
 
 ### Fragments
 
-<columns-2>
-<img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
-<img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+<columns-2 styles="justify-items: center">
+<img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 30%;" />
+<img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 30%;" />
 <!-- .element: class="fragment" -->
 </columns-2>
+<!-- .element: style="grid-area: left;" -->
 
-<div>
-
-### Breaks
-
-- Item 1
-
-<div class="fragment">
-
-- Item 2
-- Item 3
-
-<div>
+```markdown
+<columns-2 styles="justify-items: center">
+<img src="https://..." />
+<img src="https://..." />
+<!-- .element: class="fragment" -->
+</columns-2>
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Animated List
+
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 <!-- .slide: data-auto-animate="1" -->
 
@@ -395,7 +632,19 @@ Bucket List
 - Item 3
 - Item 4
 
+```markdown
+<!-- .slide: data-auto-animate="1" -->
+
+- Item 1
+- Item 3
+- Item 4
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
+
 ### Animated List
+
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 <!-- .slide: data-auto-animate="1" -->
 
@@ -403,6 +652,17 @@ Bucket List
 - Item 2
 - Item 3
 - Item 4
+
+```markdown
+<!-- .slide: data-auto-animate="1" -->
+
+- Item 1
+- Item 2
+- Item 3
+- Item 4
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Animated Colored Boxes
 
@@ -430,25 +690,57 @@ Bucket List
 
 <!-- .slide: data-background-image="https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" -->
 
+```markdown
+<!-- .slide: data-background-image="https://..." -->
+```
+
 ### Slide with colored background
 
 <!-- .slide: data-background-color="#78a5e9" -->
+
+```markdown
+<!-- .slide: data-background-color="#78a5e9" -->
+```
 
 ## Pictures and Icons
 
 ### Picture
 
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+
 ![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+![tennis](https://...)
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Framed Picture
 
-![fish](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
+<div style="display: flex; justify-content: center; grid-area: left;">
+
+![fish](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+<!-- .element: class="r-frame" style="height: 30%; width: 30%"  -->
+</div>
+
+```markdown
+![fish](https://....)
 <!-- .element: class="r-frame" -->
+```
+<!-- .element: style="grid-area: code;" -->
+<grid-box>
 
 ### Font Awesome Icon
 
 <i class="fa-solid fa-face-smile"></i>
+
+```markdown
+<i class="fa-solid fa-face-smile"></i>
+```
 
 ### Font Awesome Icon with Color
 
@@ -456,24 +748,47 @@ Bucket List
 <i class="fa-solid fa-face-smile"></i>
 </span>
 
+```markdown
+<span style="font-size: 8rem; color: purple;">
+<i class="fa-solid fa-face-smile"></i>
+</span>
+```
+
 ### Font Awesome Stacked Icons
 
-<div class="display: flex; align-items: center; justify-content: space-around;"
-<span class="fa-stack fa-2x">
-<i class="fab fa-twitter fa-stack-1x fa-inverse"></i> </span>
-<span class="fa-stack fa-2x"> <i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-flag fa-stack-1x fa-inverse"></i> </span>
-<span class="fa-stack fa-2x"> <i class="fas fa-square-full fa-stack-2x"></i>
-<i class="fas fa-terminal fa-stack-1x fa-inverse"></i> </span>
-<span class="fa-stack fa-4x"> <i class="fas fa-square fa-stack-2x"></i>
-<i class="fas fa-terminal fa-stack-1x fa-inverse"></i> </span>
-<span class="fa-stack fa-2x"> <i class="fas fa-camera fa-stack-1x"></i>
-<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i> </span>
+<grid-box styles="grid-template: 'left' 'code' / 1fr">
+<columns-2 styles="justify-items: center; grid-area: left;">
+<div class="fa-stack fa-2x">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-flag fa-stack-1x fa-inverse"></i>
 </div>
+
+<div class="fa-stack fa-2x">
+<i class="fas fa-camera fa-stack-1x"></i>
+<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
+</div>
+</columns-2>
+
+```markdown
+<columns-2 styles="justify-items: center;">
+<div class="fa-stack fa-2x">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+</div>
+
+<div class="fa-stack fa-2x">
+<i class="fas fa-camera fa-stack-1x"></i>
+<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
+</div>
+</columns-2>
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### FontAwesome Bullet Icons
 
-<ul class="fa-ul" style="list-style-type: none;">
+<grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
+<ul class="fa-ul" style="list-style-type: none; grid-area: left;">
   <li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> Regular bullet icon</li>
   <li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> Regular bullet icon</li>
   <li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
@@ -483,6 +798,21 @@ Bucket List
     </span>
     </span> Stacked bullet icon</li>
 </ul>
+
+```markdown
+<ul class="fa-ul" style="list-style-type: none;">
+<li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> ...</li>
+<li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> ...</li>
+<li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
+<span class="fa-stack c-primary">
+<i class="fad fa-digging fa-stack-1x"></i>
+<i class="fas fa-ban fa-stack-2x" style="color: Tomato; opacity: 0.8;"></i>
+</span>
+</span> Stacked bullet icon</li>
+</ul>
+```
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ## Advanced Formatting
 

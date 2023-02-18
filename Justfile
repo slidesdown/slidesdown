@@ -82,7 +82,6 @@ build:
     yarn build
     find docs/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
     cp .CNAME docs/CNAME
-    cp SLIDES.md examples/SLIDES_full.md
 
 # Update version tag in script
 tag:
