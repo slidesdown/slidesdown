@@ -212,7 +212,7 @@ const Plugin = () => {
   }
 
   /**
-   * Parse Metadata from a string into an object.
+   * Parse metadata from a string into an object.
    */
   function parseMetadata(metadataString) {
     return metadataString.split(/\r?\n/)
@@ -227,7 +227,7 @@ const Plugin = () => {
   }
 
   /**
-   * apply Metadta to presentation.
+   * Apply metadta to presentation.
    */
   function applyMetadata(metadata) {
     const defaultMetadata = {
@@ -293,6 +293,15 @@ const Plugin = () => {
       ),
       "_customcontrols": () => {
         // ignore the _customcontrols visibility setting
+      },
+      "plugins": () => {
+        // ignore plugins setting as it's managed by revealjs
+      },
+      "customcontrols": () => {
+        // ignore customcontrols setting as it's managed by customcontrols
+      },
+      "dependencies": () => {
+        // ignore dependencies setting as it's managed by revealjs
       },
     };
     const parseType = (value) => {
@@ -365,6 +374,34 @@ const Plugin = () => {
   }
 
   /**
+   * Hide customcontrols if visibility of controls changes.
+   */
+  function hideCustomControlsIfVisiblityChanges(element) {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        const style = window.getComputedStyle(mutation.target, null);
+        const display = style?.getPropertyValue("display");
+        if (display === "none") {
+          document.documentElement.style.setProperty(
+            "--display-customcontrols",
+            "none",
+          );
+        }
+      });
+    });
+    if (element) {
+      observer.observe(element, {
+        attributes: true,
+        attributeFilter: ["style"],
+      });
+    } else {
+      console.error(
+        "hideCustomControlsIfVisiblityChanges, can't observe null element",
+      );
+    }
+  }
+
+  /**
    * Parses any current data-markdown slides, splits
    * multi-slide markdown into separate sections and
    * handles loading of external markdown.
@@ -411,6 +448,11 @@ const Plugin = () => {
                   }
                 }
                 applyMetadata(metadata);
+                Reveal.on("ready", (_event) => {
+                  hideCustomControlsIfVisiblityChanges(
+                    document.querySelector(".controls"),
+                  );
+                });
                 section.outerHTML = slidify(markdown, {
                   separator: section.getAttribute("data-separator"),
                   verticalSeparator: section.getAttribute(
