@@ -74,8 +74,8 @@ you need!
 <!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
 
 - [Guide to Slidesdown](https://slidesdown.e-jc.de/learn.html)
-- Learn by example from this presentation's
-  [Markdown file](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
+- Learn by example from other
+  [presentations](https://github.com/jceb/slidesdown/blob/main/examples)
 
 ### Keyboard Shortcuts
 
