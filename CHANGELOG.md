@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.7] - 2023-02-18
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Add image labels
+- Undo github packages because of the low free limits
+
 ## [0.4.6] - 2023-02-18
 
 ### Miscellaneous Tasks
