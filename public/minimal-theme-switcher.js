@@ -9,7 +9,7 @@ const themeSwitcher = {
   // Config
   _scheme: "auto",
   // menuTarget: "details[role='list']",
-  buttonsTarget: "div[data-theme-switcher]",
+  buttonsTarget: "a[data-theme-switcher]",
   // buttonAttribute: "data-theme-switcher",
   rootAttribute: "data-theme",
   localStorageKey: "picoPreferedColorScheme",
