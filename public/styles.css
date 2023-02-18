@@ -5,6 +5,14 @@
   }
 }
 
+/* FIX: always show button to collapse custom controls */
+#customcontrols button {
+  display: block !important;
+}
+#customcontrols ul {
+  bottom: 64px !important;
+}
+
 /*  box  * {{{1
 *********/
 
