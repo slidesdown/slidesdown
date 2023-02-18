@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.6] - 2023-02-16
+
+### Bug Fixes
+
+- Match metadata only at the beginning of the file
+- Only allow settings that are part of revealjs' config
+
+### Features
+
+- Prefer global revealjs controls setting
+- Hide customcontrols if visibility changes
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.3.5] - 2023-02-16
 
 ### Features
