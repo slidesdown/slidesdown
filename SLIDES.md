@@ -59,6 +59,14 @@ you need!
   [mermaid.js](https://mermaid.js.org/)
 - Reliable: Built with [reveal.js](https://revealjs.com/)
 
+### Learn how it works
+
+<!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
+
+- [Guide to Slidesdown](https://slidesdown.e-jc.de/learn.html)
+- Learn by example from this presentation's
+  [Markdown file](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
+
 ### Keyboard Shortcuts
 
 - `<Space>` advance to next slide
@@ -69,13 +77,13 @@ you need!
 - `<Esc>` open slides overview, press `<Esc>` to show selected slide
 - `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zoom into slide
 
-### Learn how it works
+### Draw on Slides
 
-<!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
+![draw](/figures/draw.png)
 
-- [Guide to Slidesdown](https://slidesdown.e-jc.de/learn.html)
-- Learn by example from this presentation's
-  [Markdown file](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
+### Open Blackboard
+
+![blackboard](/figures/blackboard.png)
 
 ## See for yourself..
 
