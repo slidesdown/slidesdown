@@ -56,7 +56,7 @@ the tool of choice to do just that!
 ### Examples
 
 - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA)
-- [Example HTML presentation](https://slidesdown.41ppl.com/)
+- [Example HTML presentation](https://slidesdown.e-jc.de/)
 - [Example PDF](./examples/slides.pdf)
 - [Example Markdown](https://github.com/jceb/slidesdown/blob/main/SLIDES.md)
 
