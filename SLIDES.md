@@ -674,21 +674,53 @@ Bucket List
 
 <!-- .slide: data-auto-animate="1" -->
 
-<columns-3>
-<div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<grid-box styles="grid-template: 'left' 'code' / 100%">
+
+<columns-3 styles="justify-items: center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 </columns-3>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<!-- .slide: data-auto-animate="1" -->
+
+<columns-3 styles="justify-items: center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</columns-3>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Animated Colored Boxes
 
 <!-- .slide: data-auto-animate="1" -->
 
-<columns-3>
-<div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-<div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<grid-box styles="grid-template: 'left' 'code' / 100%">
+
+<columns-3 styles="justify-items: center">
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
 </columns-3>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<!-- .slide: data-auto-animate="1" -->
+
+<columns-3 styles="justify-items: center">
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+</columns-3>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ## Backgrounds
 
@@ -834,29 +866,29 @@ Colored <span style="color: #78a5e9">text</span>
 
 <columns-2 styles="grid-area: main">
 
-<span class="box-shadow-trbl">
+<span class="s-trbl">
 Shadow top, right, bottom, left.
 </span>
 
-<span class="box-shadow-rbl">
+<span class="s-rbl">
 Shadow right, bottom, left.
 </span>
 
-<span class="box-shadow-rb">
+<span class="s-rb">
 Shadow right, bottom.
 </span>
 
-<span class="box-shadow-bl">
+<span class="s-bl">
     Shadow bottom, left.
 </span>
 
 </columns-2>
 
 ```markdown
-<span class="box-shadow-trbl">Shadow top, right, bottom, left.</span>
-<span class="box-shadow-rbl">Shadow right, bottom, left.</span>
-<span class="box-shadow-rb">Shadow right, bottom.</span>
-<span class="box-shadow-bl">Shadow bottom, left.</span>
+<span class="s-trbl">Shadow top, right, bottom, left.</span>
+<span class="s-rbl">Shadow right, bottom, left.</span>
+<span class="s-rb">Shadow right, bottom.</span>
+<span class="s-bl">Shadow bottom, left.</span>
 ```
 <!-- .element: style="grid-area: code;" -->
 
@@ -864,28 +896,73 @@ Shadow right, bottom.
 
 ### Colored Boxes
 
-<columns-3>
-<div class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<grid-box styles="grid-template: 'left' 'code' / 100%">
+
+<columns-3 styles="justify-items: center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 </columns-3>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<columns-3 styles="justify-items: center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</columns-3>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Font Awesome Buttons
 
-<columns-3>
-<div class="flex align-center justify-around box-8rem radius-10p box-shadow-trbl" style=" background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
-<div class="fs-4 flex align-center justify-around box-10rem radius-20p box-shadow-rbl" style=" background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
-<div class="fs-7 flex align-center justify-around box-12rem radius-50p box-shadow-rb" style=" background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
+
+<grid-box styles="grid-template: 'left' 'code' / 100%">
+
+<columns-3 styles="justify-items: center">
+<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
+<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
+<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
 </columns-3>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<columns-3 styles="justify-items: center">
+<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
+<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
+<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
+</columns-3>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Picture Buttons
 
+
+<grid-box styles="grid-template: 'left' 'code' / 100%">
+
 <columns-4>
-<div class="box-8rem radius-10p overflow-hidden background-cover box-shadow-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="box-10rem radius-20p overflow-hidden background-cover box-shadow-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="box-12rem radius-30p overflow-hidden background-cover box-shadow-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 </columns-4>
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+<columns-4>
+<div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://...");'></div>
+<div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://...");'></div>
+<div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://...");'></div>
+<div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://...");'></div>
+</columns-4>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ## Charts
 
@@ -1191,7 +1268,7 @@ graph LR
 
 ### Flowchart Complex
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<grid-box styles="grid-template: 'left code' 80% / 50% 50%;">
 
 ```mermaid
 graph TD
@@ -1203,7 +1280,7 @@ graph TD
     D --> F[Save Image and Code]
     F --> B
 ```
-<!-- .element: style="grid-area: left; height: 70%" -->
+<!-- .element: style="grid-area: left; height: 500px" -->
 
 ```markdown
 ` ``mermaid
