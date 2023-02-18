@@ -197,7 +197,7 @@ main() {
 	local UPDATE="${UPDATE:-}"
 	local NO_OPEN="${NO_OPEN:-}"
 	local PORT="${PORT:-3000}"
-	local IMAGE="${IMAGE:-slidesdown/slidesdown:${VERSION}}"
+	local IMAGE="${IMAGE:-jceb/slidesdown:${VERSION}}"
 	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${RESOLUTION:-2560x1440}"
 
