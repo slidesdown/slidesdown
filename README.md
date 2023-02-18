@@ -1,4 +1,4 @@
-# slidesdown
+# <img src="./public/favicon.svg" alt="logo" style="height: 0.8em; margin: 0" /> slidesdown
 
 Slideshows as fast as you can type Markdown.
 [slidesdown](https://slidesdown.e-jc.de/loader.html) is powered by the
