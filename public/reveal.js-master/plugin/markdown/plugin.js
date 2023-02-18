@@ -226,8 +226,9 @@ const Plugin = () => {
    */
   function applyMetadata(metadata) {
     const defaultMetadata = {
-      "theme": "./reveal.js-master/dist/theme/white.css",
-      "highlight-theme": "./reveal.js-master/plugin/highlight/monokai.css",
+      "theme": "/reveal.js-master/dist/theme/white.css",
+      "highlight-theme": "/reveal.js-master/plugin/highlight/monokai.css",
+      "favicon": "/favicon.svg",
     };
     // todo: sanitize data
     const loadStyleshet = (cssReference) => {
