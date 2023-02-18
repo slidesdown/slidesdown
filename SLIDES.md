@@ -520,7 +520,7 @@ Bucket List
 ### Complex
 
 <grid-box styles="grid-template: 'left code' / 50% 50%">
-<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
+<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
 
 <v-box style="grid-area: header; background-color: green">
 Shopping List
@@ -607,8 +607,12 @@ Bucket List
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 <columns-2 styles="justify-items: center">
-<img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 30%;" />
-<img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 30%;" />
+<div>
+  <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 70%;" />
+</div>
+<div>
+  <img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 40%;" />
+</div>
 <!-- .element: class="fragment" -->
 </columns-2>
 <!-- .element: style="grid-area: left;" -->
@@ -820,9 +824,15 @@ Bucket List
 
 ### Colored <span style="color: #78a5e9">text</span>
 
+```markdown
+Colored <span style="color: #78a5e9">text</span>
+```
+
 ### Box Shadow
 
-<columns-2>
+<grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
+
+<columns-2 styles="grid-area: main">
 
 <span class="box-shadow-trbl">
 Shadow top, right, bottom, left.
@@ -841,6 +851,16 @@ Shadow right, bottom.
 </span>
 
 </columns-2>
+
+```markdown
+<span class="box-shadow-trbl">Shadow top, right, bottom, left.</span>
+<span class="box-shadow-rbl">Shadow right, bottom, left.</span>
+<span class="box-shadow-rb">Shadow right, bottom.</span>
+<span class="box-shadow-bl">Shadow bottom, left.</span>
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Colored Boxes
 
@@ -872,6 +892,8 @@ Shadow right, bottom.
 via [chart.js](https://www.chartjs.org/)
 
 ### Polar Area Chart
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```polarArea
 {
@@ -905,8 +927,40 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+<!-- .element: style="grid-area: left; height: 300px;" -->
+
+```markdown
+` ``polarArea
+{
+  "data": {
+    "labels": [
+      "Red",
+      ...
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          11,
+          ...
+        ],
+        "backgroundColor": [
+          "rgb(255, 99, 132)",
+          ...
+        ]
+      }
+    ]
+  }
+}
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Line Chart
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```line
 {
@@ -925,8 +979,33 @@ via [chart.js](https://www.chartjs.org/)
  }
 }
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``line
+{
+ "data": {
+  "labels": ["January","February","March","April","May","June","July"],
+  "datasets":[
+   {
+    "data":[65,59,80,81,56,55,40],
+    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[28,48,40,19,86,27,90],
+    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ }
+}
+` ``
+```
+
+<!-- .element: style="grid-area: code;" -->
 
 ### Bar Chart
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```bar
 {
@@ -958,8 +1037,36 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``bar
+{
+  "data": {
+    "labels": [
+      "January",
+      ...
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          65,
+          ...
+        ],
+        "borderWidth": 1
+      }
+    ]
+  }
+}
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
 
 ### Radar chart
+
+<!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
+<grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
 ```radar
 {
@@ -1016,6 +1123,43 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``radar
+{
+  "data": {
+    "labels": [
+      "Eating",
+      ...
+    ],
+    "datasets": [
+      {
+        "label": "My First Dataset",
+        "data": [
+          65,
+          ...
+        ],
+        "fill": true,
+        ...
+      },
+      {
+        "label": "My Second Dataset",
+        "data": [
+          28,
+          ...
+        ],
+        "fill": true,
+        ...
+      }
+    ]
+  }
+}
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ## Diagrams
 
@@ -1023,7 +1167,7 @@ via [mermaid.js](https://mermaid.js.org/)
 
 ### Flowchart
 
-<columns-2>
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 graph LR
@@ -1031,6 +1175,23 @@ graph LR
   B-->C
   B-->D;
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```mardown
+` ``mermaid
+graph LR
+  A --- B
+  B-->C
+  B-->D;
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
+
+### Flowchart Complex
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 graph TD
@@ -1042,10 +1203,27 @@ graph TD
     D --> F[Save Image and Code]
     F --> B
 ```
+<!-- .element: style="grid-area: left; height: 70%" -->
 
-</columns-2>
+```markdown
+` ``mermaid
+graph TD
+    A[Enter Chart Definition] --> B(Preview)
+    B --> C{decide}
+    C --> D[Keep]
+    C --> E[Edit Definition]
+    E --> B
+    D --> F[Save Image and Code]
+    F --> B
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Sequence Diagram
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 sequenceDiagram
@@ -1053,8 +1231,24 @@ sequenceDiagram
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+    Alice-)John: See you later!
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### State Diagram
+
+<!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
+<grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
 ```mermaid
 stateDiagram-v2
@@ -1065,8 +1259,26 @@ stateDiagram-v2
   Moving --> Crash
   Crash --> [*]
 ```
+<!-- .element: style="grid-area: left; height: 80%" -->
+
+```markdown
+` ``mermaid
+stateDiagram-v2
+  [*] --> Still
+  Still --> [*]
+  Still --> Moving
+  Moving --> Still
+  Moving --> Crash
+  Crash --> [*]
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Entity Relationship Diagram
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 erDiagram
@@ -1074,8 +1286,23 @@ erDiagram
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### User Journey Diagram
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 journey
@@ -1088,8 +1315,28 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
+<!-- .element: style="grid-area: left; height: 300px;" -->
+
+```markdown
+` ``mermaid
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Gantt Chart
+
+<grid-box styles="grid-template: 'left' 'code' / 100%;">
 
 ```mermaid
 gantt
@@ -1102,8 +1349,28 @@ gantt
     Task in sec      :2014-01-12  , 12d
     another task      : 24d
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ### Git Graph
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```mermaid
 gitGraph
@@ -1118,6 +1385,26 @@ gitGraph
    commit
    commit
 ```
+<!-- .element: style="grid-area: left;" -->
+
+```markdown
+` ``mermaid
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+` ``
+```
+<!-- .element: style="grid-area: code;" -->
+
+</grid-box>
 
 ---
 
