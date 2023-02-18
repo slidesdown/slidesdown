@@ -126,7 +126,7 @@ main() {
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: is to run a local http server via Python3 and connect to an online service, env DOCKER)'
 			echo -e '  -i|--image\tUse docker image (default: jceb/slidesdown:latest, env IMAGE)'
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
-			echo -e '  -s|--service\tConnect to online service (default: slidesdown.e-jc.de, env SERVICE)'
+			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
 			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
 			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
 			echo -e '  -v|--version\tPrint script version'
@@ -198,7 +198,7 @@ main() {
 	local NO_OPEN="${NO_OPEN:-}"
 	local PORT="${PORT:-3000}"
 	local IMAGE="${IMAGE:-jceb/slidesdown:${VERSION}}"
-	local SERVICE="${SERVICE:-https://slidesdown.e-jc.de}"
+	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${RESOLUTION:-2560x1440}"
 
 	local ROOT_DIRECTORY

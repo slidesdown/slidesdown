@@ -72,7 +72,7 @@ const main = (defaults) => {
   // initialize presentation
   mdSection.setAttribute("data-markdown", slidesURL);
   Reveal.slidesdownLoader = () => {
-    window.location.href = "https://slidesdown.e-jc.de/loader.html";
+    window.location.href = "https://slidesdown.github.io/loader.html";
   };
   Reveal.initialize({
     hash: true,

@@ -9,7 +9,7 @@ keywords: slides slideshow slidesdown presentation presentations markup markdown
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
-# Load font awesome pro icons (only works on domain slidesdown.e-jc.de) free icons work everywhere. If both are enabled the pro icons are loaded
+# Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
 fontawesomePro: true
 fontawesomeFree: false
 # URL to favicon
@@ -35,7 +35,7 @@ pdfSeparateFragments: false
 ## Hi!
 
 Slidesdown makes it simple to quickly turning an idea into a beautiful
-presentation. A [Markdown file](https://slidesdown.e-jc.de/learn.html) is all
+presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
 you need!
 
 <!-- generated with
@@ -61,7 +61,7 @@ you need!
 
 - Setup: No installation
 - Focus: Just write Markdown
-- Sharable: [Create links](https://slidesdown.e-jc.de/loader.html) to your
+- Sharable: [Create links](https://slidesdown.github.io/loader.html) to your
   slides
 - Offline First:
   [CLI avaiable](https://github.com/jceb/slidesdown/blob/main/README.md) for
@@ -75,7 +75,7 @@ you need!
 
 <!-- - [Introduction video to slidesdown](https://youtu.be/ZNXvQGsk_wA) -->
 
-- [Guide to Slidesdown](https://slidesdown.e-jc.de/learn.html)
+- [Guide to Slidesdown](https://slidesdown.github.io/learn.html)
 - Learn by example from other
   [presentations](https://github.com/jceb/slidesdown/blob/main/examples)
 

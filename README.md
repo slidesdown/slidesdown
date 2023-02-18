@@ -2,19 +2,19 @@
 
 Slideshows as fast as you can type.
 
-[Slidesdown](https://slidesdown.e-jc.de) is powered by the incredible
+[Slidesdown](https://slidesdown.github.io) is powered by the incredible
 [reveal.js presentation framework](https://revealjs.com/).
 
 ## Learn
 
-Visit [slidesdown.e-jc.de/learn.html](https://slidesdown.e-jc.de/learn.html) to
+Visit [slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html) to
 get started.
 
 ## Usage
 
 ### Online Viewer
 
-Visit [slidesdown.e-jc.de/loader.html](https://slidesdown.e-jc.de/loader.html)
+Visit [slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
 and enter the URL to your Markdown presentation, e.g.
 `github.com/jceb/slidesdown/SLIDES.md`.
 
@@ -34,7 +34,7 @@ The following programs are used by `slidesdown`:
 - [`docker`](https://www.docker.com/) required for offline presentations and
   hot-reloading slides while editing
 - [`python3`](https://www.python.org/) required for online presentations via
-  [slidesdown.e-jc.de](https://slidesdown.e-jc.de) if the slideshow file shall
+  [slidesdown.github.io](https://slidesdown.github.io) if the slideshow file shall
   be served from the local computer, i.e. useful for creating slides or when the
   presentation is private and shall not be made accessible publicly via GitHub
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
@@ -108,17 +108,18 @@ slidesdown -h
 
 ### Folder Structure and Important Files
 
-- [`docs/`](./docs) build target folder served at
-  [https://slidesdown.e-jc.de](https://slidesdown.e-jc.de) and used in the
+- [`published/`](https://github.com/slidesdown/slidesdown.github.io) build
+  target folder served at
+  [https://slidesdown.github.io](https://slidesdown.github.io) and used in the
   docker image
 - [`examples/`](./examples) contains example presentations
 - [`index.html`](./index.html) is the presentation template that gets loaded
 - [`Justfile`](./Justfile) tasks collection, run `just` to get the list of tasks
 - [`public/`](./public) contains external dependencies (not part of git) and
   - [`public/loader.html`](./public/loader.html) presentation loader served at
-    [https://slidesdown.e-jc.de/loader.html](https://slidesdown.e-jc.de/loader.html)
+    [https://slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
   - [`public/learn.html`](./public/learn.html) tutorial served at
-    [https://slidesdown.e-jc.de/learn.html](https://slidesdown.e-jc.de/learn.html)
+    [https://slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
   - [`public/slidesmarkdown.js`](./public/slidesmarkdown.js) Markdown converter
     plugin - this is the core of this project
 - [`slidesdown`](./slidesdown) CLI
