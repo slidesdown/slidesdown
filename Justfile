@@ -16,7 +16,7 @@ dev:
 
 # Watch plugins and rebuild them
 dev-watch:
-    cargo-watch -s "npx gulp plugins" -w "${PWD}/public/reveal.js-master/plugin/markdown/plugin.js" -C "${PWD}/public/reveal.js-master"
+    cargo-watch -s "npx gulp plugins" -w "${PWD}/public/reveal.js/plugin/markdown/plugin.js" -C "${PWD}/public/reveal.js"
 
 # Update pico
 update-pico:
@@ -24,17 +24,18 @@ update-pico:
 
 # Update revealjs
 update-revealjs:
-    curl -Lfo public/master.zip https://github.com/hakimel/reveal.js/archive/master.zip
-    if [ -e public/reveal.js-master.bak ]; then \
-    rm -rf public/reveal.js-master.bak; \
+    if [ -e public/reveal.js.bak ]; then \
+        rm -rf public/reveal.js.bak; \
     fi
-    mv public/reveal.js-master public/reveal.js-master.bak
-    cd public && unzip master.zip
-    rm public/master.zip
-    cp -r public/reveal.js-master.bak/plugin/markdown/plugin.js public/reveal.js-master/plugin/markdown/plugin.js
-    cd public/reveal.js-master && npm install
+    mv public/reveal.js public/reveal.js.bak
+    VERSION="4.4.0"; cd public && \
+        curl -Lf "https://github.com/hakimel/reveal.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
+        tar xvz && \
+        mv "reveal.js-${VERSION}" reveal.js
+    cp -r public/reveal.js.bak/plugin/markdown/plugin.js public/reveal.js/plugin/markdown/plugin.js
+    cd public/reveal.js && npm install
     # Source: https://github.com/highlightjs/highlight.js
-    VERSION="11.7.0"; cd public/reveal.js-master/plugin/highlight && \
+    VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \
         tar xvz "highlight.js-${VERSION}/src/styles" && \
         mv "highlight.js-${VERSION}/src/styles/"* . && \
@@ -43,8 +44,8 @@ update-revealjs:
 # Build application
 build:
     rm -rf docs
-    cd public/reveal.js-master/ && npx gulp plugins
+    cd public/reveal.js/ && npx gulp plugins
     yarn build
-    rm -rf docs/reveal.js-master.bak
-    find docs/reveal.js-master/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
+    rm -rf docs/reveal.js.bak
+    find docs/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
     cp .CNAME docs/CNAME

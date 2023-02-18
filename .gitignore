@@ -1,9 +1,9 @@
 /node_modules/**
-/public/reveal.js-master.bak
+/public/reveal.js.bak
 # The ignore dance - the parent directory needs to be explicitly unignored
-/public/reveal.js-master/*
-!/public/reveal.js-master/plugin
-/public/reveal.js-master/plugin/*
-!/public/reveal.js-master/plugin/markdown
-/public/reveal.js-master/plugin/markdown/*
-!/public/reveal.js-master/plugin/markdown/plugin.js
+/public/reveal.js/*
+!/public/reveal.js/plugin
+/public/reveal.js/plugin/*
+!/public/reveal.js/plugin/markdown
+/public/reveal.js/plugin/markdown/*
+!/public/reveal.js/plugin/markdown/plugin.js

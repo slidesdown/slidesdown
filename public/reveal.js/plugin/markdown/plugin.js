@@ -267,9 +267,9 @@ const Plugin = () => {
         favicon.href = faviconReference;
         document.head.appendChild(favicon);
       },
-      "theme": defaultURLToStylesheet("/reveal.js-master/dist/theme/"),
+      "theme": defaultURLToStylesheet("/reveal.js/dist/theme/"),
       "highlight-theme": defaultURLToStylesheet(
-        "/reveal.js-master/plugin/highlight/",
+        "/reveal.js/plugin/highlight/",
       ),
       "addiontional-stylesheet": loadStylesheet,
       "author": addMeta("author"),
