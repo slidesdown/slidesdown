@@ -12,7 +12,6 @@
         allOsPackages = with pkgs; [
           # Nix packages: https://search.nixos.org/packages
           bashInteractive # bash used in scripts
-          cargo-watch # Generic file templating tool https://github.com/topics/cargo-generate
           curl # HTTP and more CLI https://curl.se/
           gh # GitHub CLI https://cli.github.com/
           git-cliff # Changelog generator https://github.com/orhun/git-cliff
