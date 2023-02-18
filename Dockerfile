@@ -1,5 +1,9 @@
 FROM node:18-alpine
 
+LABEL org.opencontainers.image.source=https://github.com/slidesdown/slidesdown
+LABEL org.opencontainers.image.description="Slideshows as fast as you can type."
+LABEL org.opencontainers.image.licenses=MIT
+
 RUN apk -U --no-cache add bash
 
 COPY src/entrypoint.sh /
