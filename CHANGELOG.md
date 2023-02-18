@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.1] - 2023-02-18
+
+### Bug Fixes
+
+- Correct container image name
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Add automation for pushing published changes upstream
+
 ## [0.5.0] - 2023-02-18
 
 ### Documentation
