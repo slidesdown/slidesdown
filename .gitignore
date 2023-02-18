@@ -11,3 +11,4 @@
 !/public/reveal.js/plugin/markdown/plugin.js
 *.pdf
 /.direnv/
+/TODO.md
