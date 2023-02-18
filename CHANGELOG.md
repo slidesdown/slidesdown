@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2023-02-18
+
+### Documentation
+
+- Add more code samples
+- Add missing examples for boxes
+
+### Features
+
+- Add rename and update styles
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.4.7] - 2023-02-18
 
 ### Miscellaneous Tasks
