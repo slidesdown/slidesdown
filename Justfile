@@ -33,6 +33,4 @@ build:
     yarn build
     rm -rf docs/reveal.js-master.bak
     find docs/reveal.js-master/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
-    cp SLIDES.md docs/
     cp .CNAME docs/CNAME
-    cp ._config.yml docs/_config.yml

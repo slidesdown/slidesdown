@@ -50,7 +50,9 @@ const main = (defaults) => {
   const customSlidesURL = new URLSearchParams(
     new URL(document.URL).search,
   ).get("slides");
-  let slidesURL = customSlidesURL ? customSlidesURL : defaults.resource;
+  let slidesURL = customSlidesURL
+    ? customSlidesURL
+    : `github.com/jceb/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
 
   slidesURL = computeURL(defaults, slidesURL);
 
