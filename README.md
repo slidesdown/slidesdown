@@ -100,7 +100,6 @@ slidesdown -h
 
 ### Required Tools
 
-- [`cargo-watch`](https://github.com/watchexec/cargo-watch) file watcher
 - [`curl`](https://curl.se/)
 - [`gh`](https://github.com/cli/cli) GitHub CLI for creating releases
 - [`git-cliff`](https://github.com/orhun/git-cliff) changelog generator
