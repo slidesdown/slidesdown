@@ -5,7 +5,6 @@
  */
 
 import { marked } from "marked";
-import mermaid from "../../../mermaid/mermaid.js";
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
