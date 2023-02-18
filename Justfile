@@ -77,11 +77,6 @@ update-revealjs:
         mv "highlight.js-${VERSION}/src/styles/"* . && \
         rm -vrf "highlight.js-${VERSION}"
 
-# Update version tag in script
-tag:
-    TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" && \
-      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown
-
 # Build application
 build:
     rm -rf docs
@@ -92,18 +87,24 @@ build:
     cp .CNAME docs/CNAME
     cp SLIDES.md examples/SLIDES_full.md
 
+# Update version tag in script
+tag:
+    TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" && \
+      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown
+
 # Update changelog
 changelog:
     git cliff > CHANGELOG.md
 
-# Prepare release
-prepare: tag changelog
+# Post release adjustments
+post-release: tag changelog
 
 # Create a new release
 release:
     TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
         git cliff --strip all --current | \
         gh release create -F - "${TAG}"
+    just post-release
 
 # Build docker images
 build-docker:
