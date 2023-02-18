@@ -37,59 +37,6 @@
     <script src="./reveal.js-master/plugin/notes/notes.js"></script>
     <script src="./reveal.js-master/plugin/markdown/markdown.js"></script>
     <script src="./reveal.js-master/plugin/highlight/highlight.js"></script>
-    <!-- <script type="module"> -->
-    <script>
-      const customSlidesURL = new URLSearchParams(
-        new URL(document.URL).search
-      ).get("slides")
-      const defaultBranch = "main"
-      const defaultResource = "SLIDES.md"
-      let slidesURL = customSlidesURL ? customSlidesURL : defaultResource
-      const computeURL = (defaultBranch, defaultResource, url) => {
-        const decodedURL = decodeURI(url)
-        let match = ""
-        const githubRegExp = new RegExp(
-          /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)(?:\/(?:((?<blob>blob)|(?<tree>tree))\/)?(?:(?<dir_or_branch>[^/]*)\/)?(?<resource>.*))?/
-        )
-        if ((match = githubRegExp.exec(decodedURL)) !== null) {
-          // console.log("match", match)
-          let resource = `${defaultBranch}/${defaultResource}`
-          // if tree is present, then the default resouce name must be appended
-          if (match.groups.tree && match.groups.dir_or_branch) {
-            // if tree or blob are present, then dir_or_branch is the branch - perfect, I can build the URL with confidence
-            resource = `${match.groups.dir_or_branch}/${match.groups.resource}/${defaultResource}`
-          } else if (match.groups.blob && match.groups.dir_or_branch) {
-            // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
-            resource = `${match.groups.dir_or_branch}/${
-              match.groups.resource ? match.groups.resource : defaultResource
-            }`
-          } else {
-            if (match.groups.dir_or_branch) {
-              resource = `${defaultBranch}/${match.groups.dir_or_branch}/${
-                match.groups.resource ? match.groups.resource : defaultResource
-              }`
-            } else {
-              resource = `${defaultBranch}/${
-                match.groups.resource ? match.groups.resource : defaultResource
-              }`
-            }
-          }
-          return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`
-        }
-        return decodedURL
-      }
-
-      slidesURL = computeURL(defaultBranch, defaultResource, slidesURL)
-      // console.log("slidesURL", slidesURL, slidesURL)
-
-      const mdSection = document.getElementById("markdown")
-      if (mdSection) {
-        mdSection.setAttribute("data-markdown", slidesURL)
-      }
-      Reveal.initialize({
-        hash: true,
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      })
-    </script>
+    <script type="module" src="init.js"></script>
   </body>
 </html>
