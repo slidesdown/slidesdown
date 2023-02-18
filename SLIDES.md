@@ -20,15 +20,16 @@ author: Jan Christoph Ebersbach
 
 1. [Intro slidesdown](#intro-slidesdown)
 2. [Basics](#basics)
-3. [Animation](#animation)
-4. [Backgrounds](#backgrounds)
-5. [Pictures and Icons](#pictures-and-icons)
-6. [Advanced Formatting](#advanced-formatting)
-7. [Charts](#charts)
+3. [Layouts](#layouts)
+4. [Animations](#animations)
+5. [Backgrounds](#backgrounds)
+6. [Pictures and Icons](#pictures-and-icons)
+7. [Advanced Formatting](#advanced-formatting)
+8. [Charts](#charts)
 
 ## Intro slidesdown
 
-> Turn markdown files into beautiful presentations quickly.
+> Slideshows as fast as you can type Markdown.
 
 ### Markdown
 
@@ -177,7 +178,7 @@ hello("world!");
 | col 2 is      |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 
-## Layout
+## Layouts
 
 ### 1 Column
 
@@ -346,7 +347,7 @@ Column 3
 
 </grid-box>
 
-## Animation
+## Animations
 
 ### Incremental Lists
 
