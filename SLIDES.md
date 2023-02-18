@@ -114,7 +114,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 ### Links
 
-<grid-2>
+<column-2>
 
 [A Text link](https://github.com/jceb/slidesdown)
 
@@ -127,7 +127,7 @@ An Image link
 
 <!-- .element: class="50p" -->
 
-</grid-2>
+</column-2>
 
 ### Quotes
 
@@ -177,10 +177,13 @@ hello("world!");
 | col 2 is      |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 
-### Columns
+## Layout
 
-<grid-3>
-<v-box>
+### 1 Column
+
+<!-- .slide: data-auto-animate="1" -->
+
+<v-box  data-id="1">
 Column 1
 
 - Item 1
@@ -189,7 +192,7 @@ Column 1
 
 </v-box>
 
-<v-box>
+<v-box data-id="2">
 Column 2
 
 - Item 1
@@ -198,7 +201,7 @@ Column 2
 
 </v-box>
 
-<v-box>
+<v-box data-id="3">
 Column 3
 
 - Item 1
@@ -206,7 +209,142 @@ Column 3
 - Item 3
 
 </v-box>
-</grid-3>
+
+### 2 Columns
+
+<!-- .slide: data-auto-animate="1" -->
+
+<column-2>
+<v-box  data-id="1">
+Column 1
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box data-id="2">
+Column 2
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box data-id="3">
+Column 3
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+</column-2>
+
+### 3 Columns
+
+<!-- .slide: data-auto-animate="1" -->
+
+<column-3>
+<v-box  data-id="1">
+Column 1
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box data-id="2">
+Column 2
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box data-id="3">
+Column 3
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+</column-3>
+
+### Complex
+
+<!-- .slide: data-auto-animate="1" -->
+
+<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
+
+<v-box style="grid-area: header; background-color: green" data-id="1">
+Column 1
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box style="grid-area:sidebar; background-color: blue" data-id="2">
+Column 2
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box style="grid-area: main; background-color: red" data-id="3">
+Column 3
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+</grid-box>
+
+### Complex Sidebar Right
+
+<!-- .slide: data-auto-animate="1" -->
+
+<grid-box styles="grid-template: 'header header header' 'main main sidebar' / 1fr 1fr 300px">
+
+<v-box style="grid-area: header; background-color: green" data-id="1">
+Column 1
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box style="grid-area:sidebar; background-color: blue" data-id="2">
+Column 2
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+<v-box style="grid-area: main; background-color: red" data-id="3">
+Column 3
+
+- Item 1
+- Item 2
+- Item 3
+
+</v-box>
+
+</grid-box>
 
 ## Animation
 
@@ -218,11 +356,11 @@ Column 3
 
 ### Fragments
 
-<grid-2>
+<column-2>
 <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
 <img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
 <!-- .element: class="fragment" -->
-</grid-2>
+</column-2>
 
 <div>
 
@@ -258,21 +396,21 @@ Column 3
 
 <!-- .slide: data-auto-animate="1" -->
 
-<grid-3>
+<column-3>
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</grid-3>
+</column-3>
 
 ### Animated Colored Boxes
 
 <!-- .slide: data-auto-animate="1" -->
 
-<grid-3>
+<column-3>
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
-</grid-3>
+</column-3>
 
 ## Backgrounds
 
@@ -334,7 +472,7 @@ Column 3
 
 ### Box Shadow
 
-<grid-2x2>
+<column-2>
 
 <span class="box-shadow-trbl">
 Shadow top, right, bottom, left.
@@ -352,32 +490,32 @@ Shadow right, bottom.
     Shadow bottom, left.
 </span>
 
-</grid-2x2>
+</column-2>
 
 ### Colored Boxes
 
-<grid-3>
+<column-3>
 <div class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</grid-3>
+</column-3>
 
 ### Font Awesome Buttons
 
-<grid-3>
+<column-3>
 <div class="flex align-center justify-around box-8rem radius-10p box-shadow-trbl" style=" background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
 <div class="fs-4 flex align-center justify-around box-10rem radius-20p box-shadow-rbl" style=" background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
 <div class="fs-7 flex align-center justify-around box-12rem radius-50p box-shadow-rb" style=" background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
-</grid-3>
+</column-3>
 
 ### Picture Buttons
 
-<grid-4>
+<column-4>
 <div class="box-8rem radius-10p overflow-hidden background-cover box-shadow-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-10rem radius-20p overflow-hidden background-cover box-shadow-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-12rem radius-30p overflow-hidden background-cover box-shadow-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-</grid-4>
+</column-4>
 
 ## Charts
 

@@ -1,28 +1,4 @@
-import {
-  css,
-  html,
-  LitElement,
-} from "https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js";
-
-export class SimpleGreeting extends LitElement {
-  static properties = {
-    name: {},
-  };
-  static styles = css`
-          :host {
-            color: blue;
-          }
-        `;
-  constructor() {
-    super();
-    // Declare reactive properties
-    this.name = "World";
-  }
-  render() {
-    return html`<p>Hello Man, ${this.name}!</p>`;
-  }
-}
-customElements.define("simple-greeting", SimpleGreeting);
+import { css, html, LitElement } from "lit";
 
 export class FontAwesomeIcon extends LitElement {
   static properties = {
@@ -38,129 +14,95 @@ export class FontAwesomeIcon extends LitElement {
 }
 customElements.define("fa-i", FontAwesomeIcon);
 
-export class VerticalFlexBox extends LitElement {
+export class FlexBox extends LitElement {
+  static properties = {
+    styles: "",
+  };
   constructor() {
     super();
   }
   static styles = css`
-          :host {
+          .flex {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: space-around;
           }
         `;
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="flex" style="${this.styles}"><slot></slot></div>`;
+  }
+}
+// -------------------- FlexBox
+
+customElements.define("flex-box", FlexBox);
+
+export class VerticalFlexBox extends LitElement {
+  render() {
+    return html`<flex-box styles="flex-direction: column; ${this.styles}"><slot></slot></grid-box>`;
   }
 }
 customElements.define("v-box", VerticalFlexBox);
 
 export class HorizontalFlexBox extends LitElement {
-  constructor() {
-    super();
-  }
-  static styles = css`
-          :host {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-around;
-          }
-        `;
   render() {
-    return html`<slot></slot>`;
+    return html`<flex-box styles="flex-direction: row;"><slot></slot></grid-box>`;
   }
 }
 customElements.define("h-box", HorizontalFlexBox);
 
+// -------------------- GridBox
+
 export class GridBox extends LitElement {
+  static properties = {
+    styles: "",
+  };
   constructor() {
     super();
   }
   static styles = css`
-          :host {
+          .grid {
             display: grid;
             align-items: center;
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 10px;
+            gap: 10px;
           }
         `;
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="grid" style="${this.styles}"><slot></slot></div>`;
   }
 }
 customElements.define("grid-box", GridBox);
 
-export class GridBox2 extends LitElement {
-  constructor() {
-    super();
-  }
-  static styles = css`
-          :host {
-            display: grid;
-            align-items: center;
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 10px;
-          }
-        `;
+export class Column2 extends LitElement {
   render() {
-    return html`<slot></slot>`;
+    return html`<grid-box styles="grid-template-columns: repeat(2, 1fr)"><slot></slot></grid-box>`;
   }
 }
-customElements.define("grid-2", GridBox2);
+customElements.define("column-2", Column2);
 
-export class GridBox3 extends LitElement {
-  constructor() {
-    super();
-  }
-  static styles = css`
-          :host {
-            display: grid;
-            align-items: center;
-            grid-template-columns: repeat(3, 1fr);
-            grid-column-gap: 10px;
-          }
-        `;
+export class Column3 extends LitElement {
   render() {
-    return html`<slot></slot>`;
+    return html`<grid-box styles="grid-template-columns: repeat(3, 1fr)"><slot></slot></grid-box>`;
   }
 }
-customElements.define("grid-3", GridBox3);
+customElements.define("column-3", Column3);
 
-export class GridBox4 extends LitElement {
-  constructor() {
-    super();
-  }
-  static styles = css`
-          :host {
-            display: grid;
-            align-items: center;
-            grid-template-columns: repeat(4, 1fr);
-            grid-column-gap: 10px;
-          }
-        `;
+export class Column4 extends LitElement {
   render() {
-    return html`<slot></slot>`;
+    return html`<grid-box styles="grid-template-columns: repeat(4, 1fr)"><slot></slot></grid-box>`;
   }
 }
-customElements.define("grid-4", GridBox4);
+customElements.define("column-4", Column4);
 
-export class GridBox2x2 extends LitElement {
-  constructor() {
-    super();
-  }
-  static styles = css`
-          :host {
-            display: grid;
-            align-items: center;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-column-gap: 10px;
-          }
-        `;
+export class Column5 extends LitElement {
   render() {
-    return html`<slot></slot>`;
+    return html`<grid-box styles="grid-template-columns: repeat(5, 1fr)"><slot></slot></grid-box>`;
   }
 }
-customElements.define("grid-2x2", GridBox2x2);
+customElements.define("column-5", Column5);
+
+export class Column6 extends LitElement {
+  render() {
+    return html`<grid-box styles="grid-template-columns: repeat(6, 1fr)"><slot></slot></grid-box>`;
+  }
+}
+customElements.define("column-6", Column6);
