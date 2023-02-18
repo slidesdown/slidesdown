@@ -23,7 +23,7 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
-# Full list of supported settings: https://revealjs.com/config/
+# Full list of supported settings: https://revealjs.com/config/ and https://github.com/hakimel/reveal.js/blob/master/js/config.js
 ---
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown

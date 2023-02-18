@@ -62,7 +62,7 @@ controls: true
 # Center presentation
 center: true
 # Create separate pages for fragments
-# Full list of supported settings: https://revealjs.com/config/
+# Full list of supported settings: https://revealjs.com/config/ and https://github.com/hakimel/reveal.js/blob/master/js/config.js
 ---
 
 # My first markdown slideshow
