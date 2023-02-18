@@ -35,6 +35,14 @@ Author: Your Name
 2. Markdown is easy to write
 3. Let's use it for presentations
 
+## A horizontal Slide
+
+### A veritical Slide
+
+## More Examples
+
+https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md
+
 ## The End
 
 Thank you for your time.
