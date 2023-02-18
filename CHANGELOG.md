@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.5] - 2023-02-16
+
+### Features
+
+- Avoid errors by updating through a trap
+
+### Miscellaneous Tasks
+
+- Adjust order of steps in the release process
+- Include link to revealjs config source
+
+### Refactor
+
+- Load mermaid through a loader
+
 ## [0.3.4] - 2023-02-16
 
 ### Bug Fixes
