@@ -72,7 +72,14 @@ const main = (defaults) => {
   mdSection.setAttribute("data-markdown", slidesURL);
   Reveal.initialize({
     hash: true,
-    plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+    plugins: [
+      RevealHighlight,
+      RevealMarkdown,
+      RevealMath,
+      RevealNotes,
+      RevealSearch,
+      RevealZoom,
+    ],
   });
 };
 
