@@ -102,11 +102,32 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 2. Item 2
 3. Item 3
 
+### Images
+
+![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
+### Framed Images
+
+![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
+<!-- .element: class="r-frame" -->
+
 ### Links
 
-- [Text link](https://github.com/jceb/slidesdown)
-- Image link:
-  [![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
+<grid-2>
+
+[A Text link](https://github.com/jceb/slidesdown)
+
+<v-box>
+
+An Image link:
+[![](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)](https://unsplash.com/photos/x9yfTxHpj5w)
+
+</v-box>
+
+<!-- .element: class="50p" -->
+
+</grid-2>
 
 ### Quotes
 
@@ -158,34 +179,34 @@ hello("world!");
 
 ### Columns
 
-<div style="display: flex; align-items: center; justify-content: space-around;">
-<div style="display: flex; flex-direction: column;">
+<grid-3>
+<v-box>
 Col1
 
 - Column 1
 - Column 1
 - Column 1
 
-</div>
+</v-box>
 
-<div style="display: flex; flex-direction: column;">
+<v-box>
 Col2
 
 - Column 2
 - Column 2
 - Column 2
 
-</div>
+</v-box>
 
-<div style="display: flex; flex-direction: column;">
+<v-box>
 Col3
 
 - Column 3
 - Column 3
 - Column 3
 
-</div>
-</div>
+</v-box>
+</grid-3>
 
 ## Animation
 
@@ -197,13 +218,11 @@ Col3
 
 ### Fragments
 
-<div style="display: flex; align-items: center; justify-content: space-around;">
-
-<img style="width: 30%" src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
-
-<img style="width: 30%" src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
-
+<grid-2>
+<img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
+<img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" />
 <!-- .element: class="fragment" -->
+</grid-2>
 
 <div>
 
@@ -239,29 +258,21 @@ Col3
 
 <!-- .slide: data-auto-animate="1" -->
 
-TODO
-
-<div class="display: flex; align-items: center; justify-content: space-around;"
-
+<grid-3>
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-
-</div>
+</grid-3>
 
 ### Animated Colored Boxes
 
 <!-- .slide: data-auto-animate="1" -->
 
-TODO
-
-<div class="display: flex; align-items: center; justify-content: space-around;"
-
+<grid-3>
 <div data-id="3" class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 <div data-id="2" class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div data-id="1" class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
-
-</div>
+</grid-3>
 
 ## Backgrounds
 
@@ -323,62 +334,50 @@ TODO
 
 ### Box Shadow
 
-TODO
+<grid-2x2>
 
-::: {.box-shadow-trbl}
-
+<span class="box-shadow-trbl">
 Shadow top, right, bottom, left.
+</span>
 
-:::
-
-::: {.box-shadow-rbl}
-
+<span class="box-shadow-rbl">
 Shadow right, bottom, left.
+</span>
 
-:::
-
-::: {.box-shadow-rb}
-
+<span class="box-shadow-rb">
 Shadow right, bottom.
+</span>
 
-:::
+<span class="box-shadow-bl">
+    Shadow bottom, left.
+</span>
 
-::: {.box-shadow-bl}
-
-Shadow bottom, left.
-
-:::
+</grid-2x2>
 
 ### Colored Boxes
 
-TODO
-
-<div class="display: flex; align-items: center; justify-content: space-around;"
+<grid-3>
 <div class="box-8rem radius-10p" style="background-color: lightblue; color: yellow">App 1</div>
 <div class="box-10rem radius-20p" style="background-color: pink; color: darkred;">App 2</div>
 <div class="box-12rem radius-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</div>
+</grid-3>
 
 ### Font Awesome Buttons
 
-TODO
-
-<div class="display: flex; align-items: center; justify-content: space-around;"
+<grid-3>
 <div class="flex align-center justify-around box-8rem radius-10p box-shadow-trbl" style=" background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
 <div class="fs-4 flex align-center justify-around box-10rem radius-20p box-shadow-rbl" style=" background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
 <div class="fs-7 flex align-center justify-around box-12rem radius-50p box-shadow-rb" style=" background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
-</div>
+</grid-3>
 
 ### Picture Buttons
 
-TODO
-
-<div class="display: flex; align-items: center; justify-content: space-around;"
+<grid-4>
 <div class="box-8rem radius-10p overflow-hidden background-cover box-shadow-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-10rem radius-20p overflow-hidden background-cover box-shadow-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-12rem radius-30p overflow-hidden background-cover box-shadow-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="box-14rem radius-50p overflow-hidden background-cover box-shadow-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-</div>
+</grid-4>
 
 ## Charts
 
