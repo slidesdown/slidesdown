@@ -1,11 +1,12 @@
 ---
-# Metadata useful for SEO
+# Metadata about the presentation:
+title: Presentation Title
 author: Your Name
 date: 2023-01-20
-title: Presentation Title
-keywords: some keyword that help seo
+keywords: some useful keywords
 
-# Presentation theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
+# Presentation settings:
+# Theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
@@ -22,7 +23,9 @@ controls: true
 # Center presentation
 center: true
 # Create separate pages for fragments
-# Full list of supported settings: https://revealjs.com/config/ and https://github.com/hakimel/reveal.js/blob/master/js/config.js
+pdfSeparateFragments: false
+# Full list of supported settings: https://revealjs.com/config/ or
+# https://github.com/hakimel/reveal.js/blob/master/js/config.js
 ---
 
 # My first markdown slideshow

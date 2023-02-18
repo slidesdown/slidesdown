@@ -1,11 +1,12 @@
 ---
-# Metadata useful for SEO
+# Metadata about the presentation:
+title: Slidesdown
 author: Jan Christoph Ebersbach
 date: 2023-01-20
-title: Slidesdown
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 
-# Presentation theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
+# Presentation settings:
+# Theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
@@ -23,7 +24,8 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
-# Full list of supported settings: https://revealjs.com/config/ and https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# Full list of supported settings: https://revealjs.com/config/ or
+# https://github.com/hakimel/reveal.js/blob/master/js/config.js
 ---
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
