@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.6] - 2023-02-18
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Migrate to github packages
+
 ## [0.4.5] - 2023-02-18
 
 ### Miscellaneous Tasks
