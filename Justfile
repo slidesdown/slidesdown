@@ -77,11 +77,12 @@ update-revealjs:
 
 # Build application
 build:
-    rm -rf docs
+    # Ensure that docs exists by cloning it first if docs shall be published
+    # git clone git@github.com:slidesdown/slidesdown.github.io.git published
+    rm -rf published/*
     # cd public/reveal.js/ && npx gulp plugins
     yarn build
-    find docs/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
-    cp .CNAME docs/CNAME
+    find published/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
 
 # Update version tag in script
 tag:

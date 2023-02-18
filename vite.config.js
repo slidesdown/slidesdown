@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig(() => {
   const config = {
-    build: { outDir: "docs" },
+    build: { outDir: "published" },
     assetsInclude: ["**/*.md"],
   };
   if (process.env.SERVING_SLIDESDOWN == "1") {
