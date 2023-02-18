@@ -240,12 +240,13 @@ const Plugin = () => {
       "hash": true,
     };
     // todo: sanitize data
-    const loadStylesheet = (cssReference) => {
+    const loadLink = (relation) => (reference) => {
       const stylesheet = document.createElement("link");
-      stylesheet.rel = "stylesheet";
-      stylesheet.href = cssReference;
+      stylesheet.rel = relation;
+      stylesheet.href = reference;
       document.head.appendChild(stylesheet);
     };
+    const loadStylesheet = loadLink("stylesheet");
     const loadScript = (scriptReference, crossorirgin) => {
       const script = document.createElement("script");
       script.href = scriptReference;
@@ -272,13 +273,7 @@ const Plugin = () => {
       "title": (title) => {
         document.title = title;
       },
-      "favicon": (faviconReference) => {
-        const favicon = document.createElement("link");
-        favicon.rel = "icon";
-        // favicon.type = "image/x-icon";
-        favicon.href = faviconReference;
-        document.head.appendChild(favicon);
-      },
+      "favicon": loadLink("icon"),
       "theme": defaultURLToStylesheet("/reveal.js/dist/theme/"),
       "highlight-theme": defaultURLToStylesheet(
         "/reveal.js/plugin/highlight/",
