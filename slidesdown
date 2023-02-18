@@ -1,0 +1,219 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# set -x
+
+compute_slides_parameter() {
+	local SERVER="$1"
+	local PORT="$2"
+	local SLIDES="$3"
+	echo "${SERVER}%3A${PORT}/${SLIDES}"
+}
+
+compute_url() {
+	local SERVICE="$1"
+	local SLIDES="$2"
+	echo "${SERVICE}/?slides=${SLIDES}"
+}
+
+run_webserver() {
+	local PORT="$1"
+	local ROOT_DIRECTORY="$2"
+	local SLIDES="$3"
+	local SERVER
+
+	SERVER_CMD="$(mktemp)"
+	cat >"${SERVER_CMD}" <<END
+#!/usr/bin/env python3
+# It's python3 -m http.server PORT for a CORS world
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+import sys
+
+class CORSRequestHandler(SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', '*')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        self.send_header('Cache-Control', 'no-store, no-cache, must-revalidate')
+        return super(CORSRequestHandler, self).end_headers()
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.end_headers()
+
+host = sys.argv[1] if len(sys.argv) > 2 else '0.0.0.0'
+port = int(sys.argv[len(sys.argv)-1]) if len(sys.argv) > 1 else 8080
+
+print("Listening on {}:{}".format(host, port))
+httpd = HTTPServer((host, port), CORSRequestHandler)
+httpd.serve_forever()
+END
+
+	cd "${ROOT_DIRECTORY}"
+	python3 "${SERVER_CMD}" "localhost" "${PORT}"
+}
+
+run_docker() {
+	local PORT="$1"
+	local IMAGE="$2"
+	local ROOT_DIRECTORY="$3"
+	local SLIDES="$4"
+	local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
+	local CONTAINER_SLIDES_PORT="8080"
+
+	docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}"
+}
+
+export_pdf() {
+	local URL="$1"
+	local RESOLUTION="$2"
+	local FILE="$3"
+	# decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
+	docker run --rm -t -v "${PWD}:/slides" "astefanutti/decktape" "${URL}" -s "${RESOLUTION}" "${FILE}"
+}
+
+open_url() {
+	local NO_OPEN="$1"
+	local URL="$2"
+
+	if [[ -n "${NO_OPEN}" ]]; then
+		return
+	fi
+
+	local COMMAND
+	if which xdg-open &>/dev/null; then
+		COMMAND=xdg-open
+	elif which open-cli &>/dev/null; then
+		COMMAND=open-cli
+	elif which open-cli &>/dev/null; then
+		COMMAND=open
+	else
+		echo "ERROR: no command found to open URLs with. Supported: xdg-open, open-cli, open" 1>&2
+		exit 1
+	fi
+	"${COMMAND}" "${URL}"
+}
+
+main() {
+	local DOCKER="$1"
+	local EXPORT="$2"
+	local RESOLUTION="$3"
+	local NO_OPEN="$4"
+	local PORT="$5"
+	local IMAGE="$6"
+	local SERVICE="$7"
+	local ROOT_DIRECTORY
+	ROOT_DIRECTORY="$(readlink -f "$(dirname "${8}")")/"
+	local SLIDES
+	SLIDES="$(basename "${8}")"
+	local URL
+	if [[ -n "${DOCKER}" ]]; then
+		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
+	else
+		URL="$(compute_url "${SERVICE}" "$(compute_slides_parameter "http%3A//localhost" "${PORT}" "${SLIDES}")")"
+	fi
+	if [[ -z "${EXPORT}" ]]; then
+		if [[ -n "${DOCKER}" ]]; then
+			CONTAINER_ID="$(run_docker "${PORT}" "${IMAGE}" "${ROOT_DIRECTORY}" "${SLIDES}")"
+			trap "docker kill '${CONTAINER_ID}'" 1 2 3 15
+			echo "Waiting for container to start"
+			sleep 2
+			echo "Slideshow URL: ${URL}"
+			open_url "${NO_OPEN}" "${URL}"
+			docker attach --sig-proxy=false "${CONTAINER_ID}"
+		else
+			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
+			echo "Slideshow URL: ${URL}"
+			open_url "${NO_OPEN}" "${URL}"
+			wait %1
+		fi
+	else
+		export_pdf "${URL}" "${RESOLUTION}" "${SLIDES%%.*}.pdf"
+	fi
+}
+
+TEMP=$(getopt -o 'hednp:i:r:' --long 'help,export,docker,no-open,port:,image:,resolution:' -- "$@")
+
+if [ $? -ne 0 ]; then
+	echo 'Terminating...' >&2
+	exit 1
+fi
+
+# Note the quotes around "$TEMP": they are essential!
+eval set -- "$TEMP"
+unset TEMP
+
+while true; do
+	case "$1" in
+	'-h' | '--help')
+		echo "USAGE: $(basename "${0}") [OPTIONS] [FILENAME]"
+		echo "OPTIONS:"
+		echo -e '  -h|--help\tprint this usage information'
+		echo -e '  -e|--export\texport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option ($EXPORT)'
+		echo -e '  -r|--resolution\texport resolution (default: 2560x144, $RESOLUTION)'
+		echo -e '  -d|--docker\trun slideshow service locally via docker (default: is to run a local http server via Python3 and connect to an online service, $DOCKER)'
+		echo -e '  -i|--image\tuse docker image (default: jceb/slidesdown:latest, $IMAGE)'
+		echo -e '  -p|--port\topen slideshow service at port (default: 3000, $PORT)'
+		echo -e '  -s|--service\tconnect to online service (default: slidesdown.e-jc.de, $SERVICE)'
+		echo -e '  -n|--no-open\tdo not open browser at the start ($NO_OPEN)'
+		echo "FILENAME: default SLIDES.md"
+		echo
+		echo "Attention: only the docker service provides hot-reloading when changes are made to the slideshow!"
+		exit
+		;;
+	'-d' | '--docker')
+		DOCKER=1
+		shift
+		continue
+		;;
+	'-e' | '--export')
+		EXPORT=1
+		shift
+		continue
+		;;
+	'-p' | '--port')
+		PORT="${2}"
+		shift 2
+		continue
+		;;
+	'-i' | '--image')
+		IMAGE="${2}"
+		shift 2
+		continue
+		;;
+	'-r' | '--resolution')
+		RESOLUTION="${2}"
+		shift 2
+		continue
+		;;
+	'-s' | '--service')
+		SERVICE="${2}"
+		shift 2
+		continue
+		;;
+	'-n' | '--no-open')
+		NO_OPEN=1
+		shift
+		continue
+		;;
+	'--')
+		shift
+		break
+		;;
+	*)
+		echo 'Internal error!' >&2
+		exit 1
+		;;
+	esac
+done
+
+DOCKER="${DOCKER:-}"
+EXPORT="${EXPORT:-}"
+NO_OPEN="${NO_OPEN:-}"
+PORT="${PORT:-3000}"
+IMAGE="${IMAGE:-jceb/slidesdown:latest}"
+SERVICE="${SERVICE:-https://slidesdown.e-jc.de}"
+RESOLUTION="${RESOLUTION:-2560x1440}"
+
+SLIDES="${1:-${SLIDES:-SLIDES.md}}"
+
+main "${DOCKER}" "${EXPORT}" "${RESOLUTION}" "${NO_OPEN}" "${PORT}" "${IMAGE}" "${SERVICE}" "${SLIDES}"
