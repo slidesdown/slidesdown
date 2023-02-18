@@ -338,13 +338,13 @@ const Plugin = () => {
                   // TODO: add support for multiple markdown elements
                   const base_url = new URL(xhr.responseURL);
                   const base_path = base_url.pathname.split(/\//);
-                  console.log("base_url", base_url);
                   base_url.pathname = base_path.splice(0, base_path.length - 1)
                     .join(
                       "/",
                     );
-                  console.log("base_url modified", base_url);
-                  BASE_URL = base_url.toString();
+                  // ensuere there's a trailing slash otherwish markered
+                  // interprets it differently
+                  BASE_URL = base_url.toString() + "/";
                 }
                 let markdown = xhr.responseText;
                 let metadata = {};

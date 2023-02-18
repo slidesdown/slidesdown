@@ -12,10 +12,9 @@ const computeURL = (defaults, url) => {
     /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)(?:\/(?:((?<blob>blob)|(?<tree>tree))\/)?(?:(?<dir_or_branch>[^/]*)\/)?(?<resource>.*))?/,
   );
   if ((match = githubRegExp.exec(decodedURL)) !== null) {
-    // console.log("match", match)
     let resource = `${defaults.branch}/${defaults.resource}`;
     // if tree is present, then the default resouce name must be appended
-    if (match.groups.tree && match.groups.dir_or_branch) {
+    if ((match.groups.blob | match.groups.tree) && match.groups.dir_or_branch) {
       // if tree or blob are present, then dir_or_branch is the branch - perfect, I can build the URL with confidence
       resource =
         `${match.groups.dir_or_branch}/${match.groups.resource}/${defaults.resource}`;
