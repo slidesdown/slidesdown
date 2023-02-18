@@ -1,0 +1,10 @@
+--- public/reveal.js/plugin/pdfexport/pdfexport.js.orig	2023-02-16 15:08:41.715542536 +0100
++++ public/reveal.js/plugin/pdfexport/pdfexport.js	2023-02-16 15:10:49.028333072 +0100
+@@ -85,6 +85,7 @@
+ 	}
+ 
+ 	var Plugin = {
++	  togglePdfExport
+ 	}
+ 
+ 	if( Reveal && Reveal.VERSION && Reveal.VERSION.length && Reveal.VERSION[ 0 ] == '3' ){

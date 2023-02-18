@@ -67,7 +67,7 @@ update-revealjs:
         curl -Lfo - "https://github.com/McShelby/reveal-pdfexport/archive/refs/tags/${VERSION}.tar.gz" | \
         tar xvz && \
         mv "reveal-pdfexport-${VERSION}" pdfexport
-    # TODO: patch pdfexport!
+    patch -p0 < src/pdfexport_add_export.patch
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lfo - "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" | \
