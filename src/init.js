@@ -69,6 +69,9 @@ const main = (defaults) => {
 
   // initialize presentation
   mdSection.setAttribute("data-markdown", slidesURL);
+  Reveal.slidesdownLoader = () => {
+    window.location.href = "https://slidesdown.e-jc.de/loader.html";
+  };
   Reveal.initialize({
     hash: true,
     plugins: [
@@ -89,10 +92,13 @@ const main = (defaults) => {
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
       // RevealAnything,
     ],
-    pdfExportShortcut: "p",
     customcontrols: {
-      // FIXME: hide controls in print view: https://github.com/rajgoel/reveal.js-plugins/issues/159
       controls: [
+        {
+          icon: '<i class="fa-light fa-folder-open"></i>',
+          title: "Open another presentation",
+          action: "Reveal.slidesdownLoader();",
+        },
         {
           id: "toggle-overview",
           title: "Toggle overview (O)",
@@ -111,7 +117,7 @@ const main = (defaults) => {
         },
         {
           icon: '<i class="fa-light fa-print"></i>',
-          title: "Toggle print view (P)",
+          title: "Toggle print view (E)",
           action: "PdfExport.togglePdfExport();",
         },
       ],
