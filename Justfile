@@ -77,6 +77,10 @@ update-revealjs:
         mv "highlight.js-${VERSION}/src/styles/"* . && \
         rm -vrf "highlight.js-${VERSION}"
 
+# Update version tag in script
+tag:
+    sed -i -e "s/^VERSION=.*/VERSION='$(git describe --tags --abbrev=0 | sed -e 's/^v//')'/" slidesdown
+
 # Build application
 build:
     rm -rf docs
