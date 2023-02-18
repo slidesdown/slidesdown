@@ -21,7 +21,8 @@ run_webserver() {
 	local SLIDES="$3"
 	local SERVER
 
-	SERVER_CMD="$(mktemp)"
+	SERVER_CMD="$(mktemp --tmpdir slidedown_http_server_XXXX.py)"
+	trap "rm -f '${SERVER_CMD}'" 1 2 3 15
 	cat >"${SERVER_CMD}" <<END
 #!/usr/bin/env python3
 # It's python3 -m http.server PORT for a CORS world
@@ -45,7 +46,11 @@ port = int(sys.argv[len(sys.argv)-1]) if len(sys.argv) > 1 else 8080
 
 print("Listening on {}:{}".format(host, port))
 httpd = HTTPServer((host, port), CORSRequestHandler)
-httpd.serve_forever()
+try:
+    httpd.serve_forever()
+except KeyboardInterrupt:
+    print("Stopping http server")
+    sys.exit(0)
 END
 
 	cd "${ROOT_DIRECTORY}"
