@@ -236,6 +236,7 @@ const Plugin = () => {
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
       "fontawesomePro": true,
+      "fontawesomeFree": false,
       // revealjs defaults
       "hash": true,
     };
@@ -287,6 +288,10 @@ const Plugin = () => {
       "keywords": addMeta("keywords"),
       "fontawesomePro": loadScript(
         "https://kit.fontawesome.com/fec85b2437.js",
+        "anonymous",
+      ),
+      "fontawesomeFree": loadScript(
+        "https://kit.fontawesome.com/ce15cd202d.js",
         "anonymous",
       ),
     };

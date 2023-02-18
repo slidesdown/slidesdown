@@ -9,8 +9,9 @@ keywords: slides slideshow slidesdown presentation presentations markup markdown
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
-# Load font awesome pro icons (only works on domain slidesdown.e-jc.de)
+# Load font awesome pro icons (only works on domain slidesdown.e-jc.de) free icons work everywhere. Don't include both as it would load the JavaScript twice
 fontawesomePro: true
+fontawesomeFree: false
 # URL to favicon
 favicon: /favicon.svg
 
