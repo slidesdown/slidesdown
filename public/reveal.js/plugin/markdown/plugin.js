@@ -312,6 +312,7 @@ const Plugin = () => {
       }
     };
 
+    const revealjsConfig = deck.getConfig();
     const _mergedMetadata = [defaultMetadata, metadata].reduce(
       (acc, v) => Object.assign(acc, v),
       {},
@@ -325,8 +326,14 @@ const Plugin = () => {
       mergedMetadata.fontawesomeFree = false;
     }
     if (
-      mergedMetadata?._customcontrols ||
-      (mergedMetadata?._customcontrols !== false && mergedMetadata?.controls)
+      // since revealjsConfig.controls is true by default, only decktape and
+      // similar tools are able to override it .. so prefer whatever these tools
+      // have configured
+      revealjsConfig.controls && (
+        mergedMetadata?._customcontrols ||
+        (mergedMetadata?._customcontrols !== false &&
+          mergedMetadata?.controls)
+      )
     ) {
       document.documentElement.style.setProperty(
         "--display-customcontrols",
@@ -338,7 +345,6 @@ const Plugin = () => {
         "none",
       );
     }
-    const revealjsConfig = deck.getConfig();
     const revealjsNewConfig = {};
     Object.keys(mergedMetadata)
       .map((k) => {
