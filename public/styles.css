@@ -1,3 +1,10 @@
+/* FIX: hide customcontrols when printing slides, bug https://github.com/rajgoel/reveal.js-plugins/issues/159 */
+@media print {
+  #customcontrols {
+    display: none !important;
+  }
+}
+
 /*  box  * {{{1
 *********/
 
