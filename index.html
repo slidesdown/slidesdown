@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>reveal.js</title>
+    <link rel="stylesheet" href="/reveal.js-master/dist/reveal.css" />
+    <script
+      src="https://kit.fontawesome.com/fec85b2437.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="./reveal.js-master/dist/theme/white.css" /> -->
+    <!-- <link rel="stylesheet" href="./reveal.js-master/plugin/highlight/monokai.css" /> -->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- data-markdown="slides.md" -->
+        <section
+          data-load-metadata
+          data-separator="^(#{1,2} |---$)"
+          data-separator-vertical="^#{3} "
+          data-separator-notes="^notes?:"
+          id="markdown"
+        ></section>
+      </div>
+    </div>
+    <script src="/reveal.js-master/dist/reveal.js"></script>
+    <script src="/reveal.js-master/plugin/notes/notes.js"></script>
+    <script src="/reveal.js-master/plugin/markdown/markdown.js"></script>
+    <script src="/reveal.js-master/plugin/highlight/highlight.js"></script>
+    <script type="module">
+      const customSlidesURL = new URLSearchParams(
+        new URL(document.URL).search
+      ).get("slides")
+      const defaultResource = "SLIDES.md"
+      let slidesURL = customSlidesURL ? customSlidesURL : defaultResource
+      const computeURL = (url) => {
+        const decodedURL = decodeURI(url)
+        let match = ""
+        const githubRegExp = new RegExp(
+          /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)(?:\/(?:((?<blob>blob)|(?<tree>tree))\/)?(?:(?<dir_or_branch>[^/]*)\/)?(?<resource>.*))?/
+        )
+        if ((match = githubRegExp.exec(decodedURL)) !== null) {
+          console.log("match", match)
+          // TODO: try main and master?
+          // const defaultBranch = "main"
+          const defaultBranch = "master"
+          let resource = `${defaultBranch}/${defaultResource}`
+          // if tree is present, then the default resouce name must be appended
+          if (match.groups.tree && match.groups.dir_or_branch) {
+            // if tree or blob are present, then dir_or_branch is the branch - perfect, I can build the URL with confidence
+            resource = `${match.groups.dir_or_branch}/${match.groups.resource}/${defaultResource}`
+          } else if (match.groups.blob && match.groups.dir_or_branch) {
+            // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
+            resource = `${match.groups.dir_or_branch}/${match.groups.resource}`
+          } else {
+            if (match.groups.dir_or_branch) {
+              resource = `${defaultBranch}/${match.groups.dir_or_branch}/${match.groups.resource}`
+            } else {
+              resource = `${defaultBranch}/${match.groups.resource}`
+            }
+          }
+          return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`
+        }
+        return decodedURL
+      }
+
+      slidesURL = computeURL(slidesURL)
+      console.log("slidesURL", slidesURL, computeURL(slidesURL))
+
+      const mdSection = document.getElementById("markdown")
+      if (mdSection) {
+        mdSection.setAttribute("data-markdown", slidesURL)
+      }
+      Reveal.initialize({
+        hash: true,
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      })
+    </script>
+  </body>
+</html>

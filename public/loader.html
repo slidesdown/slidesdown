@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>mdslides Loader</title>
+    <script
+      src="https://kit.fontawesome.com/fec85b2437.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero">
+        <div class="hero-body">
+          <h1 class="title">mdslides Loader</h1>
+          <p class="subtitle">
+            Slideshows as fast as you can type
+            <a href="https://www.markdownguide.org/">Markdown</a>.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="tabs is-medium">
+          <ul>
+            <li class="is-active"><a>Open</a></li>
+            <li><a href="/learn.html">Learn</a></li>
+          </ul>
+        </div>
+        <form action="/" method="get" target="_blank">
+          <label class="label" for="slides">Slideshow URL</label>
+          <div class="field has-addons">
+            <div class="control has-icons-left">
+              <input
+                id="slides"
+                class="input"
+                type="text"
+                name="slides"
+                value="github.com/jceb/mdslides"
+                placeholder="github.com/jceb/mdslides"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-sparkles"></i>
+              </span>
+              <p class="help">
+                URL to your markdown slides, e.g.
+                <a href="/?slides=github.com/jceb/mdslides"
+                  >github.com/jceb/mdslides</a
+                >
+                or
+                <a href="/?slides=github.com/jceb/mdslides/README.md"
+                  >github.com/jceb/mdslides/README.md</a
+                >
+              </p>
+            </div>
+            <div class="control">
+              <button class="button is-info" type="submit">Open</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
