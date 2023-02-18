@@ -104,6 +104,12 @@ release: build build-docker push-docker
     just post-release
     git add -u
     git commit -m "chore(ci): post release changes"
+    if [ -e published/.git ]; then \
+    cd published; \
+    git add . || true; \
+    git commit -a -m "chore: upstream update" || true; \
+    git push || true; \
+    fi
 
 # Build docker images
 build-docker:
