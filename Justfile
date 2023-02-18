@@ -20,7 +20,7 @@ update-all: update-revealjs update-mermaid update-chartjs update-pico update-mar
 # Update pico
 update-pico:
     VERSION="1.5.6"; \
-       curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@v${VERSION}/css/pico.min.css"
+       curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@${VERSION}/css/pico.min.css"
 
 # Update mermaid
 update-mermaid:
