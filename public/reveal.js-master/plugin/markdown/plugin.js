@@ -491,6 +491,7 @@ const Plugin = () => {
       "[data-markdown]:not([data-markdown-parsed])",
     );
 
+    let sectionNumber = 0;
     [].slice.call(sections).forEach(function (section) {
       section.setAttribute("data-markdown-parsed", true);
 
@@ -498,6 +499,14 @@ const Plugin = () => {
       const markdown = getMarkdownFromSlide(section);
 
       section.innerHTML = marked(markdown);
+      const firstChild = section.firstElementChild;
+      if (firstChild && firstChild.id !== "") {
+        section.id = firstChild.id;
+        firstChild.id = "";
+      } else {
+        section.id = `${sectionNumber}`;
+      }
+
       addAttributes(
         section,
         section,
@@ -515,6 +524,7 @@ const Plugin = () => {
       if (notes) {
         section.appendChild(notes);
       }
+      sectionNumber += 1;
     });
 
     return Promise.resolve();
