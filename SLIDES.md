@@ -1,11 +1,13 @@
 ---
-title: slidesdown
+author: Jan Christoph Ebersbach
 date: 2023-01-20
+title: slidesdown
 keywords: slides slideshow presentations markup markdown revealjs pandoc fontawesome
 favicon: /favicon.svg
 theme: white
 highlight-theme: tokyo-night-dark
-author: Jan Christoph Ebersbach
+# revealjs settings, see list of supported settings: https://revealjs.com/config/
+progress: true
 ---
 
 # slidesdown
