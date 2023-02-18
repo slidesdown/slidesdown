@@ -16,7 +16,7 @@ get started.
 
 Visit [slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
 and enter the URL to your Markdown presentation, e.g.
-`github.com/jceb/slidesdown/SLIDES.md`.
+`github.com/slidesdown/slidesdown/SLIDES.md`.
 
 ### CLI
 

@@ -5,9 +5,9 @@ date: 2023-01-20
 title: Slidesdown
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 
-# Presentation theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/dist/theme
+# Presentation theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
-# Code highlighting theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/plugin/highlight
+# Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
 # Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
 fontawesomePro: true
@@ -64,7 +64,7 @@ you need!
 - Sharable: [Create links](https://slidesdown.github.io/loader.html) to your
   slides
 - Offline First:
-  [CLI avaiable](https://github.com/jceb/slidesdown/blob/main/README.md) for
+  [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md) for
   offline presentations
 - Professional: PDF export and Custom Themes
 - Versionable: Store all files in `git`
@@ -77,7 +77,7 @@ you need!
 
 - [Guide to Slidesdown](https://slidesdown.github.io/learn.html)
 - Learn by example from other
-  [presentations](https://github.com/jceb/slidesdown/blob/main/examples)
+  [presentations](https://github.com/slidesdown/slidesdown/blob/main/examples)
 
 ### Keyboard Shortcuts
 
@@ -210,7 +210,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <grid-box styles="grid-template: 'left right' 'code code' / 1fr 1fr">
 
-[Text link](https://github.com/jceb/slidesdown)
+[Text link](https://github.com/slidesdown/slidesdown)
 <!-- .element: style="grid-area: left;" -->
 
 <v-box  style="grid-area: right;">
@@ -222,7 +222,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 </v-box>
 
 ```markdown
-[Text link](https://github.com/jceb/slidesdown)
+[Text link](https://github.com/slidesdown/slidesdown)
 
 Picture link
 
@@ -1121,4 +1121,4 @@ gitGraph
 
 <h1>Thank you</h1>
 
-<h2>for using <a href="https://github.com/jceb/slidesdown">Slidesdown</a></h2>
+<h2>for using <a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></h2>

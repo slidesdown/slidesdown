@@ -5,9 +5,9 @@ date: 2023-01-20
 title: Presentation Title
 keywords: some keyword that help seo
 
-# Presentation theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/dist/theme
+# Presentation theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
-# Code highlighting theme, list of supported themes: https://github.com/jceb/slidesdown/tree/main/docs/reveal.js/plugin/highlight
+# Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
 # Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
 fontawesomePro: true

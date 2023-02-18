@@ -1,7 +1,7 @@
 import SlidesMarkdown from "slidesmarkdown";
 
 // computeURL builds a URL to a raw markdown file from a short human-typable
-// string, e.g. it turn github.com/jceb/slidesdown into
+// string, e.g. it turns github.com/slidesdown/slidesdown into
 // https://raw.githubusercontent.com/jceb/slidesdown/main/SLIDES.md
 const computeURL = (defaults, url) => {
   if (!(defaults.branch && defaults.resource)) {
@@ -53,7 +53,7 @@ const main = (defaults) => {
   ).get("slides");
   let slidesURL = customSlidesURL
     ? customSlidesURL
-    : `github.com/jceb/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
+    : `github.com/slidesdown/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
 
   slidesURL = computeURL(defaults, slidesURL);
 
