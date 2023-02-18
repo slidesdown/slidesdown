@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2023-02-16
+
+### Bug Fixes
+
+- Correct temp name when updating script
+- Make export work via docker
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.3.6] - 2023-02-16
 
 ### Bug Fixes

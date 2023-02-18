@@ -105,6 +105,8 @@ release: build-docker push-docker
         git cliff --strip all --current | \
         gh release create -F - "${TAG}"
     just post-release
+    git add -u
+    git commit -m "chore(ci): post release changes"
 
 # Build docker images
 build-docker:
