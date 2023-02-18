@@ -45,7 +45,15 @@ update-revealjs:
         curl -Lf "https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/${VERSION}.tar.gz" -o - | \
         tar xvz && \
         find "reveal.js-plugins-${VERSION}" -mindepth 1 -maxdepth 1 -type d -exec mv -t . {} + && \
-        rm -rf "reveal.js-plugins-${VERSION}"
+        rm -rvf "reveal.js-plugins-${VERSION}"
+    # Source: https://github.com/chartjs/Chart.js
+    rm -rvf public/chart.js
+    mkdir -p public/chart.js
+    VERSION="4.2.0"; cd public/chart.js && \
+        curl -Lf "https://github.com/chartjs/Chart.js/releases/download/v${VERSION}/chart.js-${VERSION}.tgz" -o - | \
+        tar xvz package/LICENSE.md package/dist && \
+        mv -t . package/LICENSE.md package/dist && \
+        rmdir package
     # Source: https://github.com/highlightjs/highlight.js
     VERSION="11.7.0"; cd public/reveal.js/plugin/highlight && \
         curl -Lf "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" -o - | \

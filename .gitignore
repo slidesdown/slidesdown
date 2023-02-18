@@ -1,4 +1,5 @@
 /node_modules/**
+/public/chart.js/
 /public/reveal.js.bak
 # The ignore dance - the parent directory needs to be explicitly unignored
 /public/reveal.js/*
