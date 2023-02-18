@@ -345,7 +345,7 @@ const Plugin = () => {
                 let metadata = {};
                 if (section.getAttribute("data-load-metadata") !== null) {
                   const metadataRegExp = new RegExp(
-                    "^---\r?\n(?<metadata>(?:.|\r?\n)*?)\r?\n---\r?\n",
+                    "^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:.*|\r?\n)*?)\r?\n---\r?\n",
                     "mg",
                   );
                   const metadataMatch = metadataRegExp.exec(markdown);
