@@ -66,8 +66,8 @@ you need!
 - Sharable: [Create links](https://slidesdown.github.io/loader.html) to your
   slides
 - Offline First:
-  [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md) for
-  offline presentations
+  [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md)
+  for offline presentations
 - Professional: PDF export and Custom Themes
 - Versionable: Store all files in `git`
 - Charts and Diagrams: via [chart.js](https://www.chartjs.org/) and
@@ -115,11 +115,13 @@ you need!
 </div>
 
 ```markdown
- # h1
+<!-- please ignore the leading \ -->
 
- ## h2
+\ # h1
 
- ### h3
+\ ## h2
+
+\ ### h3
 ```
 
 </columns-2>
@@ -129,17 +131,22 @@ you need!
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 Slide without heading.
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
- <!-- Horizontal slide -->
- ---
- content
+<!-- please ignore the leading \ -->
+<!-- Horizontal slide -->
 
- <!-- Vertical slide -->
- |||
- content
+\ ---
+
+content
+
+<!-- Vertical slide -->
+
+\ ||| content
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -148,13 +155,17 @@ Slide without heading.
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 Can you see it?
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
- ### Hidden slide
+<!-- please ignore the leading \ -->
+
+\ ### Hidden slide
 
 <!-- .slide: data-visibility="hidden" -->
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -167,11 +178,13 @@ Can you see it?
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 Regluar, _italic_, **bold**, and <u>underlined</u>.
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
 Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -182,6 +195,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 - Item 1
 - Item 2
 - Item 3
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
@@ -189,6 +203,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 - Item 2
 - Item 3
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -199,6 +214,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 1. Item 1
 2. Item 2
 3. Item 3
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
@@ -206,6 +222,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 2. Item 2
 3. Item 3
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 ### Links
@@ -213,12 +230,14 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 <grid-box styles="grid-template: 'left right' 'code code' / 1fr 1fr">
 
 [Text link](https://github.com/slidesdown/slidesdown)
+
 <!-- .element: style="grid-area: left;" -->
 
 <v-box  style="grid-area: right;">
 <figure>
 
 [![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
+
 <figcaption>Picture link</figcaption>
 </figure>
 </v-box>
@@ -230,6 +249,7 @@ Picture link
 
 [![A picture](https://...)](https://...)
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -239,11 +259,13 @@ Picture link
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 > A famous quote
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
 > A famous quote
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -259,17 +281,19 @@ function hello(msg) {
 
 hello("world!");
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
- ` ``javascript
- function hello(msg) {
-   alert(`Hello ${msg}`);
- }
+````markdown
+```javascript
+function hello(msg) {
+  alert(`Hello ${msg}`);
+}
 
- hello("world!");
- ` ``
+hello("world!");
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -285,17 +309,19 @@ function hello(msg) {
 
 hello("world!");
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
- ` ``javascript[2]
- function hello(msg) {
-   alert(`Hello ${msg}`);
- }
+````markdown
+```javascript[2]
+function hello(msg) {
+  alert(`Hello ${msg}`);
+}
 
- hello("world!");
- ` ``
+hello("world!");
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -309,6 +335,7 @@ hello("world!");
 `$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
 
 `$$ e^{\pi i}=-1 $$`
+
 </article>
 <!-- .element: style="grid-area: left;" -->
 
@@ -317,10 +344,10 @@ hello("world!");
 
 `$$ e^{\pi i}=-1 $$`
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
-
 
 ### Table
 
@@ -341,6 +368,7 @@ hello("world!");
 | column 2 is   |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -406,6 +434,7 @@ Bucket List
 
 </v-box>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -472,6 +501,7 @@ Bucket List
 </v-box>
 </columns-2>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -515,6 +545,7 @@ Bucket List
 ...
 </columns-3>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 ### Complex
@@ -582,6 +613,7 @@ Bucket List
 </v-box>
 </grid-box>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -594,6 +626,7 @@ Bucket List
 - Item 1 <!-- .element: class="fragment" -->
 - Item 2 <!-- .element: class="fragment" -->
 - Item 3 <!-- .element: class="fragment" -->
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
@@ -601,6 +634,7 @@ Bucket List
 - Item 2 <!-- .element: class="fragment" -->
 - Item 3 <!-- .element: class="fragment" -->
 ```
+
 </grid-box>
 
 ### Fragments
@@ -624,11 +658,11 @@ Bucket List
 <!-- .element: class="fragment" -->
 </columns-2>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
 ### Animated List
-
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
@@ -645,6 +679,7 @@ Bucket List
 - Item 3
 - Item 4
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -667,6 +702,7 @@ Bucket List
 - Item 3
 - Item 4
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -692,6 +728,7 @@ Bucket List
 <div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 </columns-3>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -718,6 +755,7 @@ Bucket List
 <div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
 </columns-3>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -747,11 +785,13 @@ Bucket List
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 ![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
 ![tennis](https://...)
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -762,13 +802,17 @@ Bucket List
 <div style="display: flex; justify-content: center; grid-area: left;">
 
 ![fish](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+
 <!-- .element: class="r-frame" style="height: 30%; width: 30%"  -->
+
 </div>
 
 ```markdown
 ![fish](https://....)
+
 <!-- .element: class="r-frame" -->
 ```
+
 <!-- .element: style="grid-area: code;" -->
 <grid-box>
 
@@ -820,6 +864,7 @@ Bucket List
 </div>
 </columns-2>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -849,6 +894,7 @@ Bucket List
 </span> Stacked bullet icon</li>
 </ul>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
@@ -890,6 +936,7 @@ Shadow right, bottom.
 <span class="s-rb">Shadow right, bottom.</span>
 <span class="s-bl">Shadow bottom, left.</span>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -912,12 +959,12 @@ Shadow right, bottom.
 <div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
 </columns-3>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
 
 ### Font Awesome Buttons
-
 
 <grid-box styles="grid-template: 'left' 'code' / 100%">
 
@@ -935,12 +982,12 @@ Shadow right, bottom.
 <div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
 </columns-3>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
 
 ### Picture Buttons
-
 
 <grid-box styles="grid-template: 'left' 'code' / 100%">
 
@@ -960,6 +1007,7 @@ Shadow right, bottom.
 <div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://...");'></div>
 </columns-4>
 ```
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1004,10 +1052,11 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+
 <!-- .element: style="grid-area: left; height: 300px;" -->
 
-```markdown
-` ``polarArea
+````json
+```polarArea
 {
   "data": {
     "labels": [
@@ -1029,8 +1078,9 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1056,10 +1106,11 @@ via [chart.js](https://www.chartjs.org/)
  }
 }
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``line
+````json
+```line
 {
  "data": {
   "labels": ["January","February","March","April","May","June","July"],
@@ -1114,10 +1165,12 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+````
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``bar
+````json
+```bar
 {
   "data": {
     "labels": [
@@ -1136,8 +1189,9 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 ### Radar chart
@@ -1200,10 +1254,11 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``radar
+````json
+```radar
 {
   "data": {
     "labels": [
@@ -1232,8 +1287,9 @@ via [chart.js](https://www.chartjs.org/)
     ]
   }
 }
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1252,16 +1308,18 @@ graph LR
   B-->C
   B-->D;
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```mardown
-` ``mermaid
+````markdown
+```mermaid
 graph LR
   A --- B
   B-->C
   B-->D;
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1280,10 +1338,11 @@ graph TD
     D --> F[Save Image and Code]
     F --> B
 ```
+
 <!-- .element: style="grid-area: left; height: 500px" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 graph TD
     A[Enter Chart Definition] --> B(Preview)
     B --> C{decide}
@@ -1292,8 +1351,9 @@ graph TD
     E --> B
     D --> F[Save Image and Code]
     F --> B
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1308,16 +1368,18 @@ sequenceDiagram
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 sequenceDiagram
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
     Alice-)John: See you later!
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1336,10 +1398,11 @@ stateDiagram-v2
   Moving --> Crash
   Crash --> [*]
 ```
+
 <!-- .element: style="grid-area: left; height: 80%" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 stateDiagram-v2
   [*] --> Still
   Still --> [*]
@@ -1347,8 +1410,9 @@ stateDiagram-v2
   Moving --> Still
   Moving --> Crash
   Crash --> [*]
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1363,16 +1427,18 @@ erDiagram
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1392,10 +1458,11 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
+
 <!-- .element: style="grid-area: left; height: 300px;" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 journey
     title My working day
     section Go to work
@@ -1405,8 +1472,9 @@ journey
     section Go home
       Go downstairs: 5: Me
       Sit down: 5: Me
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1426,10 +1494,11 @@ gantt
     Task in sec      :2014-01-12  , 12d
     another task      : 24d
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 gantt
     title A Gantt Diagram
     dateFormat  YYYY-MM-DD
@@ -1439,8 +1508,9 @@ gantt
     section Another
     Task in sec      :2014-01-12  , 12d
     another task      : 24d
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
@@ -1462,10 +1532,11 @@ gitGraph
    commit
    commit
 ```
+
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-` ``mermaid
+````markdown
+```mermaid
 gitGraph
    commit
    commit
@@ -1477,8 +1548,9 @@ gitGraph
    merge develop
    commit
    commit
-` ``
 ```
+````
+
 <!-- .element: style="grid-area: code;" -->
 
 </grid-box>
