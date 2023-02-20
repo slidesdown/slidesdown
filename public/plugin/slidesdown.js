@@ -5,7 +5,11 @@
  */
 
 import { marked } from "marked";
+// TODO: dynamicall import mermaid to only load it when it's needed
 import { mermaid } from "mermaid";
+// INFO: the esm import would be better so that a dynamic import could be
+// performed .. but the plugin doesn't support this yet
+import * as Chart from "chart"; // not used because it will set a global name
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
@@ -276,9 +280,9 @@ const Plugin = () => {
         document.title = title;
       },
       "favicon": loadLink("icon"),
-      "theme": defaultURLToStylesheet("/reveal.js/dist/theme/"),
+      "theme": defaultURLToStylesheet("/vendor/reveal.js/dist/theme"),
       "highlight-theme": defaultURLToStylesheet(
-        "/reveal.js/plugin/highlight/",
+        "/vendor/highlight.js",
       ),
       "addiontional-stylesheet": loadStylesheet,
       "author": addMeta("author"),

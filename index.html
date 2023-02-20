@@ -12,9 +12,15 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Slidesdown</title>
-    <link rel="stylesheet" href="/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="/reveal.js/plugin/chalkboard/style.css" />
-    <link rel="stylesheet" href="/reveal.js/plugin/customcontrols/style.css" />
+    <link rel="stylesheet" href="/vendor/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="/vendor/reveal.js-plugins/chalkboard/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendor/reveal.js-plugins/customcontrols/style.css"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -32,24 +38,29 @@
     <script type="importmap">
       {
         "imports": {
-          "chart": "/chart.js/dist/chart.umd.js",
-          "mermaid": "/mermaid/loader.js",
-          "marked": "/marked/loader.js",
-          "slidesmarkdown": "/slidesmarkdown.js"
+          "chart": "/vendor/chart.js/dist/chart.umd.js",
+          "mermaid": "/vendor/mermaid/loader.js",
+          "marked": "/vendor/marked/loader.js",
+          "slidesdown": "/plugin/slidesdown.js",
+          "revealjs": "/vendor/reveal.js/dist/reveal.esm.js",
+          "reveal-highlight": "/vendor/reveal.js/plugin/highlight/highlight.esm.js",
+          "reveal-math": "/vendor/reveal.js/plugin/math/math.esm.js",
+          "reveal-notes": "/vendor/reveal.js/plugin/notes/notes.esm.js",
+          "reveal-search": "/vendor/reveal.js/plugin/search/search.esm.js",
+          "reveal-zoom": "/vendor/reveal.js/plugin/zoom/zoom.esm.js",
+          "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
+          "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
+          "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
+          "reveal-chart": "/vendor/reveal.js-plugins/chart/plugin.js"
         }
       }
     </script>
-    <script src="/chart.js/dist/chart.umd.js"></script>
-    <script src="/reveal.js/dist/reveal.js"></script>
-    <script src="/reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="/reveal.js/plugin/math/math.js"></script>
-    <script src="/reveal.js/plugin/notes/notes.js"></script>
-    <script src="/reveal.js/plugin/search/search.js"></script>
-    <script src="/reveal.js/plugin/zoom/zoom.js"></script>
-    <script src="/reveal.js/plugin/pdfexport/pdfexport.js"></script>
-    <script src="/reveal.js/plugin/chalkboard/plugin.js"></script>
-    <script src="/reveal.js/plugin/customcontrols/plugin.js"></script>
-    <script src="/reveal.js/plugin/chart/plugin.js"></script>
+    <!-- INFO: support for non-esm plugins -->
+    <script src="/vendor/reveal.js/dist/reveal.js"></script>
+    <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
+    <script src="/vendor/reveal.js-plugins/chalkboard/plugin.js"></script>
+    <script src="/vendor/reveal.js-plugins/customcontrols/plugin.js"></script>
+    <script src="/vendor/reveal.js-plugins/chart/plugin.js"></script>
     <script type="module" src="src/custom-elements.js"></script>
     <script type="module" src="/init.js"></script>
     <!-- DOCKER_LOADER_LINE -->

@@ -1,4 +1,17 @@
-import SlidesMarkdown from "slidesmarkdown";
+// INFO: the non-esm plugins need reveal JS in scope so it can't be imported
+// here
+// import Reveal from "revealjs";
+import RevealHighlight from "reveal-highlight";
+import RevealMath from "reveal-math";
+import RevealNotes from "reveal-notes";
+import RevealSearch from "reveal-search";
+import RevealZoom from "reveal-zoom";
+// INFO: non-esm therefore they can't be properly imported:
+// import * as PdfExport from "reveal-pdfexport";
+// import * as RevealChalkboard from "reveal-chalkboard";
+// import * as RevealCustomControls from "reveal-customcontrols";
+// import * as RevealChart from "reveal-chart";
+import SlidesDown from "slidesdown";
 
 // computeURL builds a URL to a raw markdown file from a short human-typable
 // string, e.g. it turns github.com/slidesdown/slidesdown into
@@ -77,7 +90,7 @@ const main = (defaults) => {
   Reveal.initialize({
     hash: true,
     plugins: [
-      SlidesMarkdown,
+      SlidesDown,
       RevealHighlight,
       RevealMath,
       RevealNotes,
