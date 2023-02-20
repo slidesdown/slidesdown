@@ -98,7 +98,7 @@ build:
     rm -rf published/*
     # cd public/vendor/reveal.js/ && npx gulp plugins
     yarn build
-    find published/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
+    find published/vendor/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
 
 # Update version tag in script
 tag:

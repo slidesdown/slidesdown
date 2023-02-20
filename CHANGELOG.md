@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.3] - 2023-02-20
+
+### Bug Fixes
+
+- Only strip /slides/ directory in python server
+
+### Documentation
+
+- Make auto-formatting work again for SLIDES.md
+
+### Features
+
+- Print script version upon completion
+
+### Miscellaneous Tasks
+
+- Post release changes
+
+### Refactor
+
+- Move all external plugins to public/vendor/
+
 ## [0.5.2] - 2023-02-18
 
 ### Bug Fixes
