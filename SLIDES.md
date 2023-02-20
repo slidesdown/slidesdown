@@ -762,20 +762,28 @@ Bucket List
 
 ## Backgrounds
 
-### Slide with background image
+### Colored background
+
+<!-- .slide: data-background-color="#78a5e9" -->
+
+```markdown
+<!-- .slide: data-background-color="#78a5e9" -->
+```
+
+### Gradient background
+
+<!-- .slide: data-background-gradient="linear-gradient(#e66465, #9198e5)" -->
+
+```markdown
+<!-- .slide: data-background-gradient="linear-gradient(#e66465, #9198e5)" -->
+```
+
+### Background image
 
 <!-- .slide: data-background-image="https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" -->
 
 ```markdown
 <!-- .slide: data-background-image="https://..." -->
-```
-
-### Slide with colored background
-
-<!-- .slide: data-background-color="#78a5e9" -->
-
-```markdown
-<!-- .slide: data-background-color="#78a5e9" -->
 ```
 
 ## Pictures and Icons
