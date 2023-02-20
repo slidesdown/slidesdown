@@ -267,6 +267,10 @@ const Plugin = () => {
       meta.name = name;
       meta.content = content;
       document.head.appendChild(meta);
+      document.documentElement.style.setProperty(
+        `--slideshow-${name == "dcterms.date" ? "date" : name}`,
+        `"${content}"`,
+      );
     };
     const defaultURLToStylesheet = (defaultURL) => (word) => {
       if (/^[\w0-9_-]+$/.exec(word)) {
@@ -278,6 +282,10 @@ const Plugin = () => {
     const applyFunctions = {
       "title": (title) => {
         document.title = title;
+        document.documentElement.style.setProperty(
+          "--slideshow-title",
+          `"${title}"`,
+        );
       },
       "favicon": loadLink("icon"),
       "theme": defaultURLToStylesheet("/vendor/reveal.js/dist/theme"),
