@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.4] - 2023-02-20
+
+### Documentation
+
+- Add gradient background example
+
+### Features
+
+- Make metadata available in CSS variables
+- Add layout components for header and footer
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.5.3] - 2023-02-20
 
 ### Bug Fixes
