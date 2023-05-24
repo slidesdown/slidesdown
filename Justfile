@@ -53,7 +53,7 @@ update-revealjs:
     # Source: https://github.com/hakimel/reveal.js
     mkdir -p public/vendor
     rm -rf public/vendor/reveal.js
-    VERSION="4.4.0"; cd public/vendor && \
+    VERSION="4.5.0"; cd public/vendor && \
         curl -Lfo - "https://github.com/hakimel/reveal.js/archive/refs/tags/${VERSION}.tar.gz" | \
         tar xvz && \
         mv "reveal.js-${VERSION}" reveal.js
