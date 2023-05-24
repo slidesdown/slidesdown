@@ -36,7 +36,7 @@ pdfSeparateFragments: false
 
 ## Hi!
 
-Slidesdown makes it simple to quickly turning an idea into a beautiful
+Slidesdown makes it simple to quickly turn an idea into a beautiful
 presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
 you need!
 
@@ -809,14 +809,14 @@ Bucket List
 
 <div style="display: flex; justify-content: center; grid-area: left;">
 
-![fish](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
 
 <!-- .element: class="r-frame" style="height: 30%; width: 30%"  -->
 
 </div>
 
 ```markdown
-![fish](https://....)
+![prize](https://....)
 
 <!-- .element: class="r-frame" -->
 ```
