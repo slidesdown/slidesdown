@@ -188,6 +188,18 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
+### Gradient Text
+
+<!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
+
+```markdown
+<!-- please ignore the leading \ -->
+
+\ ### Gradient Text Color
+
+<!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
+```
+
 ### Unordered List
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
