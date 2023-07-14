@@ -6,6 +6,8 @@ date: 2023-01-20
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf
 
 # Presentation settings:
+# URL to favicon
+favicon: /favicon.svg
 # Theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
@@ -13,8 +15,6 @@ highlight-theme: tokyo-night-dark
 # Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
 fontawesomePro: true
 fontawesomeFree: false
-# URL to favicon
-favicon: /favicon.svg
 
 # Show progress bar
 progress: true
