@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.5] - 2023-07-14
+
+### Bug Fixes
+
+- Correct typos
+- Use tagged decktape version
+
+### Features
+
+- Add repository license
+- Add gradient text examples
+- Add references to licenses of third party components
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update to version 4.5.0
+- Change to free fontawesome icons
+- Update dependencies
+- Bump version to 0.5.5
+
+### Examples
+
+- Update order of attributes
+
 ## [0.5.4] - 2023-02-20
 
 ### Documentation
