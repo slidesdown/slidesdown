@@ -19,14 +19,15 @@ update-all: update-revealjs update-revealjs-plugins update-revealjs-pdfexport up
 
 # Update pico
 update-pico:
-    VERSION="1.5.6"; \
+    # Source: https://github.com/picocss/pico
+    VERSION="1.5.10"; \
        curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@${VERSION}/css/pico.min.css"
 
 # Update mermaid
 update-mermaid:
     # Source: https://github.com/mermaid-js/mermaid
     mkdir -p public/vendor/mermaid
-    VERSION="9.3.0"; \
+    VERSION="9.4.3"; \
         curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs"
     # curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.min.js"
 
@@ -34,7 +35,7 @@ update-mermaid:
 update-marked:
     # Source: https://github.com/markedjs/marked
     mkdir -p public/vendor/marked
-    VERSION="4.2.12"; \
+    VERSION="5.1.1"; \
         curl -Lfo public/vendor/marked/marked.js "https://cdn.jsdelivr.net/npm/marked@${VERSION}/lib/marked.umd.min.js"
 
 # Update chartjs
@@ -42,7 +43,7 @@ update-chartjs:
     # Source: https://github.com/chartjs/Chart.js
     rm -rvf public/vendor/chart.js
     mkdir -p public/vendor/chart.js
-    VERSION="4.2.1"; cd public/vendor/chart.js && \
+    VERSION="4.3.0"; cd public/vendor/chart.js && \
         curl -Lfo - "https://github.com/chartjs/Chart.js/releases/download/v${VERSION}/chart.js-${VERSION}.tgz" | \
         tar xvz package/LICENSE.md package/dist && \
         mv -t . package/LICENSE.md package/dist && \
@@ -85,7 +86,7 @@ update-revealjs-highlight:
     # Source: https://github.com/highlightjs/highlight.js
     mkdir -p public/vendor
     rm -rf public/vendor/highlight.js
-    VERSION="11.7.0"; cd public/vendor && \
+    VERSION="11.8.0"; cd public/vendor && \
         curl -Lfo - "https://github.com/highlightjs/highlight.js/archive/refs/tags/${VERSION}.tar.gz" | \
         tar xvz "highlight.js-${VERSION}/src/styles" && \
         mv "highlight.js-${VERSION}/src/styles" highlight.js && \
