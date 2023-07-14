@@ -110,28 +110,28 @@ const main = (defaults) => {
     customcontrols: {
       controls: [
         {
-          icon: '<i class="fa-light fa-folder-open"></i>',
+          icon: '<i class="fa-solid fa-folder-open"></i>',
           title: "Open another presentation",
           action: "Reveal.slidesdownLoader();",
         },
         {
           id: "toggle-overview",
           title: "Toggle overview (O)",
-          icon: '<i class="fa-light fa-th"></i>',
+          icon: '<i class="fa-solid fa-th"></i>',
           action: "Reveal.toggleOverview();",
         },
         {
-          icon: '<i class="fa-light fa-pen-square"></i>',
+          icon: '<i class="fa-solid fa-pen-square"></i>',
           title: "Toggle chalkboard (B)",
           action: "RevealChalkboard.toggleChalkboard();",
         },
         {
-          icon: '<i class="fa-light fa-pen"></i>',
+          icon: '<i class="fa-solid fa-pen"></i>',
           title: "Toggle notes canvas (C)",
           action: "RevealChalkboard.toggleNotesCanvas();",
         },
         {
-          icon: '<i class="fa-light fa-print"></i>',
+          icon: '<i class="fa-solid fa-print"></i>',
           title: "Toggle print view (E)",
           action: "PdfExport.togglePdfExport();",
         },
