@@ -104,7 +104,8 @@ build:
 # Update version tag in script
 tag:
     TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" && \
-      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown
+      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown && \
+      sed -i -e "s/\"version\": \"[^"]*\"/\"version\": \"[^"]*\"${TAG}\"/" package.json
 
 # Update changelog
 changelog:
