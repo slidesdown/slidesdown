@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.7] - 2023-07-20
+
+### Bug Fixes
+
+- Correct escaping issue
+
+## [0.5.6] - 2023-07-20
+
+### Bug Fixes
+
+- Display correct default image tag
+- Update and fix mermaid dependency
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update version in package.json as well
+
 ## [0.5.5] - 2023-07-14
 
 ### Bug Fixes
