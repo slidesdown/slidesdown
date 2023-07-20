@@ -27,9 +27,9 @@ update-pico:
 update-mermaid:
     # Source: https://github.com/mermaid-js/mermaid
     mkdir -p public/vendor/mermaid
-    VERSION="9.4.3"; \
-        curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs"
-    # curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.min.js"
+    VERSION="10.2.4"; \
+        curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs" && \
+        curl -Lfo public/vendor/mermaid/mermaid-be6aa4a6.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid-be6aa4a6.js"
 
 # Update marked
 update-marked:
