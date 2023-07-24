@@ -94,11 +94,11 @@ you need!
 
 ### Draw on Slides
 
-![draw](./docs/figures/draw.png)
+![draw](./figures/draw.png)
 
 ### Open Blackboard
 
-![blackboard](./docs/figures/blackboard.png)
+![blackboard](./figures/blackboard.png)
 
 ## See for yourself..
 
