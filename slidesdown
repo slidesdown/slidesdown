@@ -208,10 +208,11 @@ main() {
 	SLIDES="$(basename "${1:-SLIDES.md}")"
 	local URL
 	if [[ -n "${UPDATE}" ]]; then
-		echo "Updating ${SCRIPT_NAME}"
+		UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
+		echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}"
 		SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
 		trap "rm -f '${SCRIPT_TEMP}'; ${SCRIPT_NAME} -v" 0 1 2 3 15
-		curl -sfLo "${SCRIPT_TEMP}" "https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
+		curl -sfLo "${SCRIPT_TEMP}" "${UPDATE_URL}"
 		trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'; ${SCRIPT_NAME} -v" 0
 		echo "complete"
 		return 0
