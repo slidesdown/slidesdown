@@ -55,10 +55,10 @@ class CORSRequestHandler(SimpleHTTPRequestHandler):
         stripped_path = super().translate_path(path.lstrip("/slides/"))
         return "/" + stripped_path if stripped_path != path else path
 
-host = sys.argv[1] if len(sys.argv) > 2 else '0.0.0.0'
+host = sys.argv[1] if len(sys.argv) > 2 else 'localhost'
 port = int(sys.argv[len(sys.argv)-1]) if len(sys.argv) > 1 else 8080
 
-print("Listening on {}:{}".format(host, port))
+print("Listening on http://{}:{}".format(host, port))
 httpd = HTTPServer((host, port), CORSRequestHandler)
 try:
     httpd.serve_forever()
