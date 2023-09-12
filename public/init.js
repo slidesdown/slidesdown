@@ -26,6 +26,16 @@ const computeURL = (defaults, url) => {
   const githubRegExp = new RegExp(
     /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)(?:\/(?:((?<blob>blob)|(?<tree>tree))\/)?(?:(?<dir_or_branch>[^/]*)\/)?(?<resource>.*))?/,
   );
+  // resource is not considered for gists, because there's no safe way to
+  // determine the resource's name from the provided anchor tag
+  const gistRegExp = new RegExp(
+    /^(?:https:\/\/)?gist.github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)\/?/,
+  );
+  // gistRegExp.exec("gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b")
+  // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b")
+  // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b#file-230911_dif_wg_id_presentation-md")
+  // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b/#file-230911_dif_wg_id_presentation-md")
+  // gistRegExp.exec("https://gist.githubusercontent.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b/raw/dd6e852ccb04c1690a7e96eb77008240e0fbf69f/SLIDES.md")
   if ((match = githubRegExp.exec(decodedURL)) !== null) {
     let resource = `${defaults.branch}/${defaults.resource}`;
     // if tree is present, then the default resouce name must be appended
@@ -50,6 +60,8 @@ const computeURL = (defaults, url) => {
       }
     }
     return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`;
+  } else if ((match = gistRegExp.exec(decodedURL)) !== null) {
+    return `https://gist.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/raw/SLIDES.md`;
   }
   return decodedURL;
 };
@@ -85,10 +97,11 @@ const main = (defaults) => {
   // initialize presentation
   mdSection.setAttribute("data-markdown", slidesURL);
   Reveal.slidesdownLoader = () => {
-    window.location.href = "https://slidesdown.github.io/loader.html";
+    window.location.href = "/loader.html";
   };
   Reveal.initialize({
     hash: true,
+    hashOneBasedIndex: true,
     plugins: [
       SlidesDown,
       RevealHighlight,
@@ -137,38 +150,8 @@ const main = (defaults) => {
         },
       ],
     },
-    // anything: [
-    //   {
-    //     className: "mermaidx",
-    //     defaults: { diagramCounter: 0 },
-    //     initialize: (function (container, options) {
-    //       const graphDefinition = container.textContent;
-    //       console.log(
-    //         options.diagramCounter,
-    //         graphDefinition,
-    //         container.innerHTML,
-    //         container.textContent,
-    //       );
-    //       options.diagramCounter += 1;
-    //       if (!graphDefinition) {
-    //         return;
-    //       }
-    //       const res = mermaid.mermaidAPI.render(
-    //         `mermaid${options.diagramCounter}`,
-    //         graphDefinition,
-    //       );
-    //       // replacing outerHTML doesn't work for some unknown reason
-    //       // container.outerHTML = res;
-    //       const el = document.createElement("div");
-    //       el.innerHTML = res;
-    //       container.parentNode.append(el, container);
-    //       // removing the container element also doesn't work, so make it empty
-    //       // container.remove();
-    //       container.innerHTML = "";
-    //       return el;
-    //     }),
-    //   },
-    // ],
+  }).then(() => {
+    console.debug("initialization finished");
   });
 };
 
