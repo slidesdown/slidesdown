@@ -7,15 +7,16 @@ Slideshows as fast as you can type.
 
 ## Learn
 
-Visit [slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html) to
-get started.
+Visit [slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
+to get started.
 
 ## Usage
 
 ### Online Viewer
 
-Visit [slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
-and enter the URL to your Markdown presentation, e.g.
+Visit
+[slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html) and
+enter the URL to your Markdown presentation, e.g.
 `github.com/slidesdown/slidesdown/SLIDES.md`.
 
 ### CLI
@@ -34,9 +35,10 @@ The following programs are used by `slidesdown`:
 - [`docker`](https://www.docker.com/) required for offline presentations and
   hot-reloading slides while editing
 - [`python3`](https://www.python.org/) required for online presentations via
-  [slidesdown.github.io](https://slidesdown.github.io) if the slideshow file shall
-  be served from the local computer, i.e. useful for creating slides or when the
-  presentation is private and shall not be made accessible publicly via GitHub
+  [slidesdown.github.io](https://slidesdown.github.io) if the slideshow file
+  shall be served from the local computer, i.e. useful for creating slides or
+  when the presentation is private and shall not be made accessible publicly via
+  GitHub
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
   exporting slideshows as PDF
 - `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
