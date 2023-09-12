@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2023-09-12
+
+### Bug Fixes
+
+- Image masking for Chrome
+- [**breaking**] Correct ids and semantic tags of header and footer components
+- [**breaking**] Listen on localhost only instead of all interfaces
+- Update plugins and correct broken mermaid integration
+
+### Documentation
+
+- Correct links to figures
+- Display more information when updating the cli
+- Reformat docs
+
+### Features
+
+- Add support for simplified URL handling of gist.github.com
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.5.7] - 2023-07-20
 
 ### Bug Fixes
