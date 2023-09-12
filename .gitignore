@@ -4,6 +4,7 @@
 /node_modules
 
 # ignore vendor plugins
+/public/vendor/dompurify/**
 /public/vendor/apexcharts/**
 /public/vendor/chart.js/**
 /public/vendor/highlight.js/**

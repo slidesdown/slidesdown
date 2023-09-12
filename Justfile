@@ -15,13 +15,19 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked
+update-all: update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify
 
 # Update pico
 update-pico:
     # Source: https://github.com/picocss/pico
     VERSION="1.5.10"; \
        curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@${VERSION}/css/pico.min.css"
+
+# Update dompurify
+update-dompurify:
+    # Source: https://github.com/cure53/DOMPurify
+    rm -rf public/vendor/dompurify
+    cp -r ./node_modules/dompurify/dist public/vendor/dompurify
 
 # Update mermaid
 update-mermaid:

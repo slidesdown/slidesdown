@@ -1,6 +1,10 @@
 // Documentation: https://lit.dev/docs/components/styles/#dynamic-classes-and-styles
 import { css, html, LitElement } from "lit";
 
+// Attention: when adding or removing custom elements, be sure to also update
+// ../public/plugin/slidesdown.js CUSTOM_ELEMENT_HANDLING list in the SANITIZE
+// function otherwise the element will still be allowed / rejected by DOMPurify
+
 export class FontAwesomeIcon extends LitElement {
   static properties = {
     class: {},

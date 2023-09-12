@@ -7,6 +7,7 @@
 import { marked } from "marked";
 import { baseUrl } from "marked-base-url";
 // TODO: dynamically import mermaid to only load it when it's needed
+import DOMPurify from "dompurify";
 import { mermaid } from "mermaid";
 // INFO: the esm import would be better so that a dynamic import could be
 // performed .. but the plugin doesn't support this yet
@@ -37,6 +38,34 @@ const HTML_ESCAPE_MAP = {
 let BASE_URL = "";
 
 let DIAGRAM_COUNTER = 0;
+
+const SANITIZE = (string) =>
+  DOMPurify.sanitize(
+    string,
+    {
+      ADD_TAGS: [
+        "#comment", // comments are vital for configuring revealjs
+        "foreignObject", // unfortunately some mermaid diagrams use it, despite being a potential security risk: https://github.com/cure53/DOMPurify/issues/469
+      ],
+      CUSTOM_ELEMENT_HANDLING: {
+        tagNameCheck: (tagName) =>
+          [
+            "fa-i",
+            "flex-box",
+            "v-box",
+            "h-box",
+            "grid-box",
+            "columns-2",
+            "columns-3",
+            "columns-4",
+            "columns-5",
+            "columns-6",
+          ].includes(tagName),
+        attributeNameCheck: (name) =>
+          ["class", "styles", "style"].includes(name),
+      },
+    },
+  );
 
 const Plugin = () => {
   // The reveal.js instance this plugin is attached to
@@ -126,7 +155,7 @@ const Plugin = () => {
 
     if (notesMatch.length === 2) {
       content = notesMatch[0] + '<aside class="notes">' +
-        await this.marked.parse(notesMatch[1].trim()) + "</aside>";
+        SANITIZE(await this.marked.parse(notesMatch[1].trim())) + "</aside>";
     }
 
     // prevent script end tags in the content from interfering
@@ -694,7 +723,7 @@ const Plugin = () => {
         const notes = section.querySelector("aside.notes");
         const markdown = getMarkdownFromSlide(section);
 
-        section.innerHTML = await marked.parse(markdown);
+        section.innerHTML = SANITIZE(await marked.parse(markdown));
         const firstChild = section.firstElementChild;
         if (firstChild && firstChild.id !== "") {
           section.id = firstChild.id;
@@ -801,7 +830,7 @@ const Plugin = () => {
           ${code}
           --></canvas></div>`;
         } else {
-          return defaultCodeHandler(code, language);
+          return DOMPurify.sanitize(defaultCodeHandler(code, language));
         }
       };
 
@@ -814,6 +843,7 @@ const Plugin = () => {
           delete markedOptions.baseUrl;
         }
         markedOptions.async = true;
+
         const markedConfig = {
           ...markedOptions,
           renderer: {

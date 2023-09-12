@@ -236,6 +236,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
 
 <!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Links
 
@@ -560,6 +561,8 @@ Bucket List
 
 <!-- .element: style="grid-area: code;" -->
 
+</grid-box>
+
 ### Complex
 
 <grid-box styles="grid-template: 'left code' / 50% 50%">
@@ -834,7 +837,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
-<grid-box>
+</grid-box>
 
 ### Font Awesome Icon
 
@@ -1150,6 +1153,7 @@ via [chart.js](https://www.chartjs.org/)
 ```
 
 <!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Bar Chart
 
@@ -1213,6 +1217,7 @@ via [chart.js](https://www.chartjs.org/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
+</grid-box>
 
 ### Radar chart
 
@@ -1311,7 +1316,6 @@ via [chart.js](https://www.chartjs.org/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ## Diagrams
@@ -1434,7 +1438,6 @@ stateDiagram-v2
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ### Entity Relationship Diagram
@@ -1460,7 +1463,6 @@ erDiagram
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ### User Journey Diagram
@@ -1496,7 +1498,6 @@ journey
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ### Gantt Chart
@@ -1532,7 +1533,6 @@ gantt
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ### Git Graph
@@ -1572,7 +1572,6 @@ gitGraph
 ````
 
 <!-- .element: style="grid-area: code;" -->
-
 </grid-box>
 
 ---

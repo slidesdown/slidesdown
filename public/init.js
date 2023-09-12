@@ -101,7 +101,6 @@ const main = (defaults) => {
   };
   Reveal.initialize({
     hash: true,
-    hashOneBasedIndex: true,
     plugins: [
       SlidesDown,
       RevealHighlight,

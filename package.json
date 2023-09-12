@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "dompurify": "^3.0.5",
     "marked-base-url": "^1.0.8",
     "mermaid": "^10.4.0",
     "sass": "^1.66.1",
