@@ -2,7 +2,7 @@
 set -euo pipefail
 # set -x
 
-VERSION='0.6.1'
+VERSION='0.6.2'
 
 urlencode() {
 	# Source: https://gist.github.com/cdown/1163649
