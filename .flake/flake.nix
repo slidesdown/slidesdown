@@ -16,7 +16,7 @@
           gh # GitHub CLI https://cli.github.com/
           git-cliff # Changelog generator https://github.com/orhun/git-cliff
           just # Simple make replacement https://just.systems/
-          nodejs # node used for husky installation https://nodejs.org/en/
+          nodejs_18 # node used for husky installation https://nodejs.org/en/
         ];
         linuxOnlyPackages = [ ];
       in {
