@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.1] - 2023-09-12
+
+### Bug Fixes
+
+- Correct version update script that breaks package.json
+
+### Features
+
+- Add dompurify to sanitize HTML output
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.6.0] - 2023-09-12
 
 ### Bug Fixes
