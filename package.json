@@ -1,7 +1,7 @@
 {
   "name": "slidesdown",
   "private": true,
-  "version": "[^"]*"0.5.7",
+  "version": "^0.5.7",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "sass": "^1.63.6",
-    "vite": "^4.4.4"
+    "marked-base-url": "^1.0.8",
+    "mermaid": "^10.4.0",
+    "sass": "^1.66.1",
+    "vite": "^4.4.9"
   },
   "dependencies": {
-    "lit": "^2.7.6"
+    "lit": "^2.8.0",
+    "marked": "^9.0.0"
   }
 }

@@ -5,11 +5,17 @@
  */
 
 import { marked } from "marked";
-// TODO: dynamicall import mermaid to only load it when it's needed
+import { baseUrl } from "marked-base-url";
+// TODO: dynamically import mermaid to only load it when it's needed
 import { mermaid } from "mermaid";
 // INFO: the esm import would be better so that a dynamic import could be
 // performed .. but the plugin doesn't support this yet
 import * as Chart from "chart"; // not used because it will set a global name
+
+// const log = (msg) => (res) => {
+//   console.log(`${msg}: ${res}`);
+//   return res;
+// };
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
@@ -41,6 +47,7 @@ const Plugin = () => {
    * element. Normalizes leading tabs/whitespace.
    */
   function getMarkdownFromSlide(section) {
+    // console.log("getMarkdownFromSlide");
     // look for a <script> or <textarea data-template> wrapper
     const template = section.querySelector("[data-template]") ||
       section.querySelector("script");
@@ -73,6 +80,7 @@ const Plugin = () => {
    * to the output markdown slide.
    */
   function getForwardedAttributes(section) {
+    // console.log("getForwardedAttributes");
     const attributes = section.attributes;
     const result = [];
 
@@ -98,6 +106,7 @@ const Plugin = () => {
    * values for what's not defined.
    */
   function getSlidifyOptions(options) {
+    // console.log("getSlidifyOptions");
     options = options || {};
     options.separator = options.separator || DEFAULT_SLIDE_SEPARATOR;
     options.notesSeparator = options.notesSeparator || DEFAULT_NOTES_SEPARATOR;
@@ -109,14 +118,15 @@ const Plugin = () => {
   /**
    * Helper function for constructing a markdown slide.
    */
-  function createMarkdownSlide(content, options) {
+  async function createMarkdownSlide(content, options) {
+    // console.log("reateMarkdownSlide");
     options = getSlidifyOptions(options);
 
     const notesMatch = content.split(new RegExp(options.notesSeparator, "mgi"));
 
     if (notesMatch.length === 2) {
       content = notesMatch[0] + '<aside class="notes">' +
-        marked.parse(notesMatch[1].trim()) + "</aside>";
+        await this.marked.parse(notesMatch[1].trim()) + "</aside>";
     }
 
     // prevent script end tags in the content from interfering
@@ -131,6 +141,7 @@ const Plugin = () => {
    * on the passed in separator arguments.
    */
   function slidify(markdown, options) {
+    // console.log("slidify");
     options = getSlidifyOptions(options);
 
     const separatorRegex = new RegExp(
@@ -163,6 +174,7 @@ const Plugin = () => {
       // pluck slide content from markdown input
       content = markdown.substring(lastIndex, matches.index);
 
+      // skip empty slides
       if (content.trim().length > 0) {
         if (isHorizontal && wasHorizontal) {
           // add to horizontal stack
@@ -192,34 +204,53 @@ const Plugin = () => {
       markdown.substring(lastIndex),
     );
 
-    let markdownSections = "";
+    const promises = [];
 
     // flatten the hierarchical stack, and insert <section data-markdown> tags
     for (let i = 0, len = sectionStack.length; i < len; i++) {
       // vertical
       if (sectionStack[i] instanceof Array) {
-        markdownSections += "<section " + options.attributes + ">";
-
+        // console.log("sectionStack array");
+        const section_promises = [];
         sectionStack[i].forEach(function (child) {
-          markdownSections += "<section data-markdown>" +
-            createMarkdownSlide(child, options) + "</section>";
+          section_promises.push(
+            createMarkdownSlide(child, options).then((content) =>
+              "<section data-markdown>" + content +
+              "</section>"
+            ),
+          );
         });
-
-        markdownSections += "</section>";
+        promises.push(
+          new Promise((resolve) => {
+            Promise.all(section_promises).then((
+              res,
+            ) =>
+              resolve(
+                "<section " + options.attributes + ">" + res.join("") +
+                  "</section>",
+              )
+            );
+          }),
+        );
       } else {
-        markdownSections += "<section " + options.attributes +
-          " data-markdown>" + createMarkdownSlide(sectionStack[i], options) +
-          "</section>";
+        // console.log("sectionStack misc");
+        promises.push(
+          createMarkdownSlide(sectionStack[i], options).then((content) =>
+            "<section " + options.attributes + " data-markdown>" + content +
+            "</section>"
+          ),
+        );
       }
     }
 
-    return markdownSections;
+    return Promise.all(promises).then((res) => res.join(""));
   }
 
   /**
    * Parse metadata from a string into an object.
    */
   function parseMetadata(metadataString) {
+    // console.log("parseMetadata");
     return metadataString.split(/\r?\n/)
       .map((line) => line.split(/^([^:]+?):\s/).map((res) => res.trim()))
       .filter((entry) => entry.length > 2)
@@ -235,6 +266,7 @@ const Plugin = () => {
    * Apply metadta to presentation.
    */
   function applyMetadata(metadata) {
+    // console.log("applyMetadata");
     const defaultMetadata = {
       "theme": "white",
       "highlight-theme": "monokai",
@@ -390,6 +422,7 @@ const Plugin = () => {
    * Hide customcontrols if visibility of controls changes.
    */
   function hideCustomControlsIfVisiblityChanges(element) {
+    // console.log("hideCustomControlsIfVisiblityChanges");
     const observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         const style = window.getComputedStyle(mutation.target, null);
@@ -419,92 +452,95 @@ const Plugin = () => {
    * multi-slide markdown into separate sections and
    * handles loading of external markdown.
    */
-  function processSlides(scope) {
-    return new Promise(function (resolve) {
-      const externalPromises = [];
+  async function processSlides(scope) {
+    // console.log("processSlides");
+    const externalPromises = [];
 
-      [].slice.call(
-        scope.querySelectorAll(
-          "section[data-markdown]:not([data-markdown-parsed])",
-        ),
-      ).forEach(function (section, _i) {
-        if (section.getAttribute("data-markdown").length) {
-          externalPromises.push(
-            loadExternalMarkdown(section).then(
-              // Finished loading external file
-              function (xhr, _url) {
-                if (!BASE_URL) {
-                  // TODO: add support for multiple markdown elements
-                  const base_url = new URL(xhr.responseURL);
-                  const base_path = base_url.pathname.split(/\//);
-                  base_url.pathname = base_path.splice(0, base_path.length - 1)
-                    .join(
-                      "/",
-                    );
-                  // ensuere there's a trailing slash otherwish markered
-                  // interprets it differently
-                  BASE_URL = base_url.toString() + "/";
+    [].slice.call(
+      scope.querySelectorAll(
+        "section[data-markdown]:not([data-markdown-parsed])",
+      ),
+    ).forEach(function (section, _i) {
+      if (section.getAttribute("data-markdown").length) {
+        const promise = loadExternalMarkdown(section).then(
+          // Finished loading external file
+          async function (xhr, _url) {
+            if (!BASE_URL) {
+              // TODO: add support for multiple markdown elements
+              const base_url = new URL(xhr.responseURL);
+              const base_path = base_url.pathname.split(/\//);
+              base_url.pathname = base_path.splice(0, base_path.length - 1)
+                .join(
+                  "/",
+                );
+              // ensuere there's a trailing slash otherwish markered
+              // interprets it differently
+              BASE_URL = base_url.toString() + "/";
+            }
+            let markdown = xhr.responseText;
+            let metadata = {};
+            if (section.getAttribute("data-load-metadata") !== null) {
+              const metadataRegExp =
+                /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/g;
+              const metadataMatch = metadataRegExp.exec(markdown);
+              if (metadataMatch) {
+                // TODO: a context element would be helpful to be able to
+                // properly set the metadata
+                if (metadataMatch.groups.metadata) {
+                  metadata = parseMetadata(metadataMatch.groups.metadata);
                 }
-                let markdown = xhr.responseText;
-                let metadata = {};
-                if (section.getAttribute("data-load-metadata") !== null) {
-                  const metadataRegExp =
-                    /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/g;
-                  const metadataMatch = metadataRegExp.exec(markdown);
-                  if (metadataMatch) {
-                    // TODO: a context element would be helpful to be able to
-                    // properly set the metadata
-                    if (metadataMatch.groups.metadata) {
-                      metadata = parseMetadata(metadataMatch.groups.metadata);
-                    }
-                    markdown = markdown.substring(metadataRegExp.lastIndex);
-                  }
-                }
-                applyMetadata(metadata);
-                Reveal.on("ready", (_event) => {
-                  hideCustomControlsIfVisiblityChanges(
-                    document.querySelector(".controls"),
-                  );
-                });
-                section.outerHTML = slidify(markdown, {
-                  separator: section.getAttribute("data-separator"),
-                  verticalSeparator: section.getAttribute(
-                    "data-separator-vertical",
-                  ),
-                  notesSeparator: section.getAttribute("data-separator-notes"),
-                  attributes: getForwardedAttributes(section),
-                });
-              },
-              // Failed to load markdown
-              function (xhr, url) {
-                section.outerHTML = '<section data-state="alert">' +
-                  "ERROR: The attempt to fetch " + url +
-                  " failed with HTTP status " + xhr.status + "." +
-                  "Check your browser's JavaScript console for more details." +
-                  "<p>Remember that you need to serve the presentation HTML from a HTTP server.</p>" +
-                  "</section>";
-              },
-            ),
-          );
-        } else {
-          section.outerHTML = slidify(getMarkdownFromSlide(section), {
+                markdown = markdown.substring(metadataRegExp.lastIndex);
+              }
+            }
+            applyMetadata(metadata);
+            Reveal.on("ready", (_event) => {
+              hideCustomControlsIfVisiblityChanges(
+                document.querySelector(".controls"),
+              );
+            });
+            section.outerHTML = await slidify(markdown, {
+              separator: section.getAttribute("data-separator"),
+              verticalSeparator: section.getAttribute(
+                "data-separator-vertical",
+              ),
+              notesSeparator: section.getAttribute("data-separator-notes"),
+              attributes: getForwardedAttributes(section),
+            });
+          },
+          // Failed to load markdown
+          function (xhr, url) {
+            section.outerHTML = '<section data-state="alert">' +
+              "ERROR: The attempt to fetch " + url +
+              " failed with HTTP status " + xhr.status + "." +
+              "Check your browser's JavaScript console for more details." +
+              "<p>Remember that you need to serve the presentation HTML from a HTTP server.</p>" +
+              "</section>";
+          },
+        );
+        externalPromises.push(promise);
+      } else {
+        const promise = slidify(
+          getMarkdownFromSlide(section, {
             separator: section.getAttribute("data-separator"),
             verticalSeparator: section.getAttribute("data-separator-vertical"),
             notesSeparator: section.getAttribute("data-separator-notes"),
             attributes: getForwardedAttributes(section),
-          });
-        }
-      });
-
-      Promise.all(externalPromises).then(resolve);
+          }).then((res) => {
+            section.outerHTML = res;
+          }),
+        );
+        externalPromises.push(promise);
+      }
     });
+
+    await Promise.all(externalPromises);
   }
 
   function loadExternalMarkdown(section) {
+    // console.log("loadExternalMarkdown");
     return new Promise(function (resolve, reject) {
-      const xhr = new XMLHttpRequest(),
-        url = section.getAttribute("data-markdown");
-
+      const xhr = new XMLHttpRequest();
+      const url = section.getAttribute("data-markdown");
       const datacharset = section.getAttribute("data-charset");
 
       // see https://developer.mozilla.org/en-US/docs/Web/API/element.getAttribute#Notes
@@ -513,7 +549,7 @@ const Plugin = () => {
       }
 
       xhr.onreadystatechange = function (_section, xhr) {
-        if (xhr.readyState === 4) {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
           // file protocol yields status code 0 (useful for local debug, mobile applications etc.)
           if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
             resolve(xhr, url);
@@ -548,6 +584,7 @@ const Plugin = () => {
    * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
    */
   function addAttributeInElement(node, elementTarget, separator) {
+    // console.log("addAttributeInElement");
     const mardownClassesInElementsRegex = new RegExp(separator, "mg");
     const mardownClassRegex = new RegExp(
       '([^"= ]+?)="([^"]+?)"|(data-[^"= ]+?)(?=[" ])',
@@ -584,6 +621,7 @@ const Plugin = () => {
     separatorElementAttributes,
     separatorSectionAttributes,
   ) {
+    // console.log("addAttributes");
     if (
       element != null && element.childNodes != undefined &&
       element.childNodes.length > 0
@@ -642,51 +680,56 @@ const Plugin = () => {
    * Converts any current data-markdown slides in the
    * DOM to HTML.
    */
-  function convertSlides() {
+  function convertSlides(marked) {
     const sections = deck.getRevealElement().querySelectorAll(
       "[data-markdown]:not([data-markdown-parsed])",
     );
 
     let sectionNumber = 0;
-    [].slice.call(sections).forEach(function (section) {
-      section.setAttribute("data-markdown-parsed", true);
+    const promises = [];
+    [].slice.call(sections).forEach((section) => {
+      const parse = async function (section) {
+        section.setAttribute("data-markdown-parsed", true);
 
-      const notes = section.querySelector("aside.notes");
-      const markdown = getMarkdownFromSlide(section);
+        const notes = section.querySelector("aside.notes");
+        const markdown = getMarkdownFromSlide(section);
 
-      section.innerHTML = marked.parse(markdown);
-      const firstChild = section.firstElementChild;
-      if (firstChild && firstChild.id !== "") {
-        section.id = firstChild.id;
-        firstChild.id = "";
-      } else {
-        section.id = `${sectionNumber}`;
-      }
+        section.innerHTML = await marked.parse(markdown);
+        const firstChild = section.firstElementChild;
+        if (firstChild && firstChild.id !== "") {
+          section.id = firstChild.id;
+          firstChild.id = "";
+        } else {
+          section.id = `${sectionNumber}`;
+        }
 
-      addAttributes(
-        section,
-        section,
-        null,
-        section.getAttribute("data-element-attributes") ||
-          section.parentNode.getAttribute("data-element-attributes") ||
-          DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
-        section.getAttribute("data-attributes") ||
-          section.parentNode.getAttribute("data-attributes") ||
-          DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
-      );
+        addAttributes(
+          section,
+          section,
+          null,
+          section.getAttribute("data-element-attributes") ||
+            section.parentNode.getAttribute("data-element-attributes") ||
+            DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
+          section.getAttribute("data-attributes") ||
+            section.parentNode.getAttribute("data-attributes") ||
+            DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
+        );
 
-      // If there were notes, we need to re-add them after
-      // having overwritten the section's HTML
-      if (notes) {
-        section.appendChild(notes);
-      }
-      sectionNumber += 1;
+        // If there were notes, we need to re-add them after
+        // having overwritten the section's HTML
+        if (notes) {
+          section.appendChild(notes);
+        }
+        sectionNumber += 1;
+      };
+      promises.push(parse(section));
     });
 
-    return Promise.resolve();
+    return Promise.all(promises);
   }
 
   function escapeForHTML(input) {
+    // console.log("escapeForHTML");
     return input.replace(/([&<>'"])/g, (char) => HTML_ESCAPE_MAP[char]);
   }
 
@@ -698,88 +741,102 @@ const Plugin = () => {
      * current reveal.js deck.
      */
     init: function (reveal) {
+      // console.log("init");
       deck = reveal;
 
       let { renderer, animateLists, ...markedOptions } =
         deck.getConfig().markdown || {};
 
-      if (!renderer) {
-        renderer = new marked.Renderer();
+      const defaultCodeHandler = (code, language) => {
+        // console.log("defaultCodeHandler");
+        // Off by default
+        let lineNumbers = "";
 
-        const defaultCode = (code, language) => {
-          // Off by default
-          let lineNumbers = "";
+        // Users can opt in to show line numbers and highlight
+        // specific lines.
+        // ```javascript []        show line numbers
+        // ```javascript [1,4-8]   highlights lines 1 and 4-8
+        if (CODE_LINE_NUMBER_REGEX.test(language)) {
+          lineNumbers = language.match(CODE_LINE_NUMBER_REGEX)[1].trim();
+          lineNumbers = `data-line-numbers="${lineNumbers}"`;
+          language = language.replace(CODE_LINE_NUMBER_REGEX, "").trim();
+        }
 
-          // Users can opt in to show line numbers and highlight
-          // specific lines.
-          // ```javascript []        show line numbers
-          // ```javascript [1,4-8]   highlights lines 1 and 4-8
-          if (CODE_LINE_NUMBER_REGEX.test(language)) {
-            lineNumbers = language.match(CODE_LINE_NUMBER_REGEX)[1].trim();
-            lineNumbers = `data-line-numbers="${lineNumbers}"`;
-            language = language.replace(CODE_LINE_NUMBER_REGEX, "").trim();
-          }
+        // Escape before this gets injected into the DOM to
+        // avoid having the HTML parser alter our code before
+        // highlight.js is able to read it
+        code = escapeForHTML(code);
 
-          // Escape before this gets injected into the DOM to
-          // avoid having the HTML parser alter our code before
-          // highlight.js is able to read it
-          code = escapeForHTML(code);
+        return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
+      };
 
-          return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
-        };
-        renderer.code = function (code, language) {
-          if (language === "mermaid") {
-            // return `<pre class="mermaid">\n${code}\n</pre>`;
-            DIAGRAM_COUNTER += 1;
-            return mermaid.mermaidAPI.render(
+      const codeHandler = async (code, language) => {
+        // console.log("codeHandler", code, language);
+        if (language === "mermaid") {
+          DIAGRAM_COUNTER += 1;
+          try {
+            const { svg } = await mermaid.render(
               `mermaid${DIAGRAM_COUNTER}`,
               code,
             );
-          } else if (
-            [
-              "bar",
-              "line",
-              "bubble",
-              "doughnut",
-              "pie",
-              "polarArea",
-              "radar",
-              "scatter",
-            ].indexOf(language) >= 0
-          ) {
-            // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
-            return `<div><canvas data-chart="${language}">
-              <!--
-              ${code}
-              --></canvas></div>`;
-          } else {
-            return defaultCode(code, language);
+            return svg.toString();
+          } catch (err) {
+            return `mermaid render error: ${err}`;
           }
-        };
-      }
+        } else if (
+          [
+            "bar",
+            "line",
+            "bubble",
+            "doughnut",
+            "pie",
+            "polarArea",
+            "radar",
+            "scatter",
+          ].indexOf(language) >= 0
+        ) {
+          // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
+          return `<div><canvas data-chart="${language}">
+            <!--
+          ${code}
+          --></canvas></div>`;
+        } else {
+          return defaultCodeHandler(code, language);
+        }
+      };
 
-      if (animateLists === true) {
-        renderer.listitem = (text) => `<li class="fragment">${text}</li>`;
-      }
-
-      return processSlides(deck.getRevealElement()).then((slides) => {
+      return processSlides(deck.getRevealElement()).then(() => {
         // Marked options: https://marked.js.org/using_advanced#options
         if (!markedOptions.baseUrl) {
-          markedOptions.baseUrl = BASE_URL;
+          marked.use(baseUrl(BASE_URL));
+        } else {
+          marked.use(baseUrl(markedOptions.baseUrl));
+          delete markedOptions.baseUrl;
         }
-        // TODO: add html sanatizer, see https://marked.js.org/using_advanced#options
-        marked.setOptions({
-          renderer,
+        markedOptions.async = true;
+        const markedConfig = {
           ...markedOptions,
-        });
-        return convertSlides(slides);
+          renderer: {
+            code: (text, _lang, _escaped) => {
+              // console.log("calling renderer", escaped, lang, text);
+              return text;
+            },
+          },
+          walkTokens: async (token) => {
+            if (token.type === "code") {
+              token.text = await codeHandler(token.text, token.lang);
+            }
+          },
+        };
+        if (animateLists === true) {
+          markedConfig.renderer.listitem = (text) =>
+            `<li class="fragment">${text}</li>`;
+        }
+        this.marked.use(markedConfig);
+        return convertSlides(this.marked);
       });
     },
 
-    // TODO: Do these belong in the API?
-    processSlides: processSlides,
-    convertSlides: convertSlides,
-    slidify: slidify,
     marked: marked,
   };
 };

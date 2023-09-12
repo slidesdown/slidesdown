@@ -26,24 +26,24 @@ update-pico:
 # Update mermaid
 update-mermaid:
     # Source: https://github.com/mermaid-js/mermaid
-    mkdir -p public/vendor/mermaid
-    VERSION="10.2.4"; \
-        curl -Lfo public/vendor/mermaid/mermaid.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid.esm.min.mjs" && \
-        curl -Lfo public/vendor/mermaid/mermaid-be6aa4a6.js "https://cdn.jsdelivr.net/npm/mermaid@${VERSION}/dist/mermaid-be6aa4a6.js"
+    rm -rf public/vendor/mermaid
+    cp -r ./node_modules/mermaid/dist public/vendor/mermaid
+    git checkout -- public/vendor/mermaid/loader.js
 
 # Update marked
 update-marked:
     # Source: https://github.com/markedjs/marked
-    mkdir -p public/vendor/marked
-    VERSION="5.1.1"; \
-        curl -Lfo public/vendor/marked/marked.js "https://cdn.jsdelivr.net/npm/marked@${VERSION}/lib/marked.umd.min.js"
+    rm -rf public/vendor/marked
+    cp -r ./node_modules/marked/lib public/vendor/marked
+    rm -rf public/vendor/marked-base-url
+    cp -r ./node_modules/marked-base-url/src public/vendor/marked-base-url
 
 # Update chartjs
 update-chartjs:
     # Source: https://github.com/chartjs/Chart.js
     rm -rvf public/vendor/chart.js
     mkdir -p public/vendor/chart.js
-    VERSION="4.3.0"; cd public/vendor/chart.js && \
+    VERSION="4.4.0"; cd public/vendor/chart.js && \
         curl -Lfo - "https://github.com/chartjs/Chart.js/releases/download/v${VERSION}/chart.js-${VERSION}.tgz" | \
         tar xvz package/LICENSE.md package/dist && \
         mv -t . package/LICENSE.md package/dist && \
@@ -64,7 +64,7 @@ update-revealjs-plugins:
     # Source: https://github.com/rajgoel/reveal.js-plugins
     mkdir -p public/vendor
     rm -rf public/vendor/reveal.js-plugins
-    VERSION="4.1.5"; cd public/vendor && \
+    VERSION="4.2.0"; cd public/vendor && \
         curl -Lfo - "https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/${VERSION}.tar.gz" | \
         tar xvz && \
         mv "reveal.js-plugins-${VERSION}" reveal.js-plugins
@@ -115,7 +115,7 @@ changelog:
 post-release: tag changelog
 
 # Create a new release
-release: build build-docker push-docker
+release: build-docker push-docker
     TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
         git cliff --strip all --current | \
         gh release create -F - "${TAG}"
@@ -130,7 +130,7 @@ release: build build-docker push-docker
     fi
 
 # Build docker images
-build-docker:
+build-docker: build
     docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
 
 # Push docker images
