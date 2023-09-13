@@ -30,8 +30,7 @@ pdfSeparateFragments: false
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type.
-> <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a>
+> Slideshows as fast as you can type. <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a>
 > and powered by <a href="https://revealjs.com/">reveal.js</a></small>
 
 ## Hi!
@@ -55,7 +54,8 @@ you need!
 7. [Pictures and Icons](#pictures-and-icons)
 8. [Advanced Formatting](#advanced-formatting)
 9. [Charts](#charts)
-10. [Diagrams](#diagrams)
+10. [Charts](#charts-1)
+11. [Diagrams](#diagrams)
 
 ## Introduction
 
@@ -148,6 +148,7 @@ content
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Next comes a hidden slide
@@ -167,6 +168,7 @@ Can you see it?
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Hidden slide
@@ -177,7 +179,7 @@ Can you see it?
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
-Regluar, _italic_, **bold**, and <u>underlined</u>.
+Regluar, _italic_, __bold__, and <u>underlined</u>.
 
 <!-- .element: style="grid-area: left;" -->
 
@@ -186,6 +188,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Gradient Text
@@ -217,6 +220,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Ordered List
@@ -236,6 +240,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Links
@@ -630,6 +635,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ## Animations
@@ -675,6 +681,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Animated List
@@ -696,6 +703,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Animated List
@@ -719,6 +727,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Animated Colored Boxes
@@ -816,6 +825,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Framed Picture
@@ -837,6 +847,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Font Awesome Icon
@@ -889,6 +900,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### FontAwesome Bullet Icons
@@ -919,6 +931,7 @@ Bucket List
 ```
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ## Advanced Formatting
@@ -1217,11 +1230,13 @@ via [chart.js](https://www.chartjs.org/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Radar chart
 
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
+
 <grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
 ```chartjs-radar
@@ -1316,6 +1331,7 @@ via [chart.js](https://www.chartjs.org/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ## Charts
@@ -1361,6 +1377,7 @@ via [apexcharts](https://apexcharts.com/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### More Examples
@@ -1460,6 +1477,7 @@ sequenceDiagram
 ### State Diagram
 
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
+
 <grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
 ```mermaid
@@ -1487,6 +1505,7 @@ stateDiagram-v2
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Entity Relationship Diagram
@@ -1512,6 +1531,7 @@ erDiagram
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### User Journey Diagram
@@ -1547,6 +1567,7 @@ journey
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Gantt Chart
@@ -1582,6 +1603,7 @@ gantt
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Git Graph
@@ -1621,9 +1643,10 @@ gitGraph
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
----
+___
 
 <h1>Thank you</h1>
 

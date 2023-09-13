@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2023-09-13
+
+### Bug Fixes
+
+- Remove custom loaders
+- Generate IDs for markdown headings
+
+### Documentation
+
+- Correct link in file structure
+
+### Features
+
+- Dynamically import mermaid when needed
+- Make mermaid charts be initialized after revealjs
+- Add apexchart plugin
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update dependencies
+
+### Refactor
+
+- [**breaking**] Require namespace for chartjs charts
+
 ## [0.6.2] - 2023-09-12
 
 ### Miscellaneous Tasks
