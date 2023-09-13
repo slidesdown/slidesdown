@@ -9,7 +9,7 @@ import { baseUrl } from "marked-base-url";
 import DOMPurify from "dompurify";
 // INFO: the esm import would be better so that a dynamic import could be
 // performed .. but the plugin doesn't support this yet
-import * as Chart from "chart"; // not used because it will set a global name
+import * as Chart from "chartjs"; // not used because it will set a global name
 
 // const log = (msg) => (res) => {
 //   console.log(`${msg}: ${res}`);
@@ -797,20 +797,14 @@ const Plugin = () => {
         return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
       };
 
-      const codeHandler = async (code, language) => {
+      const codeHandler = (code, language) => {
         // console.log("codeHandler", code, language);
         if (language === "mermaid") {
-          const { mermaid } = await import("mermaid");
+          // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
           DIAGRAM_COUNTER += 1;
-          try {
-            const { svg } = await mermaid.render(
-              `mermaid${DIAGRAM_COUNTER}`,
-              code,
-            );
-            return svg.toString();
-          } catch (err) {
-            return `mermaid render error: ${err}`;
-          }
+          return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
+            btoa(code)
+          }"></div>`;
         } else if (
           [
             "chartjs-bar",
@@ -851,9 +845,9 @@ const Plugin = () => {
               return text;
             },
           },
-          walkTokens: async (token) => {
+          walkTokens: (token) => {
             if (token.type === "code") {
-              token.text = await codeHandler(token.text, token.lang);
+              token.text = codeHandler(token.text, token.lang);
             }
           },
         };
