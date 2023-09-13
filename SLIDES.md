@@ -30,8 +30,7 @@ pdfSeparateFragments: false
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type. <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a>
-> and powered by <a href="https://revealjs.com/">reveal.js</a></small>
+> Slideshows as fast as you can type. <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a> and powered by <a href="https://revealjs.com/">reveal.js</a></small>
 
 ## Hi!
 
@@ -53,8 +52,8 @@ you need!
 6. [Backgrounds](#backgrounds)
 7. [Pictures and Icons](#pictures-and-icons)
 8. [Advanced Formatting](#advanced-formatting)
-9. [Charts](#charts)
-10. [Charts](#charts-1)
+9. [Charts: ChartJS](#charts-chartjs)
+10. [Charts: ApexCharts](#charts-apexcharts)
 11. [Diagrams](#diagrams)
 
 ## Introduction
@@ -1048,7 +1047,7 @@ Shadow right, bottom.
 
 </grid-box>
 
-## Charts
+## Charts: ChartJS
 
 via [chart.js](https://www.chartjs.org/)
 
@@ -1334,7 +1333,7 @@ via [chart.js](https://www.chartjs.org/)
 
 </grid-box>
 
-## Charts
+## Charts: ApexCharts
 
 via [apexcharts](https://apexcharts.com/)
 
