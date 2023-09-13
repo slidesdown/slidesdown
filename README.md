@@ -122,8 +122,8 @@ slidesdown -h
     [https://slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
   - [`public/learn.html`](./public/learn.html) tutorial served at
     [https://slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
-  - [`public/slidesmarkdown.js`](./public/slidesmarkdown.js) Markdown converter
-    plugin - this is the core of this project
+  - [`public/plugins/slidesmarkdown.js`](./public/plugins/slidesmarkdown.js)
+    Markdown converter plugin - this is the core of this project
 - [`slidesdown`](./slidesdown) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
   - [`src/custom-elements.js`](./src/custom-elements.js) contains the custom
