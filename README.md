@@ -10,7 +10,7 @@ Slideshows as fast as you can type.
 Visit [slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
 to get started.
 
-## Usage
+## Usage: View Slides
 
 ### Online Viewer
 
@@ -22,7 +22,8 @@ enter the URL to your Markdown presentation, e.g.
 ### CLI
 
 Slidesdown provides a CLI to quickly open files on your computer in the Online
-Viewer or a Viewer hosted in a local Docker container.
+Viewer or a viewer hosted in a local Docker container that can be used fully
+offline (i.e. perfect for presentations you want to keep private).
 
 #### Installation
 
@@ -45,17 +46,108 @@ The following programs are used by `slidesdown`:
   (MacOS) for opening the slideshow in the default browser
 - [`curl`](https://curl.se/) for updating the slidesdown script
 
-#### Usage
+#### Update
 
 ```bash
-# 1. Create a SLIDES.md file in your current directory
-cat >SLIDES.md <<EOF
+sudo slidesdown -u
+```
+
+#### Open local file in slidesdown Online Viewer (python3 required)
+
+Attention: The file with _not_ transmitted to any online service! It will only
+be served from a local web server to your local browser!
+
+Navigate to any folder with a `SLIDES.md` file (), then run this command:
+
+```bash
+slidesdown
+```
+
+If the file name is different from `SLIDES.md`, pass the file name, too:
+
+```bash
+slidesdown README.md
+```
+
+#### Open local file in slidesdown Offline Viewer (python3 required)
+
+Navigate to any folder with a `SLIDES.md` file (), then run this command:
+
+```bash
+slidesdown -d
+```
+
+If the file name is different from `SLIDES.md`, pass the file name, too:
+
+```bash
+slidesdown -d README.md
+```
+
+#### Export Slides as PDF
+
+The export requires [`decktape`](https://github.com/astefanutti/decktape).
+
+```bash
+slidesdown -e
+```
+
+If the file name is different from `SLIDES.md`, pass the file name, too:
+
+```bash
+slidesdown -e README.md
+```
+
+The exporter can also be used via Docker:
+
+```bash
+slidesdown -d -e
+```
+
+## Usage: Create Slides
+
+### Simple
+
+Create a file called `SLIDES.md` and add your content. Once done, publish it
+online and open the presentation in the [online viewer](#online-viewer) or use
+the [CLI](#cli) to do so.
+
+### Use Template
+
+There are multiple options for starting with a template that includes meta data
+and useful configuration options:
+
+1. Download from GitHub:
+
+   ```bash
+   curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md
+   ```
+
+2. Use [CLI](#cli):
+
+   ```bash
+   slidesdown -t
+   ```
+
+3. Copy template from here:
+
+```markdown
 ---
-# Metadata useful for SEO
+# Metadata about the presentation:
+title: Presentation Title
 author: Your Name
 date: 2023-01-20
-title: Presentation Title
-keywords: some keyword that help seo
+keywords: some useful keywords
+
+# Presentation settings:
+# URL to favicon
+favicon: /favicon.svg
+# Theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
+theme: white
+# Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
+highlight-theme: tokyo-night-dark
+# Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
+fontawesomePro: true
+fontawesomeFree: false
 
 # Show progress bar
 progress: true
@@ -64,7 +156,9 @@ controls: true
 # Center presentation
 center: true
 # Create separate pages for fragments
-# Full list of supported settings: https://revealjs.com/config/ and https://github.com/hakimel/reveal.js/blob/master/js/config.js
+pdfSeparateFragments: false
+# Full list of supported settings: https://revealjs.com/config/ or
+# https://github.com/hakimel/reveal.js/blob/master/js/config.js
 ---
 
 # My first markdown slideshow
@@ -77,25 +171,56 @@ Author: Your Name
 2. Markdown is easy to write
 3. Let's use it for presentations
 
+## A horizontal Slide
+
+### A veritical Slide
+
+## More Examples
+
+https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md
+
 ## The End
 
 Thank you for your time.
-EOF
+```
 
-# 2. Open file in slidesdown Online Viewer (python3 required)
-slidesdown
+### Publish Slides
 
-# 3. There's also an offline viewer available that requires Docker
-slidesdown -d
+#### GitHub Repository
 
-# 4. Export slides as PDF
-slidesdown -e
+Use the [GitHub CLI - `gh`](https://cli.github.com/)
 
-# 5. Get the latest version of the script
-slidesdown -u
+```bash
+gh repo create myslides --public --clone
+slidesdown -t
+# edit slides ...
+git add SLIDES.md
+git commit -m "first slideshow"
+git push
+```
 
-# 6. Explore more options
-slidesdown -h
+Now, open the presentation in the [online viewer](#online-viewer):
+
+```bash
+xdg-open "https://slidesdown.github.io/?slides=$(gh browse -n)"
+```
+
+#### GitHub Gist
+
+Use the [GitHub CLI - `gh`](https://cli.github.com/)
+
+```bash
+slidesdown -t
+# edit slides ...
+gh gist create SLIDES.md --public
+```
+
+Now, copy the printed URL into the `URL` variable and open the
+[online viewer](#online-viewer):
+
+```bash
+URL="https://gist.github.com/..."
+xdg-open "https://slidesdown.github.io/?slides=${URL}"
 ```
 
 ## Development
