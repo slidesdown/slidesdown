@@ -822,6 +822,11 @@ const Plugin = () => {
             <!--
           ${code}
           --></canvas></div>`;
+        } else if (
+          language === "apexchart"
+        ) {
+          // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
+          return `<div data-apexchart=${btoa(code)}></div>`;
         } else {
           return DOMPurify.sanitize(defaultCodeHandler(code, language));
         }

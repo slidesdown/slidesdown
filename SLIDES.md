@@ -1318,6 +1318,55 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
 
+## Charts
+
+via [apexcharts](https://apexcharts.com/)
+
+### Line Chart
+
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
+
+```apexchart
+{
+  "chart": {
+    "type": "line"
+  },
+  "series": [{
+    "name": "sales",
+    "data": [30,40,35,50,49,60,70,91,125]
+  }],
+  "xaxis": {
+    "categories": [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+  }
+}
+```
+
+<!-- .element: style="grid-area: left;" -->
+
+````markdown
+```apexchart
+{
+  "chart": {
+    "type": "line"
+  },
+  "series": [{
+    "name": "sales",
+    "data": [30,40,35,50,49,60,70,91,125]
+  }],
+  "xaxis": {
+    "categories": [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+  }
+}
+```
+````
+
+<!-- .element: style="grid-area: code;" -->
+</grid-box>
+
+### More Examples
+
+see [docs](https://apexcharts.com/docs/chart-types/line-chart/)
+
 ## Diagrams
 
 via [mermaid.js](https://mermaid.js.org/)

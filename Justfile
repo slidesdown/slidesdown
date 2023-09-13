@@ -15,7 +15,13 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify
+update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify
+
+# Update pico
+update-apexcharts:
+    # Source: https://github.com/apexcharts/apexcharts.js
+    rm -rf public/vendor/apexcharts
+    cp -r ./node_modules/apexcharts/dist public/vendor/apexcharts
 
 # Update pico
 update-pico:
