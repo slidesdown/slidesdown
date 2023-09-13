@@ -9,9 +9,7 @@
 /public/vendor/chart.js/**
 /public/vendor/highlight.js/**
 /public/vendor/marked/**
-!/public/vendor/marked/loader.js
 /public/vendor/mermaid/**
-!/public/vendor/mermaid/loader.js
 /public/vendor/reveal-pdfexport/**
 /public/vendor/reveal.js/**
 /public/vendor/reveal.js-plugins/**

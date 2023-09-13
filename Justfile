@@ -40,7 +40,6 @@ update-mermaid:
     # Source: https://github.com/mermaid-js/mermaid
     rm -rf public/vendor/mermaid
     cp -r ./node_modules/mermaid/dist public/vendor/mermaid
-    git checkout -- public/vendor/mermaid/loader.js
 
 # Update marked
 update-marked:

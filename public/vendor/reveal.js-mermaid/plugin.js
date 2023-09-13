@@ -22,7 +22,7 @@ async function initializeCharts(canvases) {
 async function createChart(canvas, id, data) {
   if (id && data) {
     try {
-      const { mermaid } = await import("mermaid");
+      const { default: mermaid } = await import("mermaid");
       const { svg } = await mermaid.render(
         id,
         data,
