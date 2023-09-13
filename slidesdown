@@ -110,7 +110,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'hednuvp:i:r:' --long 'help,export,docker,no-open,update,version,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
+	TEMP=$(getopt -o 'hednuvtp:i:r:' --long 'help,template,export,docker,no-open,update,version,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
@@ -122,14 +122,18 @@ main() {
 			echo "USAGE: $(basename "${0}") [OPTIONS] [FILENAME]"
 			echo "OPTIONS (option can also be set via environment variable):"
 			echo -e '  -h|--help\tPrint this usage information'
+			echo
 			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
 			echo -e '  -r|--resolution\tExport resolution (default: 2560x144, env RESOLUTION)'
+			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: is to run a local http server via Python3 and connect to an online service, env DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: jceb/slidesdown:${VERSION}, env IMAGE)"
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
-			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
+			echo
 			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
+			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
 			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
+			echo -e '  -t|--template\Create SLIDES.md template'
 			echo -e '  -v|--version\tPrint script version'
 			echo "FILENAME: default SLIDES.md"
 			echo
@@ -172,6 +176,16 @@ main() {
 			local NO_OPEN=1
 			shift
 			continue
+			;;
+		'-t' | '--template')
+			if [ -e SLIDES.md ]; then
+				echo "Error, file already exists: SLIDES.md" >&2
+				exit 1
+			else
+				curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md
+				echo "Created SLIDES.md. Happy sliding :-)"
+			fi
+			exit
 			;;
 		'-u' | '--update')
 			local UPDATE=1
