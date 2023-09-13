@@ -644,6 +644,11 @@ fsevents@~2.3.2:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
+github-slugger@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-2.0.0.tgz#52cf2f9279a21eb6c59dd385b410f0c0adda8f1a"
+  integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
+
 glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -768,6 +773,13 @@ marked-base-url@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/marked-base-url/-/marked-base-url-1.0.8.tgz#60c0f65874780c13685167a2973003e28e15a17f"
   integrity sha512-LlyOytEck4w7ziF047ddz6aqFHBKNU9Fyzbkc8YOdJcyXNn9EVXlGjVXBqITqecS1am49prumzej+myZrYZbCw==
+
+marked-gfm-heading-id@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/marked-gfm-heading-id/-/marked-gfm-heading-id-3.0.8.tgz#7d77f264181633b78c7fcb522b1df46783689a64"
+  integrity sha512-JDKp7tqU0QYHGz9xBWiZGfiCPNcvg0PvNvRr6XvRTgIg4S4etZxns7+ez+YtREU8iuQJC0V6vLTae9n8FH6gxQ==
+  dependencies:
+    github-slugger "^2.0.0"
 
 marked@^9.0.0:
   version "9.0.0"

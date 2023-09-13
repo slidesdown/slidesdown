@@ -6,6 +6,7 @@
 
 import { marked } from "marked";
 import { baseUrl } from "marked-base-url";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 import DOMPurify from "dompurify";
 // INFO: the esm import would be better so that a dynamic import could be
 // performed .. but the plugin doesn't support this yet
@@ -840,6 +841,7 @@ const Plugin = () => {
           marked.use(baseUrl(markedOptions.baseUrl));
           delete markedOptions.baseUrl;
         }
+        marked.use(gfmHeadingId());
         markedOptions.async = true;
 
         const markedConfig = {

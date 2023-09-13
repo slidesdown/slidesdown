@@ -48,6 +48,10 @@ update-marked:
     cp -r ./node_modules/marked/lib public/vendor/marked
     rm -rf public/vendor/marked-base-url
     cp -r ./node_modules/marked-base-url/src public/vendor/marked-base-url
+    rm -rf public/vendor/marked-gfm-heading-id
+    cp -r ./node_modules/marked-gfm-heading-id/src public/vendor/marked-gfm-heading-id
+    rm -rf public/vendor/github-slugger
+    cp -r ./node_modules/github-slugger public/vendor/github-slugger
 
 # Update chartjs
 update-chartjs:

@@ -18,6 +18,7 @@
     "lit": "^2.8.0",
     "marked": "^9.0.0",
     "marked-base-url": "^1.0.8",
+    "marked-gfm-heading-id": "^3.0.8",
     "mermaid": "^10.4.0"
   }
 }

@@ -19,6 +19,11 @@ export function baseUrl(base) {
         return;
       }
 
+      if (token.href.startsWith('#')) {
+        // the URL is a local reference
+        return;
+      }
+
       if (isBaseAbsolute) {
         try {
           token.href = new URL(token.href, base).href;
@@ -38,6 +43,6 @@ export function baseUrl(base) {
           // ignore
         }
       }
-    }
+    },
   };
 }

@@ -4,6 +4,8 @@
 /node_modules
 
 # ignore vendor plugins
+/public/vendor/github-slugger/**
+/public/vendor/marked-gfm-heading-id/**
 /public/vendor/dompurify/**
 /public/vendor/apexcharts/**
 /public/vendor/chart.js/**
