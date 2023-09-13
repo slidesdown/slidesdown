@@ -1,6 +1,6 @@
 # Documentation: https://just.systems/man/en/
 
-set shell := ["bash", "-euo", "pipefail", "-c"]
+set shell := ["bash", "-eEuo", "pipefail", "-c"]
 
 # Print this help
 help:
@@ -118,9 +118,13 @@ build:
 
 # Update version tag in script
 tag:
-    TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')" && \
-      sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown && \
-      sed -i -e "s/\"version\": \"[^\"]*\"/\"version\": \"${TAG}\"/" package.json
+    #!/usr/bin/env bash
+    set -eEuo pipefail
+    TAG="$(git describe --tags --abbrev=0 --exact-match | sed -e 's/^v//')"
+    # TAG="0.7.0"
+    sed -i -e "s/^VERSION=.*/VERSION='${TAG}'/" slidesdown
+    sed -i -e "s/\"version\": \"[^\"]*\"/\"version\": \"${TAG}\"/" package.json
+    sed -i -e "s/name=\"generator\" content=\"[^\"]*\"/name=\"generator\" content=\"slidesdown ${TAG}\"/" index.html
 
 # Update changelog
 changelog:
