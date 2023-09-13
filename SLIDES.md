@@ -1043,7 +1043,7 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```polarArea
+```chartjs-polarArea
 {
   "data": {
     "labels": [
@@ -1079,7 +1079,7 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left; height: 300px;" -->
 
 ````json
-```polarArea
+```chartjs-polarArea
 {
   "data": {
     "labels": [
@@ -1112,7 +1112,7 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```line
+```chartjs-line
 {
  "data": {
   "labels": ["January","February","March","April","May","June","July"],
@@ -1133,7 +1133,7 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```line
+```chartjs-line
 {
  "data": {
   "labels": ["January","February","March","April","May","June","July"],
@@ -1159,7 +1159,7 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```bar
+```chartjs-bar
 {
   "data": {
     "labels": [
@@ -1194,7 +1194,7 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```bar
+```chartjs-bar
 {
   "data": {
     "labels": [
@@ -1224,7 +1224,7 @@ via [chart.js](https://www.chartjs.org/)
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
 <grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
-```radar
+```chartjs-radar
 {
   "data": {
     "labels": [
@@ -1283,7 +1283,7 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```radar
+```chartjs-radar
 {
   "data": {
     "labels": [

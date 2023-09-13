@@ -813,18 +813,18 @@ const Plugin = () => {
           }
         } else if (
           [
-            "bar",
-            "line",
-            "bubble",
-            "doughnut",
-            "pie",
-            "polarArea",
-            "radar",
-            "scatter",
+            "chartjs-bar",
+            "chartjs-line",
+            "chartjs-bubble",
+            "chartjs-doughnut",
+            "chartjs-pie",
+            "chartjs-polarArea",
+            "chartjs-radar",
+            "chartjs-scatter",
           ].indexOf(language) >= 0
         ) {
           // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
-          return `<div><canvas data-chart="${language}">
+          return `<div><canvas data-chart="${language.replace("chartjs-", "")}">
             <!--
           ${code}
           --></canvas></div>`;
