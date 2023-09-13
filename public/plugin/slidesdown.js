@@ -6,9 +6,7 @@
 
 import { marked } from "marked";
 import { baseUrl } from "marked-base-url";
-// TODO: dynamically import mermaid to only load it when it's needed
 import DOMPurify from "dompurify";
-import { mermaid } from "mermaid";
 // INFO: the esm import would be better so that a dynamic import could be
 // performed .. but the plugin doesn't support this yet
 import * as Chart from "chart"; // not used because it will set a global name
@@ -802,6 +800,7 @@ const Plugin = () => {
       const codeHandler = async (code, language) => {
         // console.log("codeHandler", code, language);
         if (language === "mermaid") {
+          const { mermaid } = await import("mermaid");
           DIAGRAM_COUNTER += 1;
           try {
             const { svg } = await mermaid.render(
