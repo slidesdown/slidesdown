@@ -30,7 +30,9 @@ pdfSeparateFragments: false
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type. <small>Created by <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a> and powered by <a href="https://revealjs.com/">reveal.js</a></small>
+> Slideshows as fast as you can type. <small>Created by
+> <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a> and powered by
+> <a href="https://revealjs.com/">reveal.js</a></small>
 
 ## Hi!
 
@@ -178,7 +180,7 @@ Can you see it?
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
-Regluar, _italic_, __bold__, and <u>underlined</u>.
+Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <!-- .element: style="grid-area: left;" -->
 
@@ -1645,7 +1647,7 @@ gitGraph
 
 </grid-box>
 
-___
+---
 
 <h1>Thank you</h1>
 
