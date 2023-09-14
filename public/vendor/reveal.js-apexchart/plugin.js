@@ -22,8 +22,8 @@ async function createChart(canvas, data) {
   if (data) {
     try {
       const { default: ApexCharts } = await import("apexcharts");
-      const options = JSON.parse(data);
-      const chart = new ApexCharts(canvas, options);
+      const _data = JSON.parse(data);
+      const chart = new ApexCharts(canvas, _data);
       canvas.innerHTML = ""; //  cleas inner elements since chart.render wont'd do it
       return await chart.render();
     } catch (err) {
@@ -31,7 +31,7 @@ async function createChart(canvas, data) {
       canvas.textContent = err.toString();
     }
   } else {
-    const msg = `apexcharts: type missing found for chart`;
+    const msg = `apexcharts: data missing found for chart`;
     console.warn(msg);
     canvas.textContent = msg;
   }
@@ -48,8 +48,9 @@ const Plugin = {
       const canvases = document.querySelectorAll("div[data-apexchart]");
       await initializeCharts(canvases);
     });
-    // rerendering required as the chart might not show under certain
-    // circumstances: https://github.com/apexcharts/apexcharts.js/issues/3087
+    // Rendering required as the chart might not show under certain
+    // circumstances. Therefore, rerender
+    // https://github.com/apexcharts/apexcharts.js/issues/3087
     reveal.addEventListener("slidechanged", async function () {
       const canvases = reveal.getCurrentSlide().querySelectorAll(
         "div[data-apexchart]",
