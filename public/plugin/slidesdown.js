@@ -8,9 +8,6 @@ import { marked } from "marked";
 import { baseUrl } from "marked-base-url";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 import DOMPurify from "dompurify";
-// INFO: the esm import would be better so that a dynamic import could be
-// performed .. but the plugin doesn't support this yet
-import * as Chart from "chartjs"; // not used because it will set a global name
 
 // const log = (msg) => (res) => {
 //   console.log(`${msg}: ${res}`);
@@ -806,23 +803,11 @@ const Plugin = () => {
           return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
             btoa(code)
           }"></div>`;
-        } else if (
-          [
-            "chartjs-bar",
-            "chartjs-line",
-            "chartjs-bubble",
-            "chartjs-doughnut",
-            "chartjs-pie",
-            "chartjs-polarArea",
-            "chartjs-radar",
-            "chartjs-scatter",
-          ].indexOf(language) >= 0
-        ) {
-          // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
-          return `<div><canvas data-chart="${language.replace("chartjs-", "")}">
-            <!--
-          ${code}
-          --></canvas></div>`;
+        } else if (language === "chartjs") {
+          // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
+          return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${
+            btoa(code)
+          }></canvas></div></div>`;
         } else if (
           language === "apexchart"
         ) {

@@ -1057,8 +1057,9 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```chartjs-polarArea
+```chartjs
 {
+  "type": "polarArea",
   "data": {
     "labels": [
       "Red",
@@ -1093,8 +1094,9 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left; height: 300px;" -->
 
 ````json
-```chartjs-polarArea
+```chartjs
 {
+  "type": "polarArea",
   "data": {
     "labels": [
       "Red",
@@ -1126,45 +1128,47 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```chartjs-line
+```chartjs
 {
- "data": {
-  "labels": ["January","February","March","April","May","June","July"],
-  "datasets":[
-   {
-    "data":[65,59,80,81,56,55,40],
-    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
-   },
-   {
-    "data":[28,48,40,19,86,27,90],
-    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
-   }
-  ]
- }
+  "type": "line",
+  "data": {
+   "labels": ["January","February","March","April","May","June","July"],
+   "datasets":[
+    {
+     "data":[65,59,80,81,56,55,40],
+     "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+    },
+    {
+     "data":[28,48,40,19,86,27,90],
+     "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+    }
+   ]
+  }
 }
 ```
 
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```chartjs-line
+```chartjs
 {
- "data": {
-  "labels": ["January","February","March","April","May","June","July"],
-  "datasets":[
-   {
-    "data":[65,59,80,81,56,55,40],
-    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
-   },
-   {
-    "data":[28,48,40,19,86,27,90],
-    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
-   }
-  ]
- }
+  "type": "line",
+  "data": {
+   "labels": ["January","February","March","April","May","June","July"],
+   "datasets":[
+    {
+     "data":[65,59,80,81,56,55,40],
+     "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+    },
+    {
+     "data":[28,48,40,19,86,27,90],
+     "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+    }
+   ]
+  }
 }
-` ``
 ```
+````
 
 <!-- .element: style="grid-area: code;" -->
 </grid-box>
@@ -1173,8 +1177,9 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' / 50% 50%;">
 
-```chartjs-bar
+```chartjs
 {
+  "type": "bar",
   "data": {
     "labels": [
       "January",
@@ -1203,13 +1208,13 @@ via [chart.js](https://www.chartjs.org/)
   }
 }
 ```
-````
 
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```chartjs-bar
+```chartjs
 {
+  "type": "bar",
   "data": {
     "labels": [
       "January",
@@ -1240,8 +1245,9 @@ via [chart.js](https://www.chartjs.org/)
 
 <grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
 
-```chartjs-radar
+```chartjs
 {
+  "type": "radar",
   "data": {
     "labels": [
       "Eating",
@@ -1299,8 +1305,9 @@ via [chart.js](https://www.chartjs.org/)
 <!-- .element: style="grid-area: left;" -->
 
 ````json
-```chartjs-radar
+```chartjs
 {
+  "type": "radar",
   "data": {
     "labels": [
       "Eating",

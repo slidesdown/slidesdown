@@ -8,11 +8,11 @@ import RevealSearch from "reveal-search";
 import RevealZoom from "reveal-zoom";
 import RevealApexchart from "reveal-apexchart";
 import RevealMermaid from "reveal-mermaid";
+import RevealChartjs from "reveal-chartjs";
 // INFO: non-esm therefore they can't be properly imported:
 // import * as PdfExport from "reveal-pdfexport";
 // import * as RevealChalkboard from "reveal-chalkboard";
 // import * as RevealCustomControls from "reveal-customcontrols";
-// import * as RevealChart from "reveal-chart";
 import SlidesDown from "slidesdown";
 
 // computeURL builds a URL to a raw markdown file from a short human-typable
@@ -116,10 +116,9 @@ const main = (defaults) => {
       RevealChalkboard,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/customcontrols
       RevealCustomControls,
-      // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/chart
-      RevealChart,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
       // RevealAnything,
+      RevealChartjs,
       RevealApexchart,
       RevealMermaid,
     ],

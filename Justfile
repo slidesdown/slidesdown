@@ -57,12 +57,9 @@ update-marked:
 update-chartjs:
     # Source: https://github.com/chartjs/Chart.js
     rm -rvf public/vendor/chart.js
-    mkdir -p public/vendor/chart.js
-    VERSION="4.4.0"; cd public/vendor/chart.js && \
-        curl -Lfo - "https://github.com/chartjs/Chart.js/releases/download/v${VERSION}/chart.js-${VERSION}.tgz" | \
-        tar xvz package/LICENSE.md package/dist && \
-        mv -t . package/LICENSE.md package/dist && \
-        rmdir package
+    cp -r ./node_modules/chart.js public/vendor/chart.js
+    rm -rvf public/vendor/kurkle
+    cp -r ./node_modules/@kurkle/color/dist public/vendor/kurkle
 
 # Update reveal.js
 update-revealjs:
