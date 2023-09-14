@@ -10,6 +10,7 @@
 /public/vendor/github-slugger/**
 /public/vendor/highlight.js/**
 /public/vendor/kurkle/**
+/public/vendor/marked-base-url/**
 /public/vendor/marked-gfm-heading-id/**
 /public/vendor/marked/**
 /public/vendor/mermaid/**
