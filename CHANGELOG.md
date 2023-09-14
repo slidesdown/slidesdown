@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - 2023-09-14
+
+### Bug Fixes
+
+- Minor fixes
+- Update to latest version
+
+### Documentation
+
+- Update toc
+- Correct broken markdown
+- Add more CLI examples and add slide publishing section
+
+### Features
+
+- Add template option
+- Add generator meta tag
+- [**breaking**] Switch to on demand imports
+
+### Miscellaneous Tasks
+
+- Post release changes
+
 ## [0.7.0] - 2023-09-13
 
 ### Bug Fixes
