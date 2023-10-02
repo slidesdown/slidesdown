@@ -198,10 +198,10 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apexcharts@^3.42.0:
-  version "3.42.0"
-  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.42.0.tgz#143eb4a12d93c59a37dd88efcf0c7ed0d9ab8735"
-  integrity sha512-hYhzZqh2Efny9uiutkGU2M/EarJ4Nn8s6dxZ0C7E7N+SV4d1xjTioXi2NLn4UKVJabZkb3HnpXDoumXgtAymwg==
+apexcharts@^3.43.0:
+  version "3.43.0"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.43.0.tgz#6906154605ae981f6e68c493ecfdfa57bdb55ce7"
+  integrity sha512-YPw1aLatPQMUqVLMp5d+LDaXFi4QrRQND72/XO7/2NJdg+R5MjE9sifJ0GzOfgoZM7ltBUTjwfSxIvwR/9V8yw==
   dependencies:
     "@yr/monotone-cubic-spline" "^1.0.3"
     svg.draggable.js "^2.2.2"
@@ -611,6 +611,11 @@ dompurify@^3.0.5:
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.0.5.tgz#eb3d9cfa10037b6e73f32c586682c4b2ab01fbed"
   integrity sha512-F9e6wPGtY+8KNMRAVfxeCOHU0/NPWMSENNq4pQctuXRqqdEPW7q3CrLbR5Nse044WwacyjHGOMlvNsBe1y6z9A==
 
+dompurify@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.0.6.tgz#925ebd576d54a9531b5d76f0a5bef32548351dae"
+  integrity sha512-ilkD8YEnnGh1zJ240uJsW7AzE+2qpbOUYjacomn3AvJ6J4JhKGSZ2nh4wUIXPZrEPppaCLx5jFe8T89Rk8tQ7w==
+
 elkjs@^0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/elkjs/-/elkjs-0.8.2.tgz#c37763c5a3e24e042e318455e0147c912a7c248e"
@@ -786,17 +791,17 @@ marked-base-url@^1.1.0:
   resolved "https://registry.yarnpkg.com/marked-base-url/-/marked-base-url-1.1.0.tgz#8a7529e39265acf9df1ac6578a711a4c2e558b78"
   integrity sha512-AjWbOyoub5dL6ZNJ3pU6BBPOSta4bwYDzFd+eOnisDEF9uBJ4e4oEhI6dgUjWFv4zxNRw9Yi+Gss5D9CvrecvA==
 
-marked-gfm-heading-id@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/marked-gfm-heading-id/-/marked-gfm-heading-id-3.0.8.tgz#7d77f264181633b78c7fcb522b1df46783689a64"
-  integrity sha512-JDKp7tqU0QYHGz9xBWiZGfiCPNcvg0PvNvRr6XvRTgIg4S4etZxns7+ez+YtREU8iuQJC0V6vLTae9n8FH6gxQ==
+marked-gfm-heading-id@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/marked-gfm-heading-id/-/marked-gfm-heading-id-3.1.0.tgz#f414c987a6d1cac4078829089a8cb01e9a07c005"
+  integrity sha512-PYgLXDbL64Ga6kCpvVuKVoIVsV6MKUtkOXnR8mIqyjiycAeKNhQxcGpO0mHEogOTzyY8A8TcK49k5VwYMUCCbg==
   dependencies:
     github-slugger "^2.0.0"
 
-marked@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-9.0.0.tgz#d812a4a452d219330561f6e0e4b669b784889303"
-  integrity sha512-37yoTpjU+TSXb9OBYY5n78z/CqXh76KiQj9xsKxEdztzU9fRLmbWO5YqKxgCVGKlNdexppnbKTkwB3RipVri8w==
+marked@^9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-9.0.3.tgz#95be5e8cba93f2c2ca1d6503794c4f02d81c97d9"
+  integrity sha512-pI/k4nzBG1PEq1J3XFEHxVvjicfjl8rgaMaqclouGSMPhk7Q3Ejb2ZRxx/ZQOcQ1909HzVoWCFYq6oLgtL4BpQ==
 
 mdast-util-from-markdown@^1.3.0:
   version "1.3.1"
@@ -823,10 +828,10 @@ mdast-util-to-string@^3.1.0:
   dependencies:
     "@types/mdast" "^3.0.0"
 
-mermaid@^10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-10.4.0.tgz#f89bf0ada161cbbe4dba2776e805119f7245a102"
-  integrity sha512-4QCQLp79lvz7UZxow5HUX7uWTPJOaQBVExduo91tliXC7v78i6kssZOPHxLL+Xs30KU72cpPn3g3imw/xm/gaw==
+mermaid@^10.5.0:
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-10.5.0.tgz#e90512a65b5c6e29bd86cd04ce45aa31da2be76d"
+  integrity sha512-9l0o1uUod78D3/FVYPGSsgV+Z0tSnzLBDiC9rVzvelPxuO80HbN1oDr9ofpPETQy9XpypPQa26fr09VzEPfvWA==
   dependencies:
     "@braintree/sanitize-url" "^6.0.1"
     "@types/d3-scale" "^4.0.3"
@@ -1123,10 +1128,10 @@ sade@^1.7.3:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.67.0:
-  version "1.67.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.67.0.tgz#fed84d74b9cd708db603b1380d6dc1f71bb24f6f"
-  integrity sha512-SVrO9ZeX/QQyEGtuZYCVxoeAL5vGlYjJ9p4i4HFuekWl8y/LtJ7tJc10Z+ck1c8xOuoBm2MYzcLfTAffD0pl/A==
+sass@^1.68.0:
+  version "1.68.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.68.0.tgz#0034b0cc9a50248b7d1702ac166fd25990023669"
+  integrity sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
