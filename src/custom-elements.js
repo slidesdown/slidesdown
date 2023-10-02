@@ -50,7 +50,7 @@ customElements.define("v-box", VerticalFlexBox);
 
 export class HorizontalFlexBox extends LitElement {
   render() {
-    return html`<flex-box styles="flex-direction: row;"><slot></slot></grid-box>`;
+    return html`<flex-box styles="flex-direction: row; ${this.styles}"><slot></slot></grid-box>`;
   }
 }
 customElements.define("h-box", HorizontalFlexBox);
