@@ -32,6 +32,10 @@ pdfSeparateFragments: false
 
 Author: Your Name
 
+<!-- generated with
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
+-->
+
 ## Agenda
 
 1. Markdown is easy to read
@@ -46,6 +50,8 @@ Author: Your Name
 
 https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md
 
-## The End
+---
+
+<h2>The End</h2>
 
 Thank you for your time.

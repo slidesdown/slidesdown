@@ -1656,6 +1656,7 @@ gitGraph
 
 ---
 
-<h1>Thank you</h1>
+<h2>Thank you</h2>
 
-<h2>for using <a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></h2>
+<strong>for using
+<a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>
