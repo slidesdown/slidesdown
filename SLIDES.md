@@ -1091,7 +1091,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 300px;" -->
+<!-- .element: style="grid-area: left; height: 80%;" -->
 
 ````json
 ```chartjs
@@ -1147,7 +1147,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````json
 ```chartjs
@@ -1209,7 +1209,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````json
 ```chartjs
@@ -1243,7 +1243,7 @@ via [chart.js](https://www.chartjs.org/)
 
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
 
-<grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
+<grid-box styles="grid-template: 'left code' / 50% 50%;">
 
 ```chartjs
 {
@@ -1302,7 +1302,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````json
 ```chartjs
@@ -1365,7 +1365,7 @@ via [apexcharts](https://apexcharts.com/)
 }
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```apexchart
@@ -1407,7 +1407,7 @@ graph LR
   B-->D;
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
@@ -1437,7 +1437,7 @@ graph TD
     F --> B
 ```
 
-<!-- .element: style="grid-area: left; height: 500px" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
@@ -1467,7 +1467,7 @@ sequenceDiagram
     Alice-)John: See you later!
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
@@ -1527,7 +1527,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
@@ -1594,7 +1594,7 @@ gantt
     another task      : 24d
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
@@ -1632,7 +1632,7 @@ gitGraph
    commit
 ```
 
-<!-- .element: style="grid-area: left;" -->
+<!-- .element: style="grid-area: left; height: 80%" -->
 
 ````markdown
 ```mermaid
