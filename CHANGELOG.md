@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.2] - 2023-10-05
+
+### Bug Fixes
+
+- Correct heights
+
+### Documentation
+
+- Add link to demo page
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update dependencies
+
 ## [0.8.1] - 2023-10-05
 
 ### Bug Fixes
