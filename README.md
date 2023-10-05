@@ -5,6 +5,8 @@ Slideshows as fast as you can type.
 [Slidesdown](https://slidesdown.github.io) is powered by the incredible
 [reveal.js presentation framework](https://revealjs.com/).
 
+![frontpage](./figures/frontpage.png)
+
 ## Learn
 
 Visit [slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
