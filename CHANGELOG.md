@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.1] - 2023-10-05
+
+### Bug Fixes
+
+- Include styles in HorizontalFlexBox
+
+### Documentation
+
+- Add frontpage image
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update dependencies
+- Minor adjustment of slides
+
 ## [0.8.0] - 2023-09-14
 
 ### Bug Fixes
