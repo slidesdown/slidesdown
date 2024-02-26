@@ -133,7 +133,7 @@ main() {
 			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
 			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
 			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
-			echo -e '  -t|--template\Create SLIDES.md template'
+			echo -e '  -t|--template\tCreate SLIDES.md template (default: https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md, env TEMPLATE)'
 			echo -e '  -v|--version\tPrint script version'
 			echo "FILENAME: default SLIDES.md"
 			echo
@@ -179,10 +179,10 @@ main() {
 			;;
 		'-t' | '--template')
 			if [ -e SLIDES.md ]; then
-				echo "Error, file already exists: SLIDES.md" >&2
+				echo "File already exists: SLIDES.md" >&2
 				exit 1
 			else
-				curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md
+				curl -sfLo SLIDES.md "${TEMPLATE:-https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md}"
 				echo "Created SLIDES.md. Happy sliding :-)"
 			fi
 			exit
