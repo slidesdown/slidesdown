@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.4] - 2024-02-26
+
+### Features
+
+- Add unocss for styling
+- Add support for custom templates
+- Add support for a custom export file name
+
+### Miscellaneous Tasks
+
+- Post release changes
+- Update dependencies
+- Migrate Justfile to nu
+
 ## [0.8.3] - 2023-10-05
 
 ### Miscellaneous Tasks
