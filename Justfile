@@ -105,21 +105,6 @@ build:
     yarn build
     ^find published/vendor/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
 
-# # Create a new release
-# release: build-docker push-docker
-#     TAG="$(git describe --tags --abbrev=0 --exact-match)" && \
-#         git cliff --strip all --current | \
-#         gh release create -F - "${TAG}"
-#     just post-release
-#     git add -u
-#     git commit -m "chore(ci): post release changes"
-#     if [ -e published/.git ]; then \
-#     cd published; \
-#     git add . || true; \
-#     git commit -a -m "chore: upstream update" || true; \
-#     git push || true; \
-#     fi
-
 # Create a new release of this module. LEVEL can be one of: major, minor, patch, premajor, preminor, prepatch, or prerelease.
 release LEVEL="patch":
     #!/usr/bin/env nu
@@ -145,6 +130,8 @@ release LEVEL="patch":
     git tag -s -m $new_version $new_version
     git push --atomic origin refs/heads/main $"refs/tags/($new_version)"
     git cliff --strip all --current | gh release create -F - $new_version slidesdown
+    just build-docker
+    just push-docker
     if (published/.git | path exists) {
       cd published
       git add . | ignore
