@@ -126,7 +126,7 @@ main() {
 			echo -e '  -h|--help\tPrint this usage information'
 			echo
 			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
-			echo -e '  -r|--resolution\tExport resolution (default: 2560x144, env RESOLUTION)'
+			echo -e '  -r|--resolution\tExport resolution (default: 1600x900, env RESOLUTION)'
 			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: jceb/slidesdown:${VERSION}, env IMAGE)"
@@ -222,7 +222,7 @@ main() {
 	local PORT="${PORT:-3000}"
 	local IMAGE="${IMAGE:-jceb/slidesdown:${VERSION}}"
 	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
-	local RESOLUTION="${RESOLUTION:-2560x1440}"
+	local RESOLUTION="${RESOLUTION:-1600x900}"
 
 	local ROOT_DIRECTORY
 	ROOT_DIRECTORY="$(readlink -f "$(dirname "${1:-SLIDES.md}")")/"
