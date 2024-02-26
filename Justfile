@@ -132,7 +132,7 @@ release LEVEL="patch":
     git cliff --strip all --current | gh release create -F - $new_version slidesdown
     just build-docker
     just push-docker
-    if (published/.git | path exists) {
+    if ("published/.git" | path exists) {
       cd published
       git add . | ignore
       git commit -a -m "chore: upstream update" | ignore
