@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.6] - 2024-02-26
+
+### Miscellaneous Tasks
+
+- Correct build of docker images
+
 ## [0.8.5] - 2024-02-26
 
 ### Bug Fixes
