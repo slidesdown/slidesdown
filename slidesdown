@@ -4,6 +4,8 @@ set -euo pipefail
 
 VERSION='0.8.3'
 
+# TODO: convert to subcommands
+
 urlencode() {
 	# Source: https://gist.github.com/cdown/1163649
 	local LC_ALL=C # support unicode = loop bytes, not characters
@@ -110,7 +112,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'hednuvtp:i:r:' --long 'help,template,export,docker,no-open,update,version,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
+	TEMP=$(getopt -o 'hednuvto:p:i:r:' --long 'help,template,export,docker,no-open,update,version,output:,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
@@ -126,11 +128,12 @@ main() {
 			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
 			echo -e '  -r|--resolution\tExport resolution (default: 2560x144, env RESOLUTION)'
 			echo
-			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: is to run a local http server via Python3 and connect to an online service, env DOCKER)'
+			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: jceb/slidesdown:${VERSION}, env IMAGE)"
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
 			echo
 			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
+			echo -e '  -o|--output\tWrite export to this filename (default: <SLIDES_FILE>.pdf, env OUTPUT)'
 			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
 			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
 			echo -e '  -t|--template\tCreate SLIDES.md template (default: https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md, env TEMPLATE)'
@@ -177,6 +180,11 @@ main() {
 			shift
 			continue
 			;;
+		'-o' | '--output')
+			local OUTPUT="${2}"
+			shift 2
+			continue
+			;;
 		'-t' | '--template')
 			if [ -e SLIDES.md ]; then
 				echo "File already exists: SLIDES.md" >&2
@@ -220,14 +228,15 @@ main() {
 	ROOT_DIRECTORY="$(readlink -f "$(dirname "${1:-SLIDES.md}")")/"
 	local SLIDES
 	SLIDES="$(basename "${1:-SLIDES.md}")"
+	local OUTPUT="${OUTPUT:-${SLIDES%%.*}.pdf}"
 	local URL
 	if [[ -n "${UPDATE}" ]]; then
 		UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
 		echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}"
 		SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
-		trap "rm -f '${SCRIPT_TEMP}'; ${SCRIPT_NAME} -v" 0 1 2 3 15
+		trap "rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0 1 2 3 15
 		curl -sfLo "${SCRIPT_TEMP}" "${UPDATE_URL}"
-		trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'; ${SCRIPT_NAME} -v" 0
+		trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0
 		echo "complete"
 		return 0
 	fi
@@ -240,7 +249,8 @@ main() {
 		if [[ -n "${DOCKER}" ]]; then
 			local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
 			local CONTAINER_SLIDES_PORT="8080"
-			local CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
+			local CONTAINER_ID
+			CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2
@@ -254,7 +264,8 @@ main() {
 			wait %1
 		fi
 	else
-		export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${SLIDES%%.*}.pdf"
+		echo "Exporting ${URL} as ${OUTPUT}" >&2
+		export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${OUTPUT}"
 	fi
 }
 
