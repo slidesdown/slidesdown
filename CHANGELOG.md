@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.8] - 2024-02-26
+
+### Bug Fixes
+
+- Correctly set script version
+
 ## [0.8.7] - 2024-02-26
 
 ### Bug Fixes
