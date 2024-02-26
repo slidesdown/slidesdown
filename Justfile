@@ -15,7 +15,7 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify
+update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss
 
 # Update pico
 update-apexcharts:
@@ -28,6 +28,13 @@ update-pico:
     # Source: https://github.com/picocss/pico
     VERSION="1.5.10"; \
        curl -Lfo public/css/pico.min.css "https://unpkg.com/@picocss/pico@${VERSION}/css/pico.min.css"
+
+# Update unocss
+update-unocss:
+    # Source: https://github.com/cure53/DOMPurify
+    rm -rf public/vendor/unocss
+    mkdir public/vendor/unocss
+    cp -r ./node_modules/@unocss/runtime/full.global.js public/vendor/unocss/
 
 # Update dompurify
 update-dompurify:

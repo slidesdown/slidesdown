@@ -13,6 +13,7 @@
     "vite": "^4.4.11"
   },
   "dependencies": {
+    "@unocss/runtime": "^0.58.5",
     "apexcharts": "^3.43.0",
     "chart.js": "^4.4.0",
     "dompurify": "^3.0.6",
