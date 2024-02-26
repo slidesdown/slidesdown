@@ -123,7 +123,7 @@ release LEVEL="patch":
     input -s $"Version will be bumped from ($current_version) to ($new_version).\nPress enter to confirm.\n"
     open package.json | upsert version $new_version | save -f package.json; git add package.json
     open --raw index.html | str replace -r 'name="generator" content="[^\"]*"' $'name="generator" content="slidesdown ($new_version)"' | save -f index.html; git add index.html
-    open --raw slidesdown | str replace -r '^VERSION=.*' $'VERSION="($new_version)"' | save -f slidesdown; git add slidesdown
+    open --raw slidesdown | str replace -r 'VERSION=.*' $'VERSION="($new_version)"' | save -f slidesdown; git add slidesdown
     git cliff -t $new_version -o CHANGELOG.md
     git add CHANGELOG.md
     git commit -m $"Bump version to ($new_version)"
