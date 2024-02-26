@@ -141,9 +141,9 @@ release LEVEL="patch":
 
 # Build docker images
 build-docker: build
-    docker build -t jceb/slidesdown:latest -t "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')" .
+    let tag = (git describe --tags --abbrev=0); docker build -t jceb/slidesdown:latest -t $"jceb/slidesdown:($tag)" .
 
 # Push docker images
 push-docker:
     docker push jceb/slidesdown:latest
-    docker push "jceb/slidesdown:$(git describe --tags --abbrev=0 | sed -e 's/^v//')"
+    let tag = (git describe --tags --abbrev=0); docker push $"jceb/slidesdown:($tag)"
