@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.5] - 2024-02-26
+
+### Bug Fixes
+
+- Build new docker image when releasing a new version
+
+### Miscellaneous Tasks
+
+- Add git-cliff configuration
+
 ## [0.8.4] - 2024-02-26
 
 ### Features
