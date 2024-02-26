@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.10] - 2024-02-26
+
+### Miscellaneous Tasks
+
+- Reduce default resolution to 1600x900
+
 ## [0.8.9] - 2024-02-26
 
 ### Bug Fixes
