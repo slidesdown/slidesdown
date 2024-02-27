@@ -12,7 +12,7 @@ WORKDIR /srv
 
 COPY package.json /srv
 COPY yarn.lock /srv
-RUN npm install
+RUN yarn install
 
 COPY published /srv/public
 COPY published/index.html /srv
