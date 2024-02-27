@@ -113,7 +113,7 @@ const main = (defaults) => {
       // Source: https://github.com/McShelby/reveal-pdfexport
       PdfExport,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard
-      RevealChalkboard,
+      // RevealChalkboard,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/customcontrols
       RevealCustomControls,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
@@ -135,16 +135,16 @@ const main = (defaults) => {
           icon: '<i class="fa-solid fa-th"></i>',
           action: "Reveal.toggleOverview();",
         },
-        {
-          icon: '<i class="fa-solid fa-pen-square"></i>',
-          title: "Toggle chalkboard (B)",
-          action: "RevealChalkboard.toggleChalkboard();",
-        },
-        {
-          icon: '<i class="fa-solid fa-pen"></i>',
-          title: "Toggle notes canvas (C)",
-          action: "RevealChalkboard.toggleNotesCanvas();",
-        },
+        // {
+        //   icon: '<i class="fa-solid fa-pen-square"></i>',
+        //   title: "Toggle chalkboard (B)",
+        //   action: "RevealChalkboard.toggleChalkboard();",
+        // },
+        // {
+        //   icon: '<i class="fa-solid fa-pen"></i>',
+        //   title: "Toggle notes canvas (C)",
+        //   action: "RevealChalkboard.toggleNotesCanvas();",
+        // },
         {
           icon: '<i class="fa-solid fa-print"></i>',
           title: "Toggle print view (E)",

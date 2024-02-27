@@ -19,17 +19,21 @@ update-all: update-apexcharts update-revealjs update-revealjs-plugins update-rev
 
 # Update pico
 update-apexcharts:
+    #!/usr/bin/env nu
     # Source: https://github.com/apexcharts/apexcharts.js
     rm -rpf public/vendor/apexcharts
     cp -r ./node_modules/apexcharts/dist public/vendor/apexcharts
 
 # Update pico
 update-pico:
+    #!/usr/bin/env nu
     # Source: https://github.com/picocss/pico
-    let VERSION = "1.5.10"; curl -Lfo public/css/pico.min.css $"https://unpkg.com/@picocss/pico@($VERSION)/css/pico.min.css"
+    let VERSION = "1.5.10"
+    curl -Lfo public/css/pico.min.css $"https://unpkg.com/@picocss/pico@($VERSION)/css/pico.min.css"
 
 # Update unocss
 update-unocss:
+    #!/usr/bin/env nu
     # Source: https://github.com/cure53/DOMPurify
     rm -rpf public/vendor/unocss
     mkdir public/vendor/unocss
@@ -37,18 +41,21 @@ update-unocss:
 
 # Update dompurify
 update-dompurify:
+    #!/usr/bin/env nu
     # Source: https://github.com/cure53/DOMPurify
     rm -prf public/vendor/dompurify
     cp -r ./node_modules/dompurify/dist public/vendor/dompurify
 
 # Update mermaid
 update-mermaid:
+    #!/usr/bin/env nu
     # Source: https://github.com/mermaid-js/mermaid
     rm -rpf public/vendor/mermaid
     cp -r ./node_modules/mermaid/dist public/vendor/mermaid
 
 # Update marked
 update-marked:
+    #!/usr/bin/env nu
     # Source: https://github.com/markedjs/marked
     rm -prf public/vendor/marked
     cp -pr ./node_modules/marked/lib public/vendor/marked
@@ -61,6 +68,7 @@ update-marked:
 
 # Update chartjs
 update-chartjs:
+    #!/usr/bin/env nu
     # Source: https://github.com/chartjs/Chart.js
     rm -prvf public/vendor/chart.js
     cp -pr ./node_modules/chart.js public/vendor/chart.js
@@ -69,35 +77,53 @@ update-chartjs:
 
 # Update reveal.js
 update-revealjs:
+    #!/usr/bin/env nu
     # Source: https://github.com/hakimel/reveal.js
-    mkdir -p public/vendor
+    mkdir public/vendor
     rm -prf public/vendor/reveal.js
-    let VERSION = "4.6.0"; cd public/vendor; curl -Lfo - $"https://github.com/hakimel/reveal.js/archive/refs/tags/($VERSION).tar.gz" | tar xvz; mv $"reveal.js-($VERSION)" reveal.js
+    let VERSION = "5.0.5"
+    cd public/vendor
+    do -c {curl -Lfo - $"https://github.com/hakimel/reveal.js/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
+    mv $"($env.PWD)/reveal.js-($VERSION)" reveal.js
 
 # Update reveal.js-plugins
 update-revealjs-plugins:
+    #!/usr/bin/env nu
     # Source: https://github.com/rajgoel/reveal.js-plugins
-    mkdir -p public/vendor
+    mkdir public/vendor
     rm -prf public/vendor/reveal.js-plugins
-    let VERSION = "4.2.4"; cd public/vendor; curl -Lfo - $"https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/($VERSION).tar.gz" | tar xvz; mv $"reveal.js-plugins-($VERSION)" reveal.js-plugins
+    let VERSION = "4.2.5"
+    cd public/vendor
+    do -c {curl -Lfo - $"https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
+    mv $"($env.PWD)/reveal.js-plugins-($VERSION)" reveal.js-plugins
 
 # Update reveal.js-pdfexport
 update-revealjs-pdfexport:
+    #!/usr/bin/env nu
     # Source: https://github.com/McShelby/reveal-pdfexport
-    mkdir -p public/vendor
+    mkdir public/vendor
     rm -prf public/vendor/reveal-pdfexport
-    let VERSION = "2.0.1"; cd public/vendor; curl -Lfo - $"https://github.com/McShelby/reveal-pdfexport/archive/refs/tags/($VERSION).tar.gz" | tar xvz; mv $"reveal-pdfexport-($VERSION)" reveal-pdfexport
-    cd public/vendor/reveal-pdfexport; patch -p4 < "{{ justfile_directory() }}/src/pdfexport_add_export.patch"
+    let VERSION = "2.0.1"
+    cd public/vendor
+    do -c {curl -Lfo - $"https://github.com/McShelby/reveal-pdfexport/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
+    mv $"($env.PWD)/reveal-pdfexport-($VERSION)" reveal-pdfexport
+    cd reveal-pdfexport; open --raw "{{ justfile_directory() }}/src/pdfexport_add_export.patch" | do -c {patch -p4}
 
 # Update reveal.js-highlight
 update-revealjs-highlight:
+    #!/usr/bin/env nu
     # Source: https://github.com/highlightjs/highlight.js
-    mkdir -p public/vendor
+    mkdir public/vendor
     rm -prf public/vendor/highlight.js
-    let VERSION = "11.8.0"; cd public/vendor; curl -Lfo - $"https://github.com/highlightjs/highlight.js/archive/refs/tags/($VERSION).tar.gz" | tar xvz $"highlight.js-($VERSION)/src/styles"; mv $"highlight.js-($VERSION)/src/styles" highlight.js; rm -pvrf $"highlight.js-($VERSION)"
+    let VERSION = "11.9.0"
+    cd public/vendor
+    curl -Lfo - $"https://github.com/highlightjs/highlight.js/archive/refs/tags/($VERSION).tar.gz" | tar xvz $"highlight.js-($VERSION)/src/styles"
+    mv $"($env.PWD)/highlight.js-($VERSION)/src/styles" highlight.js
+    rm -pvrf $"($env.PWD)/highlight.js-($VERSION)"
 
 # Build application
 build:
+    #!/usr/bin/env nu
     # Ensure that docs exists by cloning it first if docs shall be published
     # git clone git@github.com:slidesdown/slidesdown.github.io.git published
     rm -prf published/*
@@ -141,9 +167,13 @@ release LEVEL="patch":
 
 # Build docker images
 build-docker: build
-    let tag = (git describe --tags --abbrev=0); docker build -t jceb/slidesdown:latest -t $"jceb/slidesdown:($tag)" .
+    #!/usr/bin/env nu
+    let tag = (git describe --tags --abbrev=0 --dirty)
+    docker build -t jceb/slidesdown:latest -t $"jceb/slidesdown:($tag)" .
 
 # Push docker images
 push-docker:
+    #!/usr/bin/env nu
     docker push jceb/slidesdown:latest
-    let tag = (git describe --tags --abbrev=0); docker push $"jceb/slidesdown:($tag)"
+    let tag = (git describe --tags --abbrev=0)
+    docker push $"jceb/slidesdown:($tag)"
