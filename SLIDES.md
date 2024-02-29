@@ -850,81 +850,78 @@ Bucket List
 
 ### Font Awesome Icon
 
-<i class="fa-solid fa-face-smile"></i>
+<div class="i-fa6-solid-face-smile m-auto"></div>
 
 ```markdown
-<i class="fa-solid fa-face-smile"></i>
+<div class="i-fa6-solid-face-smile"></div>
 ```
+
+Many [more icons and icon sets](https://icones.js.org/) are available.
 
 ### Font Awesome Icon with Color
 
-<span style="font-size: 8rem; color: purple;">
-<i class="fa-solid fa-face-smile"></i>
-</span>
+<div class="i-fa6-solid-face-smile text-[8rem] c-purple m-auto"></div>
 
 ```markdown
-<span style="font-size: 8rem; color: purple;">
-<i class="fa-solid fa-face-smile"></i>
-</span>
+<div class="i-fa6-solid-face-smile text-[8rem] c-purple"></div>
 ```
 
 ### Font Awesome Stacked Icons
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-<columns-2 styles="justify-items: center; grid-area: left;">
-<div class="fa-stack fa-2x">
-<i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+<div class="grid grid-cols-1">
+<div class="flex flex-justify-center gap-10">
+<div class="relative text-[6rem]">
+<div class="i-fa6-solid-circle text-[6rem]"></div>
+<div class="i-fa6-solid-flag invert text-[4rem] absolute top-[1rem] left-0 right-0 m-auto"></div>
 </div>
 
-<div class="fa-stack fa-2x">
-<i class="fas fa-camera fa-stack-1x"></i>
-<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
+<div class="relative text-[6rem]">
+<div class="i-fa6-solid-camera text-[4rem] absolute top-[1rem] left-[1rem] right-0 m-auto"></div>
+<div class="i-fa6-solid-ban text-[6rem] c-[tomato] absolute top-0 left-0 right-0 m-auto"></div>
 </div>
-</columns-2>
+</div>
 
 ```markdown
-<columns-2 styles="justify-items: center;">
-<div class="fa-stack fa-2x">
-<i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+<div class="flex flex-justify-center gap-10">
+<div class="relative text-[6rem]">
+<div class="i-fa6-solid-circle text-[6rem]"></div>
+<div class="i-fa6-solid-flag invert text-[4rem] absolute top-[1rem] left-0 right-0 m-auto"></div>
 </div>
 
-<div class="fa-stack fa-2x">
-<i class="fas fa-camera fa-stack-1x"></i>
-<i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
+<div class="relative text-[6rem]">
+<div class="i-fa6-solid-camera text-[4rem] absolute top-[1rem] left-[1rem] right-0 m-auto"></div>
+<div class="i-fa6-solid-ban text-[6rem] c-[tomato] absolute top-0 left-0 right-0 m-auto"></div>
 </div>
-</columns-2>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### FontAwesome Bullet Icons
 
 <grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
-<ul class="fa-ul" style="list-style-type: none; grid-area: left;">
-  <li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> Regular bullet icon</li>
-  <li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> Regular bullet icon</li>
-  <li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
-    <span class="fa-stack c-primary">
-    <i class="fad fa-digging fa-stack-1x"></i>
-    <i class="fas fa-ban fa-stack-2x" style="color: Tomato; opacity: 0.8;"></i>
-    </span>
-    </span> Stacked bullet icon</li>
+<ul class="grid-area-[left]">
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-id-badge c-blue"></div></div> Regular bullet icon</li>
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-recycle"></div></div> Regular bullet icon</li>
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center">
+      <div class="relative w-full h-6/10">
+        <div class="i-fa6-solid-person-digging text-[0.8em] absolute top-[0.1em] left-[0.1em] right-0 m-auto"></div>
+        <div class="i-fa6-solid-ban c-[tomato] absolute top-0 left-0 right-0 m-auto opacity-80"></div>
+      </div>
+    </div>
+    Stacked bullet icon</li>
 </ul>
 
 ```markdown
-<ul class="fa-ul" style="list-style-type: none;">
-<li><span class="fa-li c-primary"><i class="fad fa-badge-check"></i></span> ...</li>
-<li><span class="fa-li c-primary"><i class="fad fa-recycle"></i></span> ...</li>
-<li><span class="fa-li" style="font-size: 0.7em; left: -2.5em;">
-<span class="fa-stack c-primary">
-<i class="fad fa-digging fa-stack-1x"></i>
-<i class="fas fa-ban fa-stack-2x" style="color: Tomato; opacity: 0.8;"></i>
-</span>
-</span> Stacked bullet icon</li>
+<ul class="grid-area-[left]">
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-id-badge c-blue"></div></div> Regular bullet icon</li>
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-recycle"></div></div> Regular bullet icon</li>
+  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center">
+      <div class="relative w-full h-6/10">
+        <div class="i-fa6-solid-person-digging text-[0.8em] absolute top-[0.1em] left-[0.1em] right-0 m-auto"></div>
+        <div class="i-fa6-solid-ban c-[tomato] absolute top-0 left-0 right-0 m-auto opacity-80"></div>
+      </div>
+    </div>
+    Stacked bullet icon</li>
 </ul>
 ```
 
@@ -1003,17 +1000,17 @@ Shadow right, bottom.
 <grid-box styles="grid-template: 'left' 'code' / 100%">
 
 <columns-3 styles="justify-items: center">
-<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
-<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
-<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
+<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
+<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
+<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
 </columns-3>
 <!-- .element: style="grid-area: left;" -->
 
 ```markdown
 <columns-3 styles="justify-items: center">
-<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><i class="fas fa-thumbs-up"></i></div>
-<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><i class="fas fa-thumbtack"></i></div>
-<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><i class="fas fa-headphones"></i></div>
+<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
+<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
+<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
 </columns-3>
 ```
 
