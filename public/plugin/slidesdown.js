@@ -296,7 +296,7 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
-      "fontawesomePro": true,
+      "fontawesomePro": false,
       "fontawesomeFree": false,
       // changed revealjs defaults
       "hash": true,
