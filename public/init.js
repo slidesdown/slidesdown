@@ -123,30 +123,32 @@ const main = (defaults) => {
       RevealMermaid,
     ],
     customcontrols: {
+      collapseIcon: '<div class="i-fa6-solid-chevron-down"></div>',
+      expandIcon: '<div class="i-fa6-solid-chevron-up"></div>',
       controls: [
         {
-          icon: '<i class="fa-solid fa-folder-open"></i>',
+          icon: '<div class="i-fa6-solid-folder-open"></div>',
           title: "Open another presentation",
           action: "Reveal.slidesdownLoader();",
         },
         {
+          icon: '<div class="i-fa6-solid-table-cells"></div>',
           id: "toggle-overview",
           title: "Toggle overview (O)",
-          icon: '<i class="fa-solid fa-th"></i>',
           action: "Reveal.toggleOverview();",
         },
-        // {
-        //   icon: '<i class="fa-solid fa-pen-square"></i>',
-        //   title: "Toggle chalkboard (B)",
-        //   action: "RevealChalkboard.toggleChalkboard();",
-        // },
-        // {
-        //   icon: '<i class="fa-solid fa-pen"></i>',
-        //   title: "Toggle notes canvas (C)",
-        //   action: "RevealChalkboard.toggleNotesCanvas();",
-        // },
         {
-          icon: '<i class="fa-solid fa-print"></i>',
+          icon: '<div class="i-fa6-solid-pen-to-square"></div>',
+          title: "Toggle chalkboard (B)",
+          action: "RevealChalkboard.toggleChalkboard();",
+        },
+        {
+          icon: '<div class="i-fa6-solid-pen"></div>',
+          title: "Toggle notes canvas (C)",
+          action: "RevealChalkboard.toggleNotesCanvas();",
+        },
+        {
+          icon: '<div class="i-fa6-solid-print"></div>',
           title: "Toggle print view (E)",
           action: "PdfExport.togglePdfExport();",
         },

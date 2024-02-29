@@ -13,6 +13,7 @@
     "vite": "^5.1.4"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.188",
     "@unocss/runtime": "^0.58.5",
     "apexcharts": "^3.46.0",
     "chart.js": "^4.4.1",

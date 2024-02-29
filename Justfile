@@ -15,7 +15,7 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss
+update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify
 
 # Update pico
 update-apexcharts:
@@ -37,7 +37,19 @@ update-unocss:
     # Source: https://github.com/cure53/DOMPurify
     rm -rpf public/vendor/unocss
     mkdir public/vendor/unocss
-    cp -r ./node_modules/@unocss/runtime/full.global.js public/vendor/unocss/
+    cp -r ./node_modules/@unocss/runtime/*.js public/vendor/unocss/
+
+# Update iconify
+update-iconify:
+    #!/usr/bin/env nu
+    # Source: https://github.com/iconify/icon-sets/tree/master
+    rm -rpf public/vendor/@iconify-json
+    mkdir public/vendor/@iconify-json
+    let sourcedir = "node_modules/@iconify/json/json"
+    ls $"($sourcedir)/*.json" | $in.name | path basename | parse "{name}.{extension}" | par-each {|iconset|
+      mkdir $"public/vendor/@iconify-json/($iconset.name)"
+      cp $"($sourcedir)/($iconset.name).($iconset.extension)" $"public/vendor/@iconify-json/($iconset.name)/icons.json"
+    }
 
 # Update dompurify
 update-dompurify:
