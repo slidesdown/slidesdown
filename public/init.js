@@ -113,7 +113,7 @@ const main = (defaults) => {
       // Source: https://github.com/McShelby/reveal-pdfexport
       PdfExport,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard
-      // RevealChalkboard,
+      RevealChalkboard,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/customcontrols
       RevealCustomControls,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything

@@ -108,6 +108,7 @@ update-revealjs-plugins:
     cd public/vendor
     do -c {curl -Lfo - $"https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
     mv $"($env.PWD)/reveal.js-plugins-($VERSION)" reveal.js-plugins
+    cp ./patches/chalboard-plugin.js ./public/vendor/reveal.js-plugins/chalkboard/plugin.js
 
 # Update reveal.js-pdfexport
 update-revealjs-pdfexport:
