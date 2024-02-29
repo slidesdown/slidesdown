@@ -138,7 +138,7 @@ const main = (defaults) => {
           action: "Reveal.toggleOverview();",
         },
         {
-          icon: '<div class="i-fa6-solid-pen-to-square"></div>',
+          icon: '<div class="i-fa6-solid-square-pen"></div>',
           title: "Toggle chalkboard (B)",
           action: "RevealChalkboard.toggleChalkboard();",
         },
