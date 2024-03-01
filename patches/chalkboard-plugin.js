@@ -473,7 +473,7 @@ const initChalkboard = function ( Reveal ) {
 			if ( boardHandle ) {
 				var handle = document.createElement( 'div' );
 				handle.classList.add( 'boardhandle' );
-				handle.innerHTML = '<ul><li><a id="previousboard" href="#" title="Previous board"><i class="fas fa-chevron-up"></i></a></li><li><a id="nextboard" href="#" title="Next board"><i class="fas fa-chevron-down"></i></a></li></ul>';
+				handle.innerHTML = '<ul><li><a id="previousboard" href="#" title="Previous board">⌃</a></li><li><a id="nextboard" href="#" title="Next board">⌄</a></li></ul>';
 				handle.querySelector( '#previousboard' ).addEventListener( 'click', function ( e ) {
 					e.preventDefault();
 					switchBoard( board - 1 );
