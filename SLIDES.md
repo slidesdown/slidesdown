@@ -860,37 +860,38 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 ### Font Awesome Icon with Color
 
-<div class="i-fa6-solid-face-smile text-[8rem] c-purple m-auto"></div>
+<div class="i-fa6-solid-face-smile w-[8rem] h-[8rem] c-purple m-auto"></div>
 
 ```markdown
-<div class="i-fa6-solid-face-smile text-[8rem] c-purple"></div>
+<div class="i-fa6-solid-face-smile w-[8rem] h-[8rem] c-purple"></div>
 ```
 
 ### Font Awesome Stacked Icons
 
 <div class="grid grid-cols-1">
 <div class="flex flex-justify-center gap-10">
-<div class="relative text-[6rem]">
-<div class="i-fa6-solid-circle text-[6rem]"></div>
-<div class="i-fa6-solid-flag invert text-[4rem] absolute top-[1rem] left-0 right-0 m-auto"></div>
+<div class="grid grid-cols-5 grid-rows-5 w-[6rem] h-[6rem]">
+  <div class="i-fa6-solid-circle grid-area-[1/1/-1/-1] w-full h-full"></div>
+  <div class="i-fa6-solid-flag invert grid-area-[2/2/-2/-2] w-full h-full"></div>
 </div>
 
-<div class="relative text-[6rem]">
-<div class="i-fa6-solid-camera text-[4rem] absolute top-[1rem] left-[1rem] right-0 m-auto"></div>
-<div class="i-fa6-solid-ban text-[6rem] c-[tomato] absolute top-0 left-0 right-0 m-auto"></div>
+<div class="grid grid-cols-5 grid-rows-5 w-[6rem] h-[6rem]">
+  <div class="i-fa6-solid-camera grid-area-[2/2/-2/-2] w-full h-full"></div>
+  <div class="i-fa6-solid-ban c-[tomato] grid-area-[1/1/-1/-1] w-full h-full"></div>
 </div>
 </div>
 
 ```markdown
 <div class="flex flex-justify-center gap-10">
-<div class="relative text-[6rem]">
-<div class="i-fa6-solid-circle text-[6rem]"></div>
-<div class="i-fa6-solid-flag invert text-[4rem] absolute top-[1rem] left-0 right-0 m-auto"></div>
+<div class="grid grid-cols-5 grid-rows-5 w-[6rem] h-[6rem]">
+  <div class="i-fa6-solid-circle grid-area-[1/1/-1/-1] w-full h-full"></div>
+  <div class="i-fa6-solid-flag invert grid-area-[2/2/-2/-2] w-full h-full"></div>
 </div>
 
-<div class="relative text-[6rem]">
-<div class="i-fa6-solid-camera text-[4rem] absolute top-[1rem] left-[1rem] right-0 m-auto"></div>
-<div class="i-fa6-solid-ban text-[6rem] c-[tomato] absolute top-0 left-0 right-0 m-auto"></div>
+<div class="grid grid-cols-5 grid-rows-5 w-[6rem] h-[6rem]">
+  <div class="i-fa6-solid-camera grid-area-[2/2/-2/-2] w-full h-full"></div>
+  <div class="i-fa6-solid-ban c-[tomato] grid-area-[1/1/-1/-1] w-full h-full"></div>
+</div>
 </div>
 ```
 
@@ -900,25 +901,25 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 <grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
 <ul class="grid-area-[left]">
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-id-badge c-blue"></div></div> Regular bullet icon</li>
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-recycle"></div></div> Regular bullet icon</li>
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center">
-      <div class="relative w-full h-6/10">
-        <div class="i-fa6-solid-person-digging text-[0.8em] absolute top-[0.1em] left-[0.1em] right-0 m-auto"></div>
-        <div class="i-fa6-solid-ban c-[tomato] absolute top-0 left-0 right-0 m-auto opacity-80"></div>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-id-badge c-blue h-full w-full"></div></div> Regular bullet icon</li>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-recycle h-full w-full"></div></div> Regular bullet icon</li>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0">
+      <div class="grid grid-cols-5 grid-rows-5 h-full w-full">
+        <div class="i-fa6-solid-person-digging grid-area-[2/2/-2/-2] w-full h-full"></div>
+        <div class="i-fa6-solid-ban c-[tomato] grid-area-[1/1/-1/-1] w-full h-full"></div>
       </div>
     </div>
     Stacked bullet icon</li>
 </ul>
 
 ```markdown
-<ul class="grid-area-[left]">
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-id-badge c-blue"></div></div> Regular bullet icon</li>
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center"><div class="i-fa6-solid-recycle"></div></div> Regular bullet icon</li>
-  <li class="list-none relative"><div class="h-[var(--r-main-font-size)] w-[var(--r-main-font-size)] text-[0.6em] absolute left-[calc(var(--r-main-font-size)*-1)] flex items-end justify-center">
-      <div class="relative w-full h-6/10">
-        <div class="i-fa6-solid-person-digging text-[0.8em] absolute top-[0.1em] left-[0.1em] right-0 m-auto"></div>
-        <div class="i-fa6-solid-ban c-[tomato] absolute top-0 left-0 right-0 m-auto opacity-80"></div>
+<ul>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-id-badge c-blue h-full w-full"></div></div> Regular bullet icon</li>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-recycle h-full w-full"></div></div> Regular bullet icon</li>
+  <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0">
+      <div class="grid grid-cols-5 grid-rows-5 h-full w-full">
+        <div class="i-fa6-solid-person-digging grid-area-[2/2/-2/-2] w-full h-full"></div>
+        <div class="i-fa6-solid-ban c-[tomato] grid-area-[1/1/-1/-1] w-full h-full"></div>
       </div>
     </div>
     Stacked bullet icon</li>
