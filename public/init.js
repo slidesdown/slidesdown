@@ -47,18 +47,15 @@ const computeURL = (defaults, url) => {
         `${match.groups.dir_or_branch}/${match.groups.resource}/${defaults.resource}`;
     } else if (match.groups.blob && match.groups.dir_or_branch) {
       // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
-      resource = `${match.groups.dir_or_branch}/${
-        match.groups.resource ? match.groups.resource : defaults.resource
-      }`;
+      resource = `${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
     } else {
       if (match.groups.dir_or_branch) {
-        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${
-          match.groups.resource ? match.groups.resource : defaults.resource
-        }`;
+        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+          }`;
       } else {
-        resource = `${defaults.branch}/${
-          match.groups.resource ? match.groups.resource : defaults.resource
-        }`;
+        resource = `${defaults.branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+          }`;
       }
     }
     return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`;
@@ -103,13 +100,16 @@ const main = (defaults) => {
   };
   Reveal.initialize({
     hash: true,
-    mathjax2: {
-      mathjax: "/vendor/mathjax/MathJax.js"
+    // mathjax2: {
+    //   mathjax: "/vendor/mathjax/MathJax.js"
+    // },
+    mathjax3: {
+      mathjax: "/vendor/mathjax/es5/tex-mml-chtml.js"
     },
     plugins: [
       SlidesDown,
       RevealHighlight,
-      RevealMath,
+      RevealMath.MathJax3(),
       RevealNotes,
       RevealSearch,
       RevealZoom,
