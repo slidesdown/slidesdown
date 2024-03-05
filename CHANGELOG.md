@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.1] - 2024-03-05
+
+### Bug Fixes
+
+- Migrate to mathjax3
+
+### Miscellaneous Tasks
+
+- Update all dependencies before a release
+
 ## [0.9.0] - 2024-03-05
 
 ### Bug Fixes
