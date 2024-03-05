@@ -41,8 +41,12 @@ Author: Your Name
 
 ## A horizontal Slide
 
+- More icons at [Icônes <div class="i-fa6-solid-face-smile inline-block m-auto"></div>](https://icones.js.org)
+
 ### A veritical Slide
 
+- More class styles at [tailwindcss](https://tailwindcss.com/docs) via
+[UnoCSS](https://unocss.dev/interactive/?s=bg-color)
 ## More Examples
 
 https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md
