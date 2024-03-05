@@ -30,7 +30,7 @@ pdfSeparateFragments: false
 Author: Your Name
 
 <!-- generated with
-!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.2.0/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda

@@ -15,9 +15,16 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify
+update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax
 
-# Update pico
+# Update mathjax
+update-mathjax:
+    #!/usr/bin/env nu
+    # Source: https://github.com/mathjax/MathJax-src
+    rm -rpf public/vendor/mathjax
+    cp -r ./node_modules/mathjax public/vendor/mathjax
+
+# Update apexcharts
 update-apexcharts:
     #!/usr/bin/env nu
     # Source: https://github.com/apexcharts/apexcharts.js

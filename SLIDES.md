@@ -38,7 +38,7 @@ presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
 you need!
 
 <!-- generated with
-!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.1.0/remark-format.js --maxdepth 2 %
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.2.0/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
@@ -1166,6 +1166,7 @@ via [chart.js](https://www.chartjs.org/)
 ````
 
 <!-- .element: style="grid-area: code;" -->
+
 </grid-box>
 
 ### Bar Chart

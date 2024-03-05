@@ -1,6 +1,5 @@
 *.pdf
 /.direnv/
-/TODO.md
 /node_modules
 
 # ignore vendor plugins
@@ -19,5 +18,6 @@
 /public/vendor/reveal.js
 /public/vendor/unocss
 /public/vendor/@iconify-json
+/public/vendor/mathjax
 
 /published/

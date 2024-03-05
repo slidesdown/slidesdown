@@ -719,6 +719,7 @@ const Plugin = () => {
         const notes = section.querySelector("aside.notes");
         const markdown = getMarkdownFromSlide(section);
 
+        // here is marked called
         section.innerHTML = SANITIZE(await marked.parse(markdown));
         const firstChild = section.firstElementChild;
         if (firstChild && firstChild.id !== "") {
@@ -814,7 +815,7 @@ const Plugin = () => {
           // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
           return `<div data-apexchart=${btoa(code)}></div>`;
         } else {
-          return DOMPurify.sanitize(defaultCodeHandler(code, language));
+          return SANITIZE(defaultCodeHandler(code, language));
         }
       };
 

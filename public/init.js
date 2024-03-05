@@ -103,6 +103,9 @@ const main = (defaults) => {
   };
   Reveal.initialize({
     hash: true,
+    mathjax2: {
+      mathjax: "/vendor/mathjax/MathJax.js"
+    },
     plugins: [
       SlidesDown,
       RevealHighlight,
