@@ -153,7 +153,7 @@ build:
     ^find published/vendor/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
 
 # Create a new release of this module. LEVEL can be one of: major, minor, patch, premajor, preminor, prepatch, or prerelease.
-release LEVEL="patch":
+release LEVEL="patch": update-all
     #!/usr/bin/env nu
     if (git rev-parse --abbrev-ref HEAD) != "main" {
       print -e "ERROR: A new release can only be created on the main branch."
