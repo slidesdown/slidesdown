@@ -1,18 +1,21 @@
 {
   "name": "slidesdown",
   "private": true,
-  "version": "0.8.10",
+  "version": "0.9.0",
   "type": "module",
-  "scripts": {
+  "scripts":
+  {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
+  "devDependencies":
+  {
     "sass": "^1.71.1",
     "vite": "^5.1.5"
   },
-  "dependencies": {
+  "dependencies":
+  {
     "@iconify/json": "^2.2.189",
     "@unocss/runtime": "^0.58.5",
     "apexcharts": "^3.46.0",

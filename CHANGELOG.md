@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.0] - 2024-03-05
+
+### Bug Fixes
+
+- Install dependencies via yarn
+- Use pen on blackboard icon
+- Reavtivate chalkboard plugin
+- Correct ci and fix arrows in chalkboard
+- Use grid for stacking icons
+
+### Documentation
+
+- Add links to icon library and styles
+
+### Features
+
+- Add uspport for iconify icons via unocss
+- Serve mathjax locally
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- [**breaking**] Disable fontawesome loading by default
+- Migrate example slides to unocss icons
+- Update dependencies
+
 ## [0.8.10] - 2024-02-26
 
 ### Miscellaneous Tasks
