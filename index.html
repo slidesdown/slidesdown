@@ -61,18 +61,6 @@
         }
       }
     </script>
-  <!-- INFO: support for non-esm plugins -->
-  <!-- <script> -->
-  <!--   window.__unocss = { -->
-  <!--     rules: [ -->
-  <!--       // custom rules... -->
-  <!--     ], -->
-  <!--     presets: [ -->
-  <!--       // custom presets... -->
-  <!--     ], -->
-  <!--     // ... -->
-  <!--   }; -->
-  <!-- </script> -->
   <script src="/vendor/reveal.js/dist/reveal.js"></script>
   <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
   <script src="/vendor/reveal.js-plugins/chalkboard/plugin.js"></script>
@@ -90,6 +78,7 @@
         () => window.__unocss_runtime.presets.presetAttributify(),
         () =>
           window.__unocss_runtime.presets.presetIcons({
+            scale: 1.2,
             cdn: "/vendor/",
           }),
         () => window.__unocss_runtime.presets.presetTypography(),
