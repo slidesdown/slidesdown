@@ -21,4 +21,6 @@ RUN sed -i -e 's#.*<!-- DOCKER_LOADER_LINE -->.*#<script type="module" src="load
 
 ENV SERVING_SLIDESDOWN=1
 
+EXPOSE 8080
+
 ENTRYPOINT [ "/entrypoint.sh" ]
