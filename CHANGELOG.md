@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.3] - 2024-03-06
+
+### Miscellaneous Tasks
+
+- Expose port 8080
+- Delete cache after installation
+
 ## [0.9.2] - 2024-03-06
 
 ### Miscellaneous Tasks
