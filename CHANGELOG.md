@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.2] - 2024-03-06
+
+### Miscellaneous Tasks
+
+- Update packages and reduce image size
+
 ## [0.9.1] - 2024-03-05
 
 ### Bug Fixes
