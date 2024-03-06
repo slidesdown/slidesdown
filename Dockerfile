@@ -12,7 +12,7 @@ WORKDIR /srv
 
 COPY package.json /srv
 COPY yarn.lock /srv
-RUN yarn install --prod
+RUN yarn install --prod; rm -rf /usr/local/share/.cache
 
 COPY published /srv/public
 COPY published/index.html /srv
