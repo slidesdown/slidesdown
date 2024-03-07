@@ -10,6 +10,8 @@ COPY src/entrypoint.sh /
 
 WORKDIR /srv
 
+ENV NODE_ENV=production
+
 COPY package.json /srv
 COPY yarn.lock /srv
 RUN yarn install --prod; rm -rf /usr/local/share/.cache
