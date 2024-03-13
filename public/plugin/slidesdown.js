@@ -404,6 +404,9 @@ const Plugin = () => {
     if (mergedMetadata.fontawesomePro) {
       mergedMetadata.fontawesomeFree = false;
     }
+    if (mergedMetadata.fontawesomeFree) {
+      mergedMetadata.fontawesomePro = false;
+    }
     if (
       // since revealjsConfig.controls is true by default, only decktape and
       // similar tools are able to override it .. so prefer whatever these tools
@@ -819,14 +822,26 @@ const Plugin = () => {
 
       return processSlides(deck.getRevealElement()).then(() => {
         // Marked options: https://marked.js.org/using_advanced#options
+        let base_url;
         if (!markedOptions.baseUrl) {
+          base_url = BASE_URL;
           marked.use(baseUrl(BASE_URL));
         } else {
+          base_url = markedOptions.baseUrl;
           marked.use(baseUrl(markedOptions.baseUrl));
           delete markedOptions.baseUrl;
         }
         marked.use(gfmHeadingId());
         markedOptions.async = true;
+
+        const a_href_regex_single = /^(<a.* href=')([^']+)('.*>\n*)$/
+        const a_href_regex = /^(<a.* href=")([^"]+)(".*>\n*)$/
+        const img_src_regex_single = /^(<img.* src=')([^']+)('.*>\n*)$/
+        const img_src_regex = /^(<img.* src=")([^"]+)(".*>\n*)$/
+        const isUrl = /^https?:\/\//
+        const isAbsolute = /^\//
+        const isLocal = /^#/
+        // const isRelative = /^(\.\.\/|\.\/)/
 
         const markedConfig = {
           ...markedOptions,
@@ -837,7 +852,26 @@ const Plugin = () => {
             },
           },
           walkTokens: (token) => {
-            if (token.type === "code") {
+            if (token.type === "html") {
+              // baseUrl for html elements a and img
+              let match;
+              if (match = a_href_regex.exec(token.text) || a_href_regex_single.exec(token.text)) {
+                const ref = match[2];
+                const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
+                // const needsRebase = isRelative.test(ref)
+                if (needsRebase) {
+                  token.text = `${match[1]}${base_url}${match[2]}${match[3]}`
+                }
+              }
+              if (match = img_src_regex.exec(token.text) || img_src_regex_single.exec(token.text)) {
+                const ref = match[2];
+                const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
+                // const needsRebase = isRelative.test(ref)
+                if (needsRebase) {
+                  token.text = `${match[1]}${base_url}${match[2]}${match[3]}`
+                }
+              }
+            } else if (token.type === "code") {
               token.text = codeHandler(token.text, token.lang);
             }
           },
