@@ -151,7 +151,7 @@ const Plugin = () => {
 
     if (notesMatch.length === 2) {
       content = notesMatch[0] + '<aside class="notes">' +
-        SANITIZE(await this.marked.parse(notesMatch[1].trim())) + "</aside>";
+        SANITIZE(await marked.parse(notesMatch[1].trim())) + "</aside>";
     }
 
     // prevent script end tags in the content from interfering
