@@ -2,7 +2,7 @@
 set -euo pipefail
 # set -x
 
-VERSION="0.10.0"
+VERSION="0.10.1"
 
 # TODO: convert to subcommands
 

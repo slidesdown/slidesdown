@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.1] - 2024-03-13
+
+### Bug Fixes
+
+- Rebase references in nested img and a tags
+
 ## [0.10.0] - 2024-03-13
 
 ### Bug Fixes
