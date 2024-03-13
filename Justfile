@@ -165,7 +165,7 @@ release LEVEL="patch": update-all
     }
     let current_version = (git describe | str replace -r "-.*" "" | npx semver $in)
     let new_version = ($current_version | npx semver -i "{{ LEVEL }}" $in)
-    print "Changelog:\n"
+    print "\nChangelog:\n"
     git cliff --strip all -u -t $new_version
     input -s $"Version will be bumped from ($current_version) to ($new_version).\nPress enter to confirm.\n"
     open package.json | upsert version $new_version | save -f package.json; git add package.json
