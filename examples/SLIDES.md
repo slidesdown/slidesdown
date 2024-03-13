@@ -35,18 +35,25 @@ Author: Your Name
 
 ## Agenda
 
-1. Markdown is easy to read
-2. Markdown is easy to write
-3. Let's use it for presentations
+1. [A horizontal Slide](#a-horizontal-slide)
+2. [More Examples](#more-examples)
 
 ## A horizontal Slide
 
-- More icons at [Icônes <div class="i-fa6-solid-face-smile inline-block m-auto"></div>](https://icones.js.org)
+- More icons at
+  [Icônes <div class="i-fa6-solid-face-smile inline-block m-auto"></div>](https://icones.js.org)
+
+notes:
+
+- Some
+- speaker
+- notes
 
 ### A veritical Slide
 
 - More class styles at [tailwindcss](https://tailwindcss.com/docs) via
-[UnoCSS](https://unocss.dev/interactive/?s=bg-color)
+  [UnoCSS](https://unocss.dev/interactive/?s=bg-color)
+
 ## More Examples
 
 https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md

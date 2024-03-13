@@ -90,6 +90,12 @@ you need!
 - `<Esc>` toggles slide overview
 - `<Alt-Left Mouse Button>` or `<Ctrl-Left Mouse Button>` zooms into slide
 
+notes:
+
+- Some
+- speaker
+- notes
+
 ### Draw on Slides
 
 ![draw](./figures/draw.png)
