@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.0] - 2024-03-13
+
+### Bug Fixes
+
+- Restore notes feature
+
+### Features
+
+- Rebase a and img references on base url
+
+### Miscellaneous Tasks
+
+- Set NODE_ENV to produciton in dockerfile
+- Reformat code
+- Add speaker notes to slides
+- Print changelog on new line
+
 ## [0.9.3] - 2024-03-06
 
 ### Miscellaneous Tasks
