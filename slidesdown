@@ -81,7 +81,7 @@ export_pdf() {
 	if [[ -z "${DOCKER}" ]]; then
 		decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
 	else
-		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.7.0" "${URL}" -s "${RESOLUTION}" "${FILE}"
+		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" -s "${RESOLUTION}" "${FILE}"
 	fi
 }
 
