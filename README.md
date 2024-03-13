@@ -147,9 +147,6 @@ favicon: /favicon.svg
 theme: white
 # Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
 highlight-theme: tokyo-night-dark
-# Load font awesome pro icons (only works on domain slidesdown.github.io) free icons work everywhere. If both are enabled the pro icons are loaded
-fontawesomePro: true
-fontawesomeFree: false
 
 # Show progress bar
 progress: true
