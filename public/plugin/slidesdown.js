@@ -834,14 +834,12 @@ const Plugin = () => {
         marked.use(gfmHeadingId());
         markedOptions.async = true;
 
-        const a_href_regex_single = /^(<a.* href=')([^']+)('.*>\n*)$/
-        const a_href_regex = /^(<a.* href=")([^"]+)(".*>\n*)$/
-        const img_src_regex_single = /^(<img.* src=')([^']+)('.*>\n*)$/
-        const img_src_regex = /^(<img.* src=")([^"]+)(".*>\n*)$/
-        const isUrl = /^https?:\/\//
-        const isAbsolute = /^\//
-        const isLocal = /^#/
-        // const isRelative = /^(\.\.\/|\.\/)/
+        const a_href_regex = /((<a.* href=")([^"<>]+)(".*>)|(<a.* href=')([^'<>]+)('.*>))/gm
+        const img_src_regex = /((<img.* src=")([^"<>]+)(".*>)|(<img.* src=')([^'<>]+)('.*>))/gm
+        // const isUrl = /^https?:\/\//
+        // const isAbsolute = /^\//
+        // const isLocal = /^#/
+        const isRelative = /^(\.\.\/|\.\/)/
 
         const markedConfig = {
           ...markedOptions,
@@ -854,22 +852,35 @@ const Plugin = () => {
           walkTokens: (token) => {
             if (token.type === "html") {
               // baseUrl for html elements a and img
-              let match;
-              if (match = a_href_regex.exec(token.text) || a_href_regex_single.exec(token.text)) {
-                const ref = match[2];
-                const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
-                // const needsRebase = isRelative.test(ref)
+              let text = []
+              let last_index = 0;
+              for (const match of token.text.matchAll(img_src_regex)) {
+                text.push(token.text.substring(last_index, match.index))
+                const ref = match[3];
+                // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
+                const needsRebase = isRelative.test(ref)
                 if (needsRebase) {
-                  token.text = `${match[1]}${base_url}${match[2]}${match[3]}`
+                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
                 }
+                last_index = match.index + match[0].length
               }
-              if (match = img_src_regex.exec(token.text) || img_src_regex_single.exec(token.text)) {
-                const ref = match[2];
-                const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
-                // const needsRebase = isRelative.test(ref)
+              if (text.length) {
+                token.text = text.join('')
+              }
+              text = []
+              last_index = 0;
+              for (const match of token.text.matchAll(a_href_regex)) {
+                text.push(token.text.substring(last_index, match.index))
+                const ref = match[3];
+                // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
+                const needsRebase = isRelative.test(ref)
                 if (needsRebase) {
-                  token.text = `${match[1]}${base_url}${match[2]}${match[3]}`
+                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
                 }
+                last_index = match.index + match[0].length
+              }
+              if (text.length) {
+                token.text = text.join('')
               }
             } else if (token.type === "code") {
               token.text = codeHandler(token.text, token.lang);
