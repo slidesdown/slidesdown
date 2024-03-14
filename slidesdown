@@ -224,11 +224,18 @@ main() {
 	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${RESOLUTION:-1600x900}"
 
-	local ROOT_DIRECTORY
-	ROOT_DIRECTORY="$(readlink -f "$(dirname "${1:-SLIDES.md}")")/"
 	local SLIDES
-	SLIDES="$(basename "${1:-SLIDES.md}")"
+	SLIDES="${1:-SLIDES.md}"
+	if [[ ! -e "$SLIDES" ]]; then
+		echo "File doesn't exist: ${SLIDES}" 1>&2
+		exit 1
+	fi
 	local OUTPUT="${OUTPUT:-${SLIDES%%.*}.pdf}"
+	# To simplify the handling of subdirectories, split filname into the root
+	# directory and the slides file
+	local ROOT_DIRECTORY
+	ROOT_DIRECTORY="$(readlink -f "$(dirname "${SLIDES}")")"
+	SLIDES="$(basename "${SLIDES}")"
 	local URL
 	if [[ -n "${UPDATE}" ]]; then
 		UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
@@ -250,7 +257,7 @@ main() {
 			local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
 			local CONTAINER_SLIDES_PORT="8080"
 			local CONTAINER_ID
-			CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
+			CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}/:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2
@@ -259,13 +266,18 @@ main() {
 			docker attach --sig-proxy=false "${CONTAINER_ID}"
 		else
 			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
-			echo "Slideshow URL: ${URL}" || true
+			echo "Slideshow URL: ${URL}"
 			open_url "${NO_OPEN}" "${URL}"
 			wait %1
 		fi
 	else
-		echo "Exporting ${URL} as ${OUTPUT}" >&2
-		export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${OUTPUT}"
+		echo "Slideshow URL: ${URL}"
+		echo "Exporting as: ${OUTPUT}" >&2
+		if [[ -n "${DOCKER}" ]]; then
+			export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "$(basename "${OUTPUT}")"
+		else
+			export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${OUTPUT}"
+		fi
 	fi
 }
 
