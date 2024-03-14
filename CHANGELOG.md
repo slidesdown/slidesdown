@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2024-03-14
+
+### Bug Fixes
+
+- Correct handling of relative paths
+
+### Documentation
+
+- Remove fontawesome from default configuration
+
+### Features
+
+- Add support for base64 encoding slides in the URL
+
+### Miscellaneous Tasks
+
+- Update decktape
+
 ## [0.10.1] - 2024-03-13
 
 ### Bug Fixes
