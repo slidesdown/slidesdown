@@ -20,7 +20,7 @@ import SlidesDown from "slidesdown";
 // https://raw.githubusercontent.com/jceb/slidesdown/main/SLIDES.md
 const computeURL = (defaults, url) => {
   if (!(defaults.branch && defaults.resource)) {
-    console.error("ERROR: default branch and/or resource unset");
+    console.error("Default branch and/or resource unset");
     return;
   }
   const decodedURL = decodeURI(url);
@@ -65,36 +65,56 @@ const computeURL = (defaults, url) => {
   return decodedURL;
 };
 
-const main = (defaults) => {
+const main = async (defaults) => {
   if (!(defaults.branch && defaults.resource && defaults.markdownElementId)) {
     console.error(
-      "ERROR: default branch, resource  and/or markdownElementId are not set",
+      "Default branch, resource  and/or markdownElementId are not set",
     );
-    return;
-  }
-  const customSlidesURL = new URLSearchParams(
-    new URL(document.URL).search,
-  ).get("slides");
-  let slidesURL = customSlidesURL
-    ? customSlidesURL
-    : `github.com/slidesdown/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
-
-  slidesURL = computeURL(defaults, slidesURL);
-
-  if (!slidesURL) {
-    console.error("ERROR: couldn't compute slides URL");
     return;
   }
   const mdSection = document.getElementById(defaults.markdownElementId);
   if (!mdSection) {
     console.error(
-      `ERROR: couldn't find markdown element with id: ${defaults.markdownElementId}`,
+      `Couldn't find markdown element with id: ${defaults.markdownElementId}`,
     );
     return;
   }
+  const customSlidesBase64Gzip = new URLSearchParams(
+    new URL(document.URL).search,
+  ).get("slides64");
+  if (customSlidesBase64Gzip) {
+    async function decompressBlob(blob) {
+      const decompressedStream = blob.pipeThrough(new DecompressionStream("gzip"));
+      return await new Response(decompressedStream).blob();
+    }
+    const slidesGz = Uint8Array.from(atob(decodeURI(customSlidesBase64Gzip)), c => c.charCodeAt(0))
+    // function buf2hex(buffer) { // buffer is an ArrayBuffer
+    //   return [...new Uint8Array(buffer)]
+    //     .map(x => x.toString(16).padStart(2, '0'))
+    //     .join('');
+    // }
+    const blob = await decompressBlob(new Blob([slidesGz], { type: "application/octet-stream" }).stream())
+    const text = await blob.text()
+    mdSection.setAttribute("data-markdown", "<<load-plain-markdown>>");
+    mdSection.setAttribute("data-markdown-plain", text);
+  } else {
+    const customSlidesURL = new URLSearchParams(
+      new URL(document.URL).search,
+    ).get("slides");
+    let slidesURL = customSlidesURL
+      ? customSlidesURL
+      : `github.com/slidesdown/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
+
+    slidesURL = computeURL(defaults, slidesURL);
+
+    if (!slidesURL) {
+      console.error("Couldn't compute slides URL");
+      return;
+    }
+    mdSection.setAttribute("data-markdown", slidesURL);
+  }
 
   // initialize presentation
-  mdSection.setAttribute("data-markdown", slidesURL);
   Reveal.slidesdownLoader = () => {
     window.location.href = "/loader.html";
   };

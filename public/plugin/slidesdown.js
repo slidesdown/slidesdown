@@ -476,6 +476,40 @@ const Plugin = () => {
   }
 
   /**
+   * Parses loaded markdown.
+   */
+  async function processMarkdown(section, markdown) {
+    let metadata = {};
+    if (section.getAttribute("data-load-metadata") !== null) {
+      const metadataRegExp =
+        /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/g;
+      const metadataMatch = metadataRegExp.exec(markdown);
+      if (metadataMatch) {
+        // TODO: a context element would be helpful to be able to
+        // properly set the metadata
+        if (metadataMatch.groups.metadata) {
+          metadata = parseMetadata(metadataMatch.groups.metadata);
+        }
+        markdown = markdown.substring(metadataRegExp.lastIndex);
+      }
+    }
+    applyMetadata(metadata);
+    Reveal.on("ready", (_event) => {
+      hideCustomControlsIfVisiblityChanges(
+        document.querySelector(".controls"),
+      );
+    });
+    section.outerHTML = await slidify(markdown, {
+      separator: section.getAttribute("data-separator"),
+      verticalSeparator: section.getAttribute(
+        "data-separator-vertical",
+      ),
+      notesSeparator: section.getAttribute("data-separator-notes"),
+      attributes: getForwardedAttributes(section),
+    });
+  };
+
+  /**
    * Parses any current data-markdown slides, splits
    * multi-slide markdown into separate sections and
    * handles loading of external markdown.
@@ -489,7 +523,9 @@ const Plugin = () => {
         "section[data-markdown]:not([data-markdown-parsed])",
       ),
     ).forEach(function(section, _i) {
-      if (section.getAttribute("data-markdown").length) {
+      if (section.getAttribute("data-markdown") === "<<load-plain-markdown>>") {
+        externalPromises.push(processMarkdown(section, section.getAttribute("data-markdown-plain")));
+      } else if (section.getAttribute("data-markdown").length) {
         const promise = loadExternalMarkdown(section).then(
           // Finished loading external file
           async function(xhr, _url) {
@@ -505,35 +541,7 @@ const Plugin = () => {
               // interprets it differently
               BASE_URL = base_url.toString() + "/";
             }
-            let markdown = xhr.responseText;
-            let metadata = {};
-            if (section.getAttribute("data-load-metadata") !== null) {
-              const metadataRegExp =
-                /^---\r?\n(?<metadata>(?:#.*|[a-zA-Z0-9-]+:\s.*|\r?\n)*)---(?:\r?\n)?/g;
-              const metadataMatch = metadataRegExp.exec(markdown);
-              if (metadataMatch) {
-                // TODO: a context element would be helpful to be able to
-                // properly set the metadata
-                if (metadataMatch.groups.metadata) {
-                  metadata = parseMetadata(metadataMatch.groups.metadata);
-                }
-                markdown = markdown.substring(metadataRegExp.lastIndex);
-              }
-            }
-            applyMetadata(metadata);
-            Reveal.on("ready", (_event) => {
-              hideCustomControlsIfVisiblityChanges(
-                document.querySelector(".controls"),
-              );
-            });
-            section.outerHTML = await slidify(markdown, {
-              separator: section.getAttribute("data-separator"),
-              verticalSeparator: section.getAttribute(
-                "data-separator-vertical",
-              ),
-              notesSeparator: section.getAttribute("data-separator-notes"),
-              attributes: getForwardedAttributes(section),
-            });
+            return await processMarkdown(section, xhr.responseText);
           },
           // Failed to load markdown
           function(xhr, url) {

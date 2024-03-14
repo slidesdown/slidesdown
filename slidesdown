@@ -27,6 +27,12 @@ compute_url() {
 	echo "${SERVICE}/?slides=$(urlencode "${SLIDES}")"
 }
 
+compute_url64() {
+	local SERVICE="$1"
+	local SLIDES="$2"
+	echo "${SERVICE}/?slides64=$(urlencode "${SLIDES}")"
+}
+
 run_webserver() {
 	local PORT="$1"
 	local ROOT_DIRECTORY="$2"
@@ -112,7 +118,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'hednuvto:p:i:r:' --long 'help,template,export,docker,no-open,update,version,output:,port:,image:,resolution:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
+	TEMP=$(getopt -o 'bhednuvto:p:i:r:s:' --long 'base64,help,template,export,docker,no-open,update,version,output:,port:,image:,resolution:service:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
@@ -122,21 +128,24 @@ main() {
 		case "$1" in
 		'-h' | '--help')
 			echo "USAGE: $(basename "${0}") [OPTIONS] [FILENAME]"
-			echo "OPTIONS (option can also be set via environment variable):"
+			echo "OPTIONS (options can also be set via environment variable):"
 			echo -e '  -h|--help\tPrint this usage information'
 			echo
-			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
-			echo -e '  -r|--resolution\tExport resolution (default: 1600x900, env RESOLUTION)'
+			echo -e '  -s|--service\tOnline service to use for presenting the slideshow, instead of docker (default: slidesdown.github.io, env SERVICE)'
+			echo -e '  -b|--base64\tBase64 encode slideshow in the URL so that the presentation can be shared via URL without it being publicly available (env ENCODE)'
 			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: jceb/slidesdown:${VERSION}, env IMAGE)"
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
 			echo
-			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
+			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
 			echo -e '  -o|--output\tWrite export to this filename (default: <SLIDES_FILE>.pdf, env OUTPUT)'
-			echo -e '  -s|--service\tConnect to online service (default: slidesdown.github.io, env SERVICE)'
-			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
+			echo -e '  -r|--resolution\tExport resolution (default: 1600x900, env RESOLUTION)'
+			echo
 			echo -e '  -t|--template\tCreate SLIDES.md template (default: https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md, env TEMPLATE)'
+			echo
+			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
+			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
 			echo -e '  -v|--version\tPrint script version'
 			echo "FILENAME: default SLIDES.md"
 			echo
@@ -144,6 +153,11 @@ main() {
 			echo
 			echo "Website: https://github.com/slidesdown/slidesdown"
 			exit
+			;;
+		'-b' | '--base64')
+			local ENCODE=1
+			shift
+			continue
 			;;
 		'-d' | '--docker')
 			local DOCKER=1
@@ -215,6 +229,7 @@ main() {
 		esac
 	done
 
+	local ENCODE="${ENCODE:-}"
 	local DOCKER="${DOCKER:-}"
 	local EXPORT="${EXPORT:-}"
 	local UPDATE="${UPDATE:-}"
@@ -250,7 +265,11 @@ main() {
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 	else
-		URL="$(compute_url "${SERVICE}" "http://localhost:${PORT}/slides/${SLIDES}")"
+		if [[ -n "${ENCODE}" ]]; then
+			URL="$(compute_url64 "${SERVICE}" "$(gzip -9 <"${ROOT_DIRECTORY}/${SLIDES}" | base64)")"
+		else
+			URL="$(compute_url "${SERVICE}" "http://localhost:${PORT}/slides/${SLIDES}")"
+		fi
 	fi
 	if [[ -z "${EXPORT}" ]]; then
 		if [[ -n "${DOCKER}" ]]; then
@@ -264,6 +283,9 @@ main() {
 			echo "Slideshow URL: ${URL}"
 			open_url "${NO_OPEN}" "${URL}" || true
 			docker attach --sig-proxy=false "${CONTAINER_ID}"
+		elif [[ -n "${ENCODE}" ]]; then
+			echo "Slideshow URL: ${URL}"
+			open_url "${NO_OPEN}" "${URL}"
 		else
 			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
 			echo "Slideshow URL: ${URL}"
