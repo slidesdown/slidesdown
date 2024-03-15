@@ -8,9 +8,9 @@ keywords: slides slideshow slidesdown presentation presentations markup markdown
 # Presentation settings:
 # URL to favicon
 favicon: /favicon.svg
-# Theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/dist/theme
+# Theme, list of supported themes: https://github.com/slidesdown/slidesdown.github.io/tree/main/vendor/reveal.js/dist/theme
 theme: white
-# Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown/tree/main/docs/reveal.js/plugin/highlight
+# Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown.github.io/tree/main/vendor/highlight.js
 highlight-theme: tokyo-night-dark
 
 # Show progress bar
