@@ -266,7 +266,7 @@ main() {
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 	else
 		if [[ -n "${ENCODE}" ]]; then
-			URL="$(compute_url64 "${SERVICE}" "$(gzip -9 <"${ROOT_DIRECTORY}/${SLIDES}" | base64)")"
+			URL="$(compute_url64 "${SERVICE}" "$(gzip -9 <"${ROOT_DIRECTORY}/${SLIDES}" | basenc --base64url | sed -e 's/=//g')")"
 		else
 			URL="$(compute_url "${SERVICE}" "http://localhost:${PORT}/slides/${SLIDES}")"
 		fi

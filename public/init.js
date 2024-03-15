@@ -87,7 +87,7 @@ const main = async (defaults) => {
       const decompressedStream = blob.pipeThrough(new DecompressionStream("gzip"));
       return await new Response(decompressedStream).blob();
     }
-    const slidesGz = Uint8Array.from(atob(decodeURI(customSlidesBase64Gzip)), c => c.charCodeAt(0))
+    const slidesGz = Uint8Array.from(atob(decodeURI(customSlidesBase64Gzip.replaceAll('-', '+').replaceAll('_', '/'))), c => c.charCodeAt(0))
     // function buf2hex(buffer) { // buffer is an ArrayBuffer
     //   return [...new Uint8Array(buffer)]
     //     .map(x => x.toString(16).padStart(2, '0'))
