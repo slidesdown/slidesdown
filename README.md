@@ -120,15 +120,15 @@ and useful configuration options:
 
 1. Download from GitHub:
 
-   ```bash
-   curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md
-   ```
+```bash
+curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md
+```
 
 2. Use [CLI](#cli):
 
-   ```bash
-   slidesdown -t
-   ```
+```bash
+slidesdown -t
+```
 
 3. Copy template from here:
 
@@ -164,21 +164,38 @@ pdfSeparateFragments: false
 
 Author: Your Name
 
+<!-- generated with
+!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.2.0/remark-format.js --maxdepth 2 %
+-->
+
 ## Agenda
 
-1. Markdown is easy to read
-2. Markdown is easy to write
-3. Let's use it for presentations
+1. [A horizontal Slide](#a-horizontal-slide)
+2. [More Examples](#more-examples)
 
 ## A horizontal Slide
 
+- More icons at
+  [Icônes <div class="i-fa6-solid-face-smile inline-block m-auto"></div>](https://icones.js.org)
+
+notes:
+
+- Some
+- speaker
+- notes
+
 ### A veritical Slide
+
+- More class styles at [tailwindcss](https://tailwindcss.com/docs) via
+  [UnoCSS](https://unocss.dev/interactive/?s=bg-color)
 
 ## More Examples
 
 https://github.com/slidesdown/slidesdown/blob/main/SLIDES.md
 
-## The End
+---
+
+<h2>The End</h2>
 
 Thank you for your time.
 ```
