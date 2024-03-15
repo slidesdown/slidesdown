@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.1] - 2024-03-15
+
+### Bug Fixes
+
+- Remove newline characters in base64 value
+
+### Documentation
+
+- Update example in readme
+
+### Features
+
+- Add support for base64url encoding
+
 ## [0.11.0] - 2024-03-14
 
 ### Bug Fixes
