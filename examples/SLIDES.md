@@ -23,6 +23,8 @@ center: true
 pdfSeparateFragments: false
 # Full list of supported settings: https://revealjs.com/config/ or
 # https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# UnoCSS styling: https://unocss.dev/interactive/ and https://tailwindcss.com/docs
+# Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
 
 # My first markdown slideshow
@@ -52,7 +54,7 @@ notes:
 ### A veritical Slide
 
 - More class styles at [tailwindcss](https://tailwindcss.com/docs) via
-  [UnoCSS](https://unocss.dev/interactive/?s=bg-color)
+  [UnoCSS](https://unocss.dev/interactive/)
 
 ## More Examples
 

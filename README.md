@@ -158,6 +158,8 @@ center: true
 pdfSeparateFragments: false
 # Full list of supported settings: https://revealjs.com/config/ or
 # https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# UnoCSS styling: https://unocss.dev/interactive/ and https://tailwindcss.com/docs
+# Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
 
 # My first markdown slideshow
