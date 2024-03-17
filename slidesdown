@@ -210,9 +210,14 @@ main() {
 			exit
 			;;
 		'-u' | '--update')
-			local UPDATE=1
-			shift
-			continue
+			UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
+			echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}" 1>&2
+			SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
+			trap "rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0 1 2 3 15
+			curl -sfLo "${SCRIPT_TEMP}" "${UPDATE_URL}"
+			trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0
+			echo "complete" 1>&2
+			exit
 			;;
 		'-v' | '--version')
 			echo "${VERSION}"
@@ -252,16 +257,6 @@ main() {
 	ROOT_DIRECTORY="$(readlink -f "$(dirname "${SLIDES}")")"
 	SLIDES="$(basename "${SLIDES}")"
 	local URL
-	if [[ -n "${UPDATE}" ]]; then
-		UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
-		echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}"
-		SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
-		trap "rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0 1 2 3 15
-		curl -sfLo "${SCRIPT_TEMP}" "${UPDATE_URL}"
-		trap "cat '${SCRIPT_TEMP}' > '${SCRIPT_NAME}'; rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0
-		echo "complete"
-		return 0
-	fi
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 	else
