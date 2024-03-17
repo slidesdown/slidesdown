@@ -210,7 +210,7 @@ main() {
 			exit
 			;;
 		'-u' | '--update')
-			UPDATE_URL="https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown"
+			UPDATE_URL="https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown"
 			echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}" 1>&2
 			SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
 			trap "rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0 1 2 3 15
