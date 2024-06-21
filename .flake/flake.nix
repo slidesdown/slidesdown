@@ -2,7 +2,7 @@
 {
   description = "Dependencies";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.nixpkgs_unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
@@ -30,12 +30,14 @@
           python-with-my-packages
         ];
         linuxOnlyPackages = [ ];
-      in {
+      in
+      {
         devShell = pkgs.mkShell {
-          nativeBuildInputs = if pkgs.system == "x86_64-linux" then
-            allOsPackages ++ linuxOnlyPackages
-          else
-            allOsPackages;
+          nativeBuildInputs =
+            if pkgs.system == "x86_64-linux" then
+              allOsPackages ++ linuxOnlyPackages
+            else
+              allOsPackages;
           buildInputs = [ ];
         };
 
