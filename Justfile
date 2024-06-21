@@ -209,7 +209,7 @@ release LEVEL="patch": update-all
     if ("published/.git" | path exists) {
       cd published
       git add . | ignore
-      git commit -a -m "chore: upstream update" | ignore
+      git commit -a -m "chore(ci): upstream update" | ignore
       git push | ignore
     }
 
