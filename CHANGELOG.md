@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.13.0] - 2024-06-21
+
+### Features
+
+- Switch to node 20 - LTS
+
+### Miscellaneous Tasks
+
+- Use ci scope for git commit in CI jobs
+
 ## [0.12.0] - 2024-06-21
 
 ### Bug Fixes
