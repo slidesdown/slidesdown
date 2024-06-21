@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source=https://github.com/slidesdown/slidesdown
 LABEL org.opencontainers.image.description="Slideshows as fast as you can type."
 LABEL org.opencontainers.image.licenses=MIT
 
-RUN apk -U --no-cache add bash
+RUN apk -U --no-cache add bash tini
 
 COPY src/entrypoint.sh /
 

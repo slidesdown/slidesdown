@@ -8,4 +8,4 @@ SLIDES_DIRECTORY="${ROOT_DIRECTORY}/slides"
 
 cd "${ROOT_DIRECTORY}"
 echo "import slides from './slides/${SLIDES}';" >"loader.js"
-npm run dev
+tini npm run dev
