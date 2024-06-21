@@ -40,7 +40,7 @@ presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
 you need!
 
 <!-- generated with
-!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.2.0/remark-format.js --maxdepth 2 %
+!deno run --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.3.2/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
@@ -260,7 +260,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 <v-box  style="grid-area: right;">
 <figure>
 
-[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
+[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
 
 <figcaption>Picture link</figcaption>
 </figure>
@@ -822,7 +822,7 @@ Bucket List
 
 <grid-box styles="grid-template: 'left' 'code' / 1fr">
 
-![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
 
 <!-- .element: style="grid-area: left;" -->
 
@@ -840,7 +840,7 @@ Bucket List
 
 <div style="display: flex; justify-content: center; grid-area: left;">
 
-![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
 
 <!-- .element: class="r-frame" style="height: 30%; width: 30%"  -->
 
