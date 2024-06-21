@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - 2024-06-21
+
+### Bug Fixes
+
+- Run update before testing existence of slides file
+- Correct repository URL
+- Correct path translation to local filesystem
+- Ignore git hooks upon release
+
+### Documentation
+
+- Correct link to themes
+- Add references to unocss and icons
+
+### Features
+
+- Run node beneath tini in docker container
+
+### Miscellaneous Tasks
+
+- Update markdown toc generation tool
+- Update to nixos 24.05
+- Add git commit hooks
+- Update dependencies
+
 ## [0.11.1] - 2024-03-15
 
 ### Bug Fixes
