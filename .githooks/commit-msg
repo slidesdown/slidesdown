@@ -1,0 +1,18 @@
+#!/usr/bin/env -S sh
+set -eu
+
+MSG_FILE="$1"
+PATTERN='^(fix|feat|docs|style|chore|test|refactor|ci|build)(\([a-z0-9/-]+\))?!?: [a-z].+$'
+
+if ! head -n 1 "${MSG_FILE}" | grep -qE "${PATTERN}"; then
+	echo "Your commit message:" 1>&2
+	cat "${MSG_FILE}" 1>&2
+	echo 1>&2
+	echo "The commit message must conform to this pattern: ${PATTERN}" 1>&2
+	echo "Contents:" 1>&2
+	echo "- follow the conventional commits style (https://www.conventionalcommits.org/)" 1>&2
+	echo 1>&2
+	echo "Example:" 1>&2
+	echo "feat: add super awesome feature" 1>&2
+	exit 1
+fi
