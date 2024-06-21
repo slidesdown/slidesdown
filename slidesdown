@@ -60,8 +60,8 @@ class CORSRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
     def translate_path(self, path):
-        stripped_path = super().translate_path(path.lstrip("/slides/"))
-        return "/" + stripped_path if stripped_path != path else path
+        # Strip /slides prefix from path to make it compatible with docker container
+        return super().translate_path(path.lstrip("/slides/"))
 
 host = sys.argv[1] if len(sys.argv) > 2 else 'localhost'
 port = int(sys.argv[len(sys.argv)-1]) if len(sys.argv) > 1 else 8080
