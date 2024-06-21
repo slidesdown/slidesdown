@@ -62,7 +62,7 @@ update-apexcharts:
 update-pico:
     #!/usr/bin/env nu
     # Source: https://github.com/picocss/pico
-    let VERSION = "1.5.10"
+    let VERSION = "1.5.12"
     curl -Lfo public/css/pico.min.css $"https://unpkg.com/@picocss/pico@($VERSION)/css/pico.min.css"
 
 # Update unocss
@@ -76,11 +76,11 @@ update-unocss:
 # Update iconify
 update-iconify:
     #!/usr/bin/env nu
-    # Source: https://github.com/iconify/icon-sets/tree/master
+    # Source: https://github.com/iconify/icon-sets
     rm -rpf public/vendor/@iconify-json
     mkdir public/vendor/@iconify-json
     let sourcedir = "node_modules/@iconify/json/json"
-    ls $"($sourcedir)/*.json" | $in.name | path basename | parse "{name}.{extension}" | par-each {|iconset|
+    glob $"($sourcedir)/*.json" | path basename | parse "{name}.{extension}" | par-each {|iconset|
       mkdir $"public/vendor/@iconify-json/($iconset.name)"
       cp $"($sourcedir)/($iconset.name).($iconset.extension)" $"public/vendor/@iconify-json/($iconset.name)/icons.json"
     }
@@ -127,7 +127,7 @@ update-revealjs:
     # Source: https://github.com/hakimel/reveal.js
     mkdir public/vendor
     rm -prf public/vendor/reveal.js
-    let VERSION = "5.0.5"
+    let VERSION = "5.1.0"
     cd public/vendor
     do -c {curl -Lfo - $"https://github.com/hakimel/reveal.js/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
     mv $"($env.PWD)/reveal.js-($VERSION)" reveal.js
