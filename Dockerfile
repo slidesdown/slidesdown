@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 LABEL org.opencontainers.image.source=https://github.com/slidesdown/slidesdown
 LABEL org.opencontainers.image.description="Slideshows as fast as you can type."
