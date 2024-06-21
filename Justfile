@@ -200,7 +200,7 @@ release LEVEL="patch": update-all
     open --raw slidesdown | str replace -r 'VERSION=.*' $'VERSION="($new_version)"' | save -f slidesdown; git add slidesdown
     git cliff -t $new_version -o CHANGELOG.md
     git add CHANGELOG.md
-    git commit -m $"Bump version to ($new_version)"
+    git commit -n -m $"Bump version to ($new_version)"
     git tag -s -m $new_version $new_version
     git push --atomic origin refs/heads/main $"refs/tags/($new_version)"
     git cliff --strip all --current | gh release create -F - $new_version slidesdown
