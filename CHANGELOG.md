@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.14.0] - 2024-06-26
+
+### Bug Fixes
+
+- Add truncated remainder of html code and make img and a tag matching non-greedy
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
+### Styling
+
+- Reformat code
+
 ## [0.13.2] - 2024-06-26
 
 ### Bug Fixes
