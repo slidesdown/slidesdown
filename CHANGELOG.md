@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.13.2] - 2024-06-26
+
+### Bug Fixes
+
+- Correct rebasing that broke references that needed no rebasing
+
 ## [0.13.0] - 2024-06-21
 
 ### Features
