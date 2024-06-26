@@ -843,8 +843,8 @@ const Plugin = () => {
         marked.use(gfmHeadingId());
         markedOptions.async = true;
 
-        const a_href_regex = /((<a.* href=")([^"<>]+)(".*>)|(<a.* href=')([^'<>]+)('.*>))/gm
-        const img_src_regex = /((<img.* src=")([^"<>]+)(".*>)|(<img.* src=')([^'<>]+)('.*>))/gm
+        const a_href_regex = /((<a[^>]*? href=")([^"]*?)("[^>]*?>)|(<a[^>]*? href=')([^']+?)('[^>]*?>))/gi
+        const img_src_regex = /((<img[^>]*? src=")([^"]*?)("[^>]*?>)|(<img[^>]*? src=')([^']+?)('[^>]*?>))/gi
         // const isUrl = /^https?:\/\//
         // const isAbsolute = /^\//
         // const isLocal = /^#/
@@ -860,8 +860,9 @@ const Plugin = () => {
           },
           walkTokens: (token) => {
             if (token.type === "html") {
-              let text = []
+              let text = [];
               let last_index = 0;
+              let remainder = "";
               for (const match of token.text.matchAll(img_src_regex)) {
                 text.push(token.text.substring(last_index, match.index))
                 const ref = match[3];
@@ -875,7 +876,8 @@ const Plugin = () => {
                 last_index = match.index + match[0].length
               }
               if (text.length) {
-                token.text = text.join('')
+                remainder = token.text.substring(last_index, token.text.length);
+                token.text = text.join('') + remainder;
               }
               text = []
               last_index = 0;
@@ -892,7 +894,8 @@ const Plugin = () => {
                 last_index = match.index + match[0].length
               }
               if (text.length) {
-                token.text = text.join('')
+                remainder = token.text.substring(last_index, token.text.length);
+                token.text = text.join('') + remainder;
               }
             } else if (token.type === "code") {
               token.text = codeHandler(token.text, token.lang);
