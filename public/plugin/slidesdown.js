@@ -170,10 +170,10 @@ const Plugin = () => {
     options = getSlidifyOptions(options);
 
     const separatorRegex = new RegExp(
-      options.separator +
-      (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
-      "mg",
-    ),
+        options.separator +
+          (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
+        "mg",
+      ),
       horizontalSeparatorRegex = new RegExp(options.separator),
       verticalSeparatorRegex = new RegExp(
         options.verticalSeparator ? "|" + options.verticalSeparator : "",
@@ -237,7 +237,7 @@ const Plugin = () => {
       if (sectionStack[i] instanceof Array) {
         // console.log("sectionStack array");
         const section_promises = [];
-        sectionStack[i].forEach(function(child) {
+        sectionStack[i].forEach(function (child) {
           section_promises.push(
             createMarkdownSlide(child, options).then((content) =>
               "<section data-markdown>" + content +
@@ -252,7 +252,7 @@ const Plugin = () => {
             ) =>
               resolve(
                 "<section " + options.attributes + ">" + res.join("") +
-                "</section>",
+                  "</section>",
               )
             );
           }),
@@ -451,8 +451,8 @@ const Plugin = () => {
    */
   function hideCustomControlsIfVisiblityChanges(element) {
     // console.log("hideCustomControlsIfVisiblityChanges");
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
         const style = window.getComputedStyle(mutation.target, null);
         const display = style?.getPropertyValue("display");
         if (display === "none") {
@@ -507,7 +507,7 @@ const Plugin = () => {
       notesSeparator: section.getAttribute("data-separator-notes"),
       attributes: getForwardedAttributes(section),
     });
-  };
+  }
 
   /**
    * Parses any current data-markdown slides, splits
@@ -522,13 +522,15 @@ const Plugin = () => {
       scope.querySelectorAll(
         "section[data-markdown]:not([data-markdown-parsed])",
       ),
-    ).forEach(function(section, _i) {
+    ).forEach(function (section, _i) {
       if (section.getAttribute("data-markdown") === "<<load-plain-markdown>>") {
-        externalPromises.push(processMarkdown(section, section.getAttribute("data-markdown-plain")));
+        externalPromises.push(
+          processMarkdown(section, section.getAttribute("data-markdown-plain")),
+        );
       } else if (section.getAttribute("data-markdown").length) {
         const promise = loadExternalMarkdown(section).then(
           // Finished loading external file
-          async function(xhr, _url) {
+          async function (xhr, _url) {
             if (!BASE_URL) {
               // TODO: add support for multiple markdown elements
               const base_url = new URL(xhr.responseURL);
@@ -544,7 +546,7 @@ const Plugin = () => {
             return await processMarkdown(section, xhr.responseText);
           },
           // Failed to load markdown
-          function(xhr, url) {
+          function (xhr, url) {
             section.outerHTML = '<section data-state="alert">' +
               "ERROR: The attempt to fetch " + url +
               " failed with HTTP status " + xhr.status + "." +
@@ -574,7 +576,7 @@ const Plugin = () => {
 
   function loadExternalMarkdown(section) {
     // console.log("loadExternalMarkdown");
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       const xhr = new XMLHttpRequest();
       const url = section.getAttribute("data-markdown");
       const datacharset = section.getAttribute("data-charset");
@@ -584,7 +586,7 @@ const Plugin = () => {
         xhr.overrideMimeType("text/html; charset=" + datacharset);
       }
 
-      xhr.onreadystatechange = function(_section, xhr) {
+      xhr.onreadystatechange = function (_section, xhr) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           // file protocol yields status code 0 (useful for local debug, mobile applications etc.)
           if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
@@ -602,8 +604,8 @@ const Plugin = () => {
       } catch (e) {
         console.warn(
           "Failed to get the Markdown file " + url +
-          ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
-          e,
+            ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
+            e,
         );
         resolve(xhr, url);
       }
@@ -724,7 +726,7 @@ const Plugin = () => {
     let sectionNumber = 0;
     const promises = [];
     [].slice.call(sections).forEach((section) => {
-      const parse = async function(section) {
+      const parse = async function (section) {
         section.setAttribute("data-markdown-parsed", true);
 
         const notes = section.querySelector("aside.notes");
@@ -745,11 +747,11 @@ const Plugin = () => {
           section,
           null,
           section.getAttribute("data-element-attributes") ||
-          section.parentNode.getAttribute("data-element-attributes") ||
-          DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
+            section.parentNode.getAttribute("data-element-attributes") ||
+            DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
           section.getAttribute("data-attributes") ||
-          section.parentNode.getAttribute("data-attributes") ||
-          DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
+            section.parentNode.getAttribute("data-attributes") ||
+            DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
         );
 
         // If there were notes, we need to re-add them after
@@ -777,7 +779,7 @@ const Plugin = () => {
      * Starts processing and converting Markdown within the
      * current reveal.js deck.
      */
-    init: function(reveal) {
+    init: function (reveal) {
       // console.log("init");
       deck = reveal;
 
@@ -812,12 +814,14 @@ const Plugin = () => {
         if (language === "mermaid") {
           // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
           DIAGRAM_COUNTER += 1;
-          return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${btoa(code)
-            }"></div>`;
+          return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
+            btoa(code)
+          }"></div>`;
         } else if (language === "chartjs") {
           // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
-          return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${btoa(code)
-            }></canvas></div></div>`;
+          return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${
+            btoa(code)
+          }></canvas></div></div>`;
         } else if (
           language === "apexchart"
         ) {
@@ -843,12 +847,14 @@ const Plugin = () => {
         marked.use(gfmHeadingId());
         markedOptions.async = true;
 
-        const a_href_regex = /((<a[^>]*? href=")([^"]*?)("[^>]*?>)|(<a[^>]*? href=')([^']+?)('[^>]*?>))/gi
-        const img_src_regex = /((<img[^>]*? src=")([^"]*?)("[^>]*?>)|(<img[^>]*? src=')([^']+?)('[^>]*?>))/gi
+        const a_href_regex =
+          /((<a[^>]*? href=")([^"]*?)("[^>]*?>)|(<a[^>]*? href=')([^']+?)('[^>]*?>))/gi;
+        const img_src_regex =
+          /((<img[^>]*? src=")([^"]*?)("[^>]*?>)|(<img[^>]*? src=')([^']+?)('[^>]*?>))/gi;
         // const isUrl = /^https?:\/\//
         // const isAbsolute = /^\//
         // const isLocal = /^#/
-        const isRelative = /^(\.\.\/|\.\/)/
+        const isRelative = /^(\.\.\/|\.\/)/;
 
         const markedConfig = {
           ...markedOptions,
@@ -864,38 +870,38 @@ const Plugin = () => {
               let last_index = 0;
               let remainder = "";
               for (const match of token.text.matchAll(img_src_regex)) {
-                text.push(token.text.substring(last_index, match.index))
+                text.push(token.text.substring(last_index, match.index));
                 const ref = match[3];
                 // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
-                const needsRebase = isRelative.test(ref)
+                const needsRebase = isRelative.test(ref);
                 if (needsRebase) {
-                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
+                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`);
                 } else {
-                  text.push(`${match[2]}${match[3]}${match[4]}`)
+                  text.push(`${match[2]}${match[3]}${match[4]}`);
                 }
-                last_index = match.index + match[0].length
+                last_index = match.index + match[0].length;
               }
               if (text.length) {
                 remainder = token.text.substring(last_index, token.text.length);
-                token.text = text.join('') + remainder;
+                token.text = text.join("") + remainder;
               }
-              text = []
+              text = [];
               last_index = 0;
               for (const match of token.text.matchAll(a_href_regex)) {
-                text.push(token.text.substring(last_index, match.index))
+                text.push(token.text.substring(last_index, match.index));
                 const ref = match[3];
                 // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
-                const needsRebase = isRelative.test(ref)
+                const needsRebase = isRelative.test(ref);
                 if (needsRebase) {
-                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
+                  text.push(`${match[2]}${base_url}${match[3]}${match[4]}`);
                 } else {
-                  text.push(`${match[2]}${match[3]}${match[4]}`)
+                  text.push(`${match[2]}${match[3]}${match[4]}`);
                 }
-                last_index = match.index + match[0].length
+                last_index = match.index + match[0].length;
               }
               if (text.length) {
                 remainder = token.text.substring(last_index, token.text.length);
-                token.text = text.join('') + remainder;
+                token.text = text.join("") + remainder;
               }
             } else if (token.type === "code") {
               token.text = codeHandler(token.text, token.lang);
