@@ -830,6 +830,7 @@ const Plugin = () => {
 
       return processSlides(deck.getRevealElement()).then(() => {
         // Marked options: https://marked.js.org/using_advanced#options
+        // baseUrl for html elements a and img
         let base_url;
         if (!markedOptions.baseUrl) {
           base_url = BASE_URL;
@@ -859,7 +860,6 @@ const Plugin = () => {
           },
           walkTokens: (token) => {
             if (token.type === "html") {
-              // baseUrl for html elements a and img
               let text = []
               let last_index = 0;
               for (const match of token.text.matchAll(img_src_regex)) {
@@ -869,6 +869,8 @@ const Plugin = () => {
                 const needsRebase = isRelative.test(ref)
                 if (needsRebase) {
                   text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
+                } else {
+                  text.push(`${match[2]}${match[3]}${match[4]}`)
                 }
                 last_index = match.index + match[0].length
               }
@@ -884,6 +886,8 @@ const Plugin = () => {
                 const needsRebase = isRelative.test(ref)
                 if (needsRebase) {
                   text.push(`${match[2]}${base_url}${match[3]}${match[4]}`)
+                } else {
+                  text.push(`${match[2]}${match[3]}${match[4]}`)
                 }
                 last_index = match.index + match[0].length
               }
