@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.15.0] - 2024-07-12
+
+### Features
+
+- Add PDF title, subject and author from YAML frontmatter
+- Add support for more well-known meta tags
+
 ## [0.14.0] - 2024-06-26
 
 ### Bug Fixes
