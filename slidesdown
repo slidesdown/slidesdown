@@ -82,12 +82,24 @@ END
 export_pdf() {
 	local DOCKER="$1"
 	local URL="$2"
-	local RESOLUTION="$3"
-	local FILE="$4"
+	local URL_MARKDOWN="$3"
+	local RESOLUTION="$4"
+	local FILE="$5"
+	local FRONTMATTER=""
+	local AUTHOR=""
+	local TITLE=""
+	local SUBJECT=""
+	if [[ -n "${URL_MARKDOWN}" ]]; then
+		FRONTMATTER="$(curl -sfL "${URL_MARKDOWN}" | sed -n -e '/^---$/,/^---$/p' | sed -e '1d;/^---$/,$d')"
+		AUTHOR="$(echo "${FRONTMATTER}" | yq .author)"
+		TITLE="$(echo "${FRONTMATTER}" | yq .title)"
+		SUBJECT="$(echo "${FRONTMATTER}" | yq .subject)"
+	fi
 	if [[ -z "${DOCKER}" ]]; then
-		decktape "${URL}" -s "${RESOLUTION}" "${FILE}"
+		decktape "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	else
-		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" -s "${RESOLUTION}" "${FILE}"
+		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
+		# docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.13.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	fi
 }
 
@@ -257,13 +269,17 @@ main() {
 	ROOT_DIRECTORY="$(readlink -f "$(dirname "${SLIDES}")")"
 	SLIDES="$(basename "${SLIDES}")"
 	local URL
+	local URL_MARKDOWN
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
+		URL_MARKDOWN="http://localhost:${PORT}/slides/${SLIDES}"
 	else
 		if [[ -n "${ENCODE}" ]]; then
 			URL="$(compute_url64 "${SERVICE}" "$(gzip -9 <"${ROOT_DIRECTORY}/${SLIDES}" | basenc --base64url -w 0 | sed -e 's/=//g')")"
+			URL_MARKDOWN=""
 		else
 			URL="$(compute_url "${SERVICE}" "http://localhost:${PORT}/slides/${SLIDES}")"
+			URL_MARKDOWN="http://localhost:${PORT}/slides/${SLIDES}"
 		fi
 	fi
 	if [[ -z "${EXPORT}" ]]; then
@@ -291,9 +307,9 @@ main() {
 		echo "Slideshow URL: ${URL}"
 		echo "Exporting as: ${OUTPUT}" >&2
 		if [[ -n "${DOCKER}" ]]; then
-			export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "$(basename "${OUTPUT}")"
+			export_pdf "${DOCKER}" "${URL}" "${URL_MARKDOWN}" "${RESOLUTION}" "$(basename "${OUTPUT}")"
 		else
-			export_pdf "${DOCKER}" "${URL}" "${RESOLUTION}" "${OUTPUT}"
+			export_pdf "${DOCKER}" "${URL}" "${URL_MARKDOWN}" "${RESOLUTION}" "${OUTPUT}"
 		fi
 	fi
 }

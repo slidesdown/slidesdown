@@ -245,11 +245,12 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
 
 ### Required Tools
 
-- [`curl`](https://curl.se/)
+- [`curl`](https://curl.se/) HTTP client
 - [`gh`](https://github.com/cli/cli) GitHub CLI for creating releases
 - [`git-cliff`](https://github.com/orhun/git-cliff) changelog generator
 - [`just`](https://just.systems/) task runner
-- [`node`](https://nodejs.org/) >=14
+- [`node`](https://nodejs.org/) >=20
+- [`yq`](https://mikefarah.gitbook.io/yq/) YAML parser
 
 ### Folder Structure and Important Files
 

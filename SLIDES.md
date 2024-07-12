@@ -1,6 +1,7 @@
 ---
 # Metadata about the presentation:
 title: Slidesdown
+subject: Showcasing slidesdown
 author: Jan Christoph Ebersbach
 date: 2023-01-20
 keywords: slides slideshow slidesdown presentation presentations markup markdown revealjs fontawesome pdf

@@ -1,6 +1,7 @@
 ---
 # Metadata about the presentation:
 title: Presentation Title
+subject: My super presentation
 author: Your Name
 date: 2023-01-20
 keywords: some useful keywords
