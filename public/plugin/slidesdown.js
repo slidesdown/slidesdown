@@ -170,10 +170,10 @@ const Plugin = () => {
     options = getSlidifyOptions(options);
 
     const separatorRegex = new RegExp(
-        options.separator +
-          (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
-        "mg",
-      ),
+      options.separator +
+      (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
+      "mg",
+    ),
       horizontalSeparatorRegex = new RegExp(options.separator),
       verticalSeparatorRegex = new RegExp(
         options.verticalSeparator ? "|" + options.verticalSeparator : "",
@@ -237,7 +237,7 @@ const Plugin = () => {
       if (sectionStack[i] instanceof Array) {
         // console.log("sectionStack array");
         const section_promises = [];
-        sectionStack[i].forEach(function (child) {
+        sectionStack[i].forEach(function(child) {
           section_promises.push(
             createMarkdownSlide(child, options).then((content) =>
               "<section data-markdown>" + content +
@@ -252,7 +252,7 @@ const Plugin = () => {
             ) =>
               resolve(
                 "<section " + options.attributes + ">" + res.join("") +
-                  "</section>",
+                "</section>",
               )
             );
           }),
@@ -337,12 +337,14 @@ const Plugin = () => {
       }
     };
     const applyFunctions = {
+      // List of Meta tags: https://gist.github.com/lancejpollard/1978404
       "title": (title) => {
         document.title = title;
         document.documentElement.style.setProperty(
           "--slideshow-title",
           `"${title}"`,
         );
+        addMeta("og:title")(title);
       },
       "favicon": loadLink("icon"),
       "theme": defaultURLToStylesheet("/vendor/reveal.js/dist/theme"),
@@ -350,9 +352,33 @@ const Plugin = () => {
         "/vendor/highlight.js",
       ),
       "addiontional-stylesheet": loadStylesheet,
+      "Cache-Control": addMeta("Cache-Control"),
+      "abstract": addMeta("abstract"),
       "author": addMeta("author"),
+      "category": addMeta("category"),
+      "classification": addMeta("Classification"),
+      "copyright": addMeta("copyright"),
+      "coverage": addMeta("coverage"),
       "date": addMeta("dcterms.date"),
+      "description": desc => S.map(fn => fn(desc))([addMeta("description"), addMeta("og:description")]),
+      "designer": addMeta("designer"),
+      "directory": addMeta("directory"),
+      "distribution": addMeta("distribution"),
+      "expires": addMeta("Expires"),
+      "identifier-url": addMeta("identifier-URL"),
       "keywords": addMeta("keywords"),
+      "language": addMeta("language"),
+      "owner": addMeta("owner"),
+      "pragma": addMeta("Pragma"),
+      "rating": addMeta("rating"),
+      "reply-to": addMeta("reply-to"),
+      "revised": addMeta("revised"),
+      "revisit-after": addMeta("revisit-after"),
+      "robots": addMeta("robots"),
+      "subject": addMeta("subject"),
+      "summary": addMeta("summary"),
+      "topic": addMeta("topic"),
+      "url": url => S.map(fn => fn(url))([addMeta("url"), addMeta("og:url")]),
       "fontawesomePro": loadScript(
         "https://kit.fontawesome.com/fec85b2437.js",
         "anonymous",
@@ -451,8 +477,8 @@ const Plugin = () => {
    */
   function hideCustomControlsIfVisiblityChanges(element) {
     // console.log("hideCustomControlsIfVisiblityChanges");
-    const observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
         const style = window.getComputedStyle(mutation.target, null);
         const display = style?.getPropertyValue("display");
         if (display === "none") {
@@ -522,7 +548,7 @@ const Plugin = () => {
       scope.querySelectorAll(
         "section[data-markdown]:not([data-markdown-parsed])",
       ),
-    ).forEach(function (section, _i) {
+    ).forEach(function(section, _i) {
       if (section.getAttribute("data-markdown") === "<<load-plain-markdown>>") {
         externalPromises.push(
           processMarkdown(section, section.getAttribute("data-markdown-plain")),
@@ -530,7 +556,7 @@ const Plugin = () => {
       } else if (section.getAttribute("data-markdown").length) {
         const promise = loadExternalMarkdown(section).then(
           // Finished loading external file
-          async function (xhr, _url) {
+          async function(xhr, _url) {
             if (!BASE_URL) {
               // TODO: add support for multiple markdown elements
               const base_url = new URL(xhr.responseURL);
@@ -546,7 +572,7 @@ const Plugin = () => {
             return await processMarkdown(section, xhr.responseText);
           },
           // Failed to load markdown
-          function (xhr, url) {
+          function(xhr, url) {
             section.outerHTML = '<section data-state="alert">' +
               "ERROR: The attempt to fetch " + url +
               " failed with HTTP status " + xhr.status + "." +
@@ -576,7 +602,7 @@ const Plugin = () => {
 
   function loadExternalMarkdown(section) {
     // console.log("loadExternalMarkdown");
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
       const xhr = new XMLHttpRequest();
       const url = section.getAttribute("data-markdown");
       const datacharset = section.getAttribute("data-charset");
@@ -586,7 +612,7 @@ const Plugin = () => {
         xhr.overrideMimeType("text/html; charset=" + datacharset);
       }
 
-      xhr.onreadystatechange = function (_section, xhr) {
+      xhr.onreadystatechange = function(_section, xhr) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           // file protocol yields status code 0 (useful for local debug, mobile applications etc.)
           if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
@@ -604,8 +630,8 @@ const Plugin = () => {
       } catch (e) {
         console.warn(
           "Failed to get the Markdown file " + url +
-            ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
-            e,
+          ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
+          e,
         );
         resolve(xhr, url);
       }
@@ -726,7 +752,7 @@ const Plugin = () => {
     let sectionNumber = 0;
     const promises = [];
     [].slice.call(sections).forEach((section) => {
-      const parse = async function (section) {
+      const parse = async function(section) {
         section.setAttribute("data-markdown-parsed", true);
 
         const notes = section.querySelector("aside.notes");
@@ -747,11 +773,11 @@ const Plugin = () => {
           section,
           null,
           section.getAttribute("data-element-attributes") ||
-            section.parentNode.getAttribute("data-element-attributes") ||
-            DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
+          section.parentNode.getAttribute("data-element-attributes") ||
+          DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
           section.getAttribute("data-attributes") ||
-            section.parentNode.getAttribute("data-attributes") ||
-            DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
+          section.parentNode.getAttribute("data-attributes") ||
+          DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
         );
 
         // If there were notes, we need to re-add them after
@@ -779,7 +805,7 @@ const Plugin = () => {
      * Starts processing and converting Markdown within the
      * current reveal.js deck.
      */
-    init: function (reveal) {
+    init: function(reveal) {
       // console.log("init");
       deck = reveal;
 
@@ -814,14 +840,12 @@ const Plugin = () => {
         if (language === "mermaid") {
           // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
           DIAGRAM_COUNTER += 1;
-          return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
-            btoa(code)
-          }"></div>`;
+          return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${btoa(code)
+            }"></div>`;
         } else if (language === "chartjs") {
           // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
-          return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${
-            btoa(code)
-          }></canvas></div></div>`;
+          return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${btoa(code)
+            }></canvas></div></div>`;
         } else if (
           language === "apexchart"
         ) {
