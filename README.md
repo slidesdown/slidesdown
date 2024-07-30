@@ -293,12 +293,9 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
 ### Release
 
 - Commit all changes
-- Create a new tag: `git tag -s vX.Y.Z`
-- Push tag and changes: `git push --tags`
-- Run `just release` create a new GitHub release, update
+- Run `just release` to create a new GitHub release, update
   [`CHANGELOG.md`](./CHANGELOG.md), and update tag in
   [`slidesdown`](./slidesdown) script
-- Push post release changes: `git push`
 
 ## References
 
