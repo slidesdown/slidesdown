@@ -190,6 +190,7 @@ export function buildMarkedConfiguration(markedOptions) {
   }
   marked.use(gfmHeadingId());
   markedOptions.async = true;
+  markedOptions.useNewRenderer = true;
   const a_href_regex =
     /((<a[^>]*? href=")([^"]*?)("[^>]*?>)|(<a[^>]*? href=')([^']+?)('[^>]*?>))/gi;
   const img_src_regex =
@@ -201,8 +202,8 @@ export function buildMarkedConfiguration(markedOptions) {
   const markedConfig = {
     ...markedOptions,
     renderer: {
-      code: (text, _lang, _escaped) => {
-        return text;
+      code: (text) => {
+        return text.text;
       },
     },
     walkTokens: (token) => {
