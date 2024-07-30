@@ -58,6 +58,8 @@ you need!
 10. [Charts: ApexCharts](#charts-apexcharts)
 11. [Diagrams](#diagrams)
 
+<!-- .element: style="column-count: 2" -->
+
 ## Introduction
 
 ### Features
@@ -113,7 +115,7 @@ notes:
 
 ### Headings
 
-<columns-2>
+<div class="grid grid-cols-2">
 
 <div>
   <h1>h1</h1>
@@ -129,15 +131,11 @@ notes:
 
 <!-- .element: class="markdown" -->
 
-</columns-2>
+</div>
 
 |||
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 Slide without heading.
-
-<!-- .element: style="grid-area: left;" -->
 
     <!-- Horizontal slide -->
 
@@ -151,25 +149,17 @@ Slide without heading.
 
     content
 
-<!-- .element: style="grid-area: code;" class="markdown" -->
-
-</grid-box>
+<!-- .element: class="markdown" -->
 
 ### Next comes a hidden slide
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 Can you see it?
-
-<!-- .element: style="grid-area: left;" -->
 
     ### Hidden slide
 
     <!-- .slide: data-visibility="hidden" -->
 
-<!-- .element: style="grid-area: code;" class="markdown" -->
-
-</grid-box>
+<!-- .element: class="markdown" -->
 
 ### Hidden slide
 
@@ -177,19 +167,11 @@ Can you see it?
 
 ### Text formatting
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 Regluar, _italic_, **bold**, and <u>underlined</u>.
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Gradient Text
 
@@ -203,33 +185,21 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 ### Unordered List
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 - Item 1
 - Item 2
 - Item 3
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 - Item 1
 - Item 2
 - Item 3
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Ordered List
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 1. Item 1
 2. Item 2
 3. Item 3
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 1. Item 1
@@ -237,26 +207,20 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 3. Item 3
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ### Links
 
-<grid-box styles="grid-template: 'left right' 'code code' / 1fr 1fr">
+<div class="grid grid-cols-2 items-center">
 
 [Text link](https://github.com/slidesdown/slidesdown)
 
-<!-- .element: style="grid-area: left;" -->
-
-<v-box  style="grid-area: right;">
 <figure>
 
 [![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
 
 <figcaption>Picture link</figcaption>
 </figure>
-</v-box>
+
+</div>
 
 ```markdown
 [Text link](https://github.com/slidesdown/slidesdown)
@@ -266,30 +230,18 @@ Picture link
 [![A picture](https://...)](https://...)
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Quotes
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
-> A famous quote
-
-<!-- .element: style="grid-area: left;" -->
+A famous quote
 
 ```markdown
 > A famous quote
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Code Highlighting
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 ```javascript
 function hello(msg) {
   alert(`Hello ${msg}`);
@@ -297,8 +249,6 @@ function hello(msg) {
 
 hello("world!");
 ```
-
-<!-- .element: style="grid-area: left;" -->
 
 ````markdown
 ```javascript
@@ -309,15 +259,9 @@ function hello(msg) {
 hello("world!");
 ```
 ````
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Code Highlighting with highlighted Line
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 ```javascript[2]
 function hello(msg) {
   alert(`Hello ${msg}`);
@@ -325,8 +269,6 @@ function hello(msg) {
 
 hello("world!");
 ```
-
-<!-- .element: style="grid-area: left;" -->
 
 ````markdown
 ```javascript[2]
@@ -338,44 +280,25 @@ hello("world!");
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ### Math formulas
-
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
-<article>
 
 `$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
 
 `$$ e^{\pi i}=-1 $$`
-
-</article>
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 `$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
 
 `$$ e^{\pi i}=-1 $$`
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Table
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 | Tables        |      Are      |  Cool |
 | ------------- | :-----------: | ----: |
 | column 3 is   | right-aligned | $1600 |
 | column 2 is   |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 | Tables        |      Are      |  Cool |
@@ -384,307 +307,264 @@ hello("world!");
 | column 2 is   |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ## Layouts
 
 ### 1 Column
 
-<grid-box styles="grid-template: 'left code' / 2fr 3fr">
+<div class="grid grid-cols-2">
 
 <article>
-<v-box>
+<div class="flex flex-col">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Bucket List
 
 - ...
 
-</v-box>
+</div>
 </article>
 
-<!-- .element: style="grid-area: left;" -->
-
 ```markdown
-<v-box>
+<div class="flex flex-col">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Bucket List
 
 - ...
 
-</v-box>
+</div>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### 2 Columns
 
-<grid-box styles="grid-template: 'left code' / 3fr 2fr">
+<div class="grid grid-cols-2">
 
-<article>
-<columns-2>
-<v-box>
+<div class="grid grid-cols-2">
+<div class="flex flex-col">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Bucket List
 
 - ...
 
-</v-box>
-</columns-2>
-</article>
-<!-- .element: style="grid-area: left;" -->
+</div>
+</div>
 
 ```markdown
-<columns-2>
-<v-box>
+<div class="grid grid-cols-2">
+<div class="flex flex-col">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Bucket List
 
 - ...
 
-</v-box>
-</columns-2>
+</div>
+</div>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### 3 Columns
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
-<columns-3>
-<v-box>
+<div class="grid grid-cols-3">
+<div class="flex flex-col">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box>
+<div class="flex flex-col">
 Bucket List
 
-- NYC
-- Tokyo
-- Singapore
+- ...
 
-</v-box>
-</columns-3>
-<!-- .element: style="grid-area: left;" -->
+</div>
+
+</div>
 
 ```markdown
-<columns-3>
+<div class="grid grid-cols-3">
 ...
-</columns-3>
+</div>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Complex
 
-<grid-box styles="grid-template: 'left code' / 50% 50%">
-<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
+<div class="grid grid-cols-2 gap-3">
+<div class="grid gap-3" style="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
 
-<v-box style="grid-area: header; background-color: green">
+<div class="grid-area-[header] flex flex-col bg-green c-white">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box style="grid-area:sidebar; background-color: blue">
+<div class="grid-area-[sidebar] flex flex-col bg-blue c-white">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box style="grid-area: main; background-color: red">
+<div class="grid-area-[main] flex flex-col bg-red c-white">
 Bucket List
 
 - NYC
 - Tokyo
 - Singapore
 
-</v-box>
-</grid-box>
-<!-- .element: style="grid-area: left;" -->
+</div>
+</div>
 
 ```markdown
-<grid-box styles="grid-template: 'header header header' 'sidebar main main' / 300px auto">
+<div class="grid gap-3" style="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
 
-<v-box style="grid-area: header; background-color: green">
+<div class="grid-area-[header] flex flex-col bg-green c-white">
 Shopping List
 
 - Bread
 - Milk
 - Butter
 
-</v-box>
+</div>
 
-<v-box style="grid-area:sidebar; background-color: blue">
+<div class="grid-area-[sidebar] flex flex-col bg-blue c-white">
 Task List
 
 - Sleep
 - Eat
 - Work
 
-</v-box>
+</div>
 
-<v-box style="grid-area: main; background-color: red">
+<div class="grid-area-[main] flex flex-col bg-red c-white">
 Bucket List
 
 - NYC
 - Tokyo
 - Singapore
 
-</v-box>
-</grid-box>
+</div>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ## Animations
 
 ### Incremental Lists
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 - Item 1 <!-- .element: class="fragment" -->
 - Item 2 <!-- .element: class="fragment" -->
 - Item 3 <!-- .element: class="fragment" -->
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 - Item 1 <!-- .element: class="fragment" -->
 - Item 2 <!-- .element: class="fragment" -->
 - Item 3 <!-- .element: class="fragment" -->
 ```
-
-</grid-box>
 
 ### Fragments
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-<columns-2 styles="justify-items: center">
-<div>
+<div class="grid grid-cols-2 items-center justify-items-center">
   <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 70%;" />
-</div>
-<div>
   <img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 40%;" />
+<!-- .element: class="fragment" -->
 </div>
-<!-- .element: class="fragment" -->
-</columns-2>
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
-<columns-2 styles="justify-items: center">
+<div class="grid grid-cols-2 items-center justify-items-center">
 <img src="https://..." />
 <img src="https://..." />
 <!-- .element: class="fragment" -->
-</columns-2>
+</div>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ### Animated List
-
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 <!-- .slide: data-auto-animate="1" -->
 
@@ -700,13 +580,7 @@ Bucket List
 - Item 4
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ### Animated List
-
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
 
 <!-- .slide: data-auto-animate="1" -->
 
@@ -724,63 +598,45 @@ Bucket List
 - Item 4
 ```
 
-<!-- .element: style="grid-area: code;" -->
+### Animated Colored Boxes
 
-</grid-box>
+<!-- .slide: data-auto-animate="1" -->
+
+<div class="grid grid-cols-3 items-center justify-items-center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</div>
+
+```markdown
+<!-- .slide: data-auto-animate="1" -->
+
+<div class="grid grid-cols-3 items-center justify-items-center">
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</div>
+```
 
 ### Animated Colored Boxes
 
 <!-- .slide: data-auto-animate="1" -->
 
-<grid-box styles="grid-template: 'left' 'code' / 100%">
-
-<columns-3 styles="justify-items: center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div class="grid grid-cols-3 items-center justify-items-center">
 <div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</columns-3>
-<!-- .element: style="grid-area: left;" -->
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+</div>
 
 ```markdown
 <!-- .slide: data-auto-animate="1" -->
 
-<columns-3 styles="justify-items: center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div class="grid grid-cols-3 items-center justify-items-center">
 <div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</columns-3>
+<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+</div>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
-### Animated Colored Boxes
-
-<!-- .slide: data-auto-animate="1" -->
-
-<grid-box styles="grid-template: 'left' 'code' / 100%">
-
-<columns-3 styles="justify-items: center">
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-</columns-3>
-<!-- .element: style="grid-area: left;" -->
-
-```markdown
-<!-- .slide: data-auto-animate="1" -->
-
-<columns-3 styles="justify-items: center">
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-</columns-3>
-```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ## Backgrounds
 
@@ -812,29 +668,19 @@ Bucket List
 
 ### Picture
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
 ![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
-
-<!-- .element: style="grid-area: left;" -->
 
 ```markdown
 ![tennis](https://...)
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ### Framed Picture
 
-<grid-box styles="grid-template: 'left' 'code' / 1fr">
-
-<div style="display: flex; justify-content: center; grid-area: left;">
+<div class="grid justify-items-center">
 
 ![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
 
-<!-- .element: class="r-frame" style="height: 30%; width: 30%"  -->
+<!-- .element: class="r-frame h-[20vh]" -->
 
 </div>
 
@@ -843,10 +689,6 @@ Bucket List
 
 <!-- .element: class="r-frame" -->
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Font Awesome Icon
 
@@ -899,7 +741,6 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 ### FontAwesome Bullet Icons
 
-<grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
 <ul class="grid-area-[left]">
   <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-id-badge c-blue h-full w-full"></div></div> Regular bullet icon</li>
   <li class="list-none flex gap-1 items-center"><div class="h-[calc(var(--r-main-font-size)*0.6)] w-[calc(var(--r-main-font-size)*0.6)] shrink-0"><div class="i-fa6-solid-recycle h-full w-full"></div></div> Regular bullet icon</li>
@@ -926,10 +767,6 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 </ul>
 ```
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
-
 ## Advanced Formatting
 
 ### Colored <span style="color: #78a5e9">text</span>
@@ -940,109 +777,82 @@ Colored <span style="color: #78a5e9">text</span>
 
 ### Box Shadow
 
-<grid-box styles="grid-template: 'left' 'code' / 100%; justify-items: center">
+<div class="grid grid-cols-2 gap-10">
 
-<columns-2 styles="grid-area: main">
-
-<span class="s-trbl">
-Shadow top, right, bottom, left.
+<span class="shadow">
+Shadow regular.
 </span>
 
-<span class="s-rbl">
-Shadow right, bottom, left.
+<span class="shadow-md">
+Shadow medium.
 </span>
 
-<span class="s-rb">
-Shadow right, bottom.
+<span class="shadow-lg">
+Shadow large.
 </span>
 
-<span class="s-bl">
-    Shadow bottom, left.
+<span class="shadow-xl">
+Shadow x-large.
 </span>
 
-</columns-2>
+</div>
 
 ```markdown
-<span class="s-trbl">Shadow top, right, bottom, left.</span>
-<span class="s-rbl">Shadow right, bottom, left.</span>
-<span class="s-rb">Shadow right, bottom.</span>
-<span class="s-bl">Shadow bottom, left.</span>
+<span class="shadow">Shadow regular.</span>
+<span class="shadow-md">Shadow medium.</span>
+<span class="shadow-lg">Shadow large.</span>
+<span class="shadow-xl">Shadow x-large.</span>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Colored Boxes
 
-<grid-box styles="grid-template: 'left' 'code' / 100%">
-
-<columns-3 styles="justify-items: center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</columns-3>
-<!-- .element: style="grid-area: left;" -->
+<div class="grid grid-cols-3 items-center justify-items-center">
+<div class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</div>
 
 ```markdown
-<columns-3 styles="justify-items: center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-</columns-3>
+<div class="grid grid-cols-3 items-center justify-items-center">
+<div class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
+<div class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+</div>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Font Awesome Buttons
 
-<grid-box styles="grid-template: 'left' 'code' / 100%">
-
-<columns-3 styles="justify-items: center">
+<div class="grid grid-cols-3 items-center justify-items-center">
 <div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
 <div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
 <div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
-</columns-3>
-<!-- .element: style="grid-area: left;" -->
+</div>
 
 ```markdown
-<columns-3 styles="justify-items: center">
+<div class="grid grid-cols-3 items-center justify-items-center">
 <div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
 <div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
 <div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
-</columns-3>
+</div>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Picture Buttons
 
-<grid-box styles="grid-template: 'left' 'code' / 100%">
-
-<columns-4>
+<div class="grid grid-cols-4 items-center justify-items-center">
 <div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 <div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-</columns-4>
-<!-- .element: style="grid-area: left;" -->
+</div>
 
 ```markdown
-<columns-4>
+<div class="grid grid-cols-4 items-center justify-items-center">
 <div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://...");'></div>
 <div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://...");'></div>
 <div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://...");'></div>
 <div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://...");'></div>
-</columns-4>
+</div>
 ```
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ## Charts: ChartJS
 
@@ -1050,7 +860,7 @@ via [chart.js](https://www.chartjs.org/)
 
 ### Polar Area Chart
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```chartjs
 {
@@ -1086,7 +896,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 80%;" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````json
 ```chartjs
@@ -1115,13 +925,11 @@ via [chart.js](https://www.chartjs.org/)
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Line Chart
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```chartjs
 {
@@ -1142,7 +950,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````json
 ```chartjs
@@ -1165,13 +973,11 @@ via [chart.js](https://www.chartjs.org/)
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Bar Chart
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```chartjs
 {
@@ -1205,7 +1011,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````json
 ```chartjs
@@ -1231,15 +1037,13 @@ via [chart.js](https://www.chartjs.org/)
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Radar chart
 
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```chartjs
 {
@@ -1298,7 +1102,7 @@ via [chart.js](https://www.chartjs.org/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````json
 ```chartjs
@@ -1334,9 +1138,7 @@ via [chart.js](https://www.chartjs.org/)
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ## Charts: ApexCharts
 
@@ -1344,7 +1146,7 @@ via [apexcharts](https://apexcharts.com/)
 
 ### Line Chart
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```apexchart
 {
@@ -1361,7 +1163,7 @@ via [apexcharts](https://apexcharts.com/)
 }
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```apexchart
@@ -1380,9 +1182,7 @@ via [apexcharts](https://apexcharts.com/)
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### More Examples
 
@@ -1394,7 +1194,7 @@ via [mermaid.js](https://mermaid.js.org/)
 
 ### Flowchart
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 graph LR
@@ -1403,7 +1203,7 @@ graph LR
   B-->D;
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1414,13 +1214,11 @@ graph LR
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Flowchart Complex
 
-<grid-box styles="grid-template: 'left code' 80% / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 graph TD
@@ -1433,7 +1231,7 @@ graph TD
     F --> B
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1448,13 +1246,11 @@ graph TD
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Sequence Diagram
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 sequenceDiagram
@@ -1463,7 +1259,7 @@ sequenceDiagram
     Alice-)John: See you later!
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1474,15 +1270,13 @@ sequenceDiagram
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### State Diagram
 
 <!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
 
-<grid-box styles="grid-template: 'left code' 512px / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 stateDiagram-v2
@@ -1494,7 +1288,7 @@ stateDiagram-v2
   Crash --> [*]
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[512px] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1508,13 +1302,11 @@ stateDiagram-v2
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Entity Relationship Diagram
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 erDiagram
@@ -1523,7 +1315,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1534,13 +1326,11 @@ erDiagram
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### User Journey Diagram
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 journey
@@ -1554,7 +1344,7 @@ journey
       Sit down: 5: Me
 ```
 
-<!-- .element: style="grid-area: left; height: 300px;" -->
+<!-- .element: class="w-[80%] h-[300px]" -->
 
 ````markdown
 ```mermaid
@@ -1570,14 +1360,10 @@ journey
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ### Gantt Chart
 
-<grid-box styles="grid-template: 'left' 'code' / 100%;">
-
 ```mermaid
 gantt
     title A Gantt Diagram
@@ -1590,7 +1376,7 @@ gantt
     another task      : 24d
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1605,14 +1391,10 @@ gantt
     another task      : 24d
 ```
 ````
-
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
 
 ### Git Graph
 
-<grid-box styles="grid-template: 'left code' / 50% 50%;">
+<div class="grid grid-cols-2">
 
 ```mermaid
 gitGraph
@@ -1628,7 +1410,7 @@ gitGraph
    commit
 ```
 
-<!-- .element: style="grid-area: left; height: 80%" -->
+<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1646,13 +1428,10 @@ gitGraph
 ```
 ````
 
-<!-- .element: style="grid-area: code;" -->
-
-</grid-box>
+</div>
 
 ---
 
 <h2>Thank you</h2>
 
-<strong>for using
-<a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>
+<strong>for using <a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>
