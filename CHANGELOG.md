@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.16.0] - 2024-07-30
+
+### Bug Fixes
+
+- Correct relative URL rebasing for single quote references
+- Avoid language class being added if it's empty
+- Use code blocks for special characters that interfer with slidesdown
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- Migrate to marked's new renderer
+- Replace all custom element examples with unocss
+- Limit test execution to public folder
+- Update dependencies
+
+### Refactor
+
+- Add unit tests for slidesdown.js
+
 ## [0.15.0] - 2024-07-12
 
 ### Features
