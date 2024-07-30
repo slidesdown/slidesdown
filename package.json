@@ -6,21 +6,26 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.232",
+    "@testing-library/dom": "^10.4.0",
     "@unocss/runtime": "^0.61.7",
+    "@vitest/browser": "^2.0.4",
     "apexcharts": "^3.51.0",
     "chart.js": "^4.4.3",
     "dompurify": "^3.1.6",
+    "jsdom": "^24.1.1",
     "lit": "^3.1.4",
     "marked": "^13.0.3",
     "marked-base-url": "^1.1.4",
     "marked-gfm-heading-id": "^4.0.0",
     "mathjax": "3.2.2",
     "mermaid": "^10.9.1",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "vite": "^5.3.5"

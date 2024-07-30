@@ -170,7 +170,7 @@ update-revealjs-highlight:
     rm -pvrf $"($env.PWD)/highlight.js-($VERSION)"
 
 # Build application
-build:
+build: test
     #!/usr/bin/env nu
     # Ensure that docs exists by cloning it first if docs shall be published
     # git clone git@github.com:slidesdown/slidesdown.github.io.git published
@@ -228,4 +228,4 @@ push-docker:
 
 # Run tests
 test:
-    # no test yet
+    yarn run test --run --no-color

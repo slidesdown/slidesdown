@@ -18,7 +18,7 @@ import SlidesDown from "slidesdown";
 // computeURL builds a URL to a raw markdown file from a short human-typable
 // string, e.g. it turns github.com/slidesdown/slidesdown into
 // https://raw.githubusercontent.com/jceb/slidesdown/main/SLIDES.md
-const computeURL = (defaults, url) => {
+function computeURL(defaults, url) {
   if (!(defaults.branch && defaults.resource)) {
     console.error("Default branch and/or resource unset");
     return;
@@ -47,18 +47,15 @@ const computeURL = (defaults, url) => {
         `${match.groups.dir_or_branch}/${match.groups.resource}/${defaults.resource}`;
     } else if (match.groups.blob && match.groups.dir_or_branch) {
       // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
-      resource = `${match.groups.dir_or_branch}/${
-        match.groups.resource ? match.groups.resource : defaults.resource
-      }`;
+      resource = `${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
     } else {
       if (match.groups.dir_or_branch) {
-        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${
-          match.groups.resource ? match.groups.resource : defaults.resource
-        }`;
+        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+          }`;
       } else {
-        resource = `${defaults.branch}/${
-          match.groups.resource ? match.groups.resource : defaults.resource
-        }`;
+        resource = `${defaults.branch}/${match.groups.resource ? match.groups.resource : defaults.resource
+          }`;
       }
     }
     return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`;
@@ -68,7 +65,7 @@ const computeURL = (defaults, url) => {
   return decodedURL;
 };
 
-const main = async (defaults) => {
+async function main(defaults) {
   if (!(defaults.branch && defaults.resource && defaults.markdownElementId)) {
     console.error(
       "Default branch, resource  and/or markdownElementId are not set",
