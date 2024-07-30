@@ -357,7 +357,7 @@ function defaultCodeHandler(code, language) {
   // specific lines.
   // ```javascript []        show line numbers
   // ```javascript [1,4-8]   highlights lines 1 and 4-8
-  if (CODE_LINE_NUMBER_REGEX.test(language)) {
+  if (language && CODE_LINE_NUMBER_REGEX.test(language)) {
     lineNumbers = language.match(CODE_LINE_NUMBER_REGEX)[1].trim();
     lineNumbers = `data-line-numbers="${lineNumbers}"`;
     language = language.replace(CODE_LINE_NUMBER_REGEX, "").trim();
@@ -366,7 +366,11 @@ function defaultCodeHandler(code, language) {
   // avoid having the HTML parser alter our code before
   // highlight.js is able to read it
   code = escapeForHTML(code);
-  return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
+  if (language) {
+    return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
+  } else {
+    return `<pre><code ${lineNumbers}>${code}</code></pre>`;
+  }
 }
 
 function escapeForHTML(input) {
