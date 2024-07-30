@@ -266,7 +266,7 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
     [https://slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
   - [`public/learn.html`](./public/learn.html) tutorial served at
     [https://slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
-  - [`public/plugins/slidesdown.js`](./public/plugins/slidesdown.js)
+  - [`public/plugin/slidesdown.js`](./public/plugin/slidesdown.js)
     Markdown converter plugin - this is the core of this project
 - [`slidesdown`](./slidesdown) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
