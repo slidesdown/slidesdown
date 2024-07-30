@@ -212,14 +212,15 @@ export function buildMarkedConfiguration(markedOptions) {
         let last_index = 0;
         let remainder = "";
         for (const match of token.text.matchAll(img_src_regex)) {
+          const matchOffset = match[2] ? 0 : 3
           text.push(token.text.substring(last_index, match.index));
-          const ref = match[3];
+          const ref = match[3 + matchOffset];
           // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
           const needsRebase = isRelative.test(ref);
           if (needsRebase) {
-            text.push(`${match[2]}${base_url}${match[3]}${match[4]}`);
+            text.push(`${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
           } else {
-            text.push(`${match[2]}${match[3]}${match[4]}`);
+            text.push(`${match[2 + matchOffset]}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
           }
           last_index = match.index + match[0].length;
         }
@@ -231,13 +232,14 @@ export function buildMarkedConfiguration(markedOptions) {
         last_index = 0;
         for (const match of token.text.matchAll(a_href_regex)) {
           text.push(token.text.substring(last_index, match.index));
-          const ref = match[3];
+          const matchOffset = match[2] ? 0 : 3
+          const ref = match[3 + matchOffset];
           // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
           const needsRebase = isRelative.test(ref);
           if (needsRebase) {
-            text.push(`${match[2]}${base_url}${match[3]}${match[4]}`);
+            text.push(`${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
           } else {
-            text.push(`${match[2]}${match[3]}${match[4]}`);
+            text.push(`${match[2 + matchOffset]}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
           }
           last_index = match.index + match[0].length;
         }
