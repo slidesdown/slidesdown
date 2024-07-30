@@ -121,15 +121,13 @@ notes:
   <h3>h3</h3>
 </div>
 
-```markdown
-<!-- please ignore the leading \ -->
+    # h1
 
-\ # h1
+    ## h2
 
-\ ## h2
+    ### h3
 
-\ ### h3
-```
+<!-- .element: class="markdown" -->
 
 </columns-2>
 
@@ -141,20 +139,19 @@ Slide without heading.
 
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-<!-- please ignore the leading \ -->
-<!-- Horizontal slide -->
+    <!-- Horizontal slide -->
 
-\ ---
+    ---
 
-content
+    content
 
-<!-- Vertical slide -->
+    <!-- Vertical slide -->
 
-\ ||| content
-```
+    |||
 
-<!-- .element: style="grid-area: code;" -->
+    content
+
+<!-- .element: style="grid-area: code;" class="markdown" -->
 
 </grid-box>
 
@@ -166,15 +163,11 @@ Can you see it?
 
 <!-- .element: style="grid-area: left;" -->
 
-```markdown
-<!-- please ignore the leading \ -->
+    ### Hidden slide
 
-\ ### Hidden slide
+    <!-- .slide: data-visibility="hidden" -->
 
-<!-- .slide: data-visibility="hidden" -->
-```
-
-<!-- .element: style="grid-area: code;" -->
+<!-- .element: style="grid-area: code;" class="markdown" -->
 
 </grid-box>
 
@@ -202,13 +195,11 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
 
-```markdown
-<!-- please ignore the leading \ -->
+    ### Gradient Text Color
 
-\ ### Gradient Text Color
+    <!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
 
-<!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
-```
+<!-- .element: class="markdown" -->
 
 ### Unordered List
 
