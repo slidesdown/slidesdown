@@ -228,4 +228,4 @@ push-docker:
 
 # Run tests
 test:
-    yarn run test --run --no-color
+    yarn run test --run --no-color --dir public
