@@ -217,14 +217,14 @@ release LEVEL="patch": update-all
 build-docker: build
     #!/usr/bin/env nu
     let tag = (git describe --tags --abbrev=0 --dirty)
-    docker build -t jceb/slidesdown:latest -t $"jceb/slidesdown:($tag)" .
+    docker build -t slidesdown/slidesdown:latest -t $"slidesdown/slidesdown:($tag)" .
 
 # Push docker images
 push-docker:
     #!/usr/bin/env nu
-    docker push jceb/slidesdown:latest
+    docker push slidesdown/slidesdown:latest
     let tag = (git describe --tags --abbrev=0)
-    docker push $"jceb/slidesdown:($tag)"
+    docker push $"slidesdown/slidesdown:($tag)"
 
 # Run tests
 test:

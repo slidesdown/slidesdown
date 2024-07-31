@@ -147,7 +147,7 @@ main() {
 			echo -e '  -b|--base64\tBase64 encode slideshow in the URL so that the presentation can be shared via URL without it being publicly available (env ENCODE)'
 			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
-			echo -e "  -i|--image\tUse docker image (default: jceb/slidesdown:${VERSION}, env IMAGE)"
+			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env IMAGE)"
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
 			echo
 			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
@@ -252,7 +252,7 @@ main() {
 	local UPDATE="${UPDATE:-}"
 	local NO_OPEN="${NO_OPEN:-}"
 	local PORT="${PORT:-3000}"
-	local IMAGE="${IMAGE:-jceb/slidesdown:${VERSION}}"
+	local IMAGE="${IMAGE:-slidesdown/slidesdown:${VERSION}}"
 	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${RESOLUTION:-1600x900}"
 
