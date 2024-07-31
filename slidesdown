@@ -143,22 +143,22 @@ main() {
 			echo "OPTIONS (options can also be set via environment variable):"
 			echo -e '  -h|--help\tPrint this usage information'
 			echo
-			echo -e '  -s|--service\tOnline service to use for presenting the slideshow, instead of docker (default: slidesdown.github.io, env SERVICE)'
-			echo -e '  -b|--base64\tBase64 encode slideshow in the URL so that the presentation can be shared via URL without it being publicly available (env ENCODE)'
+			echo -e '  -s|--service\tOnline service to use for presenting the slideshow, instead of docker (default: slidesdown.github.io, env: SLIDESDOWN_SERVICE)'
+			echo -e '  -b|--base64\tBase64 encode slideshow in the URL so that the presentation can be shared via URL without it being publicly available (env: SLIDESDOWN_ENCODE)'
 			echo
-			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
-			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env IMAGE)"
-			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
-			echo -e '  -P|--publish\tPublish locally docker-hosted presentation on the internet via a CloudFlare tunnel (default: do not publish the presentation, env PUBLISH)'
+			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env: SLIDESDOWN_DOCKER)'
+			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env: SLIDESDOWN_IMAGE)"
+			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env: SLIDESDOWN_PORT)'
+			echo -e '  -P|--publish\tPublish locally docker-hosted presentation on the internet via a CloudFlare tunnel (default: do not publish the presentation, env: SLIDESDOWN_PUBLISH)'
 			echo
-			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
-			echo -e '  -o|--output\tWrite export to this filename (default: <SLIDES_FILE>.pdf, env OUTPUT)'
-			echo -e '  -r|--resolution\tExport resolution (default: 1600x900, env RESOLUTION)'
+			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env: SLIDESDOWN_EXPORT)'
+			echo -e '  -o|--output\tWrite export to this filename (default: <SLIDES_FILE>.pdf, env: SLIDESDOWN_OUTPUT)'
+			echo -e '  -r|--resolution\tExport resolution (default: 1600x900, env: SLIDESDOWN_RESOLUTION)'
 			echo
-			echo -e '  -t|--template\tCreate SLIDES.md template (default: https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md, env TEMPLATE)'
+			echo -e '  -t|--template\tCreate SLIDES.md template (default: https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md, env: SLIDESDOWN_TEMPLATE)'
 			echo
-			echo -e '  -n|--no-open\tDo not open browser at the start (env NO_OPEN)'
-			echo -e '  -u|--update\tUpdate slidesdown script (env UPDATE)'
+			echo -e '  -n|--no-open\tDo not open browser at the start (env: SLIDESDOWN_NO_OPEN)'
+			echo -e '  -u|--update\tUpdate slidesdown script (env: SLIDESDOWN_UPDATE)'
 			echo -e '  -v|--version\tPrint script version'
 			echo "FILENAME: default SLIDES.md"
 			echo
@@ -168,52 +168,52 @@ main() {
 			exit
 			;;
 		'-b' | '--base64')
-			local ENCODE=1
+			local SLIDESDOWN_ENCODE=1
 			shift
 			continue
 			;;
 		'-d' | '--docker')
-			local DOCKER=1
+			local SLIDESDOWN_DOCKER=1
 			shift
 			continue
 			;;
 		'-e' | '--export')
-			local EXPORT=1
+			local SLIDESDOWN_EXPORT=1
 			shift
 			continue
 			;;
 		'-p' | '--port')
-			local PORT="${2}"
+			local SLIDESDOWN_PORT="${2}"
 			shift 2
 			continue
 			;;
 		'-P' | '--publish')
-			local PUBLISH="1"
+			local SLIDESDOWN_PUBLISH="1"
 			shift 1
 			continue
 			;;
 		'-i' | '--image')
-			local IMAGE="${2}"
+			local SLIDESDOWN_IMAGE="${2}"
 			shift 2
 			continue
 			;;
 		'-r' | '--resolution')
-			local RESOLUTION="${2}"
+			local SLIDESDOWN_RESOLUTION="${2}"
 			shift 2
 			continue
 			;;
 		'-s' | '--service')
-			local SERVICE="${2}"
+			local SLIDESDOWN_SERVICE="${2}"
 			shift 2
 			continue
 			;;
 		'-n' | '--no-open')
-			local NO_OPEN=1
+			local SLIDESDOWN_NO_OPEN=1
 			shift
 			continue
 			;;
 		'-o' | '--output')
-			local OUTPUT="${2}"
+			local SLIDESDOWN_OUTPUT="${2}"
 			shift 2
 			continue
 			;;
@@ -229,7 +229,7 @@ main() {
 			;;
 		'-u' | '--update')
 			UPDATE_URL="https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown"
-			echo "Updating ${SCRIPT_NAME} from ${UPDATE_URL}" 1>&2
+			echo "Updating ${SCRIPT_NAME}, version ${VERSION}, from ${UPDATE_URL}" 1>&2
 			SCRIPT_TEMP="$(mktemp --tmpdir "$(basename "${SCRIPT_NAME}")_XXXX")"
 			trap "rm -f '${SCRIPT_TEMP}'; '${SCRIPT_NAME}' -v" 0 1 2 3 15
 			curl -sfLo "${SCRIPT_TEMP}" "${UPDATE_URL}"
@@ -252,16 +252,15 @@ main() {
 		esac
 	done
 
-	local ENCODE="${ENCODE:-}"
-	local DOCKER="${DOCKER:-}"
-	local EXPORT="${EXPORT:-}"
-	local UPDATE="${UPDATE:-}"
-	local NO_OPEN="${NO_OPEN:-}"
-	local PORT="${PORT:-3000}"
-	local PUBLISH="${PUBLISH:-}"
-	local IMAGE="${IMAGE:-slidesdown/slidesdown:${VERSION}}"
-	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
-	local RESOLUTION="${RESOLUTION:-1600x900}"
+	local ENCODE="${SLIDESDOWN_ENCODE:-}"
+	local DOCKER="${SLIDESDOWN_DOCKER:-}"
+	local EXPORT="${SLIDESDOWN_EXPORT:-}"
+	local NO_OPEN="${SLIDESDOWN_NO_OPEN:-}"
+	local PORT="${SLIDESDOWN_PORT:-3000}"
+	local PUBLISH="${SLIDESDOWN_PUBLISH:-}"
+	local IMAGE="${SLIDESDOWN_IMAGE:-slidesdown/slidesdown:${VERSION}}"
+	local SERVICE="${SLIDESDOWN_SERVICE:-https://slidesdown.github.io}"
+	local RESOLUTION="${SLIDESDOWN_RESOLUTION:-1600x900}"
 
 	local SLIDES
 	SLIDES="${1:-SLIDES.md}"
