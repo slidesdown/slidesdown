@@ -130,7 +130,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'bhednuvto:p:i:r:s:' --long 'base64,help,template,export,docker,no-open,update,version,output:,port:,image:,resolution:service:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
+	TEMP=$(getopt -o 'bhednuvtPo:p:i:r:s:' --long 'base64,help,template,export,docker,no-open,update,version,publish,output:,port:,image:,resolution:service:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
@@ -149,6 +149,7 @@ main() {
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env IMAGE)"
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env PORT)'
+			echo -e '  -P|--publish\tPublish locally docker-hosted presentation on the internet via a CloudFlare tunnel (default: do not publish the presentation, env PUBLISH)'
 			echo
 			echo -e '  -e|--export\tExport slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env EXPORT)'
 			echo -e '  -o|--output\tWrite export to this filename (default: <SLIDES_FILE>.pdf, env OUTPUT)'
@@ -184,6 +185,11 @@ main() {
 		'-p' | '--port')
 			local PORT="${2}"
 			shift 2
+			continue
+			;;
+		'-P' | '--publish')
+			local PUBLISH="1"
+			shift 1
 			continue
 			;;
 		'-i' | '--image')
@@ -252,6 +258,7 @@ main() {
 	local UPDATE="${UPDATE:-}"
 	local NO_OPEN="${NO_OPEN:-}"
 	local PORT="${PORT:-3000}"
+	local PUBLISH="${PUBLISH:-}"
 	local IMAGE="${IMAGE:-slidesdown/slidesdown:${VERSION}}"
 	local SERVICE="${SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${RESOLUTION:-1600x900}"
@@ -283,6 +290,34 @@ main() {
 		fi
 	fi
 	if [[ -z "${EXPORT}" ]]; then
+		if [[ -n "${PUBLISH}" ]]; then
+			if [[ -z "${DOCKER}" ]]; then
+				echo "Ignoring publish flag because the presentation isn't hosted via docker." 1>&2
+			else
+				local TUNNEL_OUTPUT
+				local TUNNEL_URL
+				TUNNEL_OUTPUT="$(mktemp)"
+				# FIXME: the tunnel requires a confirmation of their policy, not sure how to do this will in the pipeline?!
+				echo -e "Warning: The tunnel's service terms need to be accepted before executing slidesdown.\nMake sure to execute the following command once manually: npx untun@latest tunnel" 1>&2
+				(npx untun@latest tunnel "http://localhost:${PORT}" | tee "${TUNNEL_OUTPUT}") &
+				local TUNNEL_PID="$!"
+				for ((i = 0; i < 10; i++)); do
+					sleep 1
+					if grep -q "Tunnel ready at https://" "${TUNNEL_OUTPUT}"; then
+						break
+					fi
+				done
+				# Wait a little to make sure that the tunnel is stable and working.
+				sleep 1
+				if ! grep -q "Tunnel ready at https://" "${TUNNEL_OUTPUT}" || ! ps -p "${TUNNEL_PID}" >/dev/null; then
+					echo "Failed to set up tunnel. Please try again." 1>&2
+					exit 1
+				fi
+				trap "kill '${TUNNEL_PID}'" 1 2 3 15
+				TUNNEL_URL="$(compute_url "$(sed -ne 's#Tunnel ready at \(https://.*\)#\1#p' "${TUNNEL_OUTPUT}")" "slides/${SLIDES}")"
+				echo "Published slideshow URL: $TUNNEL_URL"
+			fi
+		fi
 		if [[ -n "${DOCKER}" ]]; then
 			local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
 			local CONTAINER_SLIDES_PORT="8080"

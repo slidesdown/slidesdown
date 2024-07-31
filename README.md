@@ -33,20 +33,21 @@ offline (i.e. perfect for presentations you want to keep private).
 sudo curl -L https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown -o /usr/local/bin/slidesdown; sudo chmod a+x /usr/local/bin/slidesdown
 ```
 
-The following programs are used by `slidesdown`:
+The following optional programs are used by `slidesdown`:
 
 - [`docker`](https://www.docker.com/) required for offline presentations and
-  hot-reloading slides while editing
+  hot-reloading slides while editing.
 - [`python3`](https://www.python.org/) required for online presentations via
   [slidesdown.github.io](https://slidesdown.github.io) if the slideshow file
   shall be served from the local computer, i.e. useful for creating slides or
   when the presentation is private and shall not be made accessible publicly via
-  GitHub
+  GitHub.
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
-  exporting slideshows as PDF
+  exporting slideshows as PDF.
 - `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
-  (MacOS) for opening the slideshow in the default browser
-- [`curl`](https://curl.se/) for updating the slidesdown script
+  (MacOS) for opening the slideshow in the default browser.
+- [`curl`](https://curl.se/) for updating the slidesdown script.
+- [`node`](https://nodejs.org/) for making the presentation accessible on the internet via a [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
 
 #### Update
 
