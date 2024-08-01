@@ -42,7 +42,7 @@ dev:
     yarn dev
 
 # Update all dependencies
-update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax
+update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-revealjs-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax update-reveal-multiplex
 
 # Update mathjax
 update-mathjax:
@@ -168,6 +168,16 @@ update-revealjs-highlight:
     curl -Lfo - $"https://github.com/highlightjs/highlight.js/archive/refs/tags/($VERSION).tar.gz" | tar xvz $"highlight.js-($VERSION)/src/styles"
     mv $"($env.PWD)/highlight.js-($VERSION)/src/styles" highlight.js
     rm -pvrf $"($env.PWD)/highlight.js-($VERSION)"
+
+# Update reveal-multiplex
+update-reveal-multiplex:
+    #!/usr/bin/env nu
+    # Source: https://github.com/reveal/multiplex
+    mkdir public/vendor
+    rm -prf public/vendor/multiplex
+    mkdir public/vendor/multiplex
+    cp -pr ./multiplex/client.js public/vendor/multiplex
+    cp -pr ./multiplex/master.js public/vendor/multiplex
 
 # Build application
 build: test

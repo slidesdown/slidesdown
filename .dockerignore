@@ -10,6 +10,10 @@
 !/src
 /src/*
 !/src/entrypoint.sh
+!/src/multiplex.sh
 !/vite.config.js
 !/package.json
 !/yarn.lock
+!/multiplex/index.js
+!/multiplex/package.json
+!/multiplex/package-lock.json

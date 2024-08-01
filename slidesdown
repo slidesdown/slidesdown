@@ -21,6 +21,14 @@ urlencode() {
 	done
 }
 
+# Generate a string consisting of random characters.
+randomchars() {
+	local chars=abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	for i in {1..20}; do
+		echo -n "${chars:RANDOM%${#chars}:1}"
+	done
+}
+
 compute_url() {
 	local SERVICE="$1"
 	local SLIDES="$2"
@@ -98,7 +106,7 @@ export_pdf() {
 	if [[ -z "${DOCKER}" ]]; then
 		decktape "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	else
-		docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
+		docker run --net=host -u "$(id -u):$(id -g)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 		# docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.13.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	fi
 }
@@ -130,7 +138,7 @@ main() {
 	shift
 
 	local TEMP
-	TEMP=$(getopt -o 'bhednuvtPo:p:i:r:s:' --long 'base64,help,template,export,docker,no-open,update,version,publish,output:,port:,image:,resolution:service:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
+	TEMP=$(getopt -o 'bhedmnuvtPo:p:i:r:s:' --long 'base64,help,template,export,docker,no-open,update,version,multiplex,publish,output:,port:,image:,resolution:service:' -n "$(basename "${SCRIPT_NAME}")" -- "$@")
 
 	# Note the quotes around "$TEMP": they are essential!
 	eval set -- "$TEMP"
@@ -148,6 +156,7 @@ main() {
 			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env: SLIDESDOWN_DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env: SLIDESDOWN_IMAGE)"
+			echo -e '  -m|--multiplex\tHost presentation in multiplex mode so that presenter and follower can always see the same slide - pairs well with the --publish flag (default: multiplex is disabled, env: SLIDESDOWN_MULTIPLEX)'
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env: SLIDESDOWN_PORT)'
 			echo -e '  -P|--publish\tPublish locally docker-hosted presentation on the internet via a CloudFlare tunnel (default: do not publish the presentation, env: SLIDESDOWN_PUBLISH)'
 			echo
@@ -180,6 +189,11 @@ main() {
 		'-e' | '--export')
 			local SLIDESDOWN_EXPORT=1
 			shift
+			continue
+			;;
+		'-m' | '--multiplex')
+			local SLIDESDOWN_MULTIPLEX="1"
+			shift 1
 			continue
 			;;
 		'-p' | '--port')
@@ -255,12 +269,15 @@ main() {
 	local ENCODE="${SLIDESDOWN_ENCODE:-}"
 	local DOCKER="${SLIDESDOWN_DOCKER:-}"
 	local EXPORT="${SLIDESDOWN_EXPORT:-}"
-	local NO_OPEN="${SLIDESDOWN_NO_OPEN:-}"
+	local MULTIPLEX="${SLIDESDOWN_MULTIPLEX:-}"
+	local MULTIPLEX_SERVER
+	local MULTIPLEX_CLIENT
 	local PORT="${SLIDESDOWN_PORT:-3000}"
 	local PUBLISH="${SLIDESDOWN_PUBLISH:-}"
 	local IMAGE="${SLIDESDOWN_IMAGE:-slidesdown/slidesdown:${VERSION}}"
 	local SERVICE="${SLIDESDOWN_SERVICE:-https://slidesdown.github.io}"
 	local RESOLUTION="${SLIDESDOWN_RESOLUTION:-1600x900}"
+	local NO_OPEN="${SLIDESDOWN_NO_OPEN:-}"
 
 	local SLIDES
 	SLIDES="${1:-SLIDES.md}"
@@ -276,6 +293,19 @@ main() {
 	SLIDES="$(basename "${SLIDES}")"
 	local URL
 	local URL_MARKDOWN
+	if [[ -n "${MULTIPLEX}" ]]; then
+		# Generate multiplex secret and URL parameter
+		# local DATA
+		# DATA="$(curl -sf https://reveal-multiplex.glitch.me/token)"
+		# MULTIPLEX_SERVER="multiplex64=$(echo "${DATA}" | yq -o json '{"id": .socketId, "secret": .secret}' | basenc --base64url -w 0)"
+		# MULTIPLEX_CLIENT="multiplex64=$(echo "${DATA}" | yq -o json '{"id": .socketId}' | basenc --base64url -w 0)"
+		local SECRET
+		SECRET="$(randomchars)"
+		local ID
+		ID="$(echo -n "${SECRET}" | sha256sum | awk '{print $1}')"
+		MULTIPLEX_SERVER="multiplex64=$(echo "{}" | ID="$ID" SECRET="$SECRET" yq -o json '{"id": strenv(ID), "secret": strenv(SECRET)}' | basenc --base64url -w 0)"
+		MULTIPLEX_CLIENT="multiplex64=$(echo "{}" | ID="$ID" yq -o json '{"id": strenv(ID)}' | basenc --base64url -w 0)"
+	fi
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 		URL_MARKDOWN="http://localhost:${PORT}/slides/${SLIDES}"
@@ -314,7 +344,13 @@ main() {
 				fi
 				trap "kill '${TUNNEL_PID}'" 1 2 3 15
 				TUNNEL_URL="$(compute_url "$(sed -ne 's#Tunnel ready at \(https://.*\)#\1#p' "${TUNNEL_OUTPUT}")" "slides/${SLIDES}")"
-				echo "Published slideshow URL: $TUNNEL_URL"
+				if [[ -n "${MULTIPLEX}" ]]; then
+					echo "Published slideshow Presenter URL (keep secret!): ${TUNNEL_URL}&${MULTIPLEX_SERVER}"
+					echo "Published slideshow Follower URL: ${TUNNEL_URL}&${MULTIPLEX_CLIENT}"
+				else
+					echo "Published slideshow URL: $TUNNEL_URL"
+				fi
+				echo
 			fi
 		fi
 		if [[ -n "${DOCKER}" ]]; then
@@ -325,15 +361,33 @@ main() {
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2
-			echo "Slideshow URL: ${URL}"
+			if [[ -n "${MULTIPLEX}" ]]; then
+				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
+				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
+				URL="${URL}&${MULTIPLEX_SERVER}"
+			else
+				echo "Slideshow URL: ${URL}"
+			fi
 			open_url "${NO_OPEN}" "${URL}" || true
 			docker attach --sig-proxy=false "${CONTAINER_ID}"
 		elif [[ -n "${ENCODE}" ]]; then
-			echo "Slideshow URL: ${URL}"
+			if [[ -n "${MULTIPLEX}" ]]; then
+				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
+				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
+				URL="${URL}&${MULTIPLEX_SERVER}"
+			else
+				echo "Slideshow URL: ${URL}"
+			fi
 			open_url "${NO_OPEN}" "${URL}"
 		else
 			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
-			echo "Slideshow URL: ${URL}"
+			if [[ -n "${MULTIPLEX}" ]]; then
+				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
+				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
+				URL="${URL}&${MULTIPLEX_SERVER}"
+			else
+				echo "Slideshow URL: ${URL}"
+			fi
 			open_url "${NO_OPEN}" "${URL}"
 			wait %1
 		fi

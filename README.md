@@ -48,6 +48,8 @@ The following optional programs are used by `slidesdown`:
   (MacOS) for opening the slideshow in the default browser.
 - [`curl`](https://curl.se/) for updating the slidesdown script.
 - [`node`](https://nodejs.org/) for making the presentation accessible on the internet via a [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
+- [`yq`](https://mikefarah.gitbook.io/yq/) JSON and YAML parser.
+- `basenc` Base64 encoder.
 
 #### Update
 

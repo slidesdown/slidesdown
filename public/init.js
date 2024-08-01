@@ -67,21 +67,15 @@ function computeURL(defaults, url) {
 
 async function main(defaults) {
   if (!(defaults.branch && defaults.resource && defaults.markdownElementId)) {
-    console.error(
-      "Default branch, resource  and/or markdownElementId are not set",
-    );
+    console.error("Default branch, resource  and/or markdownElementId are not set");
     return;
   }
   const mdSection = document.getElementById(defaults.markdownElementId);
   if (!mdSection) {
-    console.error(
-      `Couldn't find markdown element with id: ${defaults.markdownElementId}`,
-    );
+    console.error(`Couldn't find markdown element with id: ${defaults.markdownElementId}`);
     return;
   }
-  const customSlidesBase64Gzip = new URLSearchParams(
-    new URL(document.URL).search,
-  ).get("slides64");
+  const customSlidesBase64Gzip = new URLSearchParams(new URL(document.URL).search).get("slides64");
   if (customSlidesBase64Gzip) {
     async function decompressBlob(blob) {
       const decompressedStream = blob.pipeThrough(
@@ -109,9 +103,7 @@ async function main(defaults) {
     mdSection.setAttribute("data-markdown", "<<load-plain-markdown>>");
     mdSection.setAttribute("data-markdown-plain", text);
   } else {
-    const customSlidesURL = new URLSearchParams(
-      new URL(document.URL).search,
-    ).get("slides");
+    const customSlidesURL = new URLSearchParams(new URL(document.URL).search).get("slides");
     let slidesURL = customSlidesURL
       ? customSlidesURL
       : `github.com/slidesdown/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
@@ -124,12 +116,44 @@ async function main(defaults) {
     }
     mdSection.setAttribute("data-markdown", slidesURL);
   }
-
+  const multiplexBase64 = new URLSearchParams(new URL(document.URL).search).get("multiplex64");
+  let multiplex = {};
+  let dependencies = [];
+  if (multiplexBase64) {
+    multiplex = JSON.parse(atob(
+      decodeURI(
+        multiplexBase64.replaceAll("-", "+").replaceAll("_", "/"),
+      ),
+    ));
+    multiplex = {
+      secret: multiplex?.secret || null,
+      id: multiplex?.id || null,
+      url: "/"
+      // url: "https://reveal-multiplex.glitch.me"
+    };
+    const minium_secret_length = 20;
+    if (typeof multiplex.id != "string" && multiplex.id.length < minium_secret_length) {
+      multiplex = {}
+    }
+    if (multiplex?.id) {
+      dependencies.push({ src: '/socket.io/socket.io.js', async: true })
+      // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/socket.io/socket.io.js', async: true })
+    }
+    if (multiplex?.secret) {
+      dependencies.push({ src: '/vendor/multiplex/master.js', async: true })
+      // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/master.js', async: true })
+    } else {
+      dependencies.push({ src: '/vendor/multiplex/client.js', async: true })
+      // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/client.js', async: true })
+    }
+  }
   // initialize presentation
   Reveal.slidesdownLoader = () => {
     window.location.href = "/loader.html";
   };
   Reveal.initialize({
+    multiplex,
+    dependencies,
     hash: true,
     // mathjax2: {
     //   mathjax: "/vendor/mathjax/MathJax.js"

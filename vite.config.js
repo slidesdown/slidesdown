@@ -16,12 +16,27 @@ export default defineConfig(() => {
           return []
         }
       }
-    ]
+    ],
+    server: {
+      proxy: {
+        '/token': {
+          target: 'http://localhost:1948/token',
+          ignorePath: true,
+        },
+        '/socket.io': {
+          target: 'ws://localhost:1948/',
+          ws: true,
+          // ignorePath: true,
+          rewriteWsOrigin: true,
+        },
+      },
+    },
   };
   if (process.env.SERVING_SLIDESDOWN == "1") {
     return {
       ...config,
       server: {
+        ...config.server,
         host: true,
         port: 8080,
         strictPort: true,

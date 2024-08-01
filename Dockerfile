@@ -15,20 +15,30 @@ RUN apk -U --no-cache add bash tini
 
 COPY src/entrypoint.sh /
 
-WORKDIR /srv
+COPY src/multiplex.sh /
 
 ENV NODE_ENV=production
 
-COPY package.json /srv
-COPY yarn.lock /srv
+# Configure multiplex
+WORKDIR /multiplex
+COPY multiplex/package.json .
+COPY multiplex/package-lock.json .
+RUN npm install; rm -rf /usr/local/share/.cache
+COPY multiplex/index.js .
+
+# Configure slidesdown
+WORKDIR /srv
+
+COPY package.json .
+COPY yarn.lock .
 RUN yarn install --prod; rm -rf /usr/local/share/.cache
 
-COPY published /srv/public
-COPY published/index.html /srv
-COPY vite.config.js /srv
+COPY published public
+COPY published/index.html .
+COPY vite.config.js .
 
 ENV SERVING_SLIDESDOWN=1
 
 EXPOSE 8080
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "tini", "/entrypoint.sh" ]
