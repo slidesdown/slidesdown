@@ -900,7 +900,6 @@ const Plugin = () => {
         );
       });
 
-      this.marked = buildMarkedConfiguration(markedOptions)
       // Markdown processing steps:
       // 1. preProcessSlides discovers section tags with a data-markdown attribute an turns it into script tags of type
       //    data/html. In this step, slides are also separated into different section tags
@@ -909,6 +908,7 @@ const Plugin = () => {
       // 3. convertMarkdownToSlides converts all markdown into HTML.
       // 4. Control his handed over to revealjs to display the slides.
       return preProcessSlides(deck.getRevealElement()).then((metadata) => {
+        this.marked = buildMarkedConfiguration(markedOptions)
         applyMetadata(metadata);
         return convertMarkdownToSlides(deck.getRevealElement(), this.marked);
       });
