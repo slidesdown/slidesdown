@@ -321,7 +321,7 @@ main() {
 			local CONTAINER_SLIDES_DIRECTORY="/srv/slides"
 			local CONTAINER_SLIDES_PORT="8080"
 			local CONTAINER_ID
-			CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}/:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}" "${SLIDES}")"
+			CONTAINER_ID="$(docker run -d --rm -v "${ROOT_DIRECTORY}/:${CONTAINER_SLIDES_DIRECTORY}" -p "${PORT}:${CONTAINER_SLIDES_PORT}" "${IMAGE}")"
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2

@@ -26,7 +26,6 @@ RUN yarn install --prod; rm -rf /usr/local/share/.cache
 COPY published /srv/public
 COPY published/index.html /srv
 COPY vite.config.js /srv
-RUN sed -i -e 's#.*<!-- DOCKER_LOADER_LINE -->.*#<script type="module" src="loader.js"></script>#' /srv/index.html
 
 ENV SERVING_SLIDESDOWN=1
 
