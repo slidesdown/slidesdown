@@ -208,7 +208,7 @@ release LEVEL="patch": update-all
     open package.json | upsert version $new_version | save -f package.json; git add package.json
     open --raw index.html | str replace -r 'name="generator" content="[^\"]*"' $'name="generator" content="slidesdown ($new_version)"' | save -f index.html; git add index.html
     open --raw slidesdown | str replace -r 'VERSION=.*' $'VERSION="($new_version)"' | save -f slidesdown; git add slidesdown
-    open --raw Dockerfile | str replace -r '^LABEL org.opencontainers.image.ref.name=.*' $'LABEL org.opencontainers.image.ref.name="slidesdown/slidesdown:($new_version)"' | str replace -r '^LABEL org.opencontainers.image.version=.*' $'LABEL org.opencontainers.image.version="($new_version)"' | str replace -r '^LABEL org.opencontainers.image.revision=.*' $'LABEL org.opencontainers.image.revision="($new_version)"' | save -f Dockerfile; git add Dockerfile
+    open --raw Dockerfile | str replace -r '(LABEL org.opencontainers.image.ref.name)=.*' $'${1}="slidesdown/slidesdown:($new_version)"' | str replace -r '(LABEL org.opencontainers.image.version)=.*' $'${1}="($new_version)"' | str replace -r '(LABEL org.opencontainers.image.revision)=.*' $'${1}="($new_version)"' | save -f Dockerfile; git add Dockerfile
     git cliff -t $new_version -o CHANGELOG.md
     git add CHANGELOG.md
     git commit -n -m $"Bump version to ($new_version)"
