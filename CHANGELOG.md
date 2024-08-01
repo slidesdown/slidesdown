@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.17.1] - 2024-08-01
+
+### Bug Fixes
+
+- Correct version update in Dockerfile
+
 ## [0.17.0] - 2024-08-01
 
 ### Bug Fixes
