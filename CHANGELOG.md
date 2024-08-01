@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.17.0] - 2024-08-01
+
+### Bug Fixes
+
+- Correct initialization order to properly support relative references in a and img tags
+- Trigger page reloads for every file that changes
+
+### Documentation
+
+- Correct reference to slidesdown plugin and deprecate custom-elements
+- Update release process
+- Correct link to slidesdown plugin
+
+### Features
+
+- Add support for publishing presentations via cloudflare tunnels
+- [**breaking**] Prefix environment variables with SLIDESDOWN_
+- Add additional metadata to docker container
+- Add support for multiplexing / advancing viewers slides
+
+### Miscellaneous Tasks
+
+- Migrate slidesdown image to slidesdown organization
+
 ## [0.16.0] - 2024-07-30
 
 ### Bug Fixes
