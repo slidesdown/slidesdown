@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.17.2] - 2024-08-02
+
+### Bug Fixes
+
+- Trigger reloads only for certain file extensions
+
+### Features
+
+- Show multiplex url since the service is always started
+
 ## [0.17.1] - 2024-08-01
 
 ### Bug Fixes
