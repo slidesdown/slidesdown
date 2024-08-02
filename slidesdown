@@ -130,7 +130,7 @@ open_url() {
 		echo "ERROR: no command found to open URLs with. Supported: xdg-open, open-cli, open" 1>&2
 		return 1
 	fi
-	"${COMMAND}" "${URL}"
+	"${COMMAND}" "${URL}" &>/dev/null
 }
 
 main() {
@@ -156,7 +156,7 @@ main() {
 			echo
 			echo -e '  -d|--docker\tRun slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env: SLIDESDOWN_DOCKER)'
 			echo -e "  -i|--image\tUse docker image (default: slidesdown/slidesdown:${VERSION}, env: SLIDESDOWN_IMAGE)"
-			echo -e '  -m|--multiplex\tHost presentation in multiplex mode so that presenter and follower can always see the same slide - pairs well with the --publish flag (default: multiplex is disabled, env: SLIDESDOWN_MULTIPLEX)'
+			echo -e '  -m|--multiplex\tOpen presentation in multiplex mode so that presenter and follower can always see the same slide - pairs well with the --publish flag (default: multiplex is disabled, env: SLIDESDOWN_MULTIPLEX)'
 			echo -e '  -p|--port\tOpen slideshow service at port (default: 3000, env: SLIDESDOWN_PORT)'
 			echo -e '  -P|--publish\tPublish locally docker-hosted presentation on the internet via a CloudFlare tunnel (default: do not publish the presentation, env: SLIDESDOWN_PUBLISH)'
 			echo
@@ -293,19 +293,15 @@ main() {
 	SLIDES="$(basename "${SLIDES}")"
 	local URL
 	local URL_MARKDOWN
-	if [[ -n "${MULTIPLEX}" ]]; then
-		# Generate multiplex secret and URL parameter
-		# local DATA
-		# DATA="$(curl -sf https://reveal-multiplex.glitch.me/token)"
-		# MULTIPLEX_SERVER="multiplex64=$(echo "${DATA}" | yq -o json '{"id": .socketId, "secret": .secret}' | basenc --base64url -w 0)"
-		# MULTIPLEX_CLIENT="multiplex64=$(echo "${DATA}" | yq -o json '{"id": .socketId}' | basenc --base64url -w 0)"
-		local SECRET
-		SECRET="$(randomchars)"
-		local ID
-		ID="$(echo -n "${SECRET}" | sha256sum | awk '{print $1}')"
-		MULTIPLEX_SERVER="multiplex64=$(echo "{}" | ID="$ID" SECRET="$SECRET" yq -o json '{"id": strenv(ID), "secret": strenv(SECRET)}' | basenc --base64url -w 0)"
-		MULTIPLEX_CLIENT="multiplex64=$(echo "{}" | ID="$ID" yq -o json '{"id": strenv(ID)}' | basenc --base64url -w 0)"
-	fi
+
+	# Generate multiplex secret and URL parameter
+	local MULTIPLEX_SECRET
+	MULTIPLEX_SECRET="$(randomchars)"
+	local MULTIPLEX_ID
+	MULTIPLEX_ID="$(echo -n "${MULTIPLEX_SECRET}" | sha256sum | awk '{print $1}')"
+	MULTIPLEX_SERVER="multiplex64=$(echo "{}" | MULTIPLEX_ID="$MULTIPLEX_ID" MULTIPLEX_SECRET="$MULTIPLEX_SECRET" yq -o json '{"id": strenv(MULTIPLEX_ID), "secret": strenv(MULTIPLEX_SECRET)}' | basenc --base64url -w 0)"
+	MULTIPLEX_CLIENT="multiplex64=$(echo "{}" | MULTIPLEX_ID="$MULTIPLEX_ID" yq -o json '{"id": strenv(MULTIPLEX_ID)}' | basenc --base64url -w 0)"
+
 	if [[ -n "${DOCKER}" ]]; then
 		URL="$(compute_url "http://localhost:${PORT}" "slides/${SLIDES}")"
 		URL_MARKDOWN="http://localhost:${PORT}/slides/${SLIDES}"
@@ -344,10 +340,11 @@ main() {
 				fi
 				trap "kill '${TUNNEL_PID}'" 1 2 3 15
 				TUNNEL_URL="$(compute_url "$(sed -ne 's#Tunnel ready at \(https://.*\)#\1#p' "${TUNNEL_OUTPUT}")" "slides/${SLIDES}")"
-				if [[ -n "${MULTIPLEX}" ]]; then
-					echo "Published slideshow Presenter URL (keep secret!): ${TUNNEL_URL}&${MULTIPLEX_SERVER}"
-					echo "Published slideshow Follower URL: ${TUNNEL_URL}&${MULTIPLEX_CLIENT}"
-				else
+				echo
+				echo "Published slideshow Presenter URL (keep secret!): ${TUNNEL_URL}&${MULTIPLEX_SERVER}"
+				echo "Published slideshow Follower URL: ${TUNNEL_URL}&${MULTIPLEX_CLIENT}"
+				if [[ -z "${MULTIPLEX}" ]]; then
+					echo
 					echo "Published slideshow URL: $TUNNEL_URL"
 				fi
 				echo
@@ -361,39 +358,47 @@ main() {
 			trap "docker kill '${CONTAINER_ID}' >/dev/null" 1 2 3 15
 			echo "Waiting for container to start.."
 			sleep 2
+			echo
+			echo "Local slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
+			echo "Local slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
 			if [[ -n "${MULTIPLEX}" ]]; then
-				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
-				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
 				URL="${URL}&${MULTIPLEX_SERVER}"
 			else
-				echo "Slideshow URL: ${URL}"
+				echo
+				echo "Local slideshow URL: ${URL}"
 			fi
+			echo
 			open_url "${NO_OPEN}" "${URL}" || true
 			docker attach --sig-proxy=false "${CONTAINER_ID}"
 		elif [[ -n "${ENCODE}" ]]; then
 			if [[ -n "${MULTIPLEX}" ]]; then
-				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
-				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
-				URL="${URL}&${MULTIPLEX_SERVER}"
-			else
-				echo "Slideshow URL: ${URL}"
+				echo "Ignoring multiplex flag because the presentation isn't hosted via docker." 1>&2
 			fi
+			echo
+			echo "Encoded slideshow URL: ${URL}"
+			echo
 			open_url "${NO_OPEN}" "${URL}"
 		else
 			run_webserver "${PORT}" "${ROOT_DIRECTORY}" "${SLIDES}" &
+			echo
+			echo "Local slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
+			echo "Local slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
 			if [[ -n "${MULTIPLEX}" ]]; then
-				echo "Slideshow Presenter URL (keep secret!): ${URL}&${MULTIPLEX_SERVER}"
-				echo "Slideshow Follower URL: ${URL}&${MULTIPLEX_CLIENT}"
 				URL="${URL}&${MULTIPLEX_SERVER}"
 			else
-				echo "Slideshow URL: ${URL}"
+				echo
+				echo "Local slideshow URL: ${URL}"
 			fi
+			echo
 			open_url "${NO_OPEN}" "${URL}"
 			wait %1
 		fi
 	else
-		echo "Slideshow URL: ${URL}"
+		echo
+		echo "Local slideshow URL: ${URL}"
+		echo
 		echo "Exporting as: ${OUTPUT}" >&2
+		cheo
 		if [[ -n "${DOCKER}" ]]; then
 			export_pdf "${DOCKER}" "${URL}" "${URL_MARKDOWN}" "${RESOLUTION}" "$(basename "${OUTPUT}")"
 		else
