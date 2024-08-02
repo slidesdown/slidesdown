@@ -9,22 +9,39 @@ export default defineConfig(() => {
     plugins: [
       {
         // reload page for every change in the directory to ensure the latest version is displayed
-        name: 'hmr-full-reload',
-        handleHotUpdate({ server, modules, timestamp }) {
-          console.log("reloading")
-          server.ws.send({ type: 'full-reload' })
-          return []
-        }
-      }
+        // Documentation: https://vitejs.dev/guide/api-plugin.html#handlehotupdate
+        name: "hmr-full-reload",
+        handleHotUpdate({ file, server }) {
+          const extensions_that_trigger_reload = [
+            "css",
+            "gif",
+            "jpeg",
+            "jpg",
+            "md",
+            "png",
+            "svg",
+          ];
+          const extension = file.split(".");
+          if (
+            extensions_that_trigger_reload.includes(
+              extension[extension.length - 1].toLowerCase(),
+            )
+          ) {
+            console.info("File changed, reloading: ", file);
+            server.ws.send({ type: "full-reload" });
+          }
+          return [];
+        },
+      },
     ],
     server: {
       proxy: {
-        '/token': {
-          target: 'http://localhost:1948/token',
+        "/token": {
+          target: "http://localhost:1948/token",
           ignorePath: true,
         },
-        '/socket.io': {
-          target: 'ws://localhost:1948/',
+        "/socket.io": {
+          target: "ws://localhost:1948/",
           ws: true,
           // ignorePath: true,
           rewriteWsOrigin: true,
