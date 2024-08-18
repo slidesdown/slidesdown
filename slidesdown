@@ -396,7 +396,7 @@ main() {
 		echo "Local slideshow URL: ${URL}"
 		echo
 		echo "Exporting as: ${OUTPUT}" >&2
-		cheo
+		echo
 		if [[ -n "${DOCKER}" ]]; then
 			export_pdf "${DOCKER}" "${URL}" "${URL_MARKDOWN}" "${RESOLUTION}" "$(basename "${OUTPUT}")"
 		else
