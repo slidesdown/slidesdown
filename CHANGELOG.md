@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.0] - 2024-08-18
+
+### Bug Fixes
+
+- Correct typo in export command
+
+### Documentation
+
+- Update feature list and add images to presentation
+
+### Features
+
+- Update decktape container image
+- Auto accept terms of service for cloudflare tunnels
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [0.17.2] - 2024-08-02
 
 ### Bug Fixes
