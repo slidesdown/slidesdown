@@ -34,17 +34,31 @@ pdfSeparateFragments: false
 > <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a> and powered by
 > <a href="https://revealjs.com/">reveal.js</a></small>
 
+<!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
+
 ## Hi!
 
-Slidesdown makes it simple to quickly turn an idea into a beautiful
-presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
-you need!
+<!-- .slide: data-background-image="https://unsplash.com/photos/kfDHPpCQEBQ/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fHNpbXBsZSUyMHBhcGVyfGVufDB8fHx8MTcyMzk5NjQ5OHwy&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+
+> Slidesdown makes it simple to quickly turn an idea into a beautiful
+> presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
+> you need!
+>
+> Press <span class="bg-white/50 inline rounded-xl px-2">Space</span> to advance through this presentation.
+
+<!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
 
 <!-- generated with
 !deno run --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.3.2/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/p_bcKiZDKyk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTQwfHxmcmFtZXxlbnwwfHx8fDE3MjM5NzY5Njh8Mg&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 1. [Introduction](#introduction)
 2. [See for yourself..](#see-for-yourself)
@@ -62,19 +76,26 @@ you need!
 
 ## Introduction
 
+<!-- .slide: data-background-image="https://unsplash.com/photos/1_CMoFsPfso/download?force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+
 ### Features
 
-- Setup: No installation
-- Focus: Just write Markdown
-- Sharable: [Create links](https://slidesdown.github.io/loader.html) to your
-  slides
+- Setup: No installation required.
+- Focus: Just write Markdown.
+- Sharable: [Create links](https://slidesdown.github.io/loader.html) to
+  slides in git repositories or store the whole presentation in one link.
 - Offline First:
   [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md)
-  for offline presentations
-- Professional: PDF export and Custom Themes
-- Versionable: Store all files in `git`
-- Charts and Diagrams: via [chart.js](https://www.chartjs.org/) and
-  [mermaid.js](https://mermaid.js.org/)
+  for offline presentations.
+- Tunnel Support: Share slides online from your laptop.
+- Multiplex Mode: Advance presenter and viewer slides together.
+- Professional: PDF export, Custom Themes, and UnoCSS Styling.
+- Charts and Diagrams: via [chart.js](https://www.chartjs.org/), [apexcharts](https://apexcharts.com/) and
+  [mermaid.js](https://mermaid.js.org/).
+
+<!-- .element: class="text-4xl" -->
 
 ### Learn how it works
 
@@ -111,7 +132,15 @@ notes:
 
 ## See for yourself..
 
+<!-- .slide: data-background-image="https://unsplash.com/photos/q1RZ6fAR-i4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTZ8fGRpc2NvdmVyfGVufDB8fHx8MTcyMzk5NDM4N3wy&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+
 ## Basics
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/nDd3dIkkOLo/download?force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ### Headings
 
@@ -309,6 +338,10 @@ hello("world!");
 ```
 
 ## Layouts
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/WaWSbX44KIo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8bGF5b3V0fGVufDB8fHx8MTcyMzk5NDY5OHwy&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ### 1 Column
 
@@ -536,6 +569,10 @@ Bucket List
 
 ## Animations
 
+<!-- .slide: data-background-image="https://unsplash.com/photos/KHipnBn7sdY/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTR8fG1vdmVtZW50fGVufDB8fHx8MTcyMzk5NDgyNnwy&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+
 ### Incremental Lists
 
 - Item 1 <!-- .element: class="fragment" -->
@@ -640,6 +677,10 @@ Bucket List
 
 ## Backgrounds
 
+<!-- .slide: data-background-image="https://unsplash.com/photos/QMDap1TAu0g/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NTh8fHNpbXBsZXxlbnwwfHx8fDE3MjM5MjkxOTh8Mg&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+
 ### Colored background
 
 <!-- .slide: data-background-color="#78a5e9" -->
@@ -665,6 +706,10 @@ Bucket List
 ```
 
 ## Pictures and Icons
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/iCx-ANNHyDo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8cGljdHVyZXN8ZW58MHx8fHwxNzIzOTE2NjYwfDI&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ### Picture
 
@@ -768,6 +813,10 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 ```
 
 ## Advanced Formatting
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/gxdctlHPVYk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8YWR2YW5jZWQlMjBza2lsbHxlbnwwfHx8fDE3MjM5OTQ5NDJ8Mg&force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ### Colored <span style="color: #78a5e9">text</span>
 
@@ -1432,6 +1481,8 @@ gitGraph
 
 ---
 
-<h2>Thank you</h2>
+<h2 class="bg-white/50 inline rounded-xl px-2" >Thank you</h2>
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/h4KYT7X1HM4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTN8fHRoYW5rJTIweW91fGVufDB8fHx8MTcyMzk2ODcwMHwy&force=true&w=1920" -->
 
 <strong>for using <a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>
