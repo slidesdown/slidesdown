@@ -322,9 +322,7 @@ main() {
 				local TUNNEL_OUTPUT
 				local TUNNEL_URL
 				TUNNEL_OUTPUT="$(mktemp)"
-				# FIXME: the tunnel requires a confirmation of their policy, not sure how to do this will in the pipeline?!
-				echo -e "Warning: The tunnel's service terms need to be accepted before executing slidesdown.\nMake sure to execute the following command once manually: npx untun@latest tunnel" 1>&2
-				(npx untun@latest tunnel "http://localhost:${PORT}" | tee "${TUNNEL_OUTPUT}") &
+				(UNTUN_ACCEPT_CLOUDFLARE_NOTICE=1 npx untun@latest tunnel "http://localhost:${PORT}" | tee "${TUNNEL_OUTPUT}") &
 				local TUNNEL_PID="$!"
 				for ((i = 0; i < 10; i++)); do
 					sleep 1
