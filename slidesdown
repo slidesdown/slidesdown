@@ -106,8 +106,8 @@ export_pdf() {
 	if [[ -z "${DOCKER}" ]]; then
 		decktape "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	else
-		docker run --net=host -u "$(id -u):$(id -g)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.12.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
-		# docker run --net=host -u "$(id -u)" --rm -t -v "${PWD}:/slides" "astefanutti/decktape:3.13.0" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
+		# https://github.com/astefanutti/decktape/pkgs/container/decktape
+		docker run --net=host -u "$(id -u):$(id -g)" --rm -t -v "${PWD}:/slides" "ghcr.io/astefanutti/decktape:3.14" "${URL}" --pause 500 --size "${RESOLUTION}" --pdf-author "${AUTHOR}" --pdf-title "${TITLE}" --pdf-subject "${SUBJECT}" "${FILE}"
 	fi
 }
 
