@@ -51,7 +51,7 @@ pdfSeparateFragments: false
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
 
 <!-- generated with
-!deno run --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.3.2/remark-format.js --maxdepth 2 %
+!deno run --allow-read --allow-write https://deno.land/x/remark_format_cli@0.4.0/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
