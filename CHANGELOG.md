@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.1] - 2024-09-25
+
+### Miscellaneous Tasks
+
+- Update remark-format version
+- Source local environment configuration
+- Update dependencies
+
 ## [0.18.0] - 2024-08-18
 
 ### Bug Fixes
