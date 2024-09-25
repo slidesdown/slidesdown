@@ -22,3 +22,5 @@
 /public/vendor/unocss
 
 /published/
+/.env.local
+/.docker/
