@@ -11,13 +11,13 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.252",
+    "@iconify/json": "^2.2.253",
     "@testing-library/dom": "^10.4.0",
     "@unocss/runtime": "^0.62.4",
     "@vitest/browser": "^2.1.1",
     "apexcharts": "^3.53.0",
     "chart.js": "^4.4.4",
-    "dompurify": "^3.1.6",
+    "dompurify": "^3.1.7",
     "jsdom": "^25.0.1",
     "lit": "^3.2.0",
     "marked": "^14.1.2",
@@ -29,6 +29,6 @@
     "vitest": "^2.1.1"
   },
   "dependencies": {
-    "vite": "^5.4.7"
+    "vite": "^5.4.8"
   }
 }
