@@ -822,7 +822,12 @@ const Plugin = () => {
         // parse list of strings as this is the other format support by revealjs
         return JSON.parse(value);
       } else {
-        return value;
+        if (typeof value === "string") {
+          // strip quotes and whitespace
+          return value.replaceAll(/(^[ \t]*[\'\"]?[ \t]*)|([ \t]*[\'\"]?[ \t]*$)/g, '');
+        } else {
+          return value;
+        }
       }
     };
 
@@ -866,11 +871,12 @@ const Plugin = () => {
     Object.keys(mergedMetadata)
       .map((k) => {
         const fn = applyFunctions[k];
+        const value = mergedMetadata[k];
         if (fn) {
-          fn(mergedMetadata[k]);
+          fn(value);
         } else {
           if (k in revealjsConfig) {
-            revealjsNewConfig[k] = mergedMetadata[k];
+            revealjsNewConfig[k] = value;
           } else {
             console.error(`Ignoring unknown option: ${k}`);
           }
