@@ -11,11 +11,11 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.253",
+    "@iconify/json": "^2.2.255",
     "@testing-library/dom": "^10.4.0",
-    "@unocss/runtime": "^0.62.4",
+    "@unocss/runtime": "^0.63.2",
     "@vitest/browser": "^2.1.1",
-    "apexcharts": "^3.53.0",
+    "apexcharts": "^3.54.0",
     "chart.js": "^4.4.4",
     "dompurify": "^3.1.7",
     "jsdom": "^25.0.1",
@@ -25,7 +25,7 @@
     "marked-gfm-heading-id": "^4.1.0",
     "mathjax": "3.2.2",
     "mermaid": "^11.2.1",
-    "sass": "^1.79.3",
+    "sass": "^1.79.4",
     "vitest": "^2.1.1"
   },
   "dependencies": {
