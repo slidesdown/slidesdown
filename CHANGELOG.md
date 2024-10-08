@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.3] - 2024-10-08
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [0.18.2] - 2024-09-27
 
 ### Miscellaneous Tasks
