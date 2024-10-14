@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.5] - 2024-10-14
+
+### Bug Fixes
+
+- Pass reveal command to decktape
+
 ## [0.18.4] - 2024-10-08
 
 ### Miscellaneous Tasks
