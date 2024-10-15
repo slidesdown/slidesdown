@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.6] - 2024-10-15
+
+### Features
+
+- Add support for target attribute in anchor tags
+
 ## [0.18.5] - 2024-10-14
 
 ### Bug Fixes
