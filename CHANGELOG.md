@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.7] - 2024-10-15
+
+### Bug Fixes
+
+- Correct support for target attribute
+
 ## [0.18.6] - 2024-10-15
 
 ### Features
