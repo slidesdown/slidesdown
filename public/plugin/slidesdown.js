@@ -36,12 +36,16 @@ let BASE_URL = "";
 let DIAGRAM_COUNTER = 0;
 
 const SANITIZE = (string) =>
+  // Documentation: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
   DOMPurify.sanitize(
     string,
     {
       ADD_TAGS: [
         "#comment", // comments are vital for configuring revealjs
         "foreignObject", // unfortunately some mermaid diagrams use it, despite being a potential security risk: https://github.com/cure53/DOMPurify/issues/469
+      ],
+      ADD_ATTR: [
+        "target",
       ],
       CUSTOM_ELEMENT_HANDLING: {
         tagNameCheck: (tagName) =>
@@ -62,7 +66,6 @@ const SANITIZE = (string) =>
             "class",
             "style",
             "styles",
-            "target",
           ].includes(name),
       },
     },
