@@ -58,7 +58,12 @@ const SANITIZE = (string) =>
             "columns-6",
           ].includes(tagName),
         attributeNameCheck: (name) =>
-          ["class", "styles", "style"].includes(name),
+          [
+            "class",
+            "style",
+            "styles",
+            "target",
+          ].includes(name),
       },
     },
   );
