@@ -281,7 +281,7 @@ main() {
 
 	local SLIDES
 	SLIDES="${1:-SLIDES.md}"
-	if [[ ! -e "$SLIDES" ]]; then
+	if [[ -z "${EXPORT}" ]] && [[ ! -e "$SLIDES" ]]; then
 		echo "File doesn't exist: ${SLIDES}" 1>&2
 		exit 1
 	fi
