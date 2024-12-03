@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.8] - 2024-12-03
+
+### Bug Fixes
+
+- Allow export without presence of SLIDES.md
+
+### Features
+
+- Add reference to more supported options in front-matter #14
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [0.18.7] - 2024-10-15
 
 ### Bug Fixes

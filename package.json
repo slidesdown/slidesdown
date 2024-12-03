@@ -1,7 +1,7 @@
 {
   "name": "slidesdown",
   "private": true,
-  "version": "0.18.7",
+  "version": "0.18.8",
   "type": "module",
   "license": "AGPL-3.0-or-later",
   "scripts": {
