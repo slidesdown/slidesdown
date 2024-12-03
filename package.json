@@ -11,24 +11,24 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.255",
+    "@iconify/json": "^2.2.279",
     "@testing-library/dom": "^10.4.0",
-    "@unocss/runtime": "^0.63.2",
-    "@vitest/browser": "^2.1.1",
-    "apexcharts": "^3.54.0",
-    "chart.js": "^4.4.4",
-    "dompurify": "^3.1.7",
+    "@unocss/runtime": "^0.65.0",
+    "@vitest/browser": "^2.1.8",
+    "apexcharts": "^4.1.0",
+    "chart.js": "^4.4.7",
+    "dompurify": "^3.2.2",
     "jsdom": "^25.0.1",
     "lit": "^3.2.0",
-    "marked": "^14.1.2",
-    "marked-base-url": "^1.1.5",
-    "marked-gfm-heading-id": "^4.1.0",
+    "marked": "^15.0.3",
+    "marked-base-url": "^1.1.6",
+    "marked-gfm-heading-id": "^4.1.1",
     "mathjax": "3.2.2",
-    "mermaid": "^11.2.1",
-    "sass": "^1.79.4",
-    "vitest": "^2.1.1"
+    "mermaid": "^11.4.1",
+    "sass": "^1.81.1",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
-    "vite": "^5.4.8"
+    "vite": "^6.0.2"
   }
 }
