@@ -22,8 +22,10 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
-# Full list of supported settings: https://revealjs.com/config/ or
-# https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# Full list of supported settings:
+# - https://revealjs.com/config/
+# - https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# - https://github.com/slidesdown/slidesdown/blob/main/public/plugin/slidesdown.js#L758
 # UnoCSS styling: https://unocss.dev/interactive/ and https://tailwindcss.com/docs
 # Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
@@ -43,10 +45,11 @@ pdfSeparateFragments: false
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 > Slidesdown makes it simple to quickly turn an idea into a beautiful
-> presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is all
-> you need!
+> presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is
+> all you need!
 >
-> Press <span class="bg-white/50 inline rounded-xl px-2">Space</span> to advance through this presentation.
+> Press <span class="bg-white/50 inline rounded-xl px-2">Space</span> to advance
+> through this presentation.
 
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
 
@@ -84,15 +87,16 @@ pdfSeparateFragments: false
 
 - Setup: No installation required.
 - Focus: Just write Markdown.
-- Sharable: [Create links](https://slidesdown.github.io/loader.html) to
-  slides in git repositories or store the whole presentation in one link.
+- Sharable: [Create links](https://slidesdown.github.io/loader.html) to slides
+  in git repositories or store the whole presentation in one link.
 - Offline First:
   [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md)
   for offline presentations.
 - Tunnel Support: Share slides online from your laptop.
 - Multiplex Mode: Advance presenter and viewer slides together.
 - Professional: PDF export, Custom Themes, and UnoCSS Styling.
-- Charts and Diagrams: via [chart.js](https://www.chartjs.org/), [apexcharts](https://apexcharts.com/) and
+- Charts and Diagrams: via [chart.js](https://www.chartjs.org/),
+  [apexcharts](https://apexcharts.com/) and
   [mermaid.js](https://mermaid.js.org/).
 
 <!-- .element: class="text-4xl" -->
@@ -1485,4 +1489,5 @@ gitGraph
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/h4KYT7X1HM4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTN8fHRoYW5rJTIweW91fGVufDB8fHx8MTcyMzk2ODcwMHwy&force=true&w=1920" -->
 
-<strong>for using <a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>
+<strong>for using
+<a href="https://github.com/slidesdown/slidesdown">Slidesdown</a></strong>

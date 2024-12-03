@@ -22,8 +22,10 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
-# Full list of supported settings: https://revealjs.com/config/ or
-# https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# Full list of supported settings:
+# - https://revealjs.com/config/
+# - https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# - https://github.com/slidesdown/slidesdown/blob/main/public/plugin/slidesdown.js#L758
 # UnoCSS styling: https://unocss.dev/interactive/ and https://tailwindcss.com/docs
 # Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
