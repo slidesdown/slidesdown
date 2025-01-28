@@ -163,7 +163,7 @@ update-revealjs-highlight:
     # Source: https://github.com/highlightjs/highlight.js
     mkdir public/vendor
     rm -prf public/vendor/highlight.js
-    let VERSION = "11.10.0"
+    let VERSION = "11.11.1"
     cd public/vendor
     curl -Lfo - $"https://github.com/highlightjs/highlight.js/archive/refs/tags/($VERSION).tar.gz" | tar xvz $"highlight.js-($VERSION)/src/styles"
     mv $"($env.PWD)/highlight.js-($VERSION)/src/styles" highlight.js
