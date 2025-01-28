@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.9] - 2025-01-28
+
+### Miscellaneous Tasks
+
+- Update configuration
+- Update pacakges
+
 ## [0.18.8] - 2024-12-03
 
 ### Bug Fixes
