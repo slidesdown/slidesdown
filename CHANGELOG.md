@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.10] - 2025-02-04
+
+### Bug Fixes
+
+- Allow traffic from trycloudflare.com
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [0.18.9] - 2025-01-28
 
 ### Miscellaneous Tasks
