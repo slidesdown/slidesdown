@@ -11,13 +11,13 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.300",
+    "@iconify/json": "^2.2.302",
     "@testing-library/dom": "^10.4.0",
     "@unocss/runtime": "^65.4.3",
-    "@vitest/browser": "^3.0.4",
+    "@vitest/browser": "^3.0.5",
     "apexcharts": "^4.4.0",
     "chart.js": "^4.4.7",
-    "dompurify": "^3.2.3",
+    "dompurify": "^3.2.4",
     "jsdom": "^26.0.0",
     "lit": "^3.2.0",
     "marked": "^15.0.6",
@@ -26,7 +26,7 @@
     "mathjax": "3.2.2",
     "mermaid": "^11.4.1",
     "sass": "^1.83.4",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.5"
   },
   "dependencies": {
     "vite": "^6.0.11"
