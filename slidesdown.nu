@@ -186,7 +186,7 @@ def main [
       let author = $frontmatter | get -i author | default ""
       let title = $frontmatter | get -i title | default ""
       let subject = $frontmatter | get -i subject | default ""
-      let decktape_args = [--pause 500 --size $use_resolution --pdf-author $author --pdf-title $title --pdf-subject $subject reveal $url $use_output]
+      let decktape_args = [--pause 500 --size $use_resolution --pdf-author $author --pdf-title $title --pdf-subject $subject reveal ($url | url join) $use_output]
       if $use_docker {
         let cmd = [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" $DECKTAPE_IMAGE ...$decktape_args]
         if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
