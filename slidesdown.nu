@@ -2,11 +2,11 @@
 # Documentation: https://www.nushell.sh/book/
 
 use std/log
-use std/formats *
 
 let VERSION = "0.18.11"
 let IMAGE = $"slidesdown/slidesdown:($VERSION)"
 let UPDATE_URL = "https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown.nu"
+let DECKTAPE_IMAGE = "ghcr.io/astefanutti/decktape:3.14"
 
 def createTemplate [filename: path, url: string] {
   if ($filename | path exists) {
@@ -102,7 +102,7 @@ def main [
   --port (-p): int = 3000
   # Open slideshow service at port (env: SLIDESDOWN_PORT)
   --publish (-P)
-  # NOT YET IMPLEMENTED! Publish locally docker-hosted presentation on the internet via a CloudFlare tunnel (env: SLIDESDOWN_PUBLISH)
+  # Publish locally docker-hosted presentation on the internet via a CloudFlare tunnel (env: SLIDESDOWN_PUBLISH)
   --export (-e)
   # Export slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env: SLIDESDOWN_EXPORT)
   --output (-o): string = "SLIDES.pdf"
@@ -128,6 +128,7 @@ def main [
   # - cloudflared
   # - python3
   # - bash
+  # - docker
   let use_update = $env | get -i SLIDESDOWN_UPDATE | default $update | into bool
   let use_template = $env | get -i SLIDESDOWN_TEMPLATE | default $template | into bool
   let use_filename = $env | get -i SLIDESDOWN_FILENAME | default $filename | into string
@@ -139,10 +140,10 @@ def main [
     updateScript
   } else if $use_template {
     let use_template_url = ($env | get -i SLIDESDOWN_TEMPLATE_URL | default $template_url | into string)
-    createTemplate $use_filename $use_template_url
+    createTemplate $slides_filename $use_template_url
   } else {
     # Display slideshow
-    if not ($use_filename | path exists) {
+    if not ($slides_filename | path exists) {
       log error $"File not found: ($use_filename)"
       exit 1
     }
@@ -161,7 +162,7 @@ def main [
 
     # Compute URLs to the service
     let base = { scheme: http, host: localhost, port: $use_port }
-    let baseService = if $use_docker { $base } else {$base | merge {scheme: https, host: $use_service , port: 443 }}
+    let baseService = if $use_docker { $base } else {$base | reject port | merge {scheme: https, host: $use_service }}
     let url = if $use_encode {
       ({...$baseService, params: {slides64: (open --raw $slides_filename | gzip -9 | | encode base64 --url)}})
     } else {
@@ -172,7 +173,7 @@ def main [
       }
       ({...$baseService, params: {slides: $slides}})
     }
-    if $use_verbose {log info $"Service URL: ($url | url join)"}
+    mut tunnel_url = $url | reject port
 
     if $use_export {
       # extract frontmatter
@@ -187,7 +188,7 @@ def main [
       let subject = $frontmatter | get -i subject | default ""
       let decktape_args = [--pause 500 --size $use_resolution --pdf-author $author --pdf-title $title --pdf-subject $subject reveal $url $use_output]
       if $use_docker {
-        let cmd = [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" "ghcr.io/astefanutti/decktape:3.14" ...$decktape_args]
+        let cmd = [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" $DECKTAPE_IMAGE ...$decktape_args]
         if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
         run-external ...$cmd
       } else {
@@ -198,18 +199,38 @@ def main [
       return
     } else {
       if $use_publish {
+        log info "Establishing tunnel"
         if not $use_docker {
           log warning "Ignoring publish flag because the presentation isn't hosted via docker."
         } else {
           # TODO: Implement publish functionality
-          # let id = job spawn -t slidesdown {
-          #   cloudflared tunnel --url ({ scheme: $url.scheme, host: $url.host, port: $url.port } | url join)
-          #   print "hojho"
-          # }
-          # print (job list)
-          # log info $"($id)"
-          log error "Publishing functionality not yet implemented"
-          exit 1
+          let tunnel_output = mktemp -t slidesdown_tunnel_XXXX
+          print $tunnel_output
+          let tunnel_pid = mktemp -t slidesdown_tunnel_pid_XXXX
+          let cmd = [cloudflared tunnel --url ($base | url join) --pidfile $tunnel_pid]
+          if $use_verbose {log info $"Running command: ($cmd | str join ' ')"}
+          let tunnel_job_id = job spawn -t tunnel {
+            # run-external ...$cmd | tee --stderr { save -f $tunnel_output }
+            bash -x -c $"trap \"xargs kill < ($tunnel_pid); rm -f '($tunnel_output)' '($tunnel_pid)'\" 1 2 3 15; ($cmd | str join ' ') 2>&1 | tee ($tunnel_output)"
+          }
+          mut i = 0
+          let timeout = 20sec
+          let sleep_for = 0.1sec
+          while $i < ($timeout / $sleep_for)  {
+            if (job list | where {$in.id == $tunnel_job_id} | length) == 0 {
+              log error "Failed to establish tunnel, exiting."
+              exit 1
+            }
+            if (open --raw $tunnel_output | lines | find "|  https://" | length) > 0 {
+              break
+            }
+            sleep $sleep_for
+            $i = $i + 1
+          }
+          log warning $"Tunnel established. You have to manually kill it after exiting slidesdown. Command:\ncat ($tunnel_pid) | xargs kill"
+          let _tunnel_url = open --raw $tunnel_output | lines | find "|  https://" | parse --regex ".* \(?<tunnel>https://[^ ]*\) .*" | get -i 0.tunnel
+          let _tunnel_url = $_tunnel_url | url parse
+          $tunnel_url = $tunnel_url | upsert scheme $_tunnel_url.scheme | upsert host $_tunnel_url.host
         }
       }
     }
@@ -219,6 +240,8 @@ def main [
     let multiplex_id = $multiplex_secret | hash sha256
     let multiplex_presenter_url = $url | upsert params.multiplex64 ({id: $multiplex_id, secret: $multiplex_secret} | to json | encode base64 --url)
     let multiplex_client_url = $url | upsert params.multiplex64 ({id: $multiplex_id} | to json | encode base64 --url)
+    let tunnel_multiplex_presenter_url = $tunnel_url | upsert params.multiplex64 ({id: $multiplex_id, secret: $multiplex_secret} | to json | encode base64 --url)
+    let tunnel_multiplex_client_url = $tunnel_url | upsert params.multiplex64 ({id: $multiplex_id} | to json | encode base64 --url)
 
     if $use_docker {
       ## slidesdown in docker container
@@ -237,9 +260,16 @@ def main [
         echo 'Waiting for container to start..'
         sleep 2
         if ($use_multiplex | into string); then
+          if ($use_publish | into string) && ($use_docker | into string); then
+            echo 'Public slideshow Presenter URL \(keep secret!: ($tunnel_multiplex_presenter_url | url join)'
+            echo 'Public slideshow Follower URL: ($tunnel_multiplex_client_url | url join)'
+          fi
           echo 'Local slideshow Presenter URL \(keep secret!): ($multiplex_presenter_url | url join)'
           echo 'Local slideshow Follower URL: ($multiplex_client_url | url join)'
         else
+          if ($use_publish | into string) && ($use_docker | into string); then
+            echo 'Public slideshow URL: ($tunnel_url | url join)'
+          fi
           echo 'Local slideshow URL: ($url | url join)'
         fi
         if (url-opener $use_no_open | is-not-empty | into string); then
@@ -291,8 +321,8 @@ def main [
         # return (job spawn { python3 $server_cmd localhost $port; rm $server_cmd })
         # let job_id = run-webserver $use_port ($use_filename | path expand | path dirname) ($use_filename | path basename)
         let server_cmd = create-webserver-cmd
-        let job_id = job spawn {
-          bash -x -c $"trap \"rm -f '($server_cmd)'\" 1 2 3 15; python3 "($server_cmd)" localhost ($port)"
+        let job_id = job spawn -t slidesdown {
+          bash -c $"trap \"rm -f '($server_cmd)'\" 1 2 3 15; python3 "($server_cmd)" localhost ($port)"
         }
         # INFO: can't use job spawn until trap has been implemented
         # return (job spawn { python3 $server_cmd localhost $port; rm $server_cmd })
