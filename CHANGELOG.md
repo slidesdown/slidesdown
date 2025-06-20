@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.19.0] - 2025-06-20
+
+### Bug Fixes
+
+- Correct URL expansion for export
+
+### Features
+
+- Implement slidesdown script in nushell
+- Implement support for publishing slides
+
+### Miscellaneous Tasks
+
+- Add justlib
+- Update dependencies
+- Harden docker vite configuration
+- Deprecate slidesdown CLI in favor of slidesdown.nu
+
 ## [0.18.11] - 2025-02-16
 
 ### Miscellaneous Tasks
