@@ -1,3 +1,6 @@
 [submodule "multiplex"]
 	path = multiplex
 	url = https://github.com/reveal/multiplex.git
+[submodule "justlib"]
+	path = justlib
+	url = https://github.com/identinet/justlib.git

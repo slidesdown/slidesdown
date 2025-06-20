@@ -1,0 +1,20 @@
+{
+  "name": "slidesdown",
+  "version": "0.18.11",
+  "description": "Slideshows as fast as you can type",
+  "author": "Jan Christoph Ebersbach <jceb@e-jc.de>",
+  "license": "AGPL-3.0-or-later",
+  "contributors": [
+    "Jan Christoph Ebersbach <jceb@e-jc.de>"
+  ],
+  "homepage": "https://slidesdown.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slidesdown/slidesdown"
+  },
+  "registry": {
+    "type": "docker",
+    "name": "docker.io/slidesdown",
+    "url": "https://hub.docker.com/r/slidesdown/slidesdown"
+  }
+}
