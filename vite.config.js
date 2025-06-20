@@ -58,9 +58,13 @@ export default defineConfig(() => {
       ...config,
       server: {
         ...config.server,
+        open: false,
         host: true,
         port: 8080,
         strictPort: true,
+        fs: {
+          strict: true,
+        },
       },
     };
   } else {
