@@ -4,6 +4,8 @@ set -euo pipefail
 
 VERSION="0.18.11"
 
+echo "WARNING: slidesdown CLI is deprecated, migrate to slidesdown.nu CLI" 1>&2
+
 # TODO: convert to subcommands
 
 urlencode() {

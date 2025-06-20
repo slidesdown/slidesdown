@@ -18,7 +18,7 @@ def createTemplate [filename: path, url: string] {
 }
 
 def updateScript [] {
-  let SCRIPT_NAME = path self
+  const SCRIPT_NAME = path self
   log info $"Updating ($SCRIPT_NAME), version ($VERSION), from ($UPDATE_URL)"
   let SCRIPT_TEMP = mktemp -t $"($SCRIPT_NAME | path basename)_XXXXX"
   http get $UPDATE_URL | save -f $SCRIPT_TEMP
@@ -173,7 +173,7 @@ def main [
       }
       ({...$baseService, params: {slides: $slides}})
     }
-    mut tunnel_url = $url | reject port
+    mut tunnel_url = $url | reject -i port
 
     if $use_export {
       # extract frontmatter

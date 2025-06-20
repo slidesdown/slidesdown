@@ -30,11 +30,15 @@ offline (i.e. perfect for presentations you want to keep private).
 #### Installation
 
 ```bash
-sudo curl -L https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown -o /usr/local/bin/slidesdown; sudo chmod a+x /usr/local/bin/slidesdown
+sudo curl -L https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown.nu -o /usr/local/bin/slidesdown.nu; sudo chmod a+x /usr/local/bin/slidesdown.nu
 ```
 
-The following optional programs are used by `slidesdown`:
+The following optional programs are used by `slidesdown.nu`:
 
+- [`nu`](https://nushell.sh) JSON and YAML parser.
+- `gzip` to encode the presentaiton.
+- `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
+  (MacOS) for opening the slideshow in the default browser.
 - [`docker`](https://www.docker.com/) required for offline presentations and
   hot-reloading slides while editing.
 - [`python3`](https://www.python.org/) required for online presentations via
@@ -44,17 +48,14 @@ The following optional programs are used by `slidesdown`:
   GitHub.
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
   exporting slideshows as PDF.
-- `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
-  (MacOS) for opening the slideshow in the default browser.
-- [`curl`](https://curl.se/) for updating the slidesdown script.
-- [`node`](https://nodejs.org/) for making the presentation accessible on the internet via a [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
-- [`yq`](https://mikefarah.gitbook.io/yq/) JSON and YAML parser.
-- `basenc` Base64 encoder.
+- [`cloudflared`](https://github.com/cloudflare/cloudflared) for making the
+  presentation accessible on the internet via a
+  [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
 
 #### Update
 
 ```bash
-sudo slidesdown -u
+sudo slidesdown.nu -u
 ```
 
 #### Open local file in slidesdown Online Viewer (python3 required)
@@ -65,27 +66,27 @@ be served from a local web server to your local browser!
 Navigate to any folder with a `SLIDES.md` file (), then run this command:
 
 ```bash
-slidesdown
+slidesdown.nu
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown README.md
+slidesdown.nu README.md
 ```
 
-#### Open local file in slidesdown Offline Viewer (python3 required)
+#### Open local file in slidesdown.nu Offline Viewer (python3 required)
 
 Navigate to any folder with a `SLIDES.md` file (), then run this command:
 
 ```bash
-slidesdown -d
+slidesdown.nu -d
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown -d README.md
+slidesdown.nu -d README.md
 ```
 
 #### Export Slides as PDF
@@ -93,19 +94,19 @@ slidesdown -d README.md
 The export requires [`decktape`](https://github.com/astefanutti/decktape).
 
 ```bash
-slidesdown -e
+slidesdown.nu -e
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown -e README.md
+slidesdown.nu -e README.md
 ```
 
 The exporter can also be used via Docker:
 
 ```bash
-slidesdown -d -e
+slidesdown.nu -d -e
 ```
 
 ## Usage: Create Slides
@@ -130,7 +131,7 @@ curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples
 2. Use [CLI](#cli):
 
 ```bash
-slidesdown -t
+slidesdown.nu -t
 ```
 
 3. Copy template from here:
@@ -213,7 +214,7 @@ Use the [GitHub CLI - `gh`](https://cli.github.com/)
 
 ```bash
 gh repo create myslides --public --clone
-slidesdown -t
+slidesdown.nu -t
 # edit slides ...
 git add SLIDES.md
 git commit -m "first slideshow"
@@ -231,7 +232,7 @@ xdg-open "https://slidesdown.github.io/?slides=$(gh browse -n)"
 Use the [GitHub CLI - `gh`](https://cli.github.com/)
 
 ```bash
-slidesdown -t
+slidesdown.nu -t
 # edit slides ...
 gh gist create SLIDES.md --public
 ```
@@ -252,8 +253,7 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
 - [`gh`](https://github.com/cli/cli) GitHub CLI for creating releases
 - [`git-cliff`](https://github.com/orhun/git-cliff) changelog generator
 - [`just`](https://just.systems/) task runner
-- [`node`](https://nodejs.org/) >=20
-- [`yq`](https://mikefarah.gitbook.io/yq/) YAML parser
+- [`node`](https://nodejs.org/) >=22
 
 ### Folder Structure and Important Files
 
@@ -269,13 +269,13 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
     [https://slidesdown.github.io/loader.html](https://slidesdown.github.io/loader.html)
   - [`public/learn.html`](./public/learn.html) tutorial served at
     [https://slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
-  - [`public/plugin/slidesdown.js`](./public/plugin/slidesdown.js)
-    Markdown converter plugin - this is the core of this project
-- [`slidesdown`](./slidesdown) CLI
+  - [`public/plugin/slidesdown.js`](./public/plugin/slidesdown.js) Markdown
+    converter plugin - this is the core of this project
+- [`slidesdown.nu`](./slidesdown.nu) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
-  - (deprecated!) [`src/custom-elements.js` ](./src/custom-elements.js) contains the custom
-    elements that get injected into the presentation, e.g. `<v-box></v-box>`,
-    `<h-box></h-box>` and `<columns-2></columns-2>`
+  - (deprecated!) [`src/custom-elements.js`](./src/custom-elements.js) contains
+    the custom elements that get injected into the presentation, e.g.
+    `<v-box></v-box>`, `<h-box></h-box>` and `<columns-2></columns-2>`
 
 ### Setup
 
