@@ -741,7 +741,7 @@ Bucket List
 
 ### Lightbox
 
-Click the image:
+Click the image
 
 <div class="grid justify-items-center">
 
