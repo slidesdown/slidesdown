@@ -188,6 +188,7 @@ _bump_files CURRENT_VERSION NEW_VERSION: update-all build
     open manifest.json | upsert version "{{ NEW_VERSION }}" | save -f manifest.json; git add manifest.json
     open --raw index.html | str replace -r 'name="generator" content="[^\"]*"' $'name="generator" content="slidesdown {{ NEW_VERSION }}"' | save -f index.html; git add index.html
     open --raw slidesdown | str replace -r 'VERSION=.*' $'VERSION="{{ NEW_VERSION }}"' | save -f slidesdown; git add slidesdown
+    open --raw slidesdown.nu | str replace -r 'let VERSION = .*' $'let VERSION = "{{ NEW_VERSION }}"' | save -f slidesdown.nu; git add slidesdown.nu
     open --raw Dockerfile | str replace -r '(LABEL org.opencontainers.image.ref.name)=.*' $'${1}="slidesdown/slidesdown:{{ NEW_VERSION }}"' | str replace -r '(LABEL org.opencontainers.image.version)=.*' $'${1}="{{ NEW_VERSION }}"' | str replace -r '(LABEL org.opencontainers.image.revision)=.*' $'${1}="{{ NEW_VERSION }}"' | save -f Dockerfile; git add Dockerfile
     if ("published/.git" | path exists) {
       cd published
