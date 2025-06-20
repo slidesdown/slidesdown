@@ -1,4 +1,5 @@
-FROM node:20-alpine
+# Available tags: https://hub.docker.com/_/node
+FROM node:22-alpine
 
 LABEL org.opencontainers.image.ref.name="slidesdown/slidesdown:0.18.11"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-or-later"

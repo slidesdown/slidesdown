@@ -739,6 +739,20 @@ Bucket List
 <!-- .element: class="r-frame" -->
 ```
 
+### Lightbox
+
+Click the image:
+
+<div class="grid justify-items-center">
+
+<img height="300" src="https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640" data-preview-image="https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920" />
+
+</div>
+
+```markdown
+<img src="..." data-preview-image="..." />
+```
+
 ### Font Awesome Icon
 
 <div class="i-fa6-solid-face-smile m-auto"></div>

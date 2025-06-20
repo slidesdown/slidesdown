@@ -14,6 +14,7 @@
 !/vite.config.js
 !/package.json
 !/yarn.lock
+!/deno.lock
 !/multiplex/index.js
 !/multiplex/package.json
 !/multiplex/package-lock.json
