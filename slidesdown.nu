@@ -95,7 +95,7 @@ def main [
   # Encode the whole slideshow document as base64 string in the URL so that the presentation can be shared via URL without it being publicly available (env: SLIDESDOWN_ENCODE)
   --docker (-d)
   # Run slideshow service locally via docker (default: run a local http server via Python3 and connect to the online service, env: SLIDESDOWN_DOCKER)
-  --image (-i): string = "slidesdown/slidesdown:0.18.11"
+  --image (-i): string
   # Use docker image (env: SLIDESDOWN_IMAGE)"
   --multiplex (-m)
   # Open presentation in multiplex mode so that presenter and follower can always see the same slide - pairs well with the --publish flag (env: SLIDESDOWN_MULTIPLEX)
@@ -122,13 +122,7 @@ def main [
   --version (-v)
   # Print script version
 ]: nothing -> nothing {
-  # Dependencies:
-  # - gzip
-  # - nushell
-  # - cloudflared
-  # - python3
-  # - bash
-  # - docker
+  let use_version = $env | get -i SLIDESDOWN_VERSION | default $version | into bool
   let use_update = $env | get -i SLIDESDOWN_UPDATE | default $update | into bool
   let use_template = $env | get -i SLIDESDOWN_TEMPLATE | default $template | into bool
   let use_filename = $env | get -i SLIDESDOWN_FILENAME | default $filename | into string
@@ -136,7 +130,10 @@ def main [
   let slides_filename = $use_filename | path basename
   # The directory of the slides file becomes the root directory for all other services
   cd $root_directory
-  if  $use_update {
+  if  $use_version {
+    print -e $"slidesdown version: ($VERSION)"
+    exit 0
+  } else if $use_update {
     updateScript
   } else if $use_template {
     let use_template_url = ($env | get -i SLIDESDOWN_TEMPLATE_URL | default $template_url | into string)
@@ -151,7 +148,7 @@ def main [
     let use_encode = $env | get -i SLIDESDOWN_ENCODE | default $encode | into bool
     let use_port = $env | get -i SLIDESDOWN_PORT | default $port | into int
     let use_service = $env | get -i SLIDESDOWN_SERVICE | default $service | into string
-    let use_image = $env | get -i SLIDESDOWN_IMAGE | default $image | into string
+    let use_image = $env | get -i SLIDESDOWN_IMAGE | default (if ($image | is-not-empty) {$image} else {$IMAGE}) | into string
     let use_multiplex = $env | get -i SLIDESDOWN_MULTIPLEX | default $multiplex | into bool
     let use_publish = $env | get -i SLIDESDOWN_PUBLISH | default $publish | into bool
     let use_export = $env | get -i SLIDESDOWN_EXPORT | default $export | into bool
@@ -261,10 +258,10 @@ def main [
         sleep 2
         if ($use_multiplex | into string); then
           if ($use_publish | into string) && ($use_docker | into string); then
-            echo 'Public slideshow Presenter URL \(keep secret!: ($tunnel_multiplex_presenter_url | url join)'
+            echo 'Public slideshow Presenter URL \(keep secret!\): ($tunnel_multiplex_presenter_url | url join)'
             echo 'Public slideshow Follower URL: ($tunnel_multiplex_client_url | url join)'
           fi
-          echo 'Local slideshow Presenter URL \(keep secret!): ($multiplex_presenter_url | url join)'
+          echo 'Local slideshow Presenter URL \(keep secret!\): ($multiplex_presenter_url | url join)'
           echo 'Local slideshow Follower URL: ($multiplex_client_url | url join)'
         else
           if ($use_publish | into string) && ($use_docker | into string); then
