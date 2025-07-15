@@ -2,7 +2,7 @@
 set -euo pipefail
 # set -x
 
-VERSION="0.19.0"
+VERSION="0.19.1"
 
 echo "WARNING: slidesdown CLI is deprecated, migrate to slidesdown.nu CLI" 1>&2
 

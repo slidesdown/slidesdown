@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.19.1] - 2025-07-15
+
+### Bug Fixes
+
+- Support -v switch and correct image reference
+
+### Miscellaneous Tasks
+
+- Bump slidesdown.nu version
+- Remove colon from slide
+- Update dependencies and fix blackboard plugin
+
+### Styling
+
+- Reformat code
+
 ## [0.19.0] - 2025-06-20
 
 ### Bug Fixes
