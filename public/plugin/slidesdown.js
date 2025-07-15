@@ -201,6 +201,7 @@ export function buildMarkedConfiguration(markedOptions) {
   markedOptions.useNewRenderer = true;
   const a_href_regex =
     /((<a[^>]*? href=")([^"]*?)("[^>]*?>)|(<a[^>]*? href=')([^']+?)('[^>]*?>))/gi;
+  // TODO: apply img src also to data-preview-image
   const img_src_regex =
     /((<img[^>]*? src=")([^"]*?)("[^>]*?>)|(<img[^>]*? src=')([^']+?)('[^>]*?>))/gi;
   // const isUrl = /^https?:\/\//
@@ -220,15 +221,23 @@ export function buildMarkedConfiguration(markedOptions) {
         let last_index = 0;
         let remainder = "";
         for (const match of token.text.matchAll(img_src_regex)) {
-          const matchOffset = match[2] ? 0 : 3
+          const matchOffset = match[2] ? 0 : 3;
           text.push(token.text.substring(last_index, match.index));
           const ref = match[3 + matchOffset];
           // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
           const needsRebase = isRelative.test(ref);
           if (needsRebase) {
-            text.push(`${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
+            text.push(
+              `${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${
+                match[4 + matchOffset]
+              }`,
+            );
           } else {
-            text.push(`${match[2 + matchOffset]}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
+            text.push(
+              `${match[2 + matchOffset]}${match[3 + matchOffset]}${
+                match[4 + matchOffset]
+              }`,
+            );
           }
           last_index = match.index + match[0].length;
         }
@@ -240,14 +249,22 @@ export function buildMarkedConfiguration(markedOptions) {
         last_index = 0;
         for (const match of token.text.matchAll(a_href_regex)) {
           text.push(token.text.substring(last_index, match.index));
-          const matchOffset = match[2] ? 0 : 3
+          const matchOffset = match[2] ? 0 : 3;
           const ref = match[3 + matchOffset];
           // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
           const needsRebase = isRelative.test(ref);
           if (needsRebase) {
-            text.push(`${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
+            text.push(
+              `${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${
+                match[4 + matchOffset]
+              }`,
+            );
           } else {
-            text.push(`${match[2 + matchOffset]}${match[3 + matchOffset]}${match[4 + matchOffset]}`);
+            text.push(
+              `${match[2 + matchOffset]}${match[3 + matchOffset]}${
+                match[4 + matchOffset]
+              }`,
+            );
           }
           last_index = match.index + match[0].length;
         }
@@ -265,19 +282,21 @@ export function buildMarkedConfiguration(markedOptions) {
       `<li class="fragment">${text}</li>`;
   }
   marked.use(markedConfig);
-  return marked
+  return marked;
 }
 
 function codeHandler(code, language) {
   if (language === "mermaid") {
     // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
     DIAGRAM_COUNTER += 1;
-    return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${btoa(code)
-      }"></div>`;
+    return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
+      btoa(code)
+    }"></div>`;
   } else if (language === "chartjs") {
     // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
-    return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${btoa(code)
-      }></canvas></div></div>`;
+    return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${
+      btoa(code)
+    }></canvas></div></div>`;
   } else if (
     language === "apexchart"
   ) {
@@ -286,7 +305,7 @@ function codeHandler(code, language) {
   } else {
     return SANITIZE(defaultCodeHandler(code, language));
   }
-};
+}
 
 /**
  * Converts any current data-markdown slides in the
@@ -302,7 +321,7 @@ export function convertMarkdownToSlides(startElement, marked) {
   let sectionNumber = 0;
   const promises = [];
   [].slice.call(sections).forEach((section) => {
-    const parse = async function(section) {
+    const parse = async function (section) {
       section.setAttribute("data-markdown-parsed", true);
       const notes = section.querySelector("aside.notes");
       const markdown = getMarkdownFromSlide(section);
@@ -320,11 +339,11 @@ export function convertMarkdownToSlides(startElement, marked) {
         section,
         null,
         section.getAttribute("data-element-attributes") ||
-        section.parentNode.getAttribute("data-element-attributes") ||
-        DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
+          section.parentNode.getAttribute("data-element-attributes") ||
+          DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
         section.getAttribute("data-attributes") ||
-        section.parentNode.getAttribute("data-attributes") ||
-        DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
+          section.parentNode.getAttribute("data-attributes") ||
+          DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR,
       );
       // If there were notes, we need to re-add them after
       // having overwritten the section's HTML
@@ -421,7 +440,10 @@ function getMarkdownFromSlide(section) {
   // strip leading whitespace so it isn't evaluated as code
   let markdown = (template || section).textContent;
   // restore script end tags
-  markdown = markdown.replace(new RegExp(SCRIPT_END_PLACEHOLDER, "g"), "</script>");
+  markdown = markdown.replace(
+    new RegExp(SCRIPT_END_PLACEHOLDER, "g"),
+    "</script>",
+  );
   const leadingWs = markdown.match(/^\n?(\s*)/)[1].length,
     leadingTabs = markdown.match(/^\n?(\t*)/)[1].length;
   if (leadingTabs > 0) {
@@ -430,7 +452,10 @@ function getMarkdownFromSlide(section) {
       "\n",
     );
   } else if (leadingWs > 1) {
-    markdown = markdown.replace(new RegExp("\\n? {" + leadingWs + "}", "g"), "\n");
+    markdown = markdown.replace(
+      new RegExp("\\n? {" + leadingWs + "}", "g"),
+      "\n",
+    );
   }
   return markdown;
 }
@@ -439,8 +464,8 @@ function getMarkdownFromSlide(section) {
  * Hide customcontrols if visibility of controls changes.
  */
 function hideCustomControlsIfVisiblityChanges(element) {
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
       const style = window.getComputedStyle(mutation.target, null);
       const display = style?.getPropertyValue("display");
       if (display === "none") {
@@ -464,7 +489,7 @@ function hideCustomControlsIfVisiblityChanges(element) {
 }
 
 function loadExternalMarkdown(section) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     const xhr = new XMLHttpRequest();
     const url = section.getAttribute("data-markdown");
     const datacharset = section.getAttribute("data-charset");
@@ -472,7 +497,7 @@ function loadExternalMarkdown(section) {
     if (datacharset != null && datacharset != "") {
       xhr.overrideMimeType("text/html; charset=" + datacharset);
     }
-    xhr.onreadystatechange = function(_section, xhr) {
+    xhr.onreadystatechange = function (_section, xhr) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         // file protocol yields status code 0 (useful for local debug, mobile applications etc.)
         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
@@ -488,8 +513,8 @@ function loadExternalMarkdown(section) {
     } catch (e) {
       console.warn(
         "Failed to get the Markdown file " + url +
-        ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
-        e,
+          ". Make sure that the presentation and the file are served by a HTTP server and the file can be found there. " +
+          e,
       );
       resolve(xhr, url);
     }
@@ -538,7 +563,7 @@ async function preProcessMarkdown(section, markdown) {
     notesSeparator: section.getAttribute("data-separator-notes"),
     attributes: getForwardedAttributes(section),
   });
-  return metadata
+  return metadata;
 }
 
 /**
@@ -554,17 +579,20 @@ export function preProcessSlides(scope) {
     scope.querySelectorAll(
       "section[data-markdown]:not([data-markdown-parsed])",
     ),
-  ).forEach(function(section, _i) {
+  ).forEach(function (section, _i) {
     if (section.getAttribute("data-markdown") === "<<load-plain-markdown>>") {
       // Directly parse markdown from an attribute that stores the markdown content
       externalPromises.push(
-        preProcessMarkdown(section, section.getAttribute("data-markdown-plain")),
+        preProcessMarkdown(
+          section,
+          section.getAttribute("data-markdown-plain"),
+        ),
       );
     } else if (section.getAttribute("data-markdown").length) {
       // Load external markdown from a URL that's provided in the data-markdown attriute and then parse it
       const promise = loadExternalMarkdown(section).then(
         // Finished loading external file
-        function(xhr, _url) {
+        function (xhr, _url) {
           if (!BASE_URL) {
             // TODO: add support for multiple markdown elements
             const base_url = new URL(xhr.responseURL);
@@ -580,7 +608,7 @@ export function preProcessSlides(scope) {
           return preProcessMarkdown(section, xhr.responseText);
         },
         // Failed to load markdown
-        function(xhr, url) {
+        function (xhr, url) {
           section.outerHTML = '<section data-state="alert">' +
             "ERROR: The attempt to fetch " + url +
             " failed with HTTP status " + xhr.status + "." +
@@ -595,19 +623,20 @@ export function preProcessSlides(scope) {
       const promise = slidify(
         getMarkdownFromSlide(section).then((res) => {
           section.outerHTML = res;
-        }), {
-        separator: section.getAttribute("data-separator"),
-        verticalSeparator: section.getAttribute("data-separator-vertical"),
-        notesSeparator: section.getAttribute("data-separator-notes"),
-        attributes: getForwardedAttributes(section),
-      }
+        }),
+        {
+          separator: section.getAttribute("data-separator"),
+          verticalSeparator: section.getAttribute("data-separator-vertical"),
+          notesSeparator: section.getAttribute("data-separator-notes"),
+          attributes: getForwardedAttributes(section),
+        },
       );
       externalPromises.push(promise);
     }
   });
-  return Promise.all(externalPromises).then(metadatas => {
+  return Promise.all(externalPromises).then((metadatas) => {
     // Collect metadata in an object. The last value overwrites the first.
-    return metadatas.reduce((acc, v) => Object.assign(acc, v), {})
+    return metadatas.reduce((acc, v) => Object.assign(acc, v), {});
   });
 }
 
@@ -621,10 +650,10 @@ function slidify(markdown, options) {
   options = addSlidifyDefaultOptions(options);
   // FIXME: migrate these separators into custom marked parser to get away from regexp
   const separatorRegex = new RegExp(
-    options.separator +
-    (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
-    "mg",
-  ),
+      options.separator +
+        (options.verticalSeparator ? "|" + options.verticalSeparator : ""),
+      "mg",
+    ),
     horizontalSeparatorRegex = new RegExp(options.separator),
     verticalSeparatorRegex = new RegExp(
       options.verticalSeparator ? "|" + options.verticalSeparator : "",
@@ -678,22 +707,28 @@ function slidify(markdown, options) {
     // vertical
     if (sectionStack[i] instanceof Array) {
       const section_promises = [];
-      sectionStack[i].forEach(function(child) {
+      sectionStack[i].forEach(function (child) {
         section_promises.push(
-          createMarkdownSlide(child, options).then((content) => "<section data-markdown>" + content + "</section>"),
+          createMarkdownSlide(child, options).then((content) =>
+            "<section data-markdown>" + content + "</section>"
+          ),
         );
       });
       promises.push(
         new Promise((resolve) => {
           Promise.all(section_promises).then((res) =>
-            resolve("<section " + options.attributes + ">" + res.join("") + "</section>")
+            resolve(
+              "<section " + options.attributes + ">" + res.join("") +
+                "</section>",
+            )
           );
         }),
       );
     } else {
       promises.push(
         createMarkdownSlide(sectionStack[i], options).then((content) =>
-          "<section " + options.attributes + " data-markdown>" + content + "</section>"
+          "<section " + options.attributes + " data-markdown>" + content +
+          "</section>"
         ),
       );
     }
@@ -777,7 +812,11 @@ const Plugin = () => {
       "copyright": addMeta("copyright"),
       "coverage": addMeta("coverage"),
       "date": addMeta("dcterms.date"),
-      "description": desc => S.map(fn => fn(desc))([addMeta("description"), addMeta("og:description")]),
+      "description": (desc) =>
+        S.map((fn) => fn(desc))([
+          addMeta("description"),
+          addMeta("og:description"),
+        ]),
       "designer": addMeta("designer"),
       "directory": addMeta("directory"),
       "distribution": addMeta("distribution"),
@@ -795,7 +834,8 @@ const Plugin = () => {
       "subject": addMeta("subject"),
       "summary": addMeta("summary"),
       "topic": addMeta("topic"),
-      "url": url => S.map(fn => fn(url))([addMeta("url"), addMeta("og:url")]),
+      "url": (url) =>
+        S.map((fn) => fn(url))([addMeta("url"), addMeta("og:url")]),
       "fontawesomePro": loadScript(
         "https://kit.fontawesome.com/fec85b2437.js",
         "anonymous",
@@ -832,7 +872,10 @@ const Plugin = () => {
       } else {
         if (typeof value === "string") {
           // strip quotes and whitespace
-          return value.replaceAll(/(^[ \t]*[\'\"]?[ \t]*)|([ \t]*[\'\"]?[ \t]*$)/g, '');
+          return value.replaceAll(
+            /(^[ \t]*[\'\"]?[ \t]*)|([ \t]*[\'\"]?[ \t]*$)/g,
+            "",
+          );
         } else {
           return value;
         }
@@ -903,10 +946,9 @@ const Plugin = () => {
      * Starts processing and converting Markdown within the
      * current reveal.js deck.
      */
-    init: function(reveal) {
-      deck = reveal
-      let { renderer, ...markedOptions } =
-        deck.getConfig().markdown || {};
+    init: function (reveal) {
+      deck = reveal;
+      let { renderer, ...markedOptions } = deck.getConfig().markdown || {};
 
       deck.on("ready", (_event) => {
         hideCustomControlsIfVisiblityChanges(
@@ -922,7 +964,7 @@ const Plugin = () => {
       // 3. convertMarkdownToSlides converts all markdown into HTML.
       // 4. Control his handed over to revealjs to display the slides.
       return preProcessSlides(deck.getRevealElement()).then((metadata) => {
-        this.marked = buildMarkedConfiguration(markedOptions)
+        this.marked = buildMarkedConfiguration(markedOptions);
         applyMetadata(metadata);
         return convertMarkdownToSlides(deck.getRevealElement(), this.marked);
       });
