@@ -128,7 +128,7 @@ update-revealjs-plugins:
     # Source: https://github.com/rajgoel/reveal.js-plugins
     mkdir public/vendor
     rm -prf public/vendor/reveal.js-plugins
-    let VERSION = "4.2.5"
+    let VERSION = "4.6.0"
     cd public/vendor
     do -c {curl -Lfo - $"https://github.com/rajgoel/reveal.js-plugins/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
     mv $"($env.PWD)/reveal.js-plugins-($VERSION)" reveal.js-plugins

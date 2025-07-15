@@ -6,7 +6,7 @@ use std/log
 let VERSION = "0.19.0"
 let IMAGE = $"slidesdown/slidesdown:($VERSION)"
 let UPDATE_URL = "https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown.nu"
-let DECKTAPE_IMAGE = "ghcr.io/astefanutti/decktape:3.14"
+let DECKTAPE_IMAGE = "ghcr.io/astefanutti/decktape:3.15.0"
 
 def createTemplate [filename: path, url: string] {
   if ($filename | path exists) {
