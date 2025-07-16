@@ -9,7 +9,7 @@ import RevealZoom from "reveal-zoom";
 import RevealApexchart from "reveal-apexchart";
 import RevealECharts from "reveal-echarts";
 import RevealMermaid from "reveal-mermaid";
-import RevealChartjs from "reveal-chartjs";
+// import RevealChartjs from "reveal-chartjs";
 // INFO: non-esm therefore they can't be properly imported:
 // import * as PdfExport from "reveal-pdfexport";
 // import * as RevealChalkboard from "reveal-chalkboard";
@@ -192,7 +192,7 @@ async function main(defaults) {
       RevealCustomControls,
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
       // RevealAnything,
-      RevealChartjs,
+      // RevealChartjs,
       RevealApexchart,
       RevealECharts,
       RevealMermaid,

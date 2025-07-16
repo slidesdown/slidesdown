@@ -292,11 +292,6 @@ function codeHandler(code, language) {
     return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
       btoa(code)
     }"></div>`;
-  } else if (language === "chartjs") {
-    // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
-    return `<div><canvas style="width: clamp(200px, 100%, 100vw); height: clamp(200px, 100%, 100vh);" data-chartjs=${
-      btoa(code)
-    }></canvas></div>`;
   } else if (language === "apexchart") {
     return `<div style="width: clamp(200px, 100%, 100vw); height: clamp(200px, 100%, 100vh);" data-apexchart=${
       btoa(code)

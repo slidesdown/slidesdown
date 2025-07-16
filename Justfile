@@ -19,7 +19,7 @@ dev:
 
 # Update all dependencies
 [group('update')]
-update-all: update-apexcharts update-echarts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax update-reveal-multiplex
+update-all: update-apexcharts update-echarts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-highlight update-mermaid update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax update-reveal-multiplex
 
 # Update mathjax
 [group('update')]
@@ -105,17 +105,6 @@ update-marked:
     rm -prf public/vendor/github-slugger
     cp -pr ./node_modules/github-slugger/ public/vendor/github-slugger
     # cp -pr ./node_modules/.deno/node_modules/github-slugger/ public/vendor/github-slugger
-
-# Update chartjs
-[group('update')]
-update-chartjs:
-    #!/usr/bin/env nu
-    # Source: https://github.com/chartjs/Chart.js
-    rm -prvf public/vendor/chart.js
-    cp -pr ./node_modules/chart.js/ public/vendor/chart.js
-    rm -prvf public/vendor/kurkle
-    cp -pr ./node_modules/@kurkle/color/dist/ public/vendor/kurkle
-    # cp -pr ./node_modules/.deno/node_modules/@kurkle/color/dist/ public/vendor/kurkle
 
 # Update reveal.js
 [group('update')]

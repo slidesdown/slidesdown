@@ -61,6 +61,7 @@ async function createChart(canvas, data) {
             ..._data.data,
           },
           options: {
+            animation: false,
             responsive: true,
             // false, because it's required for responsive charts: https://www.chartjs.org/docs/latest/configuration/responsive.html
             maintainAspectRatio: false,
@@ -69,24 +70,30 @@ async function createChart(canvas, data) {
               ..._data?.options?.transitions,
               resize: {
                 ..._data?.options?.transitions?.resize,
-                animation: {
-                  ..._data?.options?.transitions?.resize?.animation,
+                animations: {
+                  ..._data?.options?.transitions?.resize?.animations,
                   duration: 0,
+                },
+              },
+              active: {
+                animations: {
+                  duration: 0,
+                },
+                show: {
+                  animations: {
+                    duration: 0,
+                  },
                 },
               },
             },
           },
         },
       );
-      // watch CSS mutations and trigger a resize
-      // FIXME: for chartjs this causes an infinite resizing of the chart
       // const resizer = debounce(() => {
-      //   console.log("resize");
       //   canvas.chart.resize();
       // });
+      // // watch CSS mutations and trigger a resize
       // const observer = new ResizeObserver(function (mutations) {
-      //   console.log("mutations:", mutations);
-      //   // canvas.chart.resize();
       //   resizer();
       // });
       // observer.observe(canvas);

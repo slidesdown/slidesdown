@@ -16,7 +16,6 @@
     "@unocss/runtime": "66.3.3",
     "@vitest/browser": "3.2.4",
     "apexcharts": "5.2.0",
-    "chart.js": "4.5.0",
     "dompurify": "3.2.6",
     "echarts": "^5.6.0",
     "highlight.js": "11.11.1",
