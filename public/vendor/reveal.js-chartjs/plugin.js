@@ -18,6 +18,16 @@ async function initializeCharts(canvases) {
   }
 }
 
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
 async function createChart(canvas, data) {
   if (canvas.chart) {
     // update existing chart for nice animation purposes
@@ -54,15 +64,30 @@ async function createChart(canvas, data) {
             responsive: true,
             // false, because it's required for responsive charts: https://www.chartjs.org/docs/latest/configuration/responsive.html
             maintainAspectRatio: false,
-            ..._data.options,
+            ..._data?.options,
+            transitions: {
+              ..._data?.options?.transitions,
+              resize: {
+                ..._data?.options?.transitions?.resize,
+                animation: {
+                  ..._data?.options?.transitions?.resize?.animation,
+                  duration: 0,
+                },
+              },
+            },
           },
         },
       );
       // watch CSS mutations and trigger a resize
       // FIXME: for chartjs this causes an infinite resizing of the chart
+      // const resizer = debounce(() => {
+      //   console.log("resize");
+      //   canvas.chart.resize();
+      // });
       // const observer = new ResizeObserver(function (mutations) {
       //   console.log("mutations:", mutations);
-      //   canvas.chart.resize();
+      //   // canvas.chart.resize();
+      //   resizer();
       // });
       // observer.observe(canvas);
     } catch (err) {
