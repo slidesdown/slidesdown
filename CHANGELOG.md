@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2025-07-16
+
+### Bug Fixes
+
+- Use minified echarts script
+- Correctly load minified echarts script
+
+### Documentation
+
+- Remove broken gantt chart
+- Update gradients and agenda
+- Update screenshots
+
+### Miscellaneous Tasks
+
+- [**breaking**] Remove custom elements and custom styles
+
 ## [1.0.2] - 2025-07-16
 
 ### Documentation
