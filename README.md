@@ -30,10 +30,10 @@ offline (i.e. perfect for presentations you want to keep private).
 #### Installation
 
 ```bash
-sudo curl -L https://raw.githubusercontent.com/jceb/slidesdown/main/slidesdown.nu -o /usr/local/bin/slidesdown.nu; sudo chmod a+x /usr/local/bin/slidesdown.nu
+sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown -o /usr/local/bin/slidesdown; sudo chmod a+x /usr/local/bin/slidesdown
 ```
 
-The following optional programs are used by `slidesdown.nu`:
+The following optional programs are used by `slidesdown`:
 
 - [`nu`](https://nushell.sh) JSON and YAML parser.
 - `gzip` to encode the presentaiton.
@@ -55,7 +55,7 @@ The following optional programs are used by `slidesdown.nu`:
 #### Update
 
 ```bash
-sudo slidesdown.nu -u
+sudo slidesdown -u
 ```
 
 #### Open local file in slidesdown Online Viewer (python3 required)
@@ -66,27 +66,27 @@ be served from a local web server to your local browser!
 Navigate to any folder with a `SLIDES.md` file (), then run this command:
 
 ```bash
-slidesdown.nu
+slidesdown
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown.nu README.md
+slidesdown README.md
 ```
 
-#### Open local file in slidesdown.nu Offline Viewer (python3 required)
+#### Open local file in slidesdown Offline Viewer (python3 required)
 
 Navigate to any folder with a `SLIDES.md` file (), then run this command:
 
 ```bash
-slidesdown.nu -d
+slidesdown -d
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown.nu -d README.md
+slidesdown -d README.md
 ```
 
 #### Export Slides as PDF
@@ -94,19 +94,19 @@ slidesdown.nu -d README.md
 The export requires [`decktape`](https://github.com/astefanutti/decktape).
 
 ```bash
-slidesdown.nu -e
+slidesdown -e
 ```
 
 If the file name is different from `SLIDES.md`, pass the file name, too:
 
 ```bash
-slidesdown.nu -e README.md
+slidesdown -e README.md
 ```
 
 The exporter can also be used via Docker:
 
 ```bash
-slidesdown.nu -d -e
+slidesdown -d -e
 ```
 
 ## Usage: Create Slides
@@ -131,7 +131,7 @@ curl -sflO https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples
 2. Use [CLI](#cli):
 
 ```bash
-slidesdown.nu -t
+slidesdown -t
 ```
 
 3. Copy template from here:
@@ -214,7 +214,7 @@ Use the [GitHub CLI - `gh`](https://cli.github.com/)
 
 ```bash
 gh repo create myslides --public --clone
-slidesdown.nu -t
+slidesdown -t
 # edit slides ...
 git add SLIDES.md
 git commit -m "first slideshow"
@@ -232,7 +232,7 @@ xdg-open "https://slidesdown.github.io/?slides=$(gh browse -n)"
 Use the [GitHub CLI - `gh`](https://cli.github.com/)
 
 ```bash
-slidesdown.nu -t
+slidesdown -t
 # edit slides ...
 gh gist create SLIDES.md --public
 ```
@@ -271,7 +271,7 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
     [https://slidesdown.github.io/learn.html](https://slidesdown.github.io/learn.html)
   - [`public/plugin/slidesdown.js`](./public/plugin/slidesdown.js) Markdown
     converter plugin - this is the core of this project
-- [`slidesdown.nu`](./slidesdown.nu) CLI
+- [`slidesdown`](./slidesdown) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
   - (deprecated!) [`src/custom-elements.js`](./src/custom-elements.js) contains
     the custom elements that get injected into the presentation, e.g.

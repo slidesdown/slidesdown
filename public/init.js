@@ -18,7 +18,7 @@ import SlidesDown from "slidesdown";
 
 // computeURL builds a URL to a raw markdown file from a short human-typable
 // string, e.g. it turns github.com/slidesdown/slidesdown into
-// https://raw.githubusercontent.com/jceb/slidesdown/main/SLIDES.md
+// https://raw.githubusercontent.com/slidsedown/slidesdown/main/SLIDES.md
 function computeURL(defaults, url) {
   if (!(defaults.branch && defaults.resource)) {
     console.error("Default branch and/or resource unset");
