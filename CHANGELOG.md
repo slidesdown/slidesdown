@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.19.2] - 2025-07-16
+
+### Features
+
+- Add apache echarts
+
 ## [0.19.1] - 2025-07-15
 
 ### Bug Fixes

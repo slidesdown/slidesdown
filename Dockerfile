@@ -1,16 +1,16 @@
 # Available tags: https://hub.docker.com/_/node
 FROM node:22-alpine
 
-LABEL org.opencontainers.image.ref.name="slidesdown/slidesdown:0.19.1"
+LABEL org.opencontainers.image.ref.name="slidesdown/slidesdown:0.19.2"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-or-later"
 LABEL org.opencontainers.image.description="Slideshows as fast as you can type."
 LABEL org.opencontainers.image.documentation="https://github.com/slidesdown/slidesdown"
-LABEL org.opencontainers.image.version="0.19.1"
+LABEL org.opencontainers.image.version="0.19.2"
 LABEL org.opencontainers.image.vendor="Jan Christoph Ebersbach"
 LABEL org.opencontainers.image.authors="Jan Christoph Ebersbach <jceb@e-jc.de>"
 LABEL org.opencontainers.image.url="https://slidesdown.github.io/"
 LABEL org.opencontainers.image.source="https://github.com/slidesdown/slidesdown"
-LABEL org.opencontainers.image.revision="0.19.1"
+LABEL org.opencontainers.image.revision="0.19.2"
 
 RUN apk -U --no-cache add bash tini
 
