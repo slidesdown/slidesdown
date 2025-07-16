@@ -32,8 +32,7 @@ pdfSeparateFragments: false
 
 # <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type. <small>Created by
-> <a href="mailto:jceb@e-jc.de">Jan Christoph Ebersbach</a> and powered by
+> Slideshows as fast as you can type.<br /><small>Powered by
 > <a href="https://revealjs.com/">reveal.js</a></small>
 
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
@@ -71,8 +70,8 @@ pdfSeparateFragments: false
 6. [Backgrounds](#backgrounds)
 7. [Pictures and Icons](#pictures-and-icons)
 8. [Advanced Formatting](#advanced-formatting)
-9. [Charts: ChartJS](#charts-chartjs)
-10. [Charts: ApexCharts](#charts-apexcharts)
+9. [Charts: ApexCharts](#charts-apexcharts)
+10. [Charts: Apache ECharts](#charts-apache-echarts)
 11. [Diagrams](#diagrams)
 
 <!-- .element: style="column-count: 2" -->
@@ -85,19 +84,16 @@ pdfSeparateFragments: false
 
 ### Features
 
-- Setup: No installation required.
-- Focus: Just write Markdown.
-- Sharable: [Create links](https://slidesdown.github.io/loader.html) to slides
-  in git repositories or store the whole presentation in one link.
-- Offline First:
-  [CLI avaiable](https://github.com/slidesdown/slidesdown/blob/main/README.md)
-  for offline presentations.
-- Tunnel Support: Share slides online from your laptop.
-- Multiplex Mode: Advance presenter and viewer slides together.
-- Professional: PDF export, Custom Themes, and UnoCSS Styling.
-- Charts and Diagrams: via [Apache ECharts](https://echarts.apache.org/),
+- Focus: No setup, just write Markdown
+- Sharable: [Create links](https://slidesdown.github.io/loader.html) to public
+  slides or store whole presentations in a link
+- Offline First: Local [CLI avaiable](https://github.com/slidesdown/slidesdown)
+- Multiplex Mode: Jointly view slides via a dynamically generated tunnel
+- Professional: PDF export, custom themes, and UnoCSS styling
+- Charts and diagrams: via [Apache ECharts](https://echarts.apache.org/),
   [apexcharts](https://apexcharts.com/) and
-  [mermaid.js](https://mermaid.js.org/).
+  [mermaid.js](https://mermaid.js.org/)
+- .. and many more
 
 <!-- .element: class="text-4xl" -->
 
@@ -206,16 +202,6 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 Regluar, _italic_, **bold**, and <u>underlined</u>.
 ```
 
-### Gradient Text
-
-<!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
-
-    ### Gradient Text Color
-
-    <!-- .element: style="background: linear-gradient(to right, #fc5c7d, #6a82fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" -->
-
-<!-- .element: class="markdown" -->
-
 ### Unordered List
 
 - Item 1
@@ -254,7 +240,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <figure>
 
-[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
+[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
 
 <figcaption>Picture link</figcaption>
 </figure>
@@ -701,11 +687,13 @@ Bucket List
 
 ### Gradient background
 
-<!-- .slide: data-background-gradient="linear-gradient(#e66465, #9198e5)" -->
+<!-- .slide: data-background-gradient="linear-gradient(to right, rgb(59, 130, 246), rgb(168, 85, 247), rgb(236, 72, 153))" -->
 
 ```markdown
-<!-- .slide: data-background-gradient="linear-gradient(#e66465, #9198e5)" -->
+<!-- .slide: data-background-gradient="linear-gradient(to right, rgb(59, 130, 246), rgb(168, 85, 247), rgb(236, 72, 153))" -->
 ```
+
+See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 
 ### Background image
 
@@ -723,7 +711,7 @@ Bucket List
 
 ### Picture
 
-![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
+![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
 
 ```markdown
 ![tennis](https://...)
@@ -733,7 +721,7 @@ Bucket List
 
 <div class="grid justify-items-center">
 
-![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640)
+![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
 
 <!-- .element: class="r-frame h-[20vh]" -->
 
@@ -842,11 +830,21 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
-### Colored <span style="color: #78a5e9">text</span>
+### Colored <span class="text-red-400">text</span>
 
 ```markdown
-Colored <span style="color: #78a5e9">text</span>
+Colored <span class="text-red-400">text</span>
 ```
+
+### Gradient Text
+
+<!-- .element: class="bg-gradient-to-r bg-clip-text !text-transparent from-green-400 via-indico-300 to-blue-500" -->
+
+    ### Gradient Text Color
+
+    <!-- .element: class="bg-gradient-to-r bg-clip-text !text-transparent from-green-400 via-indico-300 to-blue-500" -->
+
+<!-- .element: class="markdown" -->
 
 ### Box Shadow
 
@@ -1177,7 +1175,7 @@ via [apexcharts](https://apexcharts.com/)
 
 ### More Examples
 
-see [docs](https://apexcharts.com/javascript-chart-demos/)
+See [docs](https://apexcharts.com/javascript-chart-demos/)
 
 ## Charts: Apache ECharts
 
@@ -1451,7 +1449,7 @@ With toolbox buttons:
 
 ### More Examples
 
-see [docs](https://echarts.apache.org/examples/en/index.html)
+See [docs](https://echarts.apache.org/examples/en/index.html)
 
 ## Diagrams
 
