@@ -1,7 +1,7 @@
 /*****************************************************************
  ** Author: Jan Christoph Ebersbach, jceb@e-jc.de
  **
- ** A plugin for reveal.js allowing to integrate apexcharts
+ ** A plugin for reveal.js allowing to integrate echarts
  **
  ** Version: 0.0.1
  **
@@ -13,7 +13,7 @@ async function initializeCharts(canvases) {
   for (let i = 0; i < canvases.length; i++) {
     await createChart(
       canvases[i],
-      atob(canvases[i].getAttribute("data-apexchart")),
+      atob(canvases[i].getAttribute("data-echarts")),
     );
   }
 }
@@ -21,17 +21,22 @@ async function initializeCharts(canvases) {
 async function createChart(canvas, data) {
   if (data) {
     try {
-      const { default: ApexCharts } = await import("apexcharts");
+      const echarts = await import("echarts");
       const _data = JSON.parse(data);
-      const chart = new ApexCharts(canvas, _data);
-      canvas.innerHTML = ""; //  clears inner elements since chart.render won't do it
-      return await chart.render();
+      const chart = echarts.init(canvas, null, { renderer: "svg" });
+      chart.setOption(_data);
+      // watch CSS mutations and trigger a resize
+      const observer = new ResizeObserver(function (mutations) {
+        // console.log("mutations:", mutations);
+        chart.resize();
+      });
+      observer.observe(canvas);
     } catch (err) {
       console.error(err);
       canvas.textContent = err.toString();
     }
   } else {
-    const msg = `apexchart: data missing found for chart`;
+    const msg = `echarts: data missing found for chart`;
     console.warn(msg);
     canvas.textContent = msg;
   }
@@ -41,19 +46,18 @@ async function createChart(canvas, data) {
  * reveal.js apexchart plugin
  */
 const Plugin = {
-  id: "apexchart",
+  id: "echarts",
 
   init: function (reveal) {
     reveal.addEventListener("ready", async function () {
-      const canvases = document.querySelectorAll("div[data-apexchart]");
+      const canvases = document.querySelectorAll("div[data-echarts]");
       await initializeCharts(canvases);
     });
     // Rendering required as the chart might not show under certain
     // circumstances. Therefore, rerender
-    // https://github.com/apexcharts/apexcharts.js/issues/3087
     reveal.addEventListener("slidechanged", async function () {
       const canvases = reveal.getCurrentSlide().querySelectorAll(
-        "div[data-apexchart]",
+        "div[data-echarts]",
       );
       await initializeCharts(canvases);
     });

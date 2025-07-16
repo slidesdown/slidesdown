@@ -7,6 +7,7 @@ import RevealNotes from "reveal-notes";
 import RevealSearch from "reveal-search";
 import RevealZoom from "reveal-zoom";
 import RevealApexchart from "reveal-apexchart";
+import RevealECharts from "reveal-echarts";
 import RevealMermaid from "reveal-mermaid";
 import RevealChartjs from "reveal-chartjs";
 // INFO: non-esm therefore they can't be properly imported:
@@ -47,15 +48,18 @@ function computeURL(defaults, url) {
         `${match.groups.dir_or_branch}/${match.groups.resource}/${defaults.resource}`;
     } else if (match.groups.blob && match.groups.dir_or_branch) {
       // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
-      resource = `${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
-        }`;
+      resource = `${match.groups.dir_or_branch}/${
+        match.groups.resource ? match.groups.resource : defaults.resource
+      }`;
     } else {
       if (match.groups.dir_or_branch) {
-        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${match.groups.resource ? match.groups.resource : defaults.resource
-          }`;
+        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${
+          match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
       } else {
-        resource = `${defaults.branch}/${match.groups.resource ? match.groups.resource : defaults.resource
-          }`;
+        resource = `${defaults.branch}/${
+          match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
       }
     }
     return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`;
@@ -63,19 +67,25 @@ function computeURL(defaults, url) {
     return `https://gist.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/raw/SLIDES.md`;
   }
   return decodedURL;
-};
+}
 
 async function main(defaults) {
   if (!(defaults.branch && defaults.resource && defaults.markdownElementId)) {
-    console.error("Default branch, resource  and/or markdownElementId are not set");
+    console.error(
+      "Default branch, resource  and/or markdownElementId are not set",
+    );
     return;
   }
   const mdSection = document.getElementById(defaults.markdownElementId);
   if (!mdSection) {
-    console.error(`Couldn't find markdown element with id: ${defaults.markdownElementId}`);
+    console.error(
+      `Couldn't find markdown element with id: ${defaults.markdownElementId}`,
+    );
     return;
   }
-  const customSlidesBase64Gzip = new URLSearchParams(new URL(document.URL).search).get("slides64");
+  const customSlidesBase64Gzip = new URLSearchParams(
+    new URL(document.URL).search,
+  ).get("slides64");
   if (customSlidesBase64Gzip) {
     async function decompressBlob(blob) {
       const decompressedStream = blob.pipeThrough(
@@ -103,7 +113,8 @@ async function main(defaults) {
     mdSection.setAttribute("data-markdown", "<<load-plain-markdown>>");
     mdSection.setAttribute("data-markdown-plain", text);
   } else {
-    const customSlidesURL = new URLSearchParams(new URL(document.URL).search).get("slides");
+    const customSlidesURL = new URLSearchParams(new URL(document.URL).search)
+      .get("slides");
     let slidesURL = customSlidesURL
       ? customSlidesURL
       : `github.com/slidesdown/slidesdown/blob/${defaults.branch}/${defaults.resource}`;
@@ -116,7 +127,9 @@ async function main(defaults) {
     }
     mdSection.setAttribute("data-markdown", slidesURL);
   }
-  const multiplexBase64 = new URLSearchParams(new URL(document.URL).search).get("multiplex64");
+  const multiplexBase64 = new URLSearchParams(new URL(document.URL).search).get(
+    "multiplex64",
+  );
   let multiplex = {};
   let dependencies = [];
   if (multiplexBase64) {
@@ -128,22 +141,25 @@ async function main(defaults) {
     multiplex = {
       secret: multiplex?.secret || null,
       id: multiplex?.id || null,
-      url: "/"
+      url: "/",
       // url: "https://reveal-multiplex.glitch.me"
     };
     const minium_secret_length = 20;
-    if (typeof multiplex.id != "string" && multiplex.id.length < minium_secret_length) {
-      multiplex = {}
+    if (
+      typeof multiplex.id != "string" &&
+      multiplex.id.length < minium_secret_length
+    ) {
+      multiplex = {};
     }
     if (multiplex?.id) {
-      dependencies.push({ src: '/socket.io/socket.io.js', async: true })
+      dependencies.push({ src: "/socket.io/socket.io.js", async: true });
       // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/socket.io/socket.io.js', async: true })
     }
     if (multiplex?.secret) {
-      dependencies.push({ src: '/vendor/multiplex/master.js', async: true })
+      dependencies.push({ src: "/vendor/multiplex/master.js", async: true });
       // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/master.js', async: true })
     } else {
-      dependencies.push({ src: '/vendor/multiplex/client.js', async: true })
+      dependencies.push({ src: "/vendor/multiplex/client.js", async: true });
       // dependencies.push({ src: 'https://reveal-multiplex.glitch.me/client.js', async: true })
     }
   }
@@ -178,6 +194,7 @@ async function main(defaults) {
       // RevealAnything,
       RevealChartjs,
       RevealApexchart,
+      RevealECharts,
       RevealMermaid,
     ],
     customcontrols: {
@@ -215,7 +232,7 @@ async function main(defaults) {
   }).then(() => {
     console.debug("initialization finished");
   });
-};
+}
 
 main({
   branch: "main",

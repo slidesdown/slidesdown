@@ -294,14 +294,17 @@ function codeHandler(code, language) {
     }"></div>`;
   } else if (language === "chartjs") {
     // INFO: maybe set height and width are to work around bug https://github.com/chartjs/Chart.js/issues/5805
-    return `<div><div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%;"><canvas data-chartjs=${
+    return `<div><canvas style="width: clamp(200px, 100%, 100vw); height: clamp(200px, 100%, 100vh);" data-chartjs=${
       btoa(code)
-    }></canvas></div></div>`;
-  } else if (
-    language === "apexchart"
-  ) {
-    // INFO: height and width are set to work around bug https://github.com/chartjs/Chart.js/issues/5805
-    return `<div data-apexchart=${btoa(code)}></div>`;
+    }></canvas></div>`;
+  } else if (language === "apexchart") {
+    return `<div style="width: clamp(200px, 100%, 100vw); height: clamp(200px, 100%, 100vh);" data-apexchart=${
+      btoa(code)
+    }></div>`;
+  } else if (language === "echarts") {
+    return `<div><div style="width: 100px; height: 100px; width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-echarts=${
+      btoa(code)
+    }></div></div>`;
   } else {
     return SANITIZE(defaultCodeHandler(code, language));
   }

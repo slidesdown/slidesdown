@@ -1,105 +1,122 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="generator" content="slidesdown 0.19.1" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Slidesdown</title>
+    <link rel="stylesheet" href="/vendor/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="/vendor/reveal.js-plugins/chalkboard/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendor/reveal.js-plugins/customcontrols/style.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="generator" content="slidesdown 0.19.1" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Slidesdown</title>
-  <link rel="stylesheet" href="/vendor/reveal.js/dist/reveal.css" />
-  <link rel="stylesheet" href="/vendor/reveal.js-plugins/chalkboard/style.css" />
-  <link rel="stylesheet" href="/vendor/reveal.js-plugins/customcontrols/style.css" />
-  <link rel="stylesheet" href="/styles.css" />
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-load-metadata
+          data-separator="^(#{1,2} |---$)"
+          data-separator-vertical="^(#{3} |\|\|\|$)"
+          data-separator-notes="^notes?:"
+          id="markdown"
+        ></section>
+      </div>
 
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section data-load-metadata data-separator="^(#{1,2} |---$)" data-separator-vertical="^(#{3} |\|\|\|$)"
-        data-separator-notes="^notes?:" id="markdown"></section>
+      <!-- Layout components -->
+      <header id="slide-header">
+        <div id="slide-header-1"></div>
+        <div id="slide-header-2"></div>
+        <div id="slide-header-3"></div>
+      </header>
+      <footer id="slide-footer">
+        <div id="slide-footer-1"></div>
+        <div id="slide-footer-2"></div>
+        <div id="slide-footer-3"></div>
+      </footer>
     </div>
-
-    <!-- Layout components -->
-    <header id="slide-header">
-      <div id="slide-header-1"></div>
-      <div id="slide-header-2"></div>
-      <div id="slide-header-3"></div>
-    </header>
-    <footer id="slide-footer">
-      <div id="slide-footer-1"></div>
-      <div id="slide-footer-2"></div>
-      <div id="slide-footer-3"></div>
-    </footer>
-  </div>
-  <script type="importmap">
+    <script type="importmap">
       {
         "imports": {
+          "@kurkle/color": "/vendor/kurkle/color.esm.js",
           "apexcharts": "/vendor/apexcharts/apexcharts.esm.js",
           "chartjs": "/vendor/chart.js/auto/auto.js",
           "dompurify": "/vendor/dompurify/purify.es.mjs",
+          "echarts": "/vendor/echarts/echarts.esm.js",
+          "github-slugger": "/vendor/github-slugger/index.js",
           "marked": "/vendor/marked/marked.esm.js",
           "marked-base-url": "/vendor/marked-base-url/index.js",
           "marked-gfm-heading-id": "/vendor/marked-gfm-heading-id/index.js",
-          "github-slugger": "/vendor/github-slugger/index.js",
           "mermaid": "/vendor/mermaid/mermaid.esm.min.mjs",
-          "slidesdown": "/plugin/slidesdown.js",
-          "@kurkle/color": "/vendor/kurkle/color.esm.js",
-          "revealjs": "/vendor/reveal.js/dist/reveal.esm.js",
+          "reveal-apexchart": "/vendor/reveal.js-apexchart/plugin.js",
+          "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
+          "reveal-chartjs": "/vendor/reveal.js-chartjs/plugin.js",
+          "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
+          "reveal-echarts": "/vendor/reveal.js-echarts/plugin.js",
           "reveal-highlight": "/vendor/reveal.js/plugin/highlight/highlight.esm.js",
           "reveal-math": "/vendor/reveal.js/plugin/math/math.esm.js",
+          "reveal-mermaid": "/vendor/reveal.js-mermaid/plugin.js",
           "reveal-notes": "/vendor/reveal.js/plugin/notes/notes.esm.js",
+          "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
           "reveal-search": "/vendor/reveal.js/plugin/search/search.esm.js",
           "reveal-zoom": "/vendor/reveal.js/plugin/zoom/zoom.esm.js",
-          "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
-          "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
-          "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
-          "reveal-chartjs": "/vendor/reveal.js-chartjs/plugin.js",
-          "reveal-apexchart": "/vendor/reveal.js-apexchart/plugin.js",
-          "reveal-mermaid": "/vendor/reveal.js-mermaid/plugin.js"
+          "revealjs": "/vendor/reveal.js/dist/reveal.esm.js",
+          "slidesdown": "/plugin/slidesdown.js"
         }
       }
     </script>
-  <script src="/vendor/reveal.js/dist/reveal.js"></script>
-  <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
-  <script src="/vendor/reveal.js-plugins/chalkboard/plugin.js"></script>
-  <script src="/vendor/reveal.js-plugins/customcontrols/plugin.js"></script>
-  <script type="module" src="src/custom-elements.js"></script>
-  <script type="module" src="/init.js"></script>
-  <script src="/vendor/unocss/preset-attributify.global.js"></script>
-  <script src="/vendor/unocss/preset-icons.global.js"></script>
-  <script src="/vendor/unocss/preset-typography.global.js"></script>
-  <script src="/vendor/unocss/preset-uno.global.js"></script>
-  <script src="/vendor/unocss/preset-web-fonts.global.js"></script>
-  <script>
-    window.__unocss = {
-      presets: [
-        () => window.__unocss_runtime.presets.presetAttributify(),
-        () =>
-          window.__unocss_runtime.presets.presetIcons({
-            scale: 1.2,
-            cdn: "/vendor/",
-          }),
-        () => window.__unocss_runtime.presets.presetTypography(),
-        () => window.__unocss_runtime.presets.presetUno(),
-        () => window.__unocss_runtime.presets.presetWebFonts(),
-      ],
-    };
-  </script>
-  <script src="/vendor/unocss/core.global.js"></script>
-  <!-- <script -->
-  <!--   async -->
-  <!--   src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP" -->
-  <!-- ></script> -->
-  <!-- <script> -->
-  <!--   window.dataLayer = window.dataLayer || [] -->
-  <!--   function gtag() { -->
-  <!--     dataLayer.push(arguments) -->
-  <!--   } -->
-  <!--   gtag("js", new Date()) -->
-  <!--   gtag("config", "G-5277P6Q3RP") -->
-  <!-- </script> -->
-</body>
-
+    <script src="/vendor/reveal.js/dist/reveal.js"></script>
+    <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
+    <script src="/vendor/reveal.js-plugins/chalkboard/plugin.js"></script>
+    <script src="/vendor/reveal.js-plugins/customcontrols/plugin.js"></script>
+    <script type="module" src="src/custom-elements.js"></script>
+    <script type="module" src="/init.js"></script>
+    <script src="/vendor/unocss/preset-attributify.global.js"></script>
+    <script src="/vendor/unocss/preset-icons.global.js"></script>
+    <script src="/vendor/unocss/preset-typography.global.js"></script>
+    <script src="/vendor/unocss/preset-uno.global.js"></script>
+    <script src="/vendor/unocss/preset-web-fonts.global.js"></script>
+    <script>
+      window.__unocss = {
+        presets: [
+          () => window.__unocss_runtime.presets.presetAttributify(),
+          () =>
+            window.__unocss_runtime.presets.presetIcons({
+              scale: 1.2,
+              cdn: "/vendor/",
+            }),
+          () => window.__unocss_runtime.presets.presetTypography(),
+          () => window.__unocss_runtime.presets.presetUno(),
+          () => window.__unocss_runtime.presets.presetWebFonts(),
+        ],
+      };
+    </script>
+    <script src="/vendor/unocss/core.global.js"></script>
+    <!-- <script -->
+    <!--   async -->
+    <!--   src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP" -->
+    <!-- ></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || [] -->
+    <!--   function gtag() { -->
+    <!--     dataLayer.push(arguments) -->
+    <!--   } -->
+    <!--   gtag("js", new Date()) -->
+    <!--   gtag("config", "G-5277P6Q3RP") -->
+    <!-- </script> -->
+  </body>
 </html>

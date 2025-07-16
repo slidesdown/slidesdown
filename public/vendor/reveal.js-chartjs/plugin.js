@@ -58,6 +58,13 @@ async function createChart(canvas, data) {
           },
         },
       );
+      // watch CSS mutations and trigger a resize
+      // FIXME: for chartjs this causes an infinite resizing of the chart
+      // const observer = new ResizeObserver(function (mutations) {
+      //   console.log("mutations:", mutations);
+      //   canvas.chart.resize();
+      // });
+      // observer.observe(canvas);
     } catch (err) {
       console.error(err);
       canvas.textContent = err.toString();

@@ -1255,6 +1255,64 @@ via [apexcharts](https://apexcharts.com/)
 
 see [docs](https://apexcharts.com/docs/chart-types/line-chart/)
 
+## Charts: Apache ECharts
+
+via [apexcharts](https://echarts.apache.org)
+
+### Bar Chart
+
+<div class="grid grid-cols-2">
+
+```echarts
+{
+  "title": {
+    "text": "ECharts Getting Started Example"
+  },
+  "tooltip": {},
+  "xAxis": {
+    "data": ["shirt", "cardigan", "chiffon"]
+  },
+  "yAxis": {},
+  "series": [
+    {
+      "name": "sales",
+      "type": "bar",
+      "data": [5, 20, 36]
+    }
+  ]
+}
+```
+
+<!-- .element: class="w-[80%] h-[80%]" -->
+
+````markdown
+```echarts
+{
+  "title": {
+    "text": "ECharts Getting Started Example"
+  },
+  "tooltip": {},
+  "xAxis": {
+    "data": ["shirt", "cardigan", "chiffon"]
+  },
+  "yAxis": {},
+  "series": [
+    {
+      "name": "sales",
+      "type": "bar",
+      "data": [5, 20, 36]
+    }
+  ]
+}
+```
+````
+
+</div>
+
+### More Examples
+
+see [docs](https://apexcharts.com/docs/chart-types/line-chart/)
+
 ## Diagrams
 
 via [mermaid.js](https://mermaid.js.org/)

@@ -19,7 +19,7 @@ dev:
 
 # Update all dependencies
 [group('update')]
-update-all: update-apexcharts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax update-reveal-multiplex
+update-all: update-apexcharts update-echarts update-revealjs update-revealjs-plugins update-revealjs-pdfexport update-highlight update-mermaid update-chartjs update-pico update-marked update-dompurify update-unocss update-iconify update-mathjax update-reveal-multiplex
 
 # Update mathjax
 [group('update')]
@@ -36,6 +36,14 @@ update-apexcharts:
     # Source: https://github.com/apexcharts/apexcharts.js
     rm -rpf public/vendor/apexcharts
     cp -r ./node_modules/apexcharts/dist/ public/vendor/apexcharts
+
+# Update echarts
+[group('update')]
+update-echarts:
+    #!/usr/bin/env nu
+    # Source: https://echarts.apache.org/
+    rm -rpf public/vendor/echarts
+    cp -r ./node_modules/echarts/dist public/vendor/echarts
 
 # Update pico
 [group('update')]
