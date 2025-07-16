@@ -933,7 +933,7 @@ via [apexcharts](https://apexcharts.com/)
 
 ### Line Chart
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```apexchart
 {
@@ -949,8 +949,6 @@ via [apexcharts](https://apexcharts.com/)
   }
 }
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```apexchart
@@ -971,24 +969,284 @@ via [apexcharts](https://apexcharts.com/)
 
 </div>
 
+### Bar Chart
+
+<div class="grid grid-cols-2 items-center justify-items-center">
+
+```apexchart
+{
+  "series": [
+    {
+      "name": "Inflation",
+      "data": [
+        2.3,
+        3.1,
+        4,
+        10.1,
+        4,
+        3.6,
+        3.2,
+        2.3,
+        1.4,
+        0.8,
+        0.5,
+        0.2
+      ]
+    }
+  ],
+  "chart": {
+    "height": 350,
+    "type": "bar"
+  },
+  "plotOptions": {
+    "bar": {
+      "borderRadius": 10,
+      "dataLabels": {
+        "position": "top"
+      }
+    }
+  },
+  "dataLabels": {
+    "enabled": true,
+    "offsetY": -20,
+    "style": {
+      "fontSize": "12px",
+      "colors": [
+        "#304758"
+      ]
+    }
+  },
+  "xaxis": {
+    "categories": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "position": "top",
+    "axisBorder": {
+      "show": false
+    },
+    "axisTicks": {
+      "show": false
+    },
+    "crosshairs": {
+      "fill": {
+        "type": "gradient",
+        "gradient": {
+          "colorFrom": "#D8E3F0",
+          "colorTo": "#BED1E6",
+          "stops": [
+            0,
+            100
+          ],
+          "opacityFrom": 0.4,
+          "opacityTo": 0.5
+        }
+      }
+    },
+    "tooltip": {
+      "enabled": true
+    }
+  },
+  "yaxis": {
+    "axisBorder": {
+      "show": false
+    },
+    "axisTicks": {
+      "show": false
+    },
+    "labels": {
+      "show": false
+    }
+  },
+  "title": {
+    "text": "Monthly Inflation in Argentina, 2002",
+    "floating": true,
+    "offsetY": 330,
+    "align": "center",
+    "style": {
+      "color": "#444"
+    }
+  }
+}
+```
+
+````markdown
+```apexchart
+{"series":[{"name":"Inflation","data":[2.3,3.1,4,10.1,4,3.6,3.2,2.3,1.4,0.8,0.5,0.2]}],"chart":
+{"height":350,"type":"bar"},"plotOptions":{"bar":{"borderRadius":10,"dataLabels":{"position":"top"}}},
+"dataLabels":{"enabled":true,"offsetY":-20,"style":{"fontSize":"12px","colors":["#304758"]}},"xaxis":
+{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"position":
+"top","axisBorder":{"show":false},"axisTicks":{"show":false},"crosshairs":{"fill":{"type":"gradient",
+"gradient":{"colorFrom":"#D8E3F0","colorTo":"#BED1E6","stops":[0,100],"opacityFrom":0.4,"opacityTo":0.5}}},
+"tooltip":{"enabled":true}},"yaxis":{"axisBorder":{"show":false},"axisTicks":{"show":false},"labels":
+{"show":false}},"title":{"text":"Monthly Inflation in Argentina, 2002","floating":true,"offsetY":330,
+"align":"center","style":{"color":"#444"}}}
+```
+````
+
+</div>
+
+### Treemap
+
+<div class="grid grid-cols-2 items-center justify-items-center">
+
+```apexchart
+{
+  "series": [
+    {
+      "name": "Desktops",
+      "data": [
+        {
+          "x": "ABC",
+          "y": 10
+        },
+        {
+          "x": "DEF",
+          "y": 60
+        },
+        {
+          "x": "XYZ",
+          "y": 41
+        }
+      ]
+    },
+    {
+      "name": "Mobile",
+      "data": [
+        {
+          "x": "ABCD",
+          "y": 10
+        },
+        {
+          "x": "DEFG",
+          "y": 20
+        },
+        {
+          "x": "WXYZ",
+          "y": 51
+        },
+        {
+          "x": "PQR",
+          "y": 30
+        },
+        {
+          "x": "MNO",
+          "y": 20
+        },
+        {
+          "x": "CDE",
+          "y": 30
+        }
+      ]
+    }
+  ],
+  "legend": {
+    "show": false
+  },
+  "chart": {
+    "height": 350,
+    "type": "treemap"
+  },
+  "title": {
+    "text": "Multi-dimensional Treemap",
+    "align": "center"
+  }
+}
+```
+
+````markdown
+```apexchart
+{"series":[{"name":"Desktops","data":[{"x":"ABC","y":10},{"x":"DEF","y":60},{"x":"XYZ","y":41}]},
+{"name":"Mobile","data":[{"x":"ABCD","y":10},{"x":"DEFG","y":20},{"x":"WXYZ","y":51},{"x":"PQR","y":30}
+,{"x":"MNO","y":20},{"x":"CDE","y":30}]}],"legend":{"show":false},"chart":{"height":350,"type":"treemap"},
+"title":{"text":"Multi-dimensional Treemap","align":"center"}}
+```
+````
+
+</div>
+
 ### More Examples
 
-see [docs](https://apexcharts.com/docs/chart-types/line-chart/)
+see [docs](https://apexcharts.com/javascript-chart-demos/)
 
 ## Charts: Apache ECharts
 
 via [apexcharts](https://echarts.apache.org)
 
-### Bar Chart
+### Line Chart
 
-<div class="grid grid-cols-2">
+With toolbox buttons:
+
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```echarts
 {
-  "title": {
-    "text": "ECharts Getting Started Example"
+  "toolbox": {
+    "feature": {
+      "dataZoom": {},
+      "restore": {},
+      "saveAsImage": {}
+    }
   },
-  "tooltip": {},
+  "xAxis": {
+    "type": "category",
+    "data": [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" ]
+  },
+  "yAxis": {
+    "type": "value"
+  },
+  "series": [
+    {
+      "data": [ 150, 230, 224, 218, 135, 147, 260 ],
+      "type": "line"
+    }
+  ]
+}
+```
+
+````markdown
+```echarts
+{
+  "toolbox": {
+    "feature": {
+      "dataZoom": {},
+      "restore": {},
+      "saveAsImage": {}
+    }
+  },
+  "xAxis": {
+    "type": "category",
+    "data": [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" ]
+  },
+  "yAxis": {
+    "type": "value"
+  },
+  "series": [
+    {
+      "data": [ 150, 230, 224, 218, 135, 147, 260 ],
+      "type": "line"
+    }
+  ]
+}
+```
+````
+
+### Bar Chart
+
+<div class="grid grid-cols-2 items-center justify-items-center">
+
+```echarts
+{
   "xAxis": {
     "data": ["shirt", "cardigan", "chiffon"]
   },
@@ -1003,15 +1261,9 @@ via [apexcharts](https://echarts.apache.org)
 }
 ```
 
-<!-- .element: class="w-[80%] h-[80%]" -->
-
 ````markdown
 ```echarts
 {
-  "title": {
-    "text": "ECharts Getting Started Example"
-  },
-  "tooltip": {},
   "xAxis": {
     "data": ["shirt", "cardigan", "chiffon"]
   },
@@ -1029,9 +1281,177 @@ via [apexcharts](https://echarts.apache.org)
 
 </div>
 
+### Stacked Area Chart
+
+<div class="grid grid-cols-2 items-center justify-items-center">
+
+```echarts
+{
+  "tooltip": {
+    "trigger": "axis",
+    "axisPointer": {
+      "type": "cross",
+      "label": {
+        "backgroundColor": "#6a7985"
+      }
+    }
+  },
+  "legend": {
+    "data": [
+      "Email",
+      "Union Ads",
+      "Video Ads",
+      "Direct",
+      "Search Engine"
+    ]
+  },
+  "grid": {
+    "left": "3%",
+    "right": "4%",
+    "bottom": "3%",
+    "containLabel": true
+  },
+  "xAxis": [
+    {
+      "type": "category",
+      "boundaryGap": false,
+      "data": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ]
+    }
+  ],
+  "yAxis": [
+    {
+      "type": "value"
+    }
+  ],
+  "series": [
+    {
+      "name": "Email",
+      "type": "line",
+      "stack": "Total",
+      "areaStyle": {},
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        120,
+        132,
+        101,
+        134,
+        90,
+        230,
+        210
+      ]
+    },
+    {
+      "name": "Union Ads",
+      "type": "line",
+      "stack": "Total",
+      "areaStyle": {},
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        220,
+        182,
+        191,
+        234,
+        290,
+        330,
+        310
+      ]
+    },
+    {
+      "name": "Video Ads",
+      "type": "line",
+      "stack": "Total",
+      "areaStyle": {},
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        150,
+        232,
+        201,
+        154,
+        190,
+        330,
+        410
+      ]
+    },
+    {
+      "name": "Direct",
+      "type": "line",
+      "stack": "Total",
+      "areaStyle": {},
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        320,
+        332,
+        301,
+        334,
+        390,
+        330,
+        320
+      ]
+    },
+    {
+      "name": "Search Engine",
+      "type": "line",
+      "stack": "Total",
+      "label": {
+        "show": true,
+        "position": "top"
+      },
+      "areaStyle": {},
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        820,
+        932,
+        901,
+        934,
+        1290,
+        1330,
+        1320
+      ]
+    }
+  ]
+}
+```
+
+````markdown
+```echarts
+{"tooltip":{"trigger":"axis","axisPointer":{"type":"cross","label":{"backgroundColor":"#6a7985"}}},
+"legend":{"data":["Email","Union Ads","Video Ads","Direct","Search Engine"]},"grid":{"left":"3%",
+"right":"4%","bottom":"3%","containLabel":true},"xAxis":[{"type":"category","boundaryGap":false,
+"data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]}],"yAxis":[{"type":"value"}],"series":
+[{"name":"Email","type":"line","stack":"Total","areaStyle":{},
+"emphasis":{"focus":"series"},"data":[120,132,101,134,90,230,210]},{"name":"Union Ads","type":"line",
+"stack":"Total","areaStyle":{},"emphasis":{"focus":"series"},"data":[220,182,191,234,290,330,310]},
+{"name":"Video Ads","type":"line","stack":"Total","areaStyle":{},"emphasis":{"focus":"series"},
+"data":[150,232,201,154,190,330,410]},{"name":"Direct","type":"line","stack":"Total","areaStyle":{},
+"emphasis":{"focus":"series"},"data":[320,332,301,334,390,330,320]},{"name":"Search Engine","type":"line"
+,"stack":"Total","label":{"show":true,"position":"top"},"areaStyle":{},"emphasis":{"focus":"series"},
+"data":[820,932,901,934,1290,1330,1320]}]}
+```
+````
+
+</div>
+
 ### More Examples
 
-see [docs](https://apexcharts.com/docs/chart-types/line-chart/)
+see [docs](https://echarts.apache.org/examples/en/index.html)
 
 ## Diagrams
 
