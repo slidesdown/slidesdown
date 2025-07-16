@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2025-07-16
+
+### Bug Fixes
+
+- Reduce font size of figure captions and items in sub lists
+
+### Features
+
+- Add support for sr.ht, however support is broken due to sr.ht!
+- Add SEO data
+
+### Miscellaneous Tasks
+
+- Disable animations during resize
+- [**breaking**] Remove chart.js due to blurry charts
+- [**breaking**] Replace slidesdown CLI with slidesdown.nu CLI
+
 ## [0.19.2] - 2025-07-16
 
 ### Features
