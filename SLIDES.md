@@ -219,11 +219,13 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ### Unordered List
 
 - Item 1
+  - Sub Item
 - Item 2
 - Item 3
 
 ```markdown
 - Item 1
+  - Sub item
 - Item 2
 - Item 3
 ```
@@ -231,12 +233,16 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 ### Ordered List
 
 1. Item 1
+   1. Sub item
 2. Item 2
+   - Sub item unordered
 3. Item 3
 
 ```markdown
 1. Item 1
+   1. Sub item ordered
 2. Item 2
+   - Sub item unordered
 3. Item 3
 ```
 
