@@ -27,25 +27,36 @@ function computeURL(defaults, url) {
   const decodedURL = decodeURI(url);
   let match = "";
   const githubRegExp = new RegExp(
-    /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)(?:\/(?:((?<blob>blob)|(?<tree>tree))\/)?(?:(?<dir_or_branch>[^/]*)\/)?(?<resource>.*))?/,
+    /^(?:https:\/\/)?github\.com\/(?<owner>[a-zA-Z0-9_-]+)\/(?<repo>[a-zA-Z0-9_-]+)(?:(?:\/((?<blob>blob)|(?<tree>tree)))?(?:\/(?<dir_or_branch>[^/]+?))?(?:\/(?<resource>.*)))?$/,
   );
   // resource is not considered for gists, because there's no safe way to
   // determine the resource's name from the provided anchor tag
   const gistRegExp = new RegExp(
-    /^(?:https:\/\/)?gist.github\.com\/(?<owner>[a-zA-Z0-9_-]*)\/(?<repo>[a-zA-Z0-9_-]*)\/?/,
+    /^(?:https:\/\/)?gist\.github\.com\/(?<owner>[a-zA-Z0-9_-]+)\/(?<repo>[a-zA-Z0-9_-]+)\/?/,
   );
   // gistRegExp.exec("gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b")
   // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b")
   // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b#file-230911_dif_wg_id_presentation-md")
   // gistRegExp.exec("https://gist.github.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b/#file-230911_dif_wg_id_presentation-md")
   // gistRegExp.exec("https://gist.githubusercontent.com/jceb/4bfcfdcddd2020e5b7e521b9e1044f3b/raw/dd6e852ccb04c1690a7e96eb77008240e0fbf69f/SLIDES.md")
+  const srhtRegExp = new RegExp(
+    /^(?:https:\/\/)?(git\.)?sr\.ht\/(?<owner>~[a-zA-Z0-9_-]+)\/(?<repo>[a-zA-Z0-9_-]+)(?:(?:\/((?<blob>blob)|(?<tree>tree)))?(?:\/(?<dir_or_branch>[^/]+?))?(?:\/(item\/)?(?<resource>.*)))?$/,
+  );
+  // srhtRegExp.exec("https://git.sr.ht/~jceb/test")
+  // srhtRegExp.exec("https://git.sr.ht/~jceb/test/SLIDES.md")
+  // srhtRegExp.exec("https://git.sr.ht/~jceb/test/tree")
+  // srhtRegExp.exec("https://git.sr.ht/~jceb/test/tree/SLIDES.md")
+  // srhtRegExp.exec("https://git.sr.ht/~jceb/test/tree/main/item/SLIDES.md")
+  // srhtRegExp.exec("sr.ht/~jceb/test/tree/main/item/SLIDES.md")
+  // srhtRegExp.exec("sr.ht/~jceb/test/SLIDES.md")
   if ((match = githubRegExp.exec(decodedURL)) !== null) {
     let resource = `${defaults.branch}/${defaults.resource}`;
     // if tree is present, then the default resouce name must be appended
     if ((match.groups.blob | match.groups.tree) && match.groups.dir_or_branch) {
       // if tree or blob are present, then dir_or_branch is the branch - perfect, I can build the URL with confidence
-      resource =
-        `${match.groups.dir_or_branch}/${match.groups.resource}/${defaults.resource}`;
+      resource = `${match.groups.dir_or_branch}/${
+        match.groups.resource ? match.groups.resource : defaults.resource
+      }`;
     } else if (match.groups.blob && match.groups.dir_or_branch) {
       // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
       resource = `${match.groups.dir_or_branch}/${
@@ -65,6 +76,32 @@ function computeURL(defaults, url) {
     return `https://raw.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/${resource}`;
   } else if ((match = gistRegExp.exec(decodedURL)) !== null) {
     return `https://gist.githubusercontent.com/${match.groups.owner}/${match.groups.repo}/raw/SLIDES.md`;
+  } else if ((match = srhtRegExp.exec(decodedURL)) !== null) {
+    // INFO: support for sr.ht is currently broken due to missing CORS headers on sr.ht's side
+    let resource = `${defaults.branch}/${defaults.resource}`;
+    // if tree is present, then the default resouce name must be appended
+    if ((match.groups.blob | match.groups.tree) && match.groups.dir_or_branch) {
+      // if tree or blob are present, then dir_or_branch is the branch - perfect, I can build the URL with confidence
+      resource = `${match.groups.dir_or_branch}/${
+        match.groups.resource ? match.groups.resource : defaults.resource
+      }`;
+    } else if (match.groups.blob && match.groups.dir_or_branch) {
+      // if tree or blob are not present, then dir_or_branch must be a dir but the branch name can't be determined
+      resource = `${match.groups.dir_or_branch}/${
+        match.groups.resource ? match.groups.resource : defaults.resource
+      }`;
+    } else {
+      if (match.groups.dir_or_branch) {
+        resource = `${defaults.branch}/${match.groups.dir_or_branch}/${
+          match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
+      } else {
+        resource = `${defaults.branch}/${
+          match.groups.resource ? match.groups.resource : defaults.resource
+        }`;
+      }
+    }
+    return `https://git.sr.ht/${match.groups.owner}/${match.groups.repo}/blob/${resource}`;
   }
   return decodedURL;
 }
