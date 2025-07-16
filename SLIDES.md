@@ -95,7 +95,7 @@ pdfSeparateFragments: false
 - Tunnel Support: Share slides online from your laptop.
 - Multiplex Mode: Advance presenter and viewer slides together.
 - Professional: PDF export, Custom Themes, and UnoCSS Styling.
-- Charts and Diagrams: via [chart.js](https://www.chartjs.org/),
+- Charts and Diagrams: via [Apache ECharts](https://echarts.apache.org/),
   [apexcharts](https://apexcharts.com/) and
   [mermaid.js](https://mermaid.js.org/).
 
@@ -1181,7 +1181,7 @@ see [docs](https://apexcharts.com/javascript-chart-demos/)
 
 ## Charts: Apache ECharts
 
-via [apexcharts](https://echarts.apache.org)
+via [Apache ECharts](https://echarts.apache.org)
 
 ### Line Chart
 
@@ -1459,7 +1459,7 @@ via [mermaid.js](https://mermaid.js.org/)
 
 ### Flowchart
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 graph LR
@@ -1467,8 +1467,6 @@ graph LR
   B-->C
   B-->D;
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1483,7 +1481,7 @@ graph LR
 
 ### Flowchart Complex
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 graph TD
@@ -1495,8 +1493,6 @@ graph TD
     D --> F[Save Image and Code]
     F --> B
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1515,7 +1511,7 @@ graph TD
 
 ### Sequence Diagram
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 sequenceDiagram
@@ -1523,8 +1519,6 @@ sequenceDiagram
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1539,9 +1533,7 @@ sequenceDiagram
 
 ### State Diagram
 
-<!-- WARNING: man, sometimes these charts go crazy - this chart's height is 1024, so make it half -->
-
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 stateDiagram-v2
@@ -1552,8 +1544,6 @@ stateDiagram-v2
   Moving --> Crash
   Crash --> [*]
 ```
-
-<!-- .element: class="w-[512px] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1571,7 +1561,7 @@ stateDiagram-v2
 
 ### Entity Relationship Diagram
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 erDiagram
@@ -1579,8 +1569,6 @@ erDiagram
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
@@ -1595,7 +1583,7 @@ erDiagram
 
 ### User Journey Diagram
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 journey
@@ -1608,8 +1596,6 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
-
-<!-- .element: class="w-[80%] h-[300px]" -->
 
 ````markdown
 ```mermaid
@@ -1659,7 +1645,7 @@ gantt
 
 ### Git Graph
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 items-center justify-items-center">
 
 ```mermaid
 gitGraph
@@ -1674,8 +1660,6 @@ gitGraph
    commit
    commit
 ```
-
-<!-- .element: class="w-[80%] h-[80%]" -->
 
 ````markdown
 ```mermaid
