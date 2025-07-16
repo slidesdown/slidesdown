@@ -636,18 +636,18 @@ Bucket List
 <!-- .slide: data-auto-animate="1" -->
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div data-id="1" class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
+<div data-id="2" class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div data-id="3" class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
 </div>
 
 ```markdown
 <!-- .slide: data-auto-animate="1" -->
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div data-id="1" class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
+<div data-id="2" class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div data-id="3" class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
 </div>
 ```
 
@@ -656,18 +656,18 @@ Bucket List
 <!-- .slide: data-auto-animate="1" -->
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="3" class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
+<div data-id="2" class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div data-id="1" class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
 </div>
 
 ```markdown
 <!-- .slide: data-auto-animate="1" -->
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div data-id="3" class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
-<div data-id="2" class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div data-id="1" class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
+<div data-id="3" class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
+<div data-id="2" class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div data-id="1" class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
 </div>
 ```
 
@@ -878,50 +878,50 @@ Shadow x-large.
 ### Colored Boxes
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
+<div class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
 </div>
 
 ```markdown
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div class="wh-8rem r-10p" style="background-color: lightblue; color: yellow">App 1</div>
-<div class="wh-10rem r-20p" style="background-color: pink; color: darkred;">App 2</div>
-<div class="wh-12rem r-50p" style="background-color: lightgreen; color: darkgreen;">Circle</div>
+<div class="size-32 rounded-xs bg-blue-300 c-yellow-300">App 1</div>
+<div class="size-48 rounded-lg bg-red-300 c-red-800">App 2</div>
+<div class="size-64 rounded-full bg-green-300 c-green-800">Circle</div>
 </div>
 ```
 
 ### Font Awesome Buttons
 
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
-<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
-<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
+<div class="flex items-center justify-center size-32 rounded-xs shadow-xs bg-blue-300 c-yellow-300"><div class="i-fa6-solid-thumbs-up"></div></div>
+<div class="text-4xl flex items-center justify-center size-48 rounded-lg shadow-lg bg-red-300 c-red-800"><div class="i-fa6-solid-thumbtack"></div></div>
+<div class="text-6xl flex items-center justify-center size-64 rounded-full shadow-xl bg-green-300 c-green-800"><div class="i-fa6-solid-headphones"></div></div>
 </div>
 
 ```markdown
 <div class="grid grid-cols-3 items-center justify-items-center">
-<div class="flex a-center j-around wh-8rem r-10p s-trbl" style="background-color: lightblue; color: yellow"><div class="i-fa6-solid-thumbs-up"></div></div>
-<div class="fs-4 flex a-center j-around wh-10rem r-20p s-rbl" style="background-color: pink; color: darkred;"><div class="i-fa6-solid-thumbtack"></div></div>
-<div class="fs-7 flex a-center j-around wh-12rem r-50p s-rb" style="background-color: lightgreen; color: darkgreen;"><div class="i-fa6-solid-headphones"></div></div>
+<div class="flex items-center justify-center size-32 rounded-xs shadow-xs bg-blue-300 c-yellow-300"><div class="i-fa6-solid-thumbs-up"></div></div>
+<div class="text-4xl flex items-center justify-center size-48 rounded-lg shadow-lg bg-red-300 c-red-800"><div class="i-fa6-solid-thumbtack"></div></div>
+<div class="text-6xl flex items-center justify-center size-64 rounded-full shadow-xl bg-green-300 c-green-800"><div class="i-fa6-solid-headphones"></div></div>
 </div>
 ```
 
 ### Picture Buttons
 
 <div class="grid grid-cols-4 items-center justify-items-center">
-<div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 </div>
 
 ```markdown
 <div class="grid grid-cols-4 items-center justify-items-center">
-<div class="wh-8rem r-10p overflow-hidden background-cover s-trbl" style='background-image: url("https://...");'></div>
-<div class="wh-10rem r-20p overflow-hidden background-cover s-rbl" style='background-image: url("https://...");'></div>
-<div class="wh-12rem r-30p overflow-hidden background-cover s-rb" style='background-image: url("https://...");'></div>
-<div class="wh-14rem r-50p overflow-hidden background-cover s-bl" style='background-image: url("https://...");'></div>
+<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
 </div>
 ```
 

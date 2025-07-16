@@ -20,7 +20,6 @@
     "echarts": "^5.6.0",
     "highlight.js": "11.11.1",
     "jsdom": "26.1.0",
-    "lit": "3.3.1",
     "marked": "16.0.0",
     "marked-base-url": "1.1.7",
     "marked-gfm-heading-id": "4.1.2",

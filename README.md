@@ -273,9 +273,6 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
     converter plugin - this is the core of this project
 - [`slidesdown`](./slidesdown) CLI
 - [`src/`](./src) contains various scripts for docker and the HTML page
-  - (deprecated!) [`src/custom-elements.js`](./src/custom-elements.js) contains
-    the custom elements that get injected into the presentation, e.g.
-    `<v-box></v-box>`, `<h-box></h-box>` and `<columns-2></columns-2>`
 
 ### Setup
 
