@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2025-07-16
+
+### Documentation
+
+- Add more example charts
+
+### Features
+
+- Optimize apexchart configuration
+
 ## [1.0.0] - 2025-07-16
 
 ### Bug Fixes
