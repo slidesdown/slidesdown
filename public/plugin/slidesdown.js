@@ -293,13 +293,13 @@ function codeHandler(code, language) {
       btoa(code)
     }"></div>`;
   } else if (language === "apexchart") {
-    return `<div style="width: clamp(200px, 100%, 100vw); height: clamp(200px, 100%, 100vh);" data-apexchart=${
+    return `<div style="width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-apexchart=${
       btoa(code)
     }></div>`;
   } else if (language === "echarts") {
-    return `<div><div style="width: 100px; height: 100px; width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-echarts=${
+    return `<div style="width: 100px; height: 100px; width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-echarts=${
       btoa(code)
-    }></div></div>`;
+    }></div>`;
   } else {
     return SANITIZE(defaultCodeHandler(code, language));
   }
