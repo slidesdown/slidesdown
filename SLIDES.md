@@ -71,7 +71,7 @@ pdfSeparateFragments: false
 5. [Backgrounds](#backgrounds)
 6. [Pictures and Icons](#pictures-and-icons)
 7. [Advanced Formatting](#advanced-formatting)
-8. [Charts](#charts-apache-echarts)
+8. [Charts](#charts)
 9. [Diagrams](#diagrams)
 
 <!-- .element: class="columns-2 gap-20" -->
