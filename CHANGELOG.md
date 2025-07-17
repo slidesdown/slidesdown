@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-07-17
+
+### Bug Fixes
+
+- Convert all figures to webp
+- Correct rebasing of image sources
+
+### Miscellaneous Tasks
+
+- Update slogan
+- [**breaking**] Remove apexcharts in favor of better performing echarts
+
 ## [1.1.0] - 2025-07-16
 
 ### Bug Fixes
