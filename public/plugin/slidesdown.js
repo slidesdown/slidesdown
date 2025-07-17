@@ -158,7 +158,16 @@ function addAttributes(
     }
   }
   if (element.nodeType == Node.COMMENT_NODE) {
-    addAttributeInElement(element, section, separatorSectionAttributes);
+    if (
+      addAttributeInElement(
+        element,
+        previousElement,
+        separatorElementAttributes,
+      ) ===
+        false
+    ) {
+      addAttributeInElement(element, section, separatorSectionAttributes);
+    }
   }
 }
 
