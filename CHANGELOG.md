@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2025-07-17
+
+### Bug Fixes
+
+- Replace local images with links
+- Restore proper handling of comment instructions
+
+### Documentation
+
+- Add more background images
+
 ## [1.2.0] - 2025-07-17
 
 ### Bug Fixes
