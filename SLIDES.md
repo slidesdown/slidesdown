@@ -583,8 +583,8 @@ Bucket List
 ### Fragments
 
 <div class="grid grid-cols-2 items-center justify-items-center">
-  <img src="slides/figures/photo-1593642702821-c8da6771f0c6.webp" style="width: 70%;" />
-  <img src="slides/figures/photo-1587613864521-9ef8dfe617cc.webp" style="width: 40%;" />
+  <img src="figures/photo-1593642702821-c8da6771f0c6.webp" style="width: 70%;" />
+  <img src="figures/photo-1587613864521-9ef8dfe617cc.webp" style="width: 40%;" />
 <!-- .element: class="fragment" -->
 </div>
 
@@ -738,7 +738,7 @@ Click the image
 
 <div class="grid justify-items-center">
 
-<img height="300" src="slides/figures/photo-1555983341-918bc5fa8495.webp" data-preview-image="slides/figures/photo-1555983341-918bc5fa8495.webp" />
+<img height="300" src="figures/photo-1555983341-918bc5fa8495.webp" data-preview-image="figures/photo-1555983341-918bc5fa8495.webp" />
 
 </div>
 

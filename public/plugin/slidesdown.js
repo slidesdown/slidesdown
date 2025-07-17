@@ -81,20 +81,20 @@ const SANITIZE = (string) =>
  * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
  */
 function addAttributeInElement(node, elementTarget, separator) {
-  const mardownClassesInElementsRegex = new RegExp(separator, "mg");
-  const mardownClassRegex = new RegExp(
+  const markdownClassesInElementsRegex = new RegExp(separator, "mg");
+  const markdownClassRegex = new RegExp(
     '([^"= ]+?)="([^"]+?)"|(data-[^"= ]+?)(?=[" ])',
     "mg",
   );
   let nodeValue = node.nodeValue;
   let matches,
     matchesClass;
-  if ((matches = mardownClassesInElementsRegex.exec(nodeValue)) !== null) {
+  if ((matches = markdownClassesInElementsRegex.exec(nodeValue)) !== null) {
     const classes = matches[1];
     nodeValue = nodeValue.substring(0, matches.index) +
-      nodeValue.substring(mardownClassesInElementsRegex.lastIndex);
+      nodeValue.substring(markdownClassesInElementsRegex.lastIndex);
     node.nodeValue = nodeValue;
-    while ((matchesClass = mardownClassRegex.exec(classes)) !== null) {
+    while ((matchesClass = markdownClassRegex.exec(classes)) !== null) {
       if (matchesClass[2]) {
         elementTarget.setAttribute(matchesClass[1], matchesClass[2]);
       } else {
@@ -158,15 +158,7 @@ function addAttributes(
     }
   }
   if (element.nodeType == Node.COMMENT_NODE) {
-    if (
-      addAttributeInElement(
-        element,
-        previousElement,
-        separatorElementAttributes,
-      ) == false
-    ) {
-      addAttributeInElement(element, section, separatorSectionAttributes);
-    }
+    addAttributeInElement(element, section, separatorSectionAttributes);
   }
 }
 
@@ -204,9 +196,9 @@ export function buildMarkedConfiguration(markedOptions) {
   // TODO: apply img src also to data-preview-image
   const img_src_regex =
     /((<img[^>]*? src=")([^"]*?)("[^>]*?>)|(<img[^>]*? src=')([^']+?)('[^>]*?>))/gi;
-  // const isUrl = /^https?:\/\//
-  // const isAbsolute = /^\//
-  // const isLocal = /^#/
+  const isUrl = /^https?:\/\//;
+  const isAbsolute = /^\//;
+  const isLocal = /^#/;
   const isRelative = /^(\.\.\/|\.\/)/;
   const markedConfig = {
     ...markedOptions,
@@ -224,8 +216,9 @@ export function buildMarkedConfiguration(markedOptions) {
           const matchOffset = match[2] ? 0 : 3;
           text.push(token.text.substring(last_index, match.index));
           const ref = match[3 + matchOffset];
-          // const needsRebase = !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref))
-          const needsRebase = isRelative.test(ref);
+          const needsRebase =
+            !(isUrl.test(ref) || isAbsolute.test(ref) || isLocal.test(ref));
+          // const needsRebase = isRelative.test(ref);
           if (needsRebase) {
             text.push(
               `${match[2 + matchOffset]}${base_url}${match[3 + matchOffset]}${
