@@ -77,7 +77,7 @@ pdfSeparateFragments: false
 
 ## Introduction
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/1_CMoFsPfso/download?force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/joanna-kosinska-1_CMoFsPfso-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -123,21 +123,21 @@ notes:
 
 ### Draw on Slides
 
-![draw](./figures/draw.png)
+![draw](./figures/draw.webp)
 
 ### Open Blackboard
 
-![blackboard](./figures/blackboard.png)
+![blackboard](./figures/blackboard.webp)
 
 ## See for yourself..
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/q1RZ6fAR-i4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTZ8fGRpc2NvdmVyfGVufDB8fHx8MTcyMzk5NDM4N3wy&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/alessio-rinella-q1RZ6fAR-i4-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ## Basics
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/nDd3dIkkOLo/download?force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/nordwood-themes-nDd3dIkkOLo-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -239,7 +239,7 @@ Regluar, _italic_, **bold**, and <u>underlined</u>.
 
 <figure>
 
-[![A picture](https://images.unsplash.com/photo-1595503240812-7286dafaddc1?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
+[![A picture](figures/photo-1595503240812-7286dafaddc1.webp) <!-- .element: style="width: 30%" -->](https://unsplash.com/photos/x9yfTxHpj5w)
 
 <figcaption>Picture link</figcaption>
 </figure>
@@ -334,7 +334,7 @@ hello("world!");
 
 ## Layouts
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/WaWSbX44KIo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8bGF5b3V0fGVufDB8fHx8MTcyMzk5NDY5OHwy&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/kenrick-mills-WaWSbX44KIo-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -564,7 +564,7 @@ Bucket List
 
 ## Animations
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/KHipnBn7sdY/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTR8fG1vdmVtZW50fGVufDB8fHx8MTcyMzk5NDgyNnwy&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/ahmad-odeh-KHipnBn7sdY-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -583,8 +583,8 @@ Bucket List
 ### Fragments
 
 <div class="grid grid-cols-2 items-center justify-items-center">
-  <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 70%;" />
-  <img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" style="width: 40%;" />
+  <img src="slides/figures/photo-1593642702821-c8da6771f0c6.webp" style="width: 70%;" />
+  <img src="slides/figures/photo-1587613864521-9ef8dfe617cc.webp" style="width: 40%;" />
 <!-- .element: class="fragment" -->
 </div>
 
@@ -672,7 +672,7 @@ Bucket List
 
 ## Backgrounds
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/QMDap1TAu0g/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NTh8fHNpbXBsZXxlbnwwfHx8fDE3MjM5MjkxOTh8Mg&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/patrick-tomasso-QMDap1TAu0g-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -696,7 +696,7 @@ See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 
 ### Background image
 
-<!-- .slide: data-background-image="https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640" -->
+<!-- .slide: data-background-image="slides/figures/photo-1499892477393-f675706cbe6e.webp" -->
 
 ```markdown
 <!-- .slide: data-background-image="https://..." -->
@@ -704,13 +704,13 @@ See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 
 ## Pictures and Icons
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/iCx-ANNHyDo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8cGljdHVyZXN8ZW58MHx8fHwxNzIzOTE2NjYwfDI&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/joyce-hankins-iCx-ANNHyDo-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
 ### Picture
 
-![tennis](https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![tennis](figures/photo-1595435934249-5df7ed86e1c0.webp)
 
 ```markdown
 ![tennis](https://...)
@@ -720,7 +720,7 @@ See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 
 <div class="grid justify-items-center">
 
-![prize](https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1\&q=80\&fm=jpg\&crop=entropy\&cs=tinysrgb\&w=640)
+![prize](figures/photo-1555983341-918bc5fa8495.webp)
 
 <!-- .element: class="r-frame h-[20vh]" -->
 
@@ -738,7 +738,7 @@ Click the image
 
 <div class="grid justify-items-center">
 
-<img height="300" src="https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640" data-preview-image="https://images.unsplash.com/photo-1555983341-918bc5fa8495?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920" />
+<img height="300" src="slides/figures/photo-1555983341-918bc5fa8495.webp" data-preview-image="slides/figures/photo-1555983341-918bc5fa8495.webp" />
 
 </div>
 
@@ -825,7 +825,7 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 ## Advanced Formatting
 
-<!-- .slide: data-background-image="https://unsplash.com/photos/gxdctlHPVYk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8YWR2YW5jZWQlMjBza2lsbHxlbnwwfHx8fDE3MjM5OTQ5NDJ8Mg&force=true&w=1920" -->
+<!-- .slide: data-background-image="slides/figures/miquel-parera-gxdctlHPVYk-unsplash.webp" -->
 
 <!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
 
@@ -909,22 +909,22 @@ Shadow x-large.
 ### Picture Buttons
 
 <div class="grid grid-cols-4 items-center justify-items-center">
-<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("slides/figures/photo-1595537725181-0f127e2feeb2.webp");'></div>
+<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("slides/figures/photo-1595589982168-77b64bc1b485.webp");'></div>
+<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("slides/figures/photo-1595586964632-b215dfbc064a.webp");'></div>
+<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("slides/figures/photo-1595508064774-5ff825ff0f81.webp");'></div>
 </div>
 
 ```markdown
 <div class="grid grid-cols-4 items-center justify-items-center">
-<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("https://images.unsplash.com/photo-1595537725181-0f127e2feeb2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1595589982168-77b64bc1b485?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1595586964632-b215dfbc064a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
-<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("https://images.unsplash.com/photo-1595508064774-5ff825ff0f81?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640");'></div>
+<div class="size-32 rounded-xs overflow-hidden bg-cover shadow-xs" style='background-image: url("slides/figures/photo-1595537725181-0f127e2feeb2.webp");'></div>
+<div class="size-38 rounded-lg overflow-hidden bg-cover shadow-lg" style='background-image: url("slides/figures/photo-1595589982168-77b64bc1b485.webp");'></div>
+<div class="size-44 rounded-xl overflow-hidden bg-cover shadow-xl" style='background-image: url("slides/figures/photo-1595586964632-b215dfbc064a.webp");'></div>
+<div class="size-50 rounded-full overflow-hidden bg-cover shadow-2xl" style='background-image: url("slides/figures/photo-1595508064774-5ff825ff0f81.webp");'></div>
 </div>
 ```
 
-## Charts: Apache ECharts
+## Charts
 
 via [Apache ECharts](https://echarts.apache.org)
 
