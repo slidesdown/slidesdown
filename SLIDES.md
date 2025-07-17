@@ -30,9 +30,9 @@ pdfSeparateFragments: false
 # Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
 
-# <img src="/logo.svg" alt="logo" style="height: 0.7em; margin: 0" /> Slidesdown
+# <img src="/logo.svg" alt="logo" height="0.8em" style="height: 0.8em; margin: 0" /> Slidesdown
 
-> Slideshows as fast as you can type.<br /><small>Powered by
+> Presentations at the speed of Markdown<br /><small>Powered by
 > <a href="https://revealjs.com/">reveal.js</a></small>
 
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->

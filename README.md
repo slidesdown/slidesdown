@@ -1,6 +1,6 @@
-# <img src="./public/favicon.svg" alt="logo" style="height: 0.8em; margin: 0" /> Slidesdown
+# <img src="./public/favicon.svg" alt="logo" height="0.8em" style="height: 0.8em; margin: 0;" /> Slidesdown
 
-Slideshows as fast as you can type.
+Presentations at the speed of Markdown
 
 [Slidesdown](https://slidesdown.github.io) is powered by the incredible
 [reveal.js presentation framework](https://revealjs.com/).

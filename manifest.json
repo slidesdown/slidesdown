@@ -1,7 +1,7 @@
 {
   "name": "slidesdown",
   "version": "1.1.0",
-  "description": "Slideshows as fast as you can type",
+  "description": "Presentations at the speed of Markdown",
   "author": "Jan Christoph Ebersbach <jceb@e-jc.de>",
   "license": "AGPL-3.0-or-later",
   "contributors": [
@@ -18,3 +18,4 @@
     "url": "https://hub.docker.com/r/slidesdown/slidesdown"
   }
 }
+
