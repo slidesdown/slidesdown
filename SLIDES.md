@@ -32,6 +32,8 @@ pdfSeparateFragments: false
 
 # <img src="/logo.svg" alt="logo" height="0.8em" style="height: 0.8em; margin: 0" /> Slidesdown
 
+<!-- .slide: data-background-gradient="radial-gradient(#ccfbf1, #ffe4e6)" -->
+
 > Presentations at the speed of Markdown<br /><small>Powered by
 > <a href="https://revealjs.com/">reveal.js</a></small>
 
@@ -41,7 +43,7 @@ pdfSeparateFragments: false
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/kfDHPpCQEBQ/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fHNpbXBsZSUyMHBhcGVyfGVufDB8fHx8MTcyMzk5NjQ5OHwy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 > Slidesdown makes it simple to quickly turn an idea into a beautiful
 > presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is
@@ -60,26 +62,25 @@ pdfSeparateFragments: false
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/p_bcKiZDKyk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTQwfHxmcmFtZXxlbnwwfHx8fDE3MjM5NzY5Njh8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 1. [Introduction](#introduction)
-2. [See for yourself..](#see-for-yourself)
-3. [Basics](#basics)
-4. [Layouts](#layouts)
-5. [Animations](#animations)
-6. [Backgrounds](#backgrounds)
-7. [Pictures and Icons](#pictures-and-icons)
-8. [Advanced Formatting](#advanced-formatting)
-9. [Charts: Apache ECharts](#charts-apache-echarts)
-10. [Diagrams](#diagrams)
+2. [Basics](#basics)
+3. [Layouts](#layouts)
+4. [Animations](#animations)
+5. [Backgrounds](#backgrounds)
+6. [Pictures and Icons](#pictures-and-icons)
+7. [Advanced Formatting](#advanced-formatting)
+8. [Charts](#charts-apache-echarts)
+9. [Diagrams](#diagrams)
 
-<!-- .element: style="column-count: 2" -->
+<!-- .element: class="columns-2 gap-20" -->
 
 ## Introduction
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/1_CMoFsPfso/download?force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Features
 
@@ -133,13 +134,13 @@ notes:
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/q1RZ6fAR-i4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTZ8fGRpc2NvdmVyfGVufDB8fHx8MTcyMzk5NDM4N3wy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ## Basics
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/nDd3dIkkOLo/download?force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Headings
 
@@ -336,7 +337,7 @@ hello("world!");
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/WaWSbX44KIo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8bGF5b3V0fGVufDB8fHx8MTcyMzk5NDY5OHwy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### 1 Column
 
@@ -566,7 +567,7 @@ Bucket List
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/KHipnBn7sdY/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTR8fG1vdmVtZW50fGVufDB8fHx8MTcyMzk5NDgyNnwy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Incremental Lists
 
@@ -674,7 +675,7 @@ Bucket List
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/QMDap1TAu0g/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NTh8fHNpbXBsZXxlbnwwfHx8fDE3MjM5MjkxOTh8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Colored background
 
@@ -706,7 +707,7 @@ See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/iCx-ANNHyDo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8cGljdHVyZXN8ZW58MHx8fHwxNzIzOTE2NjYwfDI&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Picture
 
@@ -827,7 +828,7 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/gxdctlHPVYk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8YWR2YW5jZWQlMjBza2lsbHxlbnwwfHx8fDE3MjM5OTQ5NDJ8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-2" -->
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Colored <span class="text-red-400">text</span>
 
@@ -924,7 +925,11 @@ Shadow x-large.
 </div>
 ```
 
-## Charts: Apache ECharts
+## Charts
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/IrRbSND5EUc/download?force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 via [Apache ECharts](https://echarts.apache.org)
 
@@ -1199,6 +1204,10 @@ With toolbox buttons:
 See [docs](https://echarts.apache.org/examples/en/index.html)
 
 ## Diagrams
+
+<!-- .slide: data-background-image="https://unsplash.com/photos/lFtttcsx5Vk/download?force=true&w=1920" -->
+
+<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 via [mermaid.js](https://mermaid.js.org/)
 
