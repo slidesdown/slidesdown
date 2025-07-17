@@ -47,7 +47,7 @@ async function createChart(canvas, id, data) {
 }
 
 /*!
- * reveal.js apexchart plugin
+ * reveal.js mermaid plugin
  */
 const Plugin = {
   id: "mermaid",

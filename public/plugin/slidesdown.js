@@ -292,10 +292,6 @@ function codeHandler(code, language) {
     return `<div data-mermaid-id="mermaid-${DIAGRAM_COUNTER}" data-mermaid="${
       btoa(code)
     }"></div>`;
-  } else if (language === "apexchart") {
-    return `<div style="width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-apexchart=${
-      btoa(code)
-    }></div>`;
   } else if (language === "echarts") {
     return `<div style="width: 100px; height: 100px; width: clamp(100px, 100%, 100vw); height: clamp(100px, 100%, 100vh);" data-echarts=${
       btoa(code)

@@ -6,9 +6,9 @@ import RevealMath from "reveal-math";
 import RevealNotes from "reveal-notes";
 import RevealSearch from "reveal-search";
 import RevealZoom from "reveal-zoom";
-import RevealApexchart from "reveal-apexchart";
 import RevealECharts from "reveal-echarts";
 import RevealMermaid from "reveal-mermaid";
+// import RevealApexchart from "reveal-apexchart";
 // import RevealChartjs from "reveal-chartjs";
 // INFO: non-esm therefore they can't be properly imported:
 // import * as PdfExport from "reveal-pdfexport";
@@ -230,7 +230,7 @@ async function main(defaults) {
       // Source: https://github.com/rajgoel/reveal.js-plugins/tree/master/anything
       // RevealAnything,
       // RevealChartjs,
-      RevealApexchart,
+      // RevealApexchart,
       RevealECharts,
       RevealMermaid,
     ],

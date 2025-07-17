@@ -43,7 +43,7 @@ async function createChart(canvas, data) {
 }
 
 /*!
- * reveal.js apexchart plugin
+ * reveal.js echarts plugin
  */
 const Plugin = {
   id: "echarts",
