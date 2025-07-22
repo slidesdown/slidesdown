@@ -235,10 +235,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.25.5.tgz#7fc114af5f6563f19f73324b5d5ff36ece0803d1"
   integrity sha512-TXv6YnJ8ZMVdX+SXWVBo/0p8LTcrUYngpWjvm91TMjjBQii7Oz11Lw5lbDV5Y0TzuhSJHwiH4hEtC1I42mMS0g==
 
-"@iconify/json@2.2.359":
-  version "2.2.359"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.359.tgz#b2501788096c26326b8d1f9fa5c2f27d04fe0c87"
-  integrity sha512-nOIaROD3xeLiFGvJu0YIgeu4Hqbmz6T71b0lsFv1TY6Uu6Lk/5Z8GhDByIE2/zfgxvxfv3f+5A/DkLHmMXYu8Q==
+"@iconify/json@2.2.360":
+  version "2.2.360"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.360.tgz#099e05a2f0e296d487dc7e866f4a3cfa732534a5"
+  integrity sha512-N1mmTs7dJd6Ym62fP5DxJG1ZpbXSncD32tC/RJoGGjEPNx52/HzBixEjS9hVPps8CWs2VL7uRr4UKmjiFA/n5Q==
   dependencies:
     "@iconify/types" "*"
     pathe "^1.1.2"
@@ -267,10 +267,10 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz#3188bcb273a414b0d215fd22a58540b989b9409a"
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
-"@mermaid-js/parser@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@mermaid-js/parser/-/parser-0.6.1.tgz#0bdaadb48d220df798915315eae130867b8f6d6a"
-  integrity sha512-lCQNpV8R4lgsGcjX5667UiuDLk2micCtjtxR1YKbBXvN5w2v+FeLYoHrTSSrjwXdMcDYvE4ZBPvKT31dfeSmmA==
+"@mermaid-js/parser@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@mermaid-js/parser/-/parser-0.6.2.tgz#6d505a33acb52ddeb592c596b14f9d92a30396a9"
+  integrity sha512-+PO02uGF6L6Cs0Bw8RpGhikVvMWEysfAyl27qTlroUB8jSWr1lL0Sf6zi78ZxlSnmgSY2AMMKVgghnN9jTtwkQ==
   dependencies:
     langium "3.3.1"
 
@@ -1689,7 +1689,7 @@ jsdom@26.1.0:
     ws "^8.18.0"
     xml-name-validator "^5.0.0"
 
-katex@^0.16.9:
+katex@^0.16.22:
   version "0.16.22"
   resolved "https://registry.yarnpkg.com/katex/-/katex-0.16.22.tgz#d2b3d66464b1e6d69e6463b28a86ced5a02c5ccd"
   integrity sha512-XCHRdUw4lf3SKBaJe4EvgqIuWwkPSo9XoeO8GjQW94Bp7TWv9hNhzZjZ+OH9yf1UmLygb7DIT5GSFQiyt16zYg==
@@ -1775,29 +1775,24 @@ marked-gfm-heading-id@4.1.2:
   dependencies:
     github-slugger "^2.0.0"
 
-marked@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-16.0.0.tgz#0c48e79782f26224f8ce34878644d8c320ad599f"
-  integrity sha512-MUKMXDjsD/eptB7GPzxo4xcnLS6oo7/RHimUMHEDRhUooPwmN9BEpMl7AEOJv3bmso169wHI2wUF9VQgL7zfmA==
-
-marked@^15.0.7:
-  version "15.0.12"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.12.tgz#30722c7346e12d0a2d0207ab9b0c4f0102d86c4e"
-  integrity sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==
+marked@16.1.1, marked@^16.0.0:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-16.1.1.tgz#a7839dcf19fa5e349cad12c561f231320690acd4"
+  integrity sha512-ij/2lXfCRT71L6u0M29tJPhP0bM5shLL3u5BePhFwPELj2blMJ6GDtD7PfJhRLhJ/c2UwrK17ySVcDzy2YHjHQ==
 
 mathjax@3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/mathjax/-/mathjax-3.2.2.tgz#c754d7b46a679d7f3fa03543d6b8bf124ddf9f6b"
   integrity sha512-Bt+SSVU8eBG27zChVewOicYs7Xsdt40qm4+UpHyX7k0/O9NliPc+x77k1/FEsPsjKPZGJvtRZM1vO+geW0OhGw==
 
-mermaid@11.8.1:
-  version "11.8.1"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.8.1.tgz#73e4431a12fd5dae575d6cf55e1dc5b6098a9c6c"
-  integrity sha512-VSXJLqP1Sqw5sGr273mhvpPRhXwE6NlmMSqBZQw+yZJoAJkOIPPn/uT3teeCBx60Fkt5zEI3FrH2eVT0jXRDzw==
+mermaid@11.9.0:
+  version "11.9.0"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.9.0.tgz#fdc055d0f2a7f2afc13a78cb3e3c9b1374614e2e"
+  integrity sha512-YdPXn9slEwO0omQfQIsW6vS84weVQftIyyTGAZCwM//MGhPzL1+l6vO6bkf0wnP4tHigH1alZ5Ooy3HXI2gOag==
   dependencies:
     "@braintree/sanitize-url" "^7.0.4"
     "@iconify/utils" "^2.1.33"
-    "@mermaid-js/parser" "^0.6.1"
+    "@mermaid-js/parser" "^0.6.2"
     "@types/d3" "^7.4.3"
     cytoscape "^3.29.3"
     cytoscape-cose-bilkent "^4.1.0"
@@ -1807,10 +1802,10 @@ mermaid@11.8.1:
     dagre-d3-es "7.0.11"
     dayjs "^1.11.13"
     dompurify "^3.2.5"
-    katex "^0.16.9"
+    katex "^0.16.22"
     khroma "^2.1.0"
     lodash-es "^4.17.21"
-    marked "^15.0.7"
+    marked "^16.0.0"
     roughjs "^4.6.6"
     stylis "^4.3.6"
     ts-dedent "^2.2.0"
@@ -2241,10 +2236,10 @@ vite-node@3.2.4:
     pathe "^2.0.3"
     vite "^5.0.0 || ^6.0.0 || ^7.0.0-0"
 
-vite@7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-7.0.4.tgz#481204416277cfa7c93384c55984475c4276b18f"
-  integrity sha512-SkaSguuS7nnmV7mfJ8l81JGBFV7Gvzp8IzgE8A8t23+AxuNX61Q5H1Tpz5efduSN7NHC8nQXD3sKQKZAu5mNEA==
+vite@7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-7.0.5.tgz#deb2d3b777378f6d3e47c3d41b59f3c93f485738"
+  integrity sha512-1mncVwJxy2C9ThLwz0+2GKZyEXuC3MyWtAAlNftlZZXZDP3AJt5FmwcMit/IGGaNZ8ZOB2BNO/HFUB+CpN0NQw==
   dependencies:
     esbuild "^0.25.0"
     fdir "^6.4.6"
