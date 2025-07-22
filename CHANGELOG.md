@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2025-07-22
+
+### Documentation
+
+- Correct link to charts slide
+- Clarify CLI dependencies
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [1.2.1] - 2025-07-17
 
 ### Bug Fixes
