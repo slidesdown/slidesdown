@@ -11,8 +11,8 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.360",
-    "@testing-library/dom": "10.4.0",
+    "@iconify/json": "2.2.363",
+    "@testing-library/dom": "10.4.1",
     "@unocss/runtime": "66.3.3",
     "@vitest/browser": "3.2.4",
     "dompurify": "3.2.6",
@@ -28,6 +28,6 @@
     "vitest": "3.2.4"
   },
   "dependencies": {
-    "vite": "7.0.5"
+    "vite": "7.0.6"
   }
 }
