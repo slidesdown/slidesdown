@@ -47,27 +47,6 @@ const SANITIZE = (string) =>
       ADD_ATTR: [
         "target",
       ],
-      CUSTOM_ELEMENT_HANDLING: {
-        tagNameCheck: (tagName) =>
-          [
-            "fa-i",
-            "flex-box",
-            "v-box",
-            "h-box",
-            "grid-box",
-            "columns-2",
-            "columns-3",
-            "columns-4",
-            "columns-5",
-            "columns-6",
-          ].includes(tagName),
-        attributeNameCheck: (name) =>
-          [
-            "class",
-            "style",
-            "styles",
-          ].includes(name),
-      },
     },
   );
 
