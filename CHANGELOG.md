@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4] - 2025-08-01
+
+### Bug Fixes
+
+- Add copyright holder to license
+
+### Features
+
+- Enable the use of iframes to embed video, etc
+
+### Miscellaneous Tasks
+
+- Remove deleted custom elements in dompurify
+
 ## [1.2.3] - 2025-07-29
 
 ### Miscellaneous Tasks
