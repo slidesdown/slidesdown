@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.5] - 2025-08-04
+
+### Bug Fixes
+
+- Prevent code injection via comments
+
+### Documentation
+
+- Add embedded youtube video example
+
+### Features
+
+- Allow additional attributes to support  all features of embedded youtube videos
+
 ## [1.2.4] - 2025-08-01
 
 ### Bug Fixes
