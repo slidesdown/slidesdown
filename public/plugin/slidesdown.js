@@ -63,25 +63,23 @@ const SANITIZE = (string) =>
  * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
  */
 function addAttributeInElement(node, elementTarget, separator) {
-  const markdownClassesInElementsRegex = new RegExp(separator, "mg");
-  const markdownClassRegex = new RegExp(
-    '([^"= ]+?)="([^"]+?)"|(data-[^"= ]+?)(?=[" ])',
-    "mg",
+  const attrsInNode = new RegExp(separator, "mg");
+  const attrsRegex = new RegExp(
+    // attributes are limited to prevent code injection
+    "(?:^|\s)(?<attr>class|style|data-[a-z-]+)=(?:\"(?<dval>[^\"]+?)\"|'(?<sval>[^']+?)')",
+    "gm",
   );
-  let nodeValue = node.nodeValue;
   let matches,
-    matchesClass;
-  if ((matches = markdownClassesInElementsRegex.exec(nodeValue)) !== null) {
+    matchesAttrs;
+  if ((matches = attrsInNode.exec(node.nodeValue)) !== null) {
     const classes = matches[1];
-    nodeValue = nodeValue.substring(0, matches.index) +
-      nodeValue.substring(markdownClassesInElementsRegex.lastIndex);
-    node.nodeValue = nodeValue;
-    while ((matchesClass = markdownClassRegex.exec(classes)) !== null) {
-      if (matchesClass[2]) {
-        elementTarget.setAttribute(matchesClass[1], matchesClass[2]);
-      } else {
-        elementTarget.setAttribute(matchesClass[3], "");
-      }
+    node.nodeValue = node.nodeValue.substring(0, matches.index) +
+      node.nodeValue.substring(attrsInNode.lastIndex);
+    while ((matchesAttrs = attrsRegex.exec(classes)) !== null) {
+      elementTarget.setAttribute(
+        matchesAttrs.groups.attr,
+        matchesAttrs.groups.dval || matchesAttrs.groups.sval || "",
+      );
     }
     return true;
   }
@@ -99,10 +97,7 @@ function addAttributes(
   separatorElementAttributes,
   separatorSectionAttributes,
 ) {
-  if (
-    element != null && element.childNodes != undefined &&
-    element.childNodes.length > 0
-  ) {
+  if (element?.childNodes && element.childNodes.length > 0) {
     let previousParentElement = element;
     for (let i = 0; i < element.childNodes.length; i++) {
       const childElement = element.childNodes[i];
