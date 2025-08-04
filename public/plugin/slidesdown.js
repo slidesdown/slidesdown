@@ -43,10 +43,12 @@ const SANITIZE = (string) =>
       ADD_TAGS: [
         "#comment", // comments are vital for configuring revealjs
         "foreignObject", // unfortunately some mermaid diagrams use it, despite being a potential security risk: https://github.com/cure53/DOMPurify/issues/469
-        "iframe", // allow iframes
+        "iframe", // allow iframes to support youtube videos
       ],
       ADD_ATTR: [
         "target",
+        "allow", // required for youtube videos
+        "allowfullscreen", // required for youtube videos
       ],
     },
   );
