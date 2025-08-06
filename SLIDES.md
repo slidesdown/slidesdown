@@ -499,7 +499,7 @@ Bucket List
 </div>
 ```
 
-### Complex
+### Complex: Grid
 
 <div class="grid grid-cols-2 gap-3 align-center justify-center">
 <div class="grid gap-3 [grid-template:_'header_header'_'sidebar_main'_/_40%_60%]">
@@ -564,6 +564,48 @@ Bucket List
 ```
 
 </div>
+
+### Complex: Slide Grid
+
+<!-- .element: class="grid-area-[header] bg-blue text-white! before-content-['Heading:_']" -->
+<!-- .slide: class="grid! [grid-template:_'aside_main'_'aside_header'_'code_code'] gap-2 text-white" -->
+
+<aside class="grid-area-[aside] bg-green p-2">
+
+- Aside section
+
+</aside>
+
+<main class="grid-area-[main] bg-red p-2">
+
+- Main section
+- Freely arrange elements
+- inside a grid that encompasses the whole slide
+
+</main>
+
+<main class="grid-area-[code] text-2xl">
+
+```markdown
+<!-- .element: class="grid-area-[header] bg-blue text-white! before-content-['Heading:_']" -->
+<!-- .slide: class="grid! [grid-template:_'aside_main'_'aside_header'] gap-2 text-white" -->
+
+<aside class="grid-area-[aside] bg-green p-2">
+
+- Aside section
+
+</aside>
+
+<main class="grid-area-[main] bg-red p-2">
+
+- Main section
+- Freely arrange elements
+- inside a grid that encompasses the whole slide
+
+</main>
+```
+
+</footer>
 
 ## Animations
 
