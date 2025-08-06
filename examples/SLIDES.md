@@ -1,4 +1,6 @@
 ---
+# This is a Slidesdown presentation. Learn about Slidesdown at https://slidesdown.github.io
+
 # Metadata about the presentation:
 title: Presentation Title
 subject: My super presentation
