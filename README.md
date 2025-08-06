@@ -138,8 +138,11 @@ slidesdown -t
 
 ```markdown
 ---
+# This is a Slidesdown presentation. Learn about Slidesdown at https://slidesdown.github.io
+
 # Metadata about the presentation:
 title: Presentation Title
+subject: My super presentation
 author: Your Name
 date: 2023-01-20
 keywords: some useful keywords
@@ -160,8 +163,10 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
-# Full list of supported settings: https://revealjs.com/config/ or
-# https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# Full list of supported settings:
+# - https://revealjs.com/config/
+# - https://github.com/hakimel/reveal.js/blob/master/js/config.js
+# - https://github.com/slidesdown/slidesdown/blob/main/public/plugin/slidesdown.js#L758
 # UnoCSS styling: https://unocss.dev/interactive/ and https://tailwindcss.com/docs
 # Icons: https://icones.js.org and https://unocss.dev/presets/icons
 ---
@@ -171,7 +176,7 @@ pdfSeparateFragments: false
 Author: Your Name
 
 <!-- generated with
-!deno run --unstable --allow-read --allow-write https://deno.land/x/remark_format_cli@v0.2.0/remark-format.js --maxdepth 2 %
+!deno run --allow-read --allow-write https://deno.land/x/remark_format_cli@0.4.0/remark-format.js --maxdepth 2 %
 -->
 
 ## Agenda
@@ -193,7 +198,7 @@ notes:
 ### A veritical Slide
 
 - More class styles at [tailwindcss](https://tailwindcss.com/docs) via
-  [UnoCSS](https://unocss.dev/interactive/?s=bg-color)
+  [UnoCSS](https://unocss.dev/interactive/)
 
 ## More Examples
 
