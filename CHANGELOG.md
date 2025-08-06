@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.6] - 2025-08-06
+
+### Bug Fixes
+
+- Restore .element comment functionality
+
+### Documentation
+
+- Add slidesdown hint at the beginning of the presentation file
+- Improve highlighting of headings
+
+### Miscellaneous Tasks
+
+- Remove unused fontawesome settings
+
 ## [1.2.5] - 2025-08-04
 
 ### Bug Fixes
