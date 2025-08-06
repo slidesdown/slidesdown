@@ -16,8 +16,8 @@ import DOMPurify from "dompurify";
 
 const DEFAULT_SLIDE_SEPARATOR = "\r?\n---\r?\n",
   DEFAULT_NOTES_SEPARATOR = "notes?:",
-  DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = "\\\.element\\\s*?(.+?)$",
-  DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = "\\\.slide:\\\s*?(\\\S.+?)$";
+  DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = "\\\s\\\.element:\\\s*(.+?)$",
+  DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = "\\\s\\\.slide:\\\s*(\\\S.+?)$";
 
 const SCRIPT_END_PLACEHOLDER = "__SCRIPT_END__";
 
@@ -63,7 +63,7 @@ const SANITIZE = (string) =>
  * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
  */
 function addAttributeInElement(node, elementTarget, separator) {
-  const attrsInNode = new RegExp(separator, "mg");
+  const attrsInNode = new RegExp(separator, "gm");
   const attrsRegex = new RegExp(
     // attributes are limited to prevent code injection
     "(?:^|\s)(?<attr>class|style|data-[a-z-]+)=(?:\"(?<dval>[^\"]+?)\"|'(?<sval>[^']+?)')",
@@ -72,10 +72,8 @@ function addAttributeInElement(node, elementTarget, separator) {
   let matches,
     matchesAttrs;
   if ((matches = attrsInNode.exec(node.nodeValue)) !== null) {
-    const classes = matches[1];
-    node.nodeValue = node.nodeValue.substring(0, matches.index) +
-      node.nodeValue.substring(attrsInNode.lastIndex);
-    while ((matchesAttrs = attrsRegex.exec(classes)) !== null) {
+    const attrs = matches[1];
+    while ((matchesAttrs = attrsRegex.exec(attrs)) !== null) {
       elementTarget.setAttribute(
         matchesAttrs.groups.attr,
         matchesAttrs.groups.dval || matchesAttrs.groups.sval || "",
@@ -87,8 +85,8 @@ function addAttributeInElement(node, elementTarget, separator) {
 }
 
 /**
- * Add attributes to the parent element of a text node,
- * or the element of an attribute node.
+ * Recursively add attributes to the parent element of a text node,
+ * or the section element, depending on the selector.
  */
 function addAttributes(
   section,
@@ -97,10 +95,11 @@ function addAttributes(
   separatorElementAttributes,
   separatorSectionAttributes,
 ) {
-  if (element?.childNodes && element.childNodes.length > 0) {
+  if (element?.childNodes?.length) {
     let previousParentElement = element;
     for (let i = 0; i < element.childNodes.length; i++) {
       const childElement = element.childNodes[i];
+      // if an element has multiple children, search for the one that can receive the attributes
       if (i > 0) {
         let j = i - 1;
         while (j >= 0) {
@@ -135,16 +134,14 @@ function addAttributes(
     }
   }
   if (element.nodeType == Node.COMMENT_NODE) {
-    if (
+    if (previousElement !== section) {
       addAttributeInElement(
         element,
         previousElement,
         separatorElementAttributes,
-      ) ===
-        false
-    ) {
-      addAttributeInElement(element, section, separatorSectionAttributes);
+      );
     }
+    addAttributeInElement(element, section, separatorSectionAttributes);
   }
 }
 
@@ -300,6 +297,7 @@ export function convertMarkdownToSlides(startElement, marked) {
       const markdown = getMarkdownFromSlide(section);
       // convert markdown to HTML
       section.innerHTML = SANITIZE(await marked.parse(markdown));
+      // set ID on section elements and remove it from headings so revealjs can navigate to the slides via URL fragments
       const firstChild = section.firstElementChild;
       if (firstChild && firstChild.id !== "") {
         section.id = firstChild.id;
@@ -307,6 +305,7 @@ export function convertMarkdownToSlides(startElement, marked) {
       } else {
         section.id = `${sectionNumber}`;
       }
+      // search for comment nodes and add the attributes to respective parent nodes
       addAttributes(
         section,
         section,
