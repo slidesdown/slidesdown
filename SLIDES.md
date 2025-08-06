@@ -41,11 +41,21 @@ pdfSeparateFragments: false
 
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
 
+<style>
+/* highlight headings nicely so they stand out against the background */
+h2 {
+  /* filter: drop-shadow(10px 10px 7px white); */
+  border-radius: 0.75rem;
+  background-color: rgb(255 255 255 / 0.5);
+  display: inline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+</style>
+
 ## Hi!
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/kfDHPpCQEBQ/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fHNpbXBsZSUyMHBhcGVyfGVufDB8fHx8MTcyMzk5NjQ5OHwy&force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 > Slidesdown makes it simple to quickly turn an idea into a beautiful
 > presentation. A [Markdown file](https://slidesdown.github.io/learn.html) is
@@ -64,8 +74,6 @@ pdfSeparateFragments: false
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/p_bcKiZDKyk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTQwfHxmcmFtZXxlbnwwfHx8fDE3MjM5NzY5Njh8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
-
 1. [Introduction](#introduction)
 2. [Basics](#basics)
 3. [Layouts](#layouts)
@@ -81,8 +89,6 @@ pdfSeparateFragments: false
 ## Introduction
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/1_CMoFsPfso/download?force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Features
 
@@ -136,13 +142,9 @@ notes:
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/q1RZ6fAR-i4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTZ8fGRpc2NvdmVyfGVufDB8fHx8MTcyMzk5NDM4N3wy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
-
 ## Basics
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/nDd3dIkkOLo/download?force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Headings
 
@@ -339,8 +341,6 @@ hello("world!");
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/WaWSbX44KIo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8bGF5b3V0fGVufDB8fHx8MTcyMzk5NDY5OHwy&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
-
 ### 1 Column
 
 <div class="grid grid-cols-2">
@@ -501,8 +501,8 @@ Bucket List
 
 ### Complex
 
-<div class="grid grid-cols-2 gap-3">
-<div class="grid gap-3" style="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
+<div class="grid grid-cols-2 gap-3 align-center justify-center">
+<div class="grid gap-3 [grid-template:_'header_header'_'sidebar_main'_/_40%_60%]">
 
 <div class="grid-area-[header] flex flex-col bg-green c-white">
 Shopping List
@@ -533,7 +533,7 @@ Bucket List
 </div>
 
 ```markdown
-<div class="grid gap-3" style="grid-template: 'header header header' 'sidebar main main' / 40% 60%">
+<div class="grid gap-3 [grid-template:_'header_header'_'sidebar_main'_/_40%_60%]">
 
 <div class="grid-area-[header] flex flex-col bg-green c-white">
 Shopping List
@@ -568,8 +568,6 @@ Bucket List
 ## Animations
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/KHipnBn7sdY/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTR8fG1vdmVtZW50fGVufDB8fHx8MTcyMzk5NDgyNnwy&force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Incremental Lists
 
@@ -677,8 +675,6 @@ Bucket List
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/QMDap1TAu0g/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NTh8fHNpbXBsZXxlbnwwfHx8fDE3MjM5MjkxOTh8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
-
 ### Colored background
 
 <!-- .slide: data-background-color="#78a5e9" -->
@@ -708,8 +704,6 @@ See [gradient.codes](https://gradienty.codes/) for more gradient colors.
 ## Pictures and Icons
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/iCx-ANNHyDo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8cGljdHVyZXN8ZW58MHx8fHwxNzIzOTE2NjYwfDI&force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 ### Picture
 
@@ -842,8 +836,6 @@ Many [more icons and icon sets](https://icones.js.org/) are available.
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/gxdctlHPVYk/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8YWR2YW5jZWQlMjBza2lsbHxlbnwwfHx8fDE3MjM5OTQ5NDJ8Mg&force=true&w=1920" -->
 
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
-
 ### Colored <span class="text-red-400">text</span>
 
 ```markdown
@@ -942,8 +934,6 @@ Shadow x-large.
 ## Charts
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/IrRbSND5EUc/download?force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 via [Apache ECharts](https://echarts.apache.org)
 
@@ -1220,8 +1210,6 @@ See [docs](https://echarts.apache.org/examples/en/index.html)
 ## Diagrams
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/lFtttcsx5Vk/download?force=true&w=1920" -->
-
-<!-- .element: class="bg-white/50 inline rounded-xl px-4" -->
 
 via [mermaid.js](https://mermaid.js.org/)
 
