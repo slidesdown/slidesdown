@@ -721,8 +721,6 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
-      "fontawesomePro": false,
-      "fontawesomeFree": false,
       // changed revealjs defaults
       "hash": true,
     };
@@ -809,14 +807,6 @@ const Plugin = () => {
       "topic": addMeta("topic"),
       "url": (url) =>
         S.map((fn) => fn(url))([addMeta("url"), addMeta("og:url")]),
-      "fontawesomePro": loadScript(
-        "https://kit.fontawesome.com/fec85b2437.js",
-        "anonymous",
-      ),
-      "fontawesomeFree": loadScript(
-        "https://kit.fontawesome.com/ce15cd202d.js",
-        "anonymous",
-      ),
       "_customcontrols": () => {
         // ignore the _customcontrols visibility setting
       },
@@ -865,12 +855,6 @@ const Plugin = () => {
       .map((k) => {
         mergedMetadata[k] = parseType(_mergedMetadata[k]);
       });
-    if (mergedMetadata.fontawesomePro) {
-      mergedMetadata.fontawesomeFree = false;
-    }
-    if (mergedMetadata.fontawesomeFree) {
-      mergedMetadata.fontawesomePro = false;
-    }
     if (
       // since revealjsConfig.controls is true by default, only decktape and
       // similar tools are able to override it .. so prefer whatever these tools
