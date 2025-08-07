@@ -350,6 +350,25 @@ describe("Relative URL rewriting", () => {
     expect(section.children[1].src).toBe(`${markedOptions.baseUrl}test.png`);
   });
 
+  test("When a relative image reference without a leading ./ is provided, then it is made absolute.", async () => {
+    SECTION.setAttribute(
+      "data-markdown-plain",
+      [
+        "# hello",
+        "<img src='test.png' />",
+      ].join("\n"),
+    );
+    const metadata = await preProcessSlides(DIV);
+    expect(metadata).toStrictEqual({});
+    await convertMarkdownToSlides(DIV, marked);
+    expect(DIV.children.length).toBe(1);
+    const section = DIV.children[0];
+    assert.instanceOf(section, HTMLElement, "we have an HTML element");
+    expect(section.children.length).toBe(2);
+    expect(section.children[1].tagName).toBe("IMG");
+    expect(section.children[1].src).toBe(`${markedOptions.baseUrl}test.png`);
+  });
+
   test("When an absolute image reference is provided, then it is stays absolute.", async () => {
     SECTION.setAttribute(
       "data-markdown-plain",
@@ -498,6 +517,26 @@ describe("Relative URL rewriting", () => {
     expect(section.children[1].children[0].tagName).toBe("A");
     expect(section.children[1].children[0].href).toBe(
       "https://test.example.com/test.png",
+    );
+  });
+
+  test("When a relative path to a background image is set via data-background-image, then it is made absolute.", async () => {
+    SECTION.setAttribute(
+      "data-markdown-plain",
+      [
+        "# hello",
+        '<!-- .slide: data-background-image="./test.png" class="test" -->',
+      ].join("\n"),
+    );
+    const metadata = await preProcessSlides(DIV);
+    expect(metadata).toStrictEqual({});
+    await convertMarkdownToSlides(DIV, marked);
+    expect(DIV.children.length).toBe(1);
+    const section = DIV.children[0];
+    assert.instanceOf(section, HTMLElement, "we have an HTML element");
+    expect(section.className).toBe("test");
+    expect(section.getAttribute("data-background-image")).toBe(
+      `${markedOptions.baseUrl}test.png`,
     );
   });
 });
