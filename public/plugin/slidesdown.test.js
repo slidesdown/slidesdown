@@ -369,6 +369,27 @@ describe("Relative URL rewriting", () => {
     expect(section.children[1].src).toBe(`${markedOptions.baseUrl}test.png`);
   });
 
+  test("When a relative image and data-preview-image reference is provided, then they are made absolute.", async () => {
+    SECTION.setAttribute(
+      "data-markdown-plain",
+      [
+        "# hello",
+        "<img src='test.png' data-preview-image='test-large.png' />",
+      ].join("\n"),
+    );
+    const metadata = await preProcessSlides(DIV);
+    expect(metadata).toStrictEqual({});
+    await convertMarkdownToSlides(DIV, marked);
+    expect(DIV.children.length).toBe(1);
+    const section = DIV.children[0];
+    assert.instanceOf(section, HTMLElement, "we have an HTML element");
+    expect(section.children.length).toBe(2);
+    expect(section.children[1].tagName).toBe("IMG");
+    expect(section.children[1].src).toBe(`${markedOptions.baseUrl}test.png`);
+    expect(section.children[1].getAttribute("data-preview-image")).toBe(
+      `${markedOptions.baseUrl}test-large.png`,
+    );
+  });
   test("When an absolute image reference is provided, then it is stays absolute.", async () => {
     SECTION.setAttribute(
       "data-markdown-plain",

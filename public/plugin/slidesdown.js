@@ -181,14 +181,20 @@ function rebasePathIfNeeded(base_url, token) {
   let remainder = "";
   const a_href_regex =
     /((<a[^>]* href=")([^"]*)("[^>]*>)|(<a[^>]* href=')([^']*)('[^>]*>))/gi;
-  // TODO: apply img src also to data-preview-image
   const img_src_regex =
     /((<img[^>]* src=")([^"]*)("[^>]*>)|(<img[^>]* src=')([^']*)('[^>]*>))/gi;
+  const img_data_preview_image_regex =
+    /((<img[^>]* data-preview-image=")([^"]*)("[^>]*>)|(<img[^>]* data-preview-image=')([^']*)('[^>]*>))/gi;
   const data_background_image_regex =
     /((\sdata-background-image=")([^"]*)(")|(\sdata-background-image=')([^']*)('))/gi;
   // data-background-image
   for (
-    const regex of [a_href_regex, img_src_regex, data_background_image_regex]
+    const regex of [
+      a_href_regex,
+      img_src_regex,
+      img_data_preview_image_regex,
+      data_background_image_regex,
+    ]
   ) {
     for (const match of token.text.matchAll(regex)) {
       // offset to select between single or double qoutes path in regex
