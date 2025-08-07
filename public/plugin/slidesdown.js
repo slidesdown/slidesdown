@@ -73,6 +73,9 @@ function addAttributeInElement(node, elementTarget, separator) {
     matchesAttrs;
   if ((matches = attrsInNode.exec(node.nodeValue)) !== null) {
     const attrs = matches[1];
+    // remove match from comment node to avoid further processing
+    node.nodeValue = node.nodeValue.substring(0, matches.index) +
+      node.nodeValue.substring(attrsInNode.lastIndex);
     while ((matchesAttrs = attrsRegex.exec(attrs)) !== null) {
       elementTarget.setAttribute(
         matchesAttrs.groups.attr,
@@ -134,14 +137,19 @@ function addAttributes(
     }
   }
   if (element.nodeType == Node.COMMENT_NODE) {
+    let attrs_added = false;
+    // Avoid adding attributes to the section if separatorElementAttributes is used
     if (previousElement !== section) {
-      addAttributeInElement(
+      attrs_added = addAttributeInElement(
         element,
         previousElement,
         separatorElementAttributes,
       );
     }
-    addAttributeInElement(element, section, separatorSectionAttributes);
+    // Speed optimization: only add attributes if they haven't been added before
+    if (!attrs_added) {
+      addAttributeInElement(element, section, separatorSectionAttributes);
+    }
   }
 }
 
