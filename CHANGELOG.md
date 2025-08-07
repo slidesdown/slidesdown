@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.7] - 2025-08-07
+
+### Bug Fixes
+
+- Correct parsing of comments and add more tests
+
+### Documentation
+
+- Add complex slide grid example
+- Update example in readme
+
+### Features
+
+- Add support for data-background-image path rebasing
+- Add support for relative paths in data-preview-image attributes
+
+### Miscellaneous Tasks
+
+- Minor performance improvements when processing markdown data
+- Add tests to verify security of comments
+
 ## [1.2.6] - 2025-08-06
 
 ### Bug Fixes
