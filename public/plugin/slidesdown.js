@@ -66,7 +66,7 @@ function addAttributeInElement(node, elementTarget, separator) {
   const attrsInNode = new RegExp(separator, "gm");
   const attrsRegex = new RegExp(
     // attributes are limited to prevent code injection
-    "(?:^|\s)(?<attr>class|style|data-[a-z-]+)=(?:\"(?<dval>[^\"]+?)\"|'(?<sval>[^']+?)')",
+    /(?:^|\s+)(?<attr>class|style|data-[a-z-]+)=(?:"(?<dval>[^"]+?)"|'(?<sval>[^']+?)')/,
     "gm",
   );
   let matches,

@@ -5,7 +5,7 @@ import {
   buildMarkedConfiguration,
   convertMarkdownToSlides,
   preProcessSlides,
-} from "./slidesdown";
+} from "./slidesdown.js";
 
 const markedOptions = { baseUrl: "https://example.com/slides/" };
 const marked = buildMarkedConfiguration({ ...markedOptions });
@@ -119,6 +119,54 @@ describe("Basic parsing", () => {
     expect(section.children.length).toBe(1);
     expect(section.children[0].tagName).toBe("P");
     expect(section.children[0].textContent).toBe("world");
+  });
+
+  test("When a an element and slide comment, then it adds attributes to the respective HTML elements.", async () => {
+    SECTION.setAttribute(
+      "data-markdown-plain",
+      [
+        "# hello",
+        '<!-- .slide: class="test-slide" style="color: red;" data-visibility="hidden" -->',
+        '<!-- .element:  style="color: green;" class="test-element" -->',
+        "- list element",
+        '- list element 2 <!-- .element: class="test-li"  style="color: orange;"-->',
+        '<!-- .element: class="test-ul"  style="color: blue;"-->',
+      ].join("\n"),
+    );
+    const metadata = await preProcessSlides(DIV);
+    expect(metadata).toStrictEqual({});
+    await convertMarkdownToSlides(DIV, marked);
+    expect(DIV.children.length).toBe(1);
+    const section = DIV.children[0];
+    assert.instanceOf(section, HTMLElement, "we have an HTML element");
+    expect(section.tagName).toBe("SECTION");
+    expect(section.getAttributeNames()).toEqual([
+      "data-markdown",
+      "data-markdown-parsed",
+      "id",
+      "class",
+      "style",
+      "data-visibility",
+    ]);
+    expect(section.className).toBe("test-slide");
+    expect(section.style.color).toBe("red");
+    expect(section.getAttribute("data-visibility")).toBe("hidden");
+    expect(section.children.length).toBe(2);
+    expect(section.children[0].tagName).toBe("H1");
+    expect(section.children[0].getAttributeNames()).toEqual(["style", "class"]);
+    expect(section.children[0].className).toBe("test-element");
+    expect(section.children[0].style.color).toBe("green");
+    expect(section.children[1].tagName).toBe("UL");
+    expect(section.children[1].className).toBe("test-ul");
+    expect(section.children[1].style.color).toBe("blue");
+    expect(section.children[1].children.length).toBe(2);
+    expect(section.children[1].children[1].getAttributeNames()).toEqual([
+      "class",
+      "style",
+    ]);
+    expect(section.children[1].children[1].tagName).toBe("LI");
+    expect(section.children[1].children[1].className).toBe("test-li");
+    expect(section.children[1].children[1].style.color).toBe("orange");
   });
 
   test("When a level 2 heading is in the markdown, then the following content is placed on a separate slide.", async () => {
