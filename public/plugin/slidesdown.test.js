@@ -121,7 +121,7 @@ describe("Basic parsing", () => {
     expect(section.children[0].textContent).toBe("world");
   });
 
-  test("When a an element and slide comment, then it adds attributes to the respective HTML elements.", async () => {
+  test("When an element and slide comment, then it adds attributes to the respective HTML elements.", async () => {
     SECTION.setAttribute(
       "data-markdown-plain",
       [
@@ -129,7 +129,7 @@ describe("Basic parsing", () => {
         '<!-- .slide: class="test-slide" style="color: red;" data-visibility="hidden" -->',
         '<!-- .element:  style="color: green;" class="test-element" -->',
         "- list element",
-        '- list element 2 <!-- .element: class="test-li"  style="color: orange;"-->',
+        '- list element 2 <!-- .element: un-cloak="" class="test-li"  style="color: orange;"-->',
         '<!-- .element: class="test-ul"  style="color: blue;"-->',
       ].join("\n"),
     );
@@ -161,6 +161,7 @@ describe("Basic parsing", () => {
     expect(section.children[1].style.color).toBe("blue");
     expect(section.children[1].children.length).toBe(2);
     expect(section.children[1].children[1].getAttributeNames()).toEqual([
+      "un-cloak",
       "class",
       "style",
     ]);

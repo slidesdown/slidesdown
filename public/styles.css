@@ -1,3 +1,8 @@
+/* Preventing FOUC https://unocss.dev/integrations/runtime */
+[un-cloak] {
+  display: none;
+}
+
 /* FIX: hide customcontrols when printing slides, bug https://github.com/rajgoel/reveal.js-plugins/issues/159 */
 @media print {
   #customcontrols {
