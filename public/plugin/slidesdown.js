@@ -167,7 +167,7 @@ function addSlidifyDefaultOptions(options) {
   return options;
 }
 
-const IS_URL = /^https?:\/\//;
+const IS_URL = /^[a-z]+:/;
 const IS_ABSOLUTE = /^\//;
 const IS_LOCAL = /^#/;
 const IS_RELATIVE = /^(\.\.\/|\.\/)/;

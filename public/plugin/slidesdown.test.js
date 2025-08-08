@@ -560,6 +560,35 @@ describe("Relative URL rewriting", () => {
       `${markedOptions.baseUrl}test.png`,
     );
   });
+
+  test("When a URL is to provided, it is never rebased", async () => {
+    SECTION.setAttribute(
+      "data-markdown-plain",
+      [
+        "# hello",
+        '<img src="https://test.example.com/test.png" />',
+        '<a href="https://test.example.com/test.png">link</a>',
+        '<a href="tel:0123458789">tel</a>',
+        '<a href="mailto:mail@example.com">mail</a>',
+      ].join("\n"),
+    );
+    const metadata = await preProcessSlides(DIV);
+    expect(metadata).toStrictEqual({});
+    await convertMarkdownToSlides(DIV, marked);
+    expect(DIV.children.length).toBe(1);
+    const section = DIV.children[0];
+    expect(section.children.length).toBe(5);
+    expect(section.children[1].getAttribute("src")).toBe(
+      "https://test.example.com/test.png",
+    );
+    expect(section.children[2].getAttribute("href")).toBe(
+      "https://test.example.com/test.png",
+    );
+    expect(section.children[3].getAttribute("href")).toBe("tel:0123458789");
+    expect(section.children[4].getAttribute("href")).toBe(
+      "mailto:mail@example.com",
+    );
+  });
 });
 
 describe("Security", () => {
