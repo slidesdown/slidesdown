@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.8] - 2025-08-08
+
+### Bug Fixes
+
+- Recognize all URLs and don't rebase them
+
+### Features
+
+- Add un-cloak property to combat FUOC
+
 ## [1.2.7] - 2025-08-07
 
 ### Bug Fixes
