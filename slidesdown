@@ -105,8 +105,8 @@ def main [
   # Publish locally docker-hosted presentation on the internet via a CloudFlare tunnel (env: SLIDESDOWN_PUBLISH)
   --export (-e)
   # Export slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env: SLIDESDOWN_EXPORT)
-  --output (-o): string = "SLIDES.pdf"
-  # Write export to this filename (env: SLIDESDOWN_OUTPUT)
+  --output (-o): path
+  # Write export to this filename (env: SLIDESDOWN_OUTPUT, default: <filename>.pdf)
   --resolution (-r): string = "1600x900"
   # Export resolution (env: SLIDESDOWN_RESOLUTION)'
   --template (-t)
@@ -152,7 +152,7 @@ def main [
     let use_multiplex = $env | get -i SLIDESDOWN_MULTIPLEX | default $multiplex | into bool
     let use_publish = $env | get -i SLIDESDOWN_PUBLISH | default $publish | into bool
     let use_export = $env | get -i SLIDESDOWN_EXPORT | default $export | into bool
-    let use_output = $env | get -i SLIDESDOWN_OUTPUT | default $output | into string
+    let use_output = $env | get -i SLIDESDOWN_OUTPUT | default $output | default ($filename | str replace -r "\\.md$" ".pdf") | into string
     let use_resolution = $env | get -i SLIDESDOWN_RESOLUTION | default $resolution | into string
     let use_no_open = $env | get -i SLIDESDOWN_NO_OPEN | default $no_open | into bool
     let use_verbose = $env | get -i SLIDESDOWN_VERBOSE | default $verbose | into bool
