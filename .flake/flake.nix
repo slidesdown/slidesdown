@@ -28,11 +28,6 @@
             })
           ];
         };
-        my-python-packages =
-          python-packages: with python-packages; [
-            # pyyaml # YAML module
-          ];
-        python-with-my-packages = pkgs.python3.withPackages my-python-packages;
         allOsPackages = with pkgs; [
           # Nix packages: https://search.nixos.org/packages
           # deno # JS interpreter https://deno.land/
@@ -44,7 +39,6 @@
           nodejs_22 # node used for husky installation https://nodejs.org/en/
           deno
           nushell # Nu Shell https://www.nushell.sh/
-          python-with-my-packages
         ];
         linuxOnlyPackages = [ ];
       in
