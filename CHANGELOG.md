@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.9] - 2025-08-13
+
+### Bug Fixes
+
+- Derive export filename from input filename
+
+### Features
+
+- Add analytics
+
+### Miscellaneous Tasks
+
+- Remove unused python dependency
+- Update dependencies
+
 ## [1.2.8] - 2025-08-08
 
 ### Bug Fixes
