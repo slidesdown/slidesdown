@@ -36,6 +36,8 @@ RUN yarn install --prod; rm -rf /usr/local/share/.cache
 
 COPY published public
 COPY published/index.html .
+# Disable analytics in docker container
+RUN sed -i -e '/simpleanalyticscdn.com/d' index.html
 COPY vite.config.js .
 
 ENV SERVING_SLIDESDOWN=1
