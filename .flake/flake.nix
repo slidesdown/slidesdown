@@ -30,15 +30,14 @@
         };
         allOsPackages = with pkgs; [
           # Nix packages: https://search.nixos.org/packages
-          # deno # JS interpreter https://deno.land/
           bashInteractive # bash used in scripts
           curl # HTTP and more CLI https://curl.se/
           gh # GitHub CLI https://cli.github.com/
           git-cliff # Changelog generator https://github.com/orhun/git-cliff
           just # Simple make replacement https://just.systems/
           nodejs_22 # node used for husky installation https://nodejs.org/en/
-          deno
-          nushell # Nu Shell https://www.nushell.sh/
+          deno # JS interpreter https://deno.land/
+          unstable.nushell # Nu Shell https://www.nushell.sh/
         ];
         linuxOnlyPackages = [ ];
       in
