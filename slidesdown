@@ -225,8 +225,7 @@ def main [
             $i = $i + 1
           }
           log warning $"Tunnel established. You have to manually kill it after exiting slidesdown. Command:\ncat ($tunnel_pid) | xargs kill"
-          let _tunnel_url = open --raw $tunnel_output | lines | find "|  https://" | parse --regex ".* \(?<tunnel>https://[^ ]*\) .*" | get -i 0.tunnel
-          let _tunnel_url = $_tunnel_url | url parse
+          let _tunnel_url = open --raw $tunnel_output | lines | find "|  https://" | parse --regex ".* \(?<tunnel>https://[^ ]*\) .*" | get -i 0.tunnel | ansi strip | url parse
           $tunnel_url = $tunnel_url | upsert scheme $_tunnel_url.scheme | upsert host $_tunnel_url.host
         }
       }
