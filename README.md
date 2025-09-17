@@ -163,6 +163,16 @@ controls: true
 center: true
 # Create separate pages for fragments
 pdfSeparateFragments: false
+# Loop the presentation
+loop: false
+# Controls automatic progression to the next slide
+# - 0:      Auto-sliding only happens if the data-autoslide HTML attribute
+#           is present on the current slide or fragment
+# - 1+:     All slides will progress automatically at the given interval in milliseconds
+# - false:  No auto-sliding, even if data-autoslide is present
+autoSlide: 0
+# Activate the scroll view (disables 3d navigation), see https://revealjs.com/scroll-view/
+# view: scroll
 # Full list of supported settings:
 # - https://revealjs.com/config/
 # - https://github.com/hakimel/reveal.js/blob/master/js/config.js
