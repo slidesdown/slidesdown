@@ -36,7 +36,7 @@
           git-cliff # Changelog generator https://github.com/orhun/git-cliff
           just # Simple make replacement https://just.systems/
           nodejs_22 # node used for husky installation https://nodejs.org/en/
-          deno # JS interpreter https://deno.land/
+          unstable.deno # JS interpreter https://deno.land/
           unstable.nushell # Nu Shell https://www.nushell.sh/
         ];
         linuxOnlyPackages = [ ];
