@@ -53,13 +53,16 @@ autoSlide: 0
 
 <style>
 /* highlight headings nicely so they stand out against the background */
-h2 {
-  /* filter: drop-shadow(10px 10px 7px white); */
-  border-radius: 0.75rem;
+h2, h3 {
+  filter: drop-shadow(10px 10px 7px white);
+  border-radius: 0.2em;
   background-color: rgb(255 255 255 / 0.5);
-  display: inline;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+h1, h2, h3 {
+  width: fit-content;
+  margin: 0 auto 2rem auto !important;
 }
 </style>
 
@@ -88,13 +91,11 @@ h2 {
 2. [Basics](#basics)
 3. [Layouts](#layouts)
 4. [Animations](#animations)
-5. [Backgrounds](#backgrounds)
+5. [Background](#background)
 6. [Pictures and Icons](#pictures-and-icons)
 7. [Advanced Formatting](#advanced-formatting)
 8. [Charts](#charts)
 9. [Diagrams](#diagrams)
-
-<!-- .element: class="columns-2 gap-20" -->
 
 ## Introduction
 
@@ -148,7 +149,9 @@ notes:
 
 ![blackboard](./figures/blackboard.webp)
 
-## See for yourself..
+---
+
+<h2>See for yourself..</h2>
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/q1RZ6fAR-i4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTZ8fGRpc2NvdmVyfGVufDB8fHx8MTcyMzk5NDM4N3wy&force=true&w=1920" -->
 
@@ -723,7 +726,7 @@ Bucket List
 </div>
 ```
 
-## Backgrounds
+## Background
 
 <!-- .slide: data-background-image="https://unsplash.com/photos/QMDap1TAu0g/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NTh8fHNpbXBsZXxlbnwwfHx8fDE3MjM5MjkxOTh8Mg&force=true&w=1920" -->
 
