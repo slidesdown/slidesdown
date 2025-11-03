@@ -324,14 +324,14 @@ hello("world!");
 
 ### Math formulas
 
-`$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
+$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$
 
-`$$ e^{\pi i}=-1 $$`
+$$ e^{\pi i}=-1 $$
 
 ```markdown
-`$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$`
+$$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6} $$
 
-`$$ e^{\pi i}=-1 $$`
+$$ e^{\pi i}=-1 $$
 ```
 
 ### Table

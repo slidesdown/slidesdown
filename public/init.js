@@ -212,7 +212,7 @@ async function main(defaults) {
     //   mathjax: "/vendor/mathjax/MathJax.js"
     // },
     mathjax3: {
-      mathjax: "/vendor/mathjax/es5/tex-mml-chtml.js",
+      mathjax: "/vendor/mathjax/tex-mml-chtml.js",
     },
     plugins: [
       SlidesDown,
