@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.10] - 2025-11-03
+
+### Bug Fixes
+
+- Strip escape sequences from cloudflare tunnel string
+- Improve styling of headings
+- Make math formulas work again
+
+### Documentation
+
+- Add loop and view variables to frontmatter
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- Update dependencies
+- Update example
+
 ## [1.2.9] - 2025-08-13
 
 ### Bug Fixes
