@@ -734,6 +734,7 @@ const Plugin = () => {
       "theme": "white",
       "highlight-theme": "monokai",
       "favicon": "/favicon.svg",
+      "unocss": "",
       // changed revealjs defaults
       "hash": true,
     };
@@ -756,23 +757,27 @@ const Plugin = () => {
       document.body.appendChild(script);
     };
     const loadTheme = (name) => async (url) => {
-      try {
-        let response = await fetch(url);
-        let json = await response.json();
-        window.__unocss = {
-          ...window.__unocss,
-          theme: {
-            ...(window.__unocss.theme || {}),
-            ...json,
-          },
-        };
-      } catch (e) {
-        console.error(
-          `An error occurred while fetching the unocss theme configuration, URL ${url}:`,
-          e,
-        );
+      if (url.length > 0) {
+        console.debug("unocss: loading unocss theme from:", url);
+        try {
+          let response = await fetch(url);
+          let json = await response.json();
+          window.__unocss = {
+            ...window.__unocss,
+            theme: {
+              ...(window.__unocss.theme || {}),
+              ...json,
+            },
+          };
+        } catch (e) {
+          console.error(
+            `unocss: An error occurred while fetching the unocss theme configuration, URL ${url}:`,
+            e,
+          );
+        }
       }
-      await import("/vendor/unocss/core.global.js?url");
+      await import("unocss");
+      console.debug("unocss: finished loading unocss");
     };
     const addMeta = (name) => (content) => {
       const meta = document.createElement("meta");
@@ -910,11 +915,11 @@ const Plugin = () => {
     }
     const revealjsNewConfig = {};
     Object.keys(mergedMetadata)
-      .map((k) => {
+      .map(async (k) => {
         const fn = applyFunctions[k];
         const value = mergedMetadata[k];
         if (fn) {
-          fn(value);
+          await fn(value);
         } else {
           if (k in revealjsConfig) {
             revealjsNewConfig[k] = value;
