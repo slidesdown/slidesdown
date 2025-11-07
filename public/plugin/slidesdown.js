@@ -727,7 +727,7 @@ const Plugin = () => {
   let deck;
 
   /**
-   * Apply metadta to presentation.
+   * Apply metadata / frontmatter to presentation.
    */
   function applyMetadata(metadata) {
     const defaultMetadata = {
@@ -754,6 +754,25 @@ const Plugin = () => {
         script.crossorirgin = crossorirgin;
       }
       document.body.appendChild(script);
+    };
+    const loadTheme = (name) => async (url) => {
+      try {
+        let response = await fetch(url);
+        let json = await response.json();
+        window.__unocss = {
+          ...window.__unocss,
+          theme: {
+            ...(window.__unocss.theme || {}),
+            ...json,
+          },
+        };
+      } catch (e) {
+        console.error(
+          `An error occurred while fetching the unocss theme configuration, URL ${url}:`,
+          e,
+        );
+      }
+      await import("/vendor/unocss/core.global.js?url");
     };
     const addMeta = (name) => (content) => {
       const meta = document.createElement("meta");
@@ -818,6 +837,7 @@ const Plugin = () => {
       "subject": addMeta("subject"),
       "summary": addMeta("summary"),
       "topic": addMeta("topic"),
+      "unocss": loadTheme("unocss"),
       "url": (url) =>
         S.map((fn) => fn(url))([addMeta("url"), addMeta("og:url")]),
       "_customcontrols": () => {

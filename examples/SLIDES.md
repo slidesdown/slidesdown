@@ -13,6 +13,8 @@ keywords: some useful keywords
 favicon: /favicon.svg
 # Theme, list of supported themes: https://github.com/slidesdown/slidesdown.github.io/tree/main/vendor/reveal.js/dist/theme
 theme: white
+# URL to JSON file that contains a UnoCSS theme configuration https://unocss.dev/config/theme
+# unocss: /unocss.json
 # Code highlighting theme, list of supported themes: https://github.com/slidesdown/slidesdown.github.io/tree/main/vendor/highlight.js
 highlight-theme: tokyo-night-dark
 
