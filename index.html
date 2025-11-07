@@ -108,14 +108,16 @@
     <script src="/vendor/unocss/preset-attributify.global.js"></script>
     <script src="/vendor/unocss/preset-icons.global.js"></script>
     <script src="/vendor/unocss/preset-typography.global.js"></script>
-    <script src="/vendor/unocss/preset-uno.global.js"></script>
     <script src="/vendor/unocss/preset-wind4.global.js"></script>
     <script src="/vendor/unocss/preset-web-fonts.global.js"></script>
     <script>
       // Documentation: https://unocss.dev/integrations/runtime#usage
       window.__unocss = {
         presets: [
-          () => window.__unocss_runtime.presets.presetWind4(),
+          () =>
+            window.__unocss_runtime.presets.presetWind4({
+              preflights: { reset: false },
+            }),
           () => window.__unocss_runtime.presets.presetAttributify(),
           () =>
             window.__unocss_runtime.presets.presetIcons({
@@ -123,7 +125,6 @@
               cdn: "/vendor/",
             }),
           () => window.__unocss_runtime.presets.presetTypography(),
-          () => window.__unocss_runtime.presets.presetUno(),
           () => window.__unocss_runtime.presets.presetWebFonts(),
         ],
       };
