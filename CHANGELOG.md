@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.12] - 2025-11-07
+
+### Features
+
+- Use presetWind4 instead of presetWind3
+
 ## [1.2.11] - 2025-11-07
 
 ### Bug Fixes
