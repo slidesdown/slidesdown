@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2025-11-07
+
+### Bug Fixes
+
+- Properly replace presetWind3 and load presetWind4
+
+### Features
+
+- [**breaking**] Make icons display as inline-block and align vertically in the middle
+- Add option to load a remote unocss theme configuration
+
 ## [1.2.12] - 2025-11-07
 
 ### Features
