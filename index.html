@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -58,7 +58,8 @@
           data-separator-vertical="^(#{3} |\|\|\|$)"
           data-separator-notes="^notes?:"
           id="markdown"
-        ></section>
+        >
+        </section>
       </div>
 
       <!-- Layout components -->
@@ -108,10 +109,13 @@
     <script src="/vendor/unocss/preset-icons.global.js"></script>
     <script src="/vendor/unocss/preset-typography.global.js"></script>
     <script src="/vendor/unocss/preset-uno.global.js"></script>
+    <script src="/vendor/unocss/preset-wind4.global.js"></script>
     <script src="/vendor/unocss/preset-web-fonts.global.js"></script>
     <script>
+      // Documentation: https://unocss.dev/integrations/runtime#usage
       window.__unocss = {
         presets: [
+          () => window.__unocss_runtime.presets.presetWind4(),
           () => window.__unocss_runtime.presets.presetAttributify(),
           () =>
             window.__unocss_runtime.presets.presetIcons({
@@ -125,7 +129,10 @@
       };
     </script>
     <script src="/vendor/unocss/core.global.js"></script>
-    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <script
+      async
+      src="https://scripts.simpleanalyticscdn.com/latest.js"
+    ></script>
     <!-- <script -->
     <!--   async -->
     <!--   src="https://www.googletagmanager.com/gtag/js?id=G-5277P6Q3RP" -->
