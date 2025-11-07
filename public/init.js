@@ -267,6 +267,7 @@ async function main(defaults) {
       ],
     },
   }).then(() => {
+    Reveal.sync(); // workaround to make the first slide center properly after adding slides
     console.debug("initialization finished");
   });
 }
