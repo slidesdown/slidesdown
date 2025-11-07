@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.11] - 2025-11-07
+
+### Bug Fixes
+
+- Call Reveal.sync() after initializing slides to center current slide
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [1.2.10] - 2025-11-03
 
 ### Bug Fixes
