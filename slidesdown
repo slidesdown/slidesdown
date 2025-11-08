@@ -122,10 +122,10 @@ def main [
   --version (-v)
   # Print script version
 ]: nothing -> nothing {
-  let use_version = $env | get -i SLIDESDOWN_VERSION | default $version | into bool
-  let use_update = $env | get -i SLIDESDOWN_UPDATE | default $update | into bool
-  let use_template = $env | get -i SLIDESDOWN_TEMPLATE | default $template | into bool
-  let use_filename = $env | get -i SLIDESDOWN_FILENAME | default $filename | into string
+  let use_version = $env | get -o SLIDESDOWN_VERSION | default $version | into bool
+  let use_update = $env | get -o SLIDESDOWN_UPDATE | default $update | into bool
+  let use_template = $env | get -o SLIDESDOWN_TEMPLATE | default $template | into bool
+  let use_filename = $env | get -o SLIDESDOWN_FILENAME | default $filename | into string
   let root_directory = $use_filename | path expand | path dirname
   let slides_filename = $use_filename | path basename
   # The directory of the slides file becomes the root directory for all other services
@@ -136,7 +136,7 @@ def main [
   } else if $use_update {
     updateScript
   } else if $use_template {
-    let use_template_url = ($env | get -i SLIDESDOWN_TEMPLATE_URL | default $template_url | into string)
+    let use_template_url = ($env | get -o SLIDESDOWN_TEMPLATE_URL | default $template_url | into string)
     createTemplate $slides_filename $use_template_url
   } else {
     # Display slideshow
@@ -144,22 +144,22 @@ def main [
       log error $"File not found: ($use_filename)"
       exit 1
     }
-    let use_docker = $env | get -i SLIDESDOWN_DOCKER | default $docker | into bool
-    let use_encode = $env | get -i SLIDESDOWN_ENCODE | default $encode | into bool
-    let use_port = $env | get -i SLIDESDOWN_PORT | default $port | into int
-    let use_service = $env | get -i SLIDESDOWN_SERVICE | default $service | into string
-    let use_image = $env | get -i SLIDESDOWN_IMAGE | default (if ($image | is-not-empty) {$image} else {$IMAGE}) | into string
-    let use_multiplex = $env | get -i SLIDESDOWN_MULTIPLEX | default $multiplex | into bool
-    let use_publish = $env | get -i SLIDESDOWN_PUBLISH | default $publish | into bool
-    let use_export = $env | get -i SLIDESDOWN_EXPORT | default $export | into bool
-    let use_output = $env | get -i SLIDESDOWN_OUTPUT | default $output | default ($filename | str replace -r "\\.md$" ".pdf") | into string
-    let use_resolution = $env | get -i SLIDESDOWN_RESOLUTION | default $resolution | into string
-    let use_no_open = $env | get -i SLIDESDOWN_NO_OPEN | default $no_open | into bool
-    let use_verbose = $env | get -i SLIDESDOWN_VERBOSE | default $verbose | into bool
+    let use_docker = $env | get -o SLIDESDOWN_DOCKER | default $docker | into bool
+    let use_encode = $env | get -o SLIDESDOWN_ENCODE | default $encode | into bool
+    let use_port = $env | get -o SLIDESDOWN_PORT | default $port | into int
+    let use_service = $env | get -o SLIDESDOWN_SERVICE | default $service | into string
+    let use_image = $env | get -o SLIDESDOWN_IMAGE | default (if ($image | is-not-empty) {$image} else {$IMAGE}) | into string
+    let use_multiplex = $env | get -o SLIDESDOWN_MULTIPLEX | default $multiplex | into bool
+    let use_publish = $env | get -o SLIDESDOWN_PUBLISH | default $publish | into bool
+    let use_export = $env | get -o SLIDESDOWN_EXPORT | default $export | into bool
+    let use_output = $env | get -o SLIDESDOWN_OUTPUT | default $output | default ($filename | str replace -r "\\.md$" ".pdf") | into string
+    let use_resolution = $env | get -o SLIDESDOWN_RESOLUTION | default $resolution | into string
+    let use_no_open = $env | get -o SLIDESDOWN_NO_OPEN | default $no_open | into bool
+    let use_verbose = $env | get -o SLIDESDOWN_VERBOSE | default $verbose | into bool
 
     # Compute URLs to the service
     let base = { scheme: http, host: localhost, port: $use_port }
-    let baseService = if $use_docker { $base } else {$base | reject port | merge {scheme: https, host: $use_service }}
+    let baseService = if $use_docker { $base } else {$base | reject -o port | merge {scheme: https, host: $use_service }}
     let url = if $use_encode {
       ({...$baseService, params: {slides64: (open --raw $slides_filename | gzip -9 | | encode base64 --url)}})
     } else {
@@ -174,14 +174,14 @@ def main [
     if $use_export {
       # extract frontmatter
       let markdown = open --raw $slides_filename | lines
-      let frontmatter = if ($markdown | get -i 0 | $in == "---") {
+      let frontmatter = if ($markdown | get -o 0 | $in == "---") {
         let _frontmatter = $markdown | drop nth 0 | take until { $in == "---" }
-        if ($markdown | get -i ($_frontmatter | length | $in + 1)) != "---" { return {} }
+        if ($markdown | get -o ($_frontmatter | length | $in + 1)) != "---" { return {} }
         $_frontmatter | to text | from yaml
       } else {{}}
-      let author = $frontmatter | get -i author | default ""
-      let title = $frontmatter | get -i title | default ""
-      let subject = $frontmatter | get -i subject | default ""
+      let author = $frontmatter | get -o author | default ""
+      let title = $frontmatter | get -o title | default ""
+      let subject = $frontmatter | get -o subject | default ""
       let decktape_args = [--pause 500 --size $use_resolution --pdf-author $author --pdf-title $title --pdf-subject $subject reveal ($url | url join) $use_output]
       if $use_docker {
         let cmd = [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" $DECKTAPE_IMAGE ...$decktape_args]
