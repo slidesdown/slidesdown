@@ -8,9 +8,7 @@
 !/published
 /published/.git
 !/src
-/src/*
-!/src/entrypoint.sh
-!/src/multiplex.sh
+/src/pdfexport_add_export.patch
 !/vite.config.js
 !/package.json
 !/yarn.lock

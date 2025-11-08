@@ -170,7 +170,6 @@ def main [
       }
       ({...$baseService, params: {slides: $slides}})
     }
-    mut tunnel_url = $url | reject -i port
 
     if $use_export {
       # extract frontmatter
@@ -193,86 +192,74 @@ def main [
         if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
         run-external ...$cmd
       }
-      return
-    } else {
-      if $use_publish {
-        log info "Establishing tunnel"
-        if not $use_docker {
-          log warning "Ignoring publish flag because the presentation isn't hosted via docker."
-        } else {
-          # TODO: Implement publish functionality
-          let tunnel_output = mktemp -t slidesdown_tunnel_XXXX
-          print $tunnel_output
-          let tunnel_pid = mktemp -t slidesdown_tunnel_pid_XXXX
-          let cmd = [cloudflared tunnel --url ($base | url join) --pidfile $tunnel_pid]
-          if $use_verbose {log info $"Running command: ($cmd | str join ' ')"}
-          let tunnel_job_id = job spawn -t tunnel {
-            # run-external ...$cmd | tee --stderr { save -f $tunnel_output }
-            bash -x -c $"trap \"xargs kill < ($tunnel_pid); rm -f '($tunnel_output)' '($tunnel_pid)'\" 1 2 3 15; ($cmd | str join ' ') 2>&1 | tee ($tunnel_output)"
-          }
-          mut i = 0
-          let timeout = 20sec
-          let sleep_for = 0.1sec
-          while $i < ($timeout / $sleep_for)  {
-            if (job list | where {$in.id == $tunnel_job_id} | length) == 0 {
-              log error "Failed to establish tunnel, exiting."
-              exit 1
-            }
-            if (open --raw $tunnel_output | lines | find "|  https://" | length) > 0 {
-              break
-            }
-            sleep $sleep_for
-            $i = $i + 1
-          }
-          log warning $"Tunnel established. You have to manually kill it after exiting slidesdown. Command:\ncat ($tunnel_pid) | xargs kill"
-          let _tunnel_url = open --raw $tunnel_output | lines | find "|  https://" | parse --regex ".* \(?<tunnel>https://[^ ]*\) .*" | get -i 0.tunnel | ansi strip | url parse
-          $tunnel_url = $tunnel_url | upsert scheme $_tunnel_url.scheme | upsert host $_tunnel_url.host
-        }
-      }
+      return # exit
     }
 
-    # Create mutliplex configuration
     let multiplex_secret = random chars -l 40
     let multiplex_id = $multiplex_secret | hash sha256
     let multiplex_presenter_url = $url | upsert params.multiplex64 ({id: $multiplex_id, secret: $multiplex_secret} | to json | encode base64 --url)
     let multiplex_client_url = $url | upsert params.multiplex64 ({id: $multiplex_id} | to json | encode base64 --url)
-    let tunnel_multiplex_presenter_url = $tunnel_url | upsert params.multiplex64 ({id: $multiplex_id, secret: $multiplex_secret} | to json | encode base64 --url)
-    let tunnel_multiplex_client_url = $tunnel_url | upsert params.multiplex64 ({id: $multiplex_id} | to json | encode base64 --url)
 
     if $use_docker {
       ## slidesdown in docker container
       let CONTAINER_SLIDES_DIRECTORY = "/srv/slides"
       let CONTAINER_SLIDES_PORT = 8080
       let name = $"slidesdown_(random chars -l 20)"
-      let cmd = [docker run -d --name $name --rm -v $"($root_directory)/:($CONTAINER_SLIDES_DIRECTORY)" -p $"($use_port):($CONTAINER_SLIDES_PORT)" $use_image]
+      let cmd = [
+        docker run
+        -d
+        -e $"URL=($url | url join)"
+        -e $"VERBOSE=(if $use_verbose {"1"} else {""})"
+        -e $"MULTIPLEX=(if $use_multiplex {"1"} else {""})"
+        -e $"PUBLISH=(if $use_publish {"1"} else {""})"
+        --name $name
+        --rm
+        -v $"($root_directory)/:($CONTAINER_SLIDES_DIRECTORY)"
+        -p $"($use_port):($CONTAINER_SLIDES_PORT)"
+        $use_image
+      ]
       if $use_verbose {log info $"Running command: ($cmd | str join ' ')"}
       # let jobid = job spawn -t slidesdown { run-external ...$cmd }
       let container_id = run-external ...$cmd
       # INFO: due to nushell not supporting traps (https://github.com/nushell/nushell/issues/8360), bash needs to be
       # used to kill the container when the script ends
       if true {
-        bash -c $"
-        trap 'docker kill ($container_id) >/dev/null' 1 2 3 15
-        echo 'Waiting for container to start..'
-        sleep 2
+        bash -c $'
+        if ($use_verbose | into string); then
+          set -x
+        fi
+        trap "docker kill ($container_id) >/dev/null" 1 2 3 15
+        echo -n "Starting slidesdown "
+        while [ -n "$("(")docker ps -q -f id="($container_id)"(")")" ] && ! docker exec ($container_id) test -e /tmp/tunnel_presenter.url; do
+          echo -n "."
+          sleep 1
+        done
+        echo " ready."
+        if ($use_publish | into string); then
+          sleep 3 # extra wait for the tunnel to become ready
+        fi
+        URL="$("(")docker exec ($container_id) cat /tmp/tunnel_presenter.url(")")"
         if ($use_multiplex | into string); then
-          if ($use_publish | into string) && ($use_docker | into string); then
-            echo 'Public slideshow Presenter URL \(keep secret!\): ($tunnel_multiplex_presenter_url | url join)'
-            echo 'Public slideshow Follower URL: ($tunnel_multiplex_client_url | url join)'
+          FOLLOWER_URL="$("(")docker exec ($container_id) cat /tmp/tunnel_follower.url(")")"
+          if ($use_publish | into string); then
+            echo "Public slideshow Presenter URL ("(")keep secret!(")"): ${URL}"
+            echo "Public slideshow Follower URL: ${FOLLOWER_URL}"
+          else
+            echo "Local slideshow Presenter URL ("(")keep secret!(")"): ${URL}"
+            echo "Local slideshow Follower URL: ${FOLLOWER_URL}"
           fi
-          echo 'Local slideshow Presenter URL \(keep secret!\): ($multiplex_presenter_url | url join)'
-          echo 'Local slideshow Follower URL: ($multiplex_client_url | url join)'
         else
-          if ($use_publish | into string) && ($use_docker | into string); then
-            echo 'Public slideshow URL: ($tunnel_url | url join)'
+          if ($use_publish | into string); then
+            echo "Publish slideshow URL: ${URL}"
+          else
+            echo "Local slideshow URL: ${URL}"
           fi
-          echo 'Local slideshow URL: ($url | url join)'
         fi
         if (url-opener $use_no_open | is-not-empty | into string); then
-          '(url-opener $use_no_open)' '(if $use_multiplex {$multiplex_presenter_url} else {$url} | url join)' || true
+          "(url-opener $use_no_open)" "$URL" &
         fi
         docker attach --sig-proxy=false ($container_id)
-        "
+        '
       } else {
         ### currently not use until trap is added to nushell
         let container_id = run-external ...$cmd
@@ -293,26 +280,29 @@ def main [
         # docker kill $container_id
       }
     } else {
+      if $use_publish {
+        log warning "Ignoring publish flag because the presentation isn't hosted via docker."
+      }
       ## slidesdown service with slides served by a local web server
       if true {
         let server_cmd = create-webserver-cmd
-        bash -c $"
-        trap \"rm -f '($server_cmd)'\" 1 2 3 15
-        python3 \"($server_cmd)\" localhost ($use_port) &
+        bash -c $'
+        trap "rm -f ("'")($server_cmd)("'")" 1 2 3 15
+        python3 "($server_cmd)" localhost ($use_port) &
         if ($use_multiplex | into string); then
-          echo 'Local slideshow Presenter URL \(keep secret!): ($multiplex_presenter_url | url join)'
-          echo 'Local slideshow Follower URL: ($multiplex_client_url | url join)'
+          echo "Local slideshow Presenter URL ("(")keep secret!(")"): ($multiplex_presenter_url | url join)"
+          echo "Local slideshow Follower URL: ($multiplex_client_url | url join)"
         else
-          echo 'Local slideshow URL: ($url | url join)'
+          echo "Local slideshow URL: ($url | url join)"
         fi
         if (url-opener $use_no_open | is-not-empty | into string); then
-          '(url-opener $use_no_open)' '(if $use_multiplex {$multiplex_presenter_url} else {$url} | url join)' || true
+          "(url-opener $use_no_open)" "(if $use_multiplex {$multiplex_presenter_url} else {$url} | url join)" || true
         fi
-        trap \"kill %1\" 1 2 3 15
+        trap "kill %1" 1 2 3 15
         wait %1
-        "
+        '
       } else {
-        ### currently not use until trap is added to nushell
+        ### currently not in use until trap is added to nushell
         # INFO: can't use job spawn until trap has been implemented
         # return (job spawn { python3 $server_cmd localhost $port; rm $server_cmd })
         # let job_id = run-webserver $use_port ($use_filename | path expand | path dirname) ($use_filename | path basename)
@@ -323,7 +313,7 @@ def main [
         # INFO: can't use job spawn until trap has been implemented
         # return (job spawn { python3 $server_cmd localhost $port; rm $server_cmd })
         if $use_multiplex {
-          print -e $"Local slideshow Presenter URL \(keep secret!\): ($multiplex_presenter_url | url join)"
+          print -e $'Local slideshow Presenter URL ("(")keep secret!(")"): ($multiplex_presenter_url | url join)'
           print -e $"Local slideshow Follower URL: ($multiplex_client_url | url join)"
         } else {
           print -e $"Local slideshow URL: ($url | url join)"

@@ -35,8 +35,8 @@ sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slides
 
 `slidesdown` CLI has the following dependencies:
 
-- [`nu`](https://nushell.sh) JSON and YAML parser.
-- `gzip` to encode the presentaiton.
+- [`nu`](https://nushell.sh) interpreter for the slidesdown programm.
+- `gzip` to encode the presentation.
 - `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
   (MacOS) for opening the slideshow in the default browser.
 - [`docker`](https://www.docker.com/) required for offline presentations and
@@ -48,9 +48,6 @@ sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slides
   GitHub.
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
   exporting slideshows as PDF.
-- [`cloudflared`](https://github.com/cloudflare/cloudflared) for making the
-  presentation accessible on the internet via a
-  [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
 
 #### Update
 
@@ -264,11 +261,12 @@ xdg-open "https://slidesdown.github.io/?slides=${URL}"
 
 ### Required Tools
 
+- [`nu`](https://nushell.sh) interpreter for the slidesdown programm.
 - [`curl`](https://curl.se/) HTTP client
 - [`gh`](https://github.com/cli/cli) GitHub CLI for creating releases
 - [`git-cliff`](https://github.com/orhun/git-cliff) changelog generator
 - [`just`](https://just.systems/) task runner
-- [`node`](https://nodejs.org/) >=22
+- [`node`](https://nodejs.org/) >=24
 
 ### Folder Structure and Important Files
 
