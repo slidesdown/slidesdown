@@ -13,6 +13,7 @@ LABEL org.opencontainers.image.url="https://slidesdown.github.io/"
 LABEL org.opencontainers.image.source="https://github.com/slidesdown/slidesdown"
 LABEL org.opencontainers.image.revision="1.3.2"
 
+# Install dependencies
 RUN apk -U --no-cache add bash tini
 RUN wget -o - -O /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/download/2025.11.1/cloudflared-linux-amd64; chmod a+x /usr/local/bin/cloudflared
 RUN wget -o - -O /tmp/nu.tar.gz https://github.com/nushell/nushell/releases/download/0.108.0/nu-0.108.0-x86_64-unknown-linux-musl.tar.gz; tar xzf /tmp/nu.tar.gz nu-0.108.0-x86_64-unknown-linux-musl/nu; mv nu-0.108.0-x86_64-unknown-linux-musl/nu /usr/local/bin; rmdir nu-0.108.0-x86_64-unknown-linux-musl
@@ -27,17 +28,14 @@ COPY multiplex/index.js .
 
 # Configure slidesdown
 WORKDIR /srv
-
 COPY package.json yarn.lock .
 RUN yarn install --prod; rm -rf /usr/local/share/.cache
-
 COPY published public
 COPY published/index.html .
-# Disable analytics in docker container
-RUN sed -i -e '/simpleanalyticscdn.com/d' index.html
 COPY vite.config.js .
+ENV SERVING_SLIDESDOWN=1 # enables seperate vite configuration inside the container
+RUN sed -i -e '/simpleanalyticscdn.com/d' index.html # Disable analytics in docker container
 
-ENV SERVING_SLIDESDOWN=1
 
 EXPOSE 8080
 

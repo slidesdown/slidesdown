@@ -54,6 +54,7 @@ export default defineConfig(() => {
     },
   };
   if (process.env.SERVING_SLIDESDOWN == "1") {
+    // configuration active inside docker container via SERVING_SLIDESDOWN variable
     return {
       ...config,
       server: {
