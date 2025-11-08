@@ -35,12 +35,12 @@ sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slides
 
 `slidesdown` CLI has the following dependencies:
 
-- [`nu`](https://nushell.sh) interpreter for the slidesdown programm.
-- `gzip` to encode the presentation.
-- `xdg-open`, [`open-cli`](https://github.com/sindresorhus/open-cli) or `open`
-  (MacOS) for opening the slideshow in the default browser.
+- [`nu`](https://nushell.sh) required interpreter for the slidesdown programm.
 - [`docker`](https://www.docker.com/) required for offline presentations and
   hot-reloading slides while editing.
+
+Optional dependencies if `docker` isn't used:
+
 - [`python3`](https://www.python.org/) required for online presentations via
   [slidesdown.github.io](https://slidesdown.github.io) if the slideshow file
   shall be served from the local computer, i.e. useful for creating slides or
