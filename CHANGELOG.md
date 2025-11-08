@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2025-11-08
+
+### Features
+
+- Integrate cloudflared inside container image and drop outside dependency
+
+### Miscellaneous Tasks
+
+- [**breaking**] Remove deprecated nushell syntax
+
 ## [1.3.1] - 2025-11-07
 
 ### Bug Fixes
