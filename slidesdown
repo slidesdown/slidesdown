@@ -3,7 +3,7 @@
 
 use std/log
 
-let VERSION = "1.3.2"
+let VERSION = "1.3.3"
 let IMAGE = $"slidesdown/slidesdown:($VERSION)"
 let UPDATE_URL = "https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown"
 let DECKTAPE_IMAGE = "ghcr.io/astefanutti/decktape:3.15.0"

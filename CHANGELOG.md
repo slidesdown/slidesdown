@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2025-11-08
+
+### Bug Fixes
+
+- Fix removal of analytics in docker container and this and other Dockerfile elements
+
 ## [1.3.2] - 2025-11-08
 
 ### Features
