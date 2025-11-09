@@ -89,7 +89,7 @@ except KeyboardInterrupt:
 def main [
   filename: path = "SLIDES.md"
   # Path to file that contains the presentation (env: SLIDESDOWN_FILENAME)
-  --service (-s): string = "slidesdown.github.io"
+  --service: string = "slidesdown.github.io"
   # Online service to use for presenting the slideshow, instead of docker (env: SLIDESDOWN_SERVICE)
   --encode (-b)
   # Encode the whole slideshow document as base64 string in the URL so that the presentation can be shared via URL without it being publicly available (env: SLIDESDOWN_ENCODE)
@@ -105,10 +105,14 @@ def main [
   # Publish locally docker-hosted presentation on the internet via a CloudFlare tunnel (env: SLIDESDOWN_PUBLISH)
   --export (-e)
   # Export slideshow as PDF - if exporting from a local docker instance repeat the options that were used to start the service when using this option (env: SLIDESDOWN_EXPORT)
+  --screenshot (-s)
+  # Create a screenshot of a slide (env: SLIDESDOWN_SCREENSHOT)
+  --screenshot-slide (-S): int = 1
+  # Select slide to be included in the screenshot (env: SLIDESDOWN_SCREENSHOT_SLIDE)
   --output (-o): path
   # Write export to this filename (env: SLIDESDOWN_OUTPUT, default: <filename>.pdf)
   --resolution (-r): string = "1600x900"
-  # Export resolution (env: SLIDESDOWN_RESOLUTION)'
+  # PDF export resolution and screenshot resolution (env: SLIDESDOWN_RESOLUTION)'
   --template (-t)
   # Create SLIDES.md template (env: SLIDESDOWN_TEMPLATE)
   --template-url (-T): string = "https://raw.githubusercontent.com/slidesdown/slidesdown/main/examples/SLIDES.md"
@@ -152,6 +156,8 @@ def main [
     let use_multiplex = $env | get -o SLIDESDOWN_MULTIPLEX | default $multiplex | into bool
     let use_publish = $env | get -o SLIDESDOWN_PUBLISH | default $publish | into bool
     let use_export = $env | get -o SLIDESDOWN_EXPORT | default $export | into bool
+    let use_screenshot = $env | get -o SLIDESDOWN_SCREENSHOT | default $screenshot | into bool
+    let use_screenshot_slide = $env | get -o SLIDESDOWN_SCREENSHOT_SLIDE | default $screenshot_slide | into int
     let use_output = $env | get -o SLIDESDOWN_OUTPUT | default $output | default ($filename | str replace -r "\\.md$" ".pdf") | into string
     let use_resolution = $env | get -o SLIDESDOWN_RESOLUTION | default $resolution | into string
     let use_no_open = $env | get -o SLIDESDOWN_NO_OPEN | default $no_open | into bool
@@ -183,15 +189,33 @@ def main [
       let title = $frontmatter | get -o title | default ""
       let subject = $frontmatter | get -o subject | default ""
       let decktape_args = [--pause 500 --size $use_resolution --pdf-author $author --pdf-title $title --pdf-subject $subject reveal ($url | url join) $use_output]
-      if $use_docker {
-        let cmd = [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" $DECKTAPE_IMAGE ...$decktape_args]
-        if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
-        run-external ...$cmd
+      let cmd = if $use_docker {
+        [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"(pwd):/slides" $DECKTAPE_IMAGE ...$decktape_args]
       } else {
-        let cmd = [decktape ...$decktape_args]
+        [decktape ...$decktape_args]
+      }
+      if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
+      run-external ...$cmd
+      return # exit
+    }
+    if $use_screenshot {
+      let decktape_args = [--pause 500 --size $use_resolution --screenshots --screenshots-directory . --screenshots-size $resolution --slides $use_screenshot_slide reveal ($url | url join) $use_output]
+      let tmpdir = mktemp -d
+      mkdir ([$tmpdir screenshots] | path join)
+      let currentdir = $env.PWD
+      let cmd = if $use_docker {
+        [docker run --net=host -u $"(id -u):(id -g)" --rm -t -v $"($tmpdir):/slides" $DECKTAPE_IMAGE ...$decktape_args]
+      } else {
+        [decktape ...$decktape_args]
+      }
+      do {
+        cd $tmpdir
         if $use_verbose {log info $"Running export command: ($cmd | str join ' ')"}
         run-external ...$cmd
+        mv (glob ([$tmpdir *.png] | path join) | get 0) ([$currentdir screenshot.png] | path join)
+        cd $currentdir
       }
+      rm -rpf $tmpdir
       return # exit
     }
 
