@@ -228,7 +228,7 @@ def main [
         if ($use_verbose | into string); then
           set -x
         fi
-        trap "docker kill ($container_id) >/dev/null" 1 2 3 15
+        trap "docker ps -q -f id=($container_id) &>/dev/null && docker kill ($container_id) &>/dev/null" 1 2 3 15
         echo -n "Starting slidesdown "
         while [ -n "$("(")docker ps -q -f id="($container_id)"(")")" ] && ! docker exec ($container_id) test -e /tmp/tunnel_presenter.url; do
           echo -n "."
