@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.5] - 2025-11-09
+
+### Bug Fixes
+
+- Kill docker container via trap, only when the container is still running, preventing an error message on the CLI
+
+### Documentation
+
+- Reduce and restructure dependencies
+- Clarify usage section
+
+### Features
+
+- Add support for taking screenshots via CLI
+
 ## [1.3.4] - 2025-11-08
 
 ### Bug Fixes
