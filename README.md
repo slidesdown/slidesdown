@@ -55,55 +55,38 @@ Optional dependencies if `docker` isn't used:
 sudo slidesdown -u
 ```
 
-#### Open local file in slidesdown Online Viewer (python3 required)
+#### Open local file in slidesdown Offline Viewer (docker required)
 
-Attention: The file with _not_ transmitted to any online service! It will only
-be served from a local web server to your local browser!
-
-Navigate to any folder with a `SLIDES.md` file (), then run this command:
-
-```bash
-slidesdown
-```
-
-If the file name is different from `SLIDES.md`, pass the file name, too:
-
-```bash
-slidesdown README.md
-```
-
-#### Open local file in slidesdown Offline Viewer (python3 required)
-
-Navigate to any folder with a `SLIDES.md` file (), then run this command:
+Navigate to any folder with a `SLIDES.md` file, then run this command:
 
 ```bash
 slidesdown -d
 ```
 
-If the file name is different from `SLIDES.md`, pass the file name, too:
+#### Open local file in slidesdown Online Viewer (python3 required)
+
+Attention: The file with _not_ transmitted to any online service! It will only
+be served from a local web server to your local browser!
+
+Navigate to any folder with a `SLIDES.md` file, then run this command:
 
 ```bash
-slidesdown -d README.md
+slidesdown
 ```
 
 #### Export Slides as PDF
-
-The export requires [`decktape`](https://github.com/astefanutti/decktape).
-
-```bash
-slidesdown -e
-```
-
-If the file name is different from `SLIDES.md`, pass the file name, too:
-
-```bash
-slidesdown -e README.md
-```
 
 The exporter can also be used via Docker:
 
 ```bash
 slidesdown -d -e
+```
+
+If a local [`decktape`](https://github.com/astefanutti/decktape) installation
+exists, it can also be used like this:
+
+```bash
+slidesdown -e
 ```
 
 ## Usage: Create Slides
