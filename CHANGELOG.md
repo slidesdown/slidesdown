@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-04-20
+
+### Bug Fixes
+
+- Restore unocss 66.5.12 to make icons work again
+
+### Features
+
+- Update to reveal.js 6.0.1
+
+### Miscellaneous Tasks
+
+- Update dependencies
+
 ## [1.3.6] - 2026-03-09
 
 ### Miscellaneous Tasks
