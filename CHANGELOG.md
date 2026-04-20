@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-04-20
+
+### Features
+
+- Update decktape to version 3.16.1
+
 ## [1.4.0] - 2026-04-20
 
 ### Bug Fixes
