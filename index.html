@@ -37,7 +37,7 @@
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
     <link href="/favicon.svg" rel="mask-icon" color="#8D46E7" />
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
-    <link rel="stylesheet" href="/vendor/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="/vendor/reveal.js/reveal.css" />
     <link
       rel="stylesheet"
       href="/vendor/reveal.js-plugins/chalkboard/style.css"
@@ -88,20 +88,20 @@
           "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
           "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
           "reveal-echarts": "/vendor/reveal.js-echarts/plugin.js",
-          "reveal-highlight": "/vendor/reveal.js/plugin/highlight/highlight.esm.js",
-          "reveal-math": "/vendor/reveal.js/plugin/math/math.esm.js",
+          "reveal-highlight": "/vendor/reveal.js/plugin/highlight.mjs",
+          "reveal-math": "/vendor/reveal.js/plugin/math.mjs",
           "reveal-mermaid": "/vendor/reveal.js-mermaid/plugin.js",
-          "reveal-notes": "/vendor/reveal.js/plugin/notes/notes.esm.js",
+          "reveal-notes": "/vendor/reveal.js/plugin/notes.mjs",
           "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
-          "reveal-search": "/vendor/reveal.js/plugin/search/search.esm.js",
-          "reveal-zoom": "/vendor/reveal.js/plugin/zoom/zoom.esm.js",
-          "revealjs": "/vendor/reveal.js/dist/reveal.esm.js",
+          "reveal-search": "/vendor/reveal.js/plugin/search.mjs",
+          "reveal-zoom": "/vendor/reveal.js/plugin/zoom.mjs",
+          "revealjs": "/vendor/reveal.js/reveal.mjs",
           "slidesdown": "/plugin/slidesdown.js",
           "unocss": "/vendor/unocss/core.global.js"
         }
       }
     </script>
-    <script src="/vendor/reveal.js/dist/reveal.js"></script>
+    <script src="/vendor/reveal.js/reveal.js"></script>
     <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
     <script src="/vendor/reveal.js-plugins/chalkboard/plugin.js"></script>
     <script src="/vendor/reveal.js-plugins/customcontrols/plugin.js"></script>
@@ -137,6 +137,9 @@
     <!-- UnoCSS is loaded by slidesdown.js to avoid a double-initialization -->
     <!-- <script src="/vendor/unocss/core.global.js"></script> -->
     <!-- WARNING: Prevent the following line from being wrapped, it's removed inside the docker container -->
-    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <script
+      async
+      src="https://scripts.simpleanalyticscdn.com/latest.js"
+    ></script>
   </body>
 </html>

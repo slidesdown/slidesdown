@@ -807,7 +807,7 @@ const Plugin = () => {
         addMeta("og:title")(title);
       },
       "favicon": loadLink("icon"),
-      "theme": defaultURLToStylesheet("/vendor/reveal.js/dist/theme"),
+      "theme": defaultURLToStylesheet("/vendor/reveal.js/theme"),
       "highlight-theme": defaultURLToStylesheet(
         "/vendor/highlight.js",
       ),
