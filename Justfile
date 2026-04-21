@@ -165,9 +165,7 @@ build: test
     # Ensure that docs exists by cloning it first if docs shall be published
     # git clone git@github.com:slidesdown/slidesdown.github.io.git published
     rm -prf published/*
-    # cd public/vendor/reveal.js/ && npx gulp plugins
     yarn run build
-    ^find published/vendor/reveal.js/ -mindepth 1 -maxdepth 1 -not -name plugin -not -name dist -not -name LICENSE -exec rm -rf {} +
 
 # Sets new version in files files, called by `just bump`
 [group('ci')]
