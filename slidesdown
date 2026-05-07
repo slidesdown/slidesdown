@@ -13,7 +13,7 @@ def createTemplate [filename: path, url: string] {
     log error $"File already exists: ($filename)"
     exit 1
   }
-  http get $url | save $filename
+  http get --raw $url | save $filename
   log info $"Created ($filename). Happy sliding :-)"
 }
 
@@ -21,7 +21,7 @@ def updateScript [] {
   const SCRIPT_NAME = path self
   log info $"Updating ($SCRIPT_NAME), version ($VERSION), from ($UPDATE_URL)"
   let SCRIPT_TEMP = mktemp -t $"($SCRIPT_NAME | path basename)_XXXXX"
-  http get $UPDATE_URL | save -f $SCRIPT_TEMP
+  http get --raw $UPDATE_URL | save -f $SCRIPT_TEMP
   chmod a+x $SCRIPT_TEMP
   rm $SCRIPT_NAME
   mv $SCRIPT_TEMP $SCRIPT_NAME
@@ -331,7 +331,7 @@ def main [
         # return (job spawn { python3 $server_cmd localhost $port; rm $server_cmd })
         # let job_id = run-webserver $use_port ($use_filename | path expand | path dirname) ($use_filename | path basename)
         let server_cmd = create-webserver-cmd
-        let job_id = job spawn -t slidesdown {
+        let job_id = job spawn {
           bash -c $"trap \"rm -f '($server_cmd)'\" 1 2 3 15; python3 "($server_cmd)" localhost ($port)"
         }
         # INFO: can't use job spawn until trap has been implemented
