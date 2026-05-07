@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.3] - 2026-05-07
+
+### Bug Fixes
+
+- Make slidesdown CLI compatible with nushell 0.112.2
+
 ## [1.4.2] - 2026-04-21
 
 ### Bug Fixes
