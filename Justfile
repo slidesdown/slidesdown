@@ -1,8 +1,8 @@
 #!/usr/bin/env -S just --list --justfile
 # Documentation: https://just.systems/man/en/
 
-import 'justlib/default.just'
-import 'justlib/bump.just'
+import '.justlib/default.just'
+import '.justlib/bump.just'
 
 # Integration with nodejs package.json scripts, see https://just.systems/man/en/chapter_65.html
 
