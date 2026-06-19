@@ -172,11 +172,12 @@ build: test
 [private]
 _bump_files CURRENT_VERSION NEW_VERSION: update-all build
     #!/usr/bin/env nu
-    open package.json | upsert version "{{ NEW_VERSION }}" | save -f package.json; git add package.json
-    open manifest.json | upsert version "{{ NEW_VERSION }}" | save -f manifest.json; git add manifest.json
-    open --raw index.html | str replace -r 'name="generator" content="[^\"]*"' $'name="generator" content="slidesdown {{ NEW_VERSION }}"' | save -f index.html; git add index.html
-    open --raw slidesdown | str replace -r 'let VERSION = .*' $'let VERSION = "{{ NEW_VERSION }}"' | save -f slidesdown; git add slidesdown
-    open --raw Dockerfile | str replace -r '(LABEL org.opencontainers.image.ref.name)=.*' $'${1}="slidesdown/slidesdown:{{ NEW_VERSION }}"' | str replace -r '(LABEL org.opencontainers.image.version)=.*' $'${1}="{{ NEW_VERSION }}"' | str replace -r '(LABEL org.opencontainers.image.revision)=.*' $'${1}="{{ NEW_VERSION }}"' | save -f Dockerfile; git add Dockerfile
+    let current_version = "{{ CURRENT_VERSION }}"
+    let new_version = "{{ NEW_VERSION }}"
+    open package.json | upsert version $new_version | save -f package.json; git add package.json
+    open --raw index.html | str replace -r 'name="generator" content="[^\"]*"' $'name="generator" content="slidesdown ($new_version)"' | save -f index.html; git add index.html
+    open --raw slidesdown | str replace -r 'let VERSION = .*' $'let VERSION = "($new_version)"' | save -f slidesdown; git add slidesdown
+    open --raw Dockerfile | str replace -r '(LABEL org.opencontainers.image.ref.name)=.*' $'${1}="slidesdown/slidesdown:($new_version)"' | str replace -r '(LABEL org.opencontainers.image.version)=.*' $'${1}="($new_version)"' | str replace -r '(LABEL org.opencontainers.image.revision)=.*' $'${1}="($new_version)"' | save -f Dockerfile; git add Dockerfile
     if ("published/.git" | path exists) {
       cd published
       git add . | ignore
