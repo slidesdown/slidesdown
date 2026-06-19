@@ -33,12 +33,6 @@ offline (i.e. perfect for presentations you want to keep private).
 sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown -o /usr/local/bin/slidesdown; sudo chmod a+x /usr/local/bin/slidesdown
 ```
 
-or on Nix:
-
-```bash
-nix run github:slidesdown/slidesdown
-```
-
 `slidesdown` CLI has the following dependencies:
 
 - [`nu`](https://nushell.sh) required interpreter for the slidesdown programm.
@@ -54,6 +48,50 @@ Optional dependencies if `docker` isn't used:
   GitHub.
 - [`decktape`](https://github.com/astefanutti/decktape) or `docker` for
   exporting slideshows as PDF.
+
+### Installation with Nix Flake
+
+1. Add the `slidesdown` section to your
+   [Flake](https://wiki.nixos.org/wiki/Flakes)'s `inputs`:
+
+```nix
+inputs = {
+  # (...)
+  slidesdown = {
+    url = "github:slidesdown/slidesdown/main";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+};
+```
+
+2. Add the following to your
+   [`nixpkgs.overlays`](https://wiki.nixos.org/wiki/Overlays#Using_overlays):
+
+```nix
+(final: prev: {
+  # (...)
+  slidesdown = import inputs.slidesdown {
+    inherit system;
+    inherit (prev) pkgs;
+  };
+})
+```
+
+3. Rebuild your configuration
+   (`nixos-rebuild switch --flake your-system-config`) and check if it works
+   with `slidesdown --help`.
+
+4. Display your presentation
+
+```sh
+slidesdown # opens the browser and displays the presentation
+```
+
+### One-time Usage with `nix run`
+
+```bash
+nix run github:slidesdown/slidesdown
+```
 
 #### Update
 
