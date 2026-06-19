@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.4] - 2026-06-19
+
+### Features
+
+- Add nix flake
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- Rename justlib folder
+
 ## [1.4.3] - 2026-05-07
 
 ### Bug Fixes
