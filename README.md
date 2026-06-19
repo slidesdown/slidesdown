@@ -33,6 +33,12 @@ offline (i.e. perfect for presentations you want to keep private).
 sudo curl -L https://raw.githubusercontent.com/slidesdown/slidesdown/main/slidesdown -o /usr/local/bin/slidesdown; sudo chmod a+x /usr/local/bin/slidesdown
 ```
 
+or on Nix:
+
+```bash
+nix run github:slidesdown/slidesdown
+```
+
 `slidesdown` CLI has the following dependencies:
 
 - [`nu`](https://nushell.sh) required interpreter for the slidesdown programm.
