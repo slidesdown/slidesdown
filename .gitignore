@@ -25,3 +25,4 @@
 /published/
 /.env.local
 /.docker/
+/result
