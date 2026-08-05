@@ -11,23 +11,23 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.488",
+    "@iconify/json": "2.2.509",
     "@testing-library/dom": "10.4.1",
-    "@unocss/runtime": "66.7.2",
-    "@vitest/browser": "4.1.9",
-    "dompurify": "3.4.11",
+    "@unocss/runtime": "66.7.5",
+    "@vitest/browser": "4.1.10",
+    "dompurify": "3.4.13",
     "echarts": "^6.1.0",
     "highlight.js": "11.11.1",
-    "jsdom": "29.1.1",
-    "marked": "18.0.5",
-    "marked-base-url": "1.1.9",
+    "jsdom": "30.0.1",
+    "marked": "18.0.9",
+    "marked-base-url": "1.1.10",
     "marked-gfm-heading-id": "4.1.4",
-    "mathjax": "4.1.2",
-    "mermaid": "11.15.0",
-    "sass": "1.101.0",
-    "vitest": "4.1.9"
+    "mathjax": "4.1.3",
+    "mermaid": "11.16.1",
+    "sass": "1.102.0",
+    "vitest": "4.1.10"
   },
   "dependencies": {
-    "vite": "8.0.16"
+    "vite": "8.2.0"
   }
 }
