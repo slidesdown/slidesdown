@@ -15,8 +15,10 @@ LABEL org.opencontainers.image.revision="1.4.5"
 
 # Install dependencies
 RUN apk -U --no-cache add bash tini
-RUN wget -o - -O /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/download/2025.11.1/cloudflared-linux-amd64; chmod a+x /usr/local/bin/cloudflared
-RUN wget -o - -O /tmp/nu.tar.gz https://github.com/nushell/nushell/releases/download/0.108.0/nu-0.108.0-x86_64-unknown-linux-musl.tar.gz; tar xzf /tmp/nu.tar.gz nu-0.108.0-x86_64-unknown-linux-musl/nu; mv nu-0.108.0-x86_64-unknown-linux-musl/nu /usr/local/bin; rmdir nu-0.108.0-x86_64-unknown-linux-musl
+# Releases https://github.com/cloudflare/cloudflared/releases
+RUN VERSION=2026.9.1; wget -o - -O /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/download/${VERSION}/cloudflared-linux-amd64; chmod a+x /usr/local/bin/cloudflared
+# Releases https://github.com/nushell/nushell/releases
+RUN VERSION=0.115.1; wget -o - -O /tmp/nu.tar.gz https://github.com/nushell/nushell/releases/download/${VERSION}/nu-${VERSION}-x86_64-unknown-linux-musl.tar.gz; tar xzf /tmp/nu.tar.gz nu-${VERSION}-x86_64-unknown-linux-musl/nu; mv nu-${VERSION}-x86_64-unknown-linux-musl/nu /usr/local/bin; rmdir nu-${VERSION}-x86_64-unknown-linux-musl
 
 ENV NODE_ENV=production
 
