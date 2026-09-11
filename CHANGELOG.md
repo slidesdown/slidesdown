@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.5] - 2026-09-11
+
+### Bug Fixes
+
+- Correct package to properly include all dependencies at runtime
+
+### Documentation
+
+- Add more nix installation instructions
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- Update dependencies
+- Update dependencies
+
 ## [1.4.4] - 2026-06-19
 
 ### Features
