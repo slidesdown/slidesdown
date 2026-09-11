@@ -105,7 +105,7 @@ update-revealjs:
     # Source: https://github.com/hakimel/reveal.js
     mkdir public/vendor
     rm -prf public/vendor/reveal.js
-    let VERSION = "6.0.1"
+    let VERSION = "6.0.2"
     cd public/vendor
     do -c {curl -Lfo - $"https://github.com/hakimel/reveal.js/archive/refs/tags/($VERSION).tar.gz"} | do -c {tar xvz}
     mv $"($env.PWD)/reveal.js-($VERSION)/dist" reveal.js
