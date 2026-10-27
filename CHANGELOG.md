@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.7] - 2026-10-27
+
+### Miscellaneous Tasks
+
+- Update dependencies
+- Fix errors in dockerfile
+
 ## [1.4.6] - 2026-09-11
 
 ### Miscellaneous Tasks
