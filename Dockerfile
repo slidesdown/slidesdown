@@ -24,17 +24,17 @@ ENV NODE_ENV=production
 
 # Configure multiplex
 WORKDIR /multiplex
-COPY multiplex/package-lock.json multiplex/package.json .
-RUN npm install; rm -rf /usr/local/share/.cache
-COPY multiplex/index.js .
+COPY multiplex/package-lock.json multiplex/package.json ./
+RUN npm install; rm -rf /usr/local/share/.cache/
+COPY multiplex/index.js ./
 
 # Configure slidesdown
 WORKDIR /srv
-COPY package.json yarn.lock .
-RUN yarn install --prod; rm -rf /usr/local/share/.cache
-COPY published public
-COPY published/index.html .
-COPY vite.config.js .
+COPY package.json yarn.lock ./
+RUN yarn install --prod; rm -rf /usr/local/share/.cache/
+COPY published public/
+COPY published/index.html ./
+COPY vite.config.js ./
 # enables seperate vite configuration inside the container
 ENV SERVING_SLIDESDOWN=1
 # Disable analytics in docker container
