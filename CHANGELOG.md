@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.8] - 2026-10-31
+
+### Bug Fixes
+
+- Correct broken start script
+
+### Miscellaneous Tasks
+
+- Bump decktape to version 3.17.0
+- Update justlib
+- Update dependencies
+
 ## [1.4.7] - 2026-10-27
 
 ### Miscellaneous Tasks
