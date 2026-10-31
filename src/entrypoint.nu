@@ -7,7 +7,7 @@ def main [] {
   let use_verbose = ($env | default "" VERBOSE | get VERBOSE) == "1"
   let use_multiplex = ($env | default "" MULTIPLEX | get MULTIPLEX) == "1"
   let use_publish = ($env | default "" PUBLISH | get PUBLISH) == "1"
-  let multiplex_job_id = job spawn -t multiplex {
+  let multiplex_job_id = job spawn -d multiplex {
     cd /multiplex
     let cmd = [npm run start]
     if $use_verbose {log info $"Running command: ($cmd | str join ' ')"}
@@ -17,7 +17,7 @@ def main [] {
   # TODO: Implement publish functionality
   let tunnel_output = "/tmp/tunnel.log"
   let tunnel_pid = "/tmp/tunnel.pid"
-  let tunnel_job_id = job spawn -t tunnel {
+  let tunnel_job_id = job spawn -d tunnel {
     let cmd = [ cloudflared tunnel --url "http://127.0.0.1:8080" --pidfile $tunnel_pid ]
     if $use_verbose {log info $"Running command: ($cmd | str join ' ')"}
     run-external ...$cmd o+e> $tunnel_output
