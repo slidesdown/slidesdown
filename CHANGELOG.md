@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.9] - 2026-11-23
+
+### Miscellaneous Tasks
+
+- Update analytics
+- Update dependencies
+- Update dependencies
+
 ## [1.4.8] - 2026-10-31
 
 ### Bug Fixes
