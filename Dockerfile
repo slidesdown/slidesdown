@@ -37,9 +37,6 @@ COPY published/index.html ./
 COPY vite.config.js ./
 # enables seperate vite configuration inside the container
 ENV SERVING_SLIDESDOWN=1
-# Disable analytics in docker container
-RUN sed -i -e '/simpleanalyticscdn.com/d' index.html
-
 
 EXPOSE 8080
 

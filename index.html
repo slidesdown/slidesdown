@@ -58,8 +58,7 @@
           data-separator-vertical="^(#{3} |\|\|\|$)"
           data-separator-notes="^notes?:"
           id="markdown"
-        >
-        </section>
+        ></section>
       </div>
 
       <!-- Layout components -->
@@ -75,31 +74,31 @@
       </footer>
     </div>
     <script type="importmap">
-      {
-        "imports": {
-          "@kurkle/color": "/vendor/kurkle/color.esm.js",
-          "dompurify": "/vendor/dompurify/purify.es.mjs",
-          "echarts": "/vendor/echarts/echarts.esm.min.js",
-          "github-slugger": "/vendor/github-slugger/index.js",
-          "marked": "/vendor/marked/marked.esm.js",
-          "marked-base-url": "/vendor/marked-base-url/index.js",
-          "marked-gfm-heading-id": "/vendor/marked-gfm-heading-id/index.js",
-          "mermaid": "/vendor/mermaid/mermaid.esm.min.mjs",
-          "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
-          "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
-          "reveal-echarts": "/vendor/reveal.js-echarts/plugin.js",
-          "reveal-highlight": "/vendor/reveal.js/plugin/highlight.mjs",
-          "reveal-math": "/vendor/reveal.js/plugin/math.mjs",
-          "reveal-mermaid": "/vendor/reveal.js-mermaid/plugin.js",
-          "reveal-notes": "/vendor/reveal.js/plugin/notes.mjs",
-          "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
-          "reveal-search": "/vendor/reveal.js/plugin/search.mjs",
-          "reveal-zoom": "/vendor/reveal.js/plugin/zoom.mjs",
-          "revealjs": "/vendor/reveal.js/reveal.mjs",
-          "slidesdown": "/plugin/slidesdown.js",
-          "unocss": "/vendor/unocss/core.global.js"
-        }
+    {
+      "imports": {
+        "@kurkle/color": "/vendor/kurkle/color.esm.js",
+        "dompurify": "/vendor/dompurify/purify.es.mjs",
+        "echarts": "/vendor/echarts/echarts.esm.min.js",
+        "github-slugger": "/vendor/github-slugger/index.js",
+        "marked": "/vendor/marked/marked.esm.js",
+        "marked-base-url": "/vendor/marked-base-url/index.js",
+        "marked-gfm-heading-id": "/vendor/marked-gfm-heading-id/index.js",
+        "mermaid": "/vendor/mermaid/mermaid.esm.min.mjs",
+        "reveal-chalkboard": "/vendor/reveal.js-plugins/chalkboard/plugin.js",
+        "reveal-customcontrols": "/vendor/reveal.js-plugins/customcontrols/plugin.js",
+        "reveal-echarts": "/vendor/reveal.js-echarts/plugin.js",
+        "reveal-highlight": "/vendor/reveal.js/plugin/highlight.mjs",
+        "reveal-math": "/vendor/reveal.js/plugin/math.mjs",
+        "reveal-mermaid": "/vendor/reveal.js-mermaid/plugin.js",
+        "reveal-notes": "/vendor/reveal.js/plugin/notes.mjs",
+        "reveal-pdfexport": "/vendor/reveal-pdfexport/pdfexport.js",
+        "reveal-search": "/vendor/reveal.js/plugin/search.mjs",
+        "reveal-zoom": "/vendor/reveal.js/plugin/zoom.mjs",
+        "revealjs": "/vendor/reveal.js/reveal.mjs",
+        "slidesdown": "/plugin/slidesdown.js",
+        "unocss": "/vendor/unocss/core.global.js"
       }
+    }
     </script>
     <script src="/vendor/reveal.js/reveal.js"></script>
     <script src="/vendor/reveal-pdfexport/pdfexport.js"></script>
@@ -112,34 +111,46 @@
     <script src="/vendor/unocss/preset-wind4.global.js"></script>
     <script src="/vendor/unocss/preset-web-fonts.global.js"></script>
     <script>
-      // Documentation: https://unocss.dev/integrations/runtime#usage
-      window.__unocss = {
-        presets: [
-          () =>
-            window.__unocss_runtime.presets.presetWind4({
-              preflights: { reset: false },
-            }),
-          () => window.__unocss_runtime.presets.presetAttributify(),
-          () =>
-            window.__unocss_runtime.presets.presetIcons({
-              scale: 1.2,
-              cdn: "/vendor/",
-              extraProperties: {
-                "display": "inline-block",
-                "vertical-align": "middle",
-              },
-            }),
-          () => window.__unocss_runtime.presets.presetTypography(),
-          () => window.__unocss_runtime.presets.presetWebFonts(),
-        ],
-      };
+    // Documentation: https://unocss.dev/integrations/runtime#usage
+    window.__unocss = {
+      presets: [
+        () =>
+          window.__unocss_runtime.presets.presetWind4({
+            preflights: { reset: false },
+          }),
+        () => window.__unocss_runtime.presets.presetAttributify(),
+        () =>
+          window.__unocss_runtime.presets.presetIcons({
+            scale: 1.2,
+            cdn: "/vendor/",
+            extraProperties: {
+              "display": "inline-block",
+              "vertical-align": "middle",
+            },
+          }),
+        () => window.__unocss_runtime.presets.presetTypography(),
+        () => window.__unocss_runtime.presets.presetWebFonts(),
+      ],
+    };
     </script>
     <!-- UnoCSS is loaded by slidesdown.js to avoid a double-initialization -->
     <!-- <script src="/vendor/unocss/core.global.js"></script> -->
-    <!-- WARNING: Prevent the following line from being wrapped, it's removed inside the docker container -->
-    <script
-      async
-      src="https://scripts.simpleanalyticscdn.com/latest.js"
-    ></script>
+    <script src="https://swetrix.org/swetrix.js" defer></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      swetrix.init("1a0Noy8x1J6H", {
+        apiURL: "https://analytics.41ppl.com/backend/v1/log",
+      });
+      swetrix.trackViews();
+    });
+    </script>
+
+    <noscript>
+      <img
+        src="https://analytics.41ppl.com/backend/log/noscript?pid=1a0Noy8x1J6H"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
   </body>
 </html>

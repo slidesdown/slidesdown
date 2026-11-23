@@ -53,6 +53,12 @@ autoSlide: 0
 
 <!-- .element: style="background: rgba(255, 255, 255, 0.3)" -->
 
+<img
+  src="https://analytics.41ppl.com/backend/log/noscript?pid=1a0Noy8x1J6H"
+  alt=""
+  referrerpolicy="no-referrer-when-downgrade"
+/>
+
 <style>
 /* highlight headings nicely so they stand out against the background */
 h2, h3 {
